@@ -31,7 +31,7 @@ public class Register extends Fragment implements View.OnClickListener {
         getActivity().setTitle(R.string.fragment_register_label);
         ll_spn_global = view.findViewById(R.id.layout_spn_global);
 
-        view.findViewById(R.id.signIn).setOnClickListener(this);
+        view.findViewById(R.id.signUp).setOnClickListener(this);
     }
 
     @Override
