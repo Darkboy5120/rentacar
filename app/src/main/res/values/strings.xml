@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">RentaCar</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="fragment_login_label">Inicio de sesión</string>
+    <string name="fragment_register_label">Registro</string>
+
+    <string name="signUp">Sign up</string>
+    <string name="signIn">Entrar</string>
+    <string name="back">Back</string>
+    <string name="invite_to_signUp"><b><u>¿Aun no tienes cuenta?, Registrate</u></b></string>
+    <string name="next">Siguiente</string>
+
+    <string name="label_et_email">Correo</string>
+    <string name="label_et_pass">Contraseña</string>
+</resources>

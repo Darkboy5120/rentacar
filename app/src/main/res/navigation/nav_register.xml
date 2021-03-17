@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FragmentRegisterStep1">
+
+    <fragment
+        android:id="@+id/FragmentRegisterStep1"
+        android:name="com.example.rentacar.fragments.Register"
+        android:label="@string/fragment_register_label"
+        tools:layout="@layout/fragment_register_step1">
+
+        <action
+            android:id="@+id/action_FragmentRegisterStep1_to_FragmentRegisterStep2"
+            app:destination="@id/FragmentRegisterStep2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/FragmentRegisterStep2"
+        android:name="com.example.rentacar.fragments.Register"
+        android:label="@string/fragment_register_label"
+        tools:layout="@layout/fragment_register_step2">
+    </fragment>
+</navigation>

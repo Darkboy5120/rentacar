@@ -1,0 +1,22 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_size__small">14sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_big">18sp</dimen>
+
+    <dimen name="btn_p_small">10dp</dimen>
+    <dimen name="btn_p_medium">25dp</dimen>
+    <dimen name="btn_p_big">50dp</dimen>
+    <dimen name="et_p_small">10dp</dimen>
+    <dimen name="et_p_medium">25dp</dimen>
+    <dimen name="et_p_big">25dp</dimen>
+
+    <dimen name="layout_et_mb">20dp</dimen>
+    <dimen name="layout_btn_mb">20dp</dimen>
+    <dimen name="layout_pt">30dp</dimen>
+    <dimen name="layout_mt">30dp</dimen>
+    <dimen name="layout_ph">50dp</dimen>
+    <dimen name="layout_mh">50dp</dimen>
+
+    <dimen name="et_border">3dp</dimen>
+</resources>

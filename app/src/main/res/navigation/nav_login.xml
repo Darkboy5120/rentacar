@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FragmentLogin">
+
+    <fragment
+        android:id="@+id/FragmentLogin"
+        android:name="com.example.rentacar.fragments.Login"
+        android:label="@string/fragment_login_label"
+        tools:layout="@layout/fragment_login">
+    </fragment>
+</navigation>
