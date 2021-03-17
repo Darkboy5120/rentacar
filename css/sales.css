@@ -3,7 +3,7 @@
 @import url("component-navbar.css");
 @import url("component-dropdown.css");
 @import url("component-footer.css");
-@import url("component-cars-cards.css");
+@import url("component-sales-cards.css");
 @import url("component-pagination.css");
 html, body {
     margin: 0;
@@ -53,4 +53,10 @@ h1 {
 @media(min-width: 425px) and (max-width: 767px) {
 }
 @media(min-width: 425px) {
+    .navbar ul > li:not(.navbar-title) > span {
+        display: block;
+    }
+    .dropdown-content {
+        min-width: 300%;
+    }
 }

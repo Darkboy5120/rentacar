@@ -1,0 +1,20 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0 1rem 0;
+}
+.pagination > button {
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(50, 50, 50, 1);
+    cursor: pointer;
+    outline: none;
+    border: none;
+    padding: .2rem .5rem .2rem .5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0 .2rem 0 .2rem;
+}
+.pagination > button:hover {
+    background-color: rgba(50, 50, 50, 1);
+}
