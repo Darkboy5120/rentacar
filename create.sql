@@ -10,6 +10,7 @@ drop table if exists `reporte_entrega`;
 drop table if exists `renta`;
 drop table if exists `auto`;
 drop table if exists `usuario_foto`;
+drop table if exists `conductor_codigo`;
 drop table if exists `conductor`;
 drop table if exists `administrador`;
 drop table if exists `arrendatario`;
@@ -55,7 +56,7 @@ create table `usuario` (
   `apellido` varchar(50) not null,
   `telefono` varchar(10) not null,
   `correo` varchar(50) not null,
-  `contraseña` varchar(50) not null,
+  `contraseña` varchar(100) not null,
   primary key(pk_usuario),
   unique key(correo)
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
@@ -82,6 +83,14 @@ create table `conductor` (
     `fk_usuario` smallint unsigned not null,
     `fk_administrador` smallint unsigned not null,
     foreign key(fk_usuario) references usuario(pk_usuario) on delete cascade,
+    foreign key(fk_administrador) references usuario(pk_usuario) on delete cascade
+) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
+
+create table `conductor_codigo` (
+    `fk_administrador` smallint unsigned not null,
+    `codigo` varchar(20) not null,
+    `vencimiento` datetime not null,
+    unique key(fk_administrador, codigo),
     foreign key(fk_administrador) references usuario(pk_usuario) on delete cascade
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
 
