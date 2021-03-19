@@ -1,13 +1,16 @@
 .dropdown-content {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    min-width: 91vw;
+    position: fixed;
+    top: 10%;
+    right: 2.5%;
+    min-width: 90vw;
     display: flex;
     flex-direction: column;
     background-color: rgba(50, 50, 50, .8);
     padding: .5rem;
     border-radius: 5px;
+    border-top: 5px solid gold !important;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     display: none;
     border: 1px solid #6456e2;
 }
@@ -43,6 +46,9 @@
 }
 @media(min-width: 425px) {
     .dropdown-content {
-        min-width: 300%;
+        position: absolute;
+        min-width: 300px !important;
+        top: 100%;
+        right: 0;
     }
 }

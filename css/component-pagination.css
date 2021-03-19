@@ -6,11 +6,11 @@
 .pagination > button {
     border-radius: 5px;
     color: white;
-    background-color: rgb(50, 50, 50, 1);
+    background-color: rgb(50, 50, 50, .8);
     cursor: pointer;
     outline: none;
     border: none;
-    padding: .2rem .5rem .2rem .5rem;
+    padding: 4% 10% 4% 10%;
     font-size: 1rem;
     font-weight: bold;
     margin: 0 .2rem 0 .2rem;

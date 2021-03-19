@@ -1,0 +1,85 @@
+@keyframes popUp {
+    from {
+        transform: scale(.2);
+    }
+    to {
+
+    }
+}
+.modal {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(50, 50, 50, .8);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal > .modal-card-small {
+    min-height: min-content;
+    min-width: 80%;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, .8), rgba(255, 255, 255, .5), rgba(255, 255, 255, .8));
+    border-radius: 5px;
+    padding: 1rem;
+    animation: popUp .3s ease;
+}
+.modal > .modal-card-medium {
+    min-height: min-content;
+    min-width: 20%;
+    background-color: rgba(255, 255, 255, .8);
+    border-radius: 5px;
+    padding: 1rem;
+}
+.modal .modal-header {
+    display: flex;
+    justify-content: space-between;
+}
+.modal .modal-header > i {
+    font-size: 2rem;
+    cursor: pointer;
+    color: rgba(50, 50, 50, 1);
+}
+.modal .modal-header > h2 {
+    margin-top: 0;
+}
+.modal .modal-header > i:hover {
+    color: rgba(220, 0, 0, .8);
+}
+.modal .modal-body {
+    background-color: white;
+    border-radius: 5px;
+    padding: 1rem 0 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.modal .modal-body > button {
+    width: 80%;
+    height: 2rem;
+    margin-bottom: .5rem;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: white;
+    background-image: linear-gradient(45deg, var(--secondaryColorAlt), var(--secondaryColor),
+     #6456e2, var(--primaryColor), var(--primaryColorAlt));
+    cursor: pointer;
+    transition: transform .2s ease;
+}
+.modal .modal-body > button:active {
+    transform: scale(.9);
+}
+@media(min-width: 768px) {
+    .modal > .modal-card-small {
+        min-height: min-content;
+        min-width: 20%;
+    }
+}
+@media(min-width: 425px) and (max-width: 767px) {
+    .modal > .modal-card-small {
+        min-height: min-content;
+        min-width: 40%;
+    }
+}

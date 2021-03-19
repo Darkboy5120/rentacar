@@ -23,16 +23,25 @@
                             <img src="img/main_logo.png" alt="">
                             <span>RentaCar</span>
                         </li>
-                        <li><i class="fas fa-search"></i><span>Buscar</span></li>
+                        <li class="navbar-location"><span>Ventas</span></li>
                     </ul>
                 </div>
                 <div class="navbar-right">
                     <ul>
+                        <li class="dropdown"><i class="fas fa-bell"></i><span></span>
+                            <div class="dropdown-content">
+                                <p>Notificaciones</p>
+                                <ul>
+                                    <li><span>foo foo foo foo foo foo foo.</span></li>
+                                    <li><span>foo foo foo foo foo foo foo.</span></li>
+                                    <li><span>foo foo foo foo foo foo foo.</span></li>
+                                </ul>
+                            </div>
+                        </li>
                         <li class="dropdown"><i class="fas fa-user"></i><span>Perfil</span>
                             <div class="dropdown-content">
-                                <p>Thanos</p>
+                                <p>Perfil</p>
                                 <ul>
-                                    <li><span>Notificaciones</span></li>
                                     <li><span>Conductores</span></li>
                                     <li><span>Mis datos</span></li>
                                     <li><span>Ventas</span></li>
@@ -43,10 +52,15 @@
                     </ul>
                 </div>
             </nav>
+            <nav class="main-actions">
+                <ul>
+                    <li><i class="fas fa-search"></i><span>Buscar</span></li>
+                </ul>
+            </nav>
+            <div class="fixed-location">
+                <span>Estas en <span data-location="">Ventas</span></span>
+            </div>
             <div class="container">
-                <section>
-                    <h1>Ventas</h1>
-                </section>
                 <section class="cards-sales">
                     <div class="card-sale-header">
                         <span>Identificador</span>
@@ -132,11 +146,22 @@
                         <li><a href="#">Seguridad</a></li>
                         <li><a href="#">Proyectos</a></li>
                     </ul>
+                    <p>© Rentacar 2021</p>
                 </footer>
             </div>
         </main>
     </body>
     <script>
+        var slideRight = {
+            delay: 500,
+            distance: '100%',
+            origin: 'left',
+            opacity: null,
+            afterReveal: el => {
+                document.querySelector(".fixed-location").classList.add("slide-left-fl");
+            }
+        };
 
+        ScrollReveal().reveal('.fixed-location', slideRight);
     </script>
 </html>
