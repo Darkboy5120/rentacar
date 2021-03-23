@@ -16,7 +16,7 @@
     position: relative;
     margin: 0 .5rem .5rem .5rem;
     border: 1px solid white;
-    color: white;
+    color: var(--textColor);
     border-radius: 5px;
     overflow: hidden;
     align-items: center;
@@ -28,8 +28,6 @@
      #6456e2, var(--primaryColor), var(--primaryColorAlt));
 }
 .card-sale:hover {
-    /*background-image: linear-gradient(90deg, var(--secondaryColorAlt), var(--secondaryColor),
-     #6456e2, var(--primaryColor), var(--primaryColorAlt));*/
      background-color: rgba(50, 50, 50, .8);
 }
 .card-sale-header > span {

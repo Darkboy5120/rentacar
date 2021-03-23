@@ -28,7 +28,7 @@
     height: 100%;
     display: flex;
     list-style-type: none;
-    color: white;
+    color: var(--textColor);
     margin: 0;
     padding: 0 6% 0 6%;
 }
@@ -44,19 +44,24 @@
     padding: 0 1rem 0 1rem;
     position: relative;
 }
+.navbar ul > li label > i {
+    cursor: pointer;
+}
 .navbar-location {
     cursor: default !important;
 }
-.navbar ul > li > i + span,
-.main-actions ul > li > i + span {
+.navbar ul > li i + span,
+.main-actions ul > li i + span {
     padding-left: .5rem;
 }
 .navbar > div > ul > li:not(.navbar-location):not(.dropdown):hover {
     background-color: rgba(70, 70, 70, 1) !important;
     border-bottom: 5px solid gold;
 }
-.navbar ul > li:not(.navbar-title) > span {
+.navbar ul > li > span {
     font-family: 'Merriweather Sans', sans-serif;
+}
+.navbar ul > li:not(.navbar-title):not(.navbar-location) > span {
     display: none;
 }
 
@@ -85,7 +90,7 @@
     height: 100%;
     display: flex;
     list-style-type: none;
-    color: white;
+    color: var(--textColor);
     margin: 0;
     padding: 0 6% 0 6%;
 }
@@ -97,6 +102,29 @@
     align-items: center;
     padding: 0 1rem 0 1rem;
     position: relative;
+}
+
+.main-actions > ul > li:hover input:focus,
+.main-actions > ul > li:hover input::placeholder {
+    color: var(--textColorAlt);
+}
+.main-action-search input {
+    width: 0;
+    opacity: 0;
+    outline: none;
+    transition: width 1s ease;
+    background-color: white;
+    border-radius: 5px;
+    background-color: rgba(50, 50, 50, 0);
+}
+.main-action-search input:focus {
+    margin-left: .5rem;
+    width: 100px !important;
+    opacity: 1;
+    color: var(--textColor);
+}
+.main-action-search input::placeholder {
+    color: rgba(255, 255, 255, .7);
 }
 
 .fixed-location {
@@ -111,7 +139,7 @@
     left: 0;
     height: 5%;
     background-color: rgba(50, 50, 50, 1);
-    color: white;
+    color: var(--textColor);
     z-index: 1;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -122,7 +150,6 @@
     transition: all .5s ease 2s !important;
     left: -50%;
 }
-
 @media(min-width: 768px) {
     .navbar ul {
         padding: 0 10% 0 6% !important;

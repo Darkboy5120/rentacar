@@ -1,21 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100&family=Merriweather+Sans:wght@500&display=swap');
-@import url("theme-default.css");
-@import url("component-navbar.css");
-@import url("component-dropdown.css");
-@import url("component-footer.css");
-@import url("component-sales-cards.css");
-@import url("component-pagination.css");
+@import url("../themes/default.css");
+@import url("../components/global.css");
+@import url("../components/navbar.css");
+@import url("../components/dropdown.css");
+@import url("../components/footer.css");
+@import url("../components/sales-cards.css");
+@import url("../components/pagination.css");
 html, body {
     margin: 0;
 }
 body {
     max-width: 100vw;
-    background-color: white;
     background-image: linear-gradient(45deg, var(--secondaryColorAlt), var(--secondaryColor),
      #6456e2, var(--primaryColor), var(--primaryColorAlt));
-}
-h1, h2, p, label, span, a {
-    font-family: 'IBM Plex Sans', sans-serif;
 }
 main {
     display: flex;
@@ -39,6 +35,9 @@ main > .container {
     background-color: rgba(0, 0, 0, 0);
     display: flex;
     flex-direction: row;
+}
+h1, h2, p, label, span, a {
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 h1 {
     color: var(--textColor);

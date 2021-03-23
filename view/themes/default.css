@@ -4,7 +4,8 @@
     --secondaryColor: #2f95c5;
     --secondaryColorAlt: #70cffc;
     --textColor: white;
-    --textColorAlt: #585858;
+    --textColorAlt: rgb(50, 50, 50);
     --iconColor: white;
     --iconColorAlt: #707070;
+    --dangerColor: rgba(225, 0, 0, .8);
 }

@@ -4,7 +4,6 @@
     grid-auto-rows: auto;
     column-gap: 1rem;
     row-gap: 1rem;
-    background-color: white;
     margin: 1rem;
     color: gray !important;
     position: relative;
@@ -16,12 +15,6 @@
     border-radius: 5px;
     overflow: hidden;
 }
-/*.card-car:hover > p {
-    display: block !important;
-}
-.card-car:hover > img {
-    filter: blur(20px);
-}*/
 .card-car > img {
     width: 100%;
     height: auto;
@@ -30,7 +23,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    color: rgb(50, 50, 50);
+    color: var(--textColorAlt);
     font-size: 1.2rem;
     cursor: pointer;
     padding: 5%;
@@ -38,7 +31,7 @@
 .card-car > i:hover {
     background-image: linear-gradient(45deg, var(--secondaryColorAlt), var(--secondaryColor),
     #6456e2, var(--primaryColor), var(--primaryColorAlt));
-    color: white;
+    color: var(--textColor);
 }
 .card-car > h2 {
     position: absolute;

@@ -4,13 +4,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="icon" type="image/png" sizes="32x32" href="img/main_logo.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="media/images/main_logo.png" />
         <!-- ScrollReveal -->
         <script src="https://unpkg.com/scrollreveal"></script>
         <!-- Font Awesome -->
         <script src="https://kit.fontawesome.com/0d40d8f017.js" crossorigin="anonymous"></script>
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="./css/sign.css">
+        <link rel="stylesheet" href="view/pages/sign.css">
 
         <title>Rentacar | Registro</title>
     </head>
@@ -25,6 +25,7 @@
                             <input type="text" id="firstname" placeholder="Nombres">
                             <i class="fas fa-address-card"></i>
                         </div>
+                        <span class="input-log hidden"></span>
                     </div>
                     <div class="input-layout">
                         <label for="lastname">Apellidos</label>
@@ -54,31 +55,15 @@
                             <i class="fas fa-lock"></i>
                         </div>
                     </div>
-                    <button id="signUp" type="button" class="btn btn-primary">Guardar</button>
+                        <button id="signUp" type="button" class="button button-primary">Guardar</button>
                 </form>
                 <footer>
-                    <p>¿Ya tienes una cuenta? <a href="login.html">Inicia sesión</a></p>
+                    <p>¿Ya tienes una cuenta? <a href="login.php">Inicia sesión</a></p>
                 </footer>
             </div>
         </main>
 
-        <script>
-            document.querySelectorAll(".input-layout input").forEach(element => {
-                element.onclick = function (event) {
-                    let input = event.target;
-                    let label = input.parentNode.parentNode.querySelector("label");
-                    label.classList.add("fade-transition");
-                    input.classList.add("hide-placeholder");
-                }
-            });
-            document.querySelectorAll(".input-layout input").forEach(element => {
-                element.onblur = function (event) {
-                    let input = event.target;
-                    let label = input.parentNode.parentNode.querySelector("label");
-                    label.classList.remove("fade-transition");
-                    input.classList.remove("hide-placeholder");
-                }
-            });
-        </script>
+        <script src="controller/components/field-control.js"></script>
+        <script src="controller/pages/register.js"></script>
     </body>
 </html>

@@ -4,15 +4,12 @@
     padding: 1rem 0 1rem 0;
 }
 .pagination > button {
+    letter-spacing: 0;
     border-radius: 5px;
-    color: white;
+    color: var(--textColor);
     background-color: rgb(50, 50, 50, .8);
-    cursor: pointer;
-    outline: none;
-    border: none;
     padding: 4% 10% 4% 10%;
     font-size: 1rem;
-    font-weight: bold;
     margin: 0 .2rem 0 .2rem;
 }
 .pagination > button:hover {

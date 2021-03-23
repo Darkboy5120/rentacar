@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100&family=Merriweather+Sans:wght@500&display=swap');
+.button {
+    letter-spacing: 2px;
+    transition: transform .2s ease;
+    cursor: pointer;
+    align-self: center;
+    font-family: 'IBM Plex Sans', sans-serif;
+    border-radius: 100px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+}
+.button:active {
+    transform: scale(.9);
+}
+.button-danger {
+    background-color: var(--dangerColor) !important;
+    color: var(--textColor);
+}
+.button-primary {
+    background-image: linear-gradient(45deg, var(--secondaryColorAlt), var(--secondaryColor),
+        #6456e2, var(--primaryColor), var(--primaryColorAlt));
+    color: var(--textColor);
+}
+.hidden {
+    display: none !important;
+}

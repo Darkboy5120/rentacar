@@ -4,61 +4,26 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="icon" type="image/png" sizes="32x32" href="img/main_logo.png " />
+        <link rel="icon" type="image/png" sizes="32x32" href="media/images/main_logo.png " />
         <!-- ScrollReveal -->
         <script src="https://unpkg.com/scrollreveal"></script>
         <!-- Font Awesome -->
         <script src="https://kit.fontawesome.com/0d40d8f017.js" crossorigin="anonymous"></script>
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="./css/sales.css">
+        <link rel="stylesheet" href="view/pages/sales.css">
 
-        <title>Rentacar | Panel de administrador</title>
+        <title></title>
     </head>
     <body>
         <main>
-            <nav class="navbar">
-                <div class="navbar-left">
-                    <ul>
-                        <li class="navbar-title">
-                            <img src="img/main_logo.png" alt="">
-                            <span>RentaCar</span>
-                        </li>
-                        <li class="navbar-location"><span>Ventas</span></li>
-                    </ul>
-                </div>
-                <div class="navbar-right">
-                    <ul>
-                        <li class="dropdown"><i class="fas fa-bell"></i><span></span>
-                            <div class="dropdown-content">
-                                <p>Notificaciones</p>
-                                <ul>
-                                    <li><span>foo foo foo foo foo foo foo.</span></li>
-                                    <li><span>foo foo foo foo foo foo foo.</span></li>
-                                    <li><span>foo foo foo foo foo foo foo.</span></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="dropdown"><i class="fas fa-user"></i><span>Perfil</span>
-                            <div class="dropdown-content">
-                                <p>Perfil</p>
-                                <ul>
-                                    <li><span>Conductores</span></li>
-                                    <li><span>Mis datos</span></li>
-                                    <li><span>Ventas</span></li>
-                                    <li><span>Salir</span></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <?php include "view/components/navbar.html";?>
             <nav class="main-actions">
                 <ul>
                     <li><i class="fas fa-search"></i><span>Buscar</span></li>
                 </ul>
             </nav>
             <div class="fixed-location">
-                <span>Estas en <span data-location="">Ventas</span></span>
+                <span>Estas en <span data-location=""></span></span>
             </div>
             <div class="container">
                 <section class="cards-sales">
@@ -127,41 +92,9 @@
                     <button>5</button>
                     <button><i class="fas fa-arrow-right"></i></button>
                 </section>
-                <footer>
-                    <ul>
-                        <li><p>Información</p></li>
-                        <li><a href="#">Misión</a></li>
-                        <li><a href="#">Origén</a></li>
-                        <li><a href="#">Valores</a></li>
-                    </ul>
-                    <ul>
-                        <li><p>Contacto</p></li>
-                        <li><a href="#">telefonos</a></li>
-                        <li><a href="#">facebook</a></li>
-                        <li><a href="#">whatsapp</a></li>
-                    </ul>
-                    <ul>
-                        <li><p>Otros</p></li>
-                        <li><a href="#">Politicas</a></li>
-                        <li><a href="#">Seguridad</a></li>
-                        <li><a href="#">Proyectos</a></li>
-                    </ul>
-                    <p>© Rentacar 2021</p>
-                </footer>
+                <?php include "view/components/footer.html";?>
             </div>
         </main>
     </body>
-    <script>
-        var slideRight = {
-            delay: 500,
-            distance: '100%',
-            origin: 'left',
-            opacity: null,
-            afterReveal: el => {
-                document.querySelector(".fixed-location").classList.add("slide-left-fl");
-            }
-        };
-
-        ScrollReveal().reveal('.fixed-location', slideRight);
-    </script>
+    <script src="controller/pages/sales.js"></script>
 </html>
