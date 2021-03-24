@@ -8,6 +8,7 @@ drop table if exists `reporte_entrega_imagen`;
 drop table if exists `reporte_devolucion`;
 drop table if exists `reporte_entrega`;
 drop table if exists `renta`;
+drop table if exists `auto_imagen`;
 drop table if exists `auto`;
 drop table if exists `usuario_foto`;
 drop table if exists `conductor_codigo`;
@@ -106,22 +107,37 @@ create table `auto` (
     `fk_administrador` smallint unsigned not null,
     `fk_modelo` tinyint unsigned not null,
     `precio` smallint unsigned not null,
-    `tipo` enum("1", "2", "3", "4", "5") not null,
+    `tipo` enum("0", "1", "2", "3", "4") not null,
+    /* 0 - Gasolina
+     * 1 - Diesel
+     * 2 - Electrico
+     * 3 - Gas
+     * 4 - Hibrido Gasolina-Electrico
+     * 5 - Hibrido Gaolina-Gas
+     */
+    `tipo_motor` enum("0", "1", "2", "3", "4", "5") not null,
     `asientos` tinyint not null,
-    `puertas` tinyint not null,
-    `cajuela` enum("1", "2", "3", "4") not null,
-    `cilindros` tinyint not null,
+    `puertas` tinyint unsigned not null,
+    `capacidad_cajuela` enum("0", "1", "2", "3") not null,
+    `unidad_consumo` tinyint not null,
     `caballos_fuerza` tinyint not null,
-    `capacidad_tanque` tinyint not null,
-    `capacidad_bateria` tinyint not null,
-    `transmicion` enum("1", "2") not null,
+    `capacidad_combustible` tinyint not null,
+    `transmicion` enum("0", "1") not null,
     `color_pintura` varchar(20) not null,
-    `aire_acondicionado` enum("1", "2") not null,
-    `gps` enum("1", "2") not null,
-    `vidrios_polarizados` enum("1", "2") not null,
+    `aire_acondicionado` enum("0", "1") not null,
+    `gps` enum("0", "1") not null,
+    `vidrios_polarizados` enum("0", "1") not null,
     primary key(pk_auto),
     foreign key(fk_administrador) references usuario(pk_usuario) on delete cascade,
     foreign key(fk_modelo) references auto_modelo(pk_auto_modelo) on delete cascade
+) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
+
+create table `auto_imagen` (
+    `fk_auto` mediumint unsigned not null,
+    `portada` enum("0", "1") not null,
+    `imagen_ruta` varchar(100) not null,
+    unique key(imagen_ruta),
+    foreign key(fk_auto) references auto(pk_auto) on delete cascade
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
 
 create table `renta` (
@@ -145,7 +161,7 @@ create table `renta` (
 create table `reporte_entrega` (
     `pk_reporte_entrega` int unsigned not null auto_increment,
     `fk_renta` int unsigned not null,
-    `todo_bien` enum("1", "2") not null,
+    `todo_bien` enum("0", "1") not null,
     `descripcion` varchar(255) not null,
     primary key(pk_reporte_entrega),
     foreign key(fk_renta) references renta(pk_renta) on delete cascade
@@ -154,7 +170,7 @@ create table `reporte_entrega` (
 create table `reporte_devolucion` (
     `pk_reporte_devolucion` int unsigned not null auto_increment,
     `fk_renta` int unsigned not null,
-    `todo_bien` enum("1", "2") not null,
+    `todo_bien` enum("0", "1") not null,
     `descripcion` varchar(255) not null,
     primary key(pk_reporte_devolucion),
     foreign key(fk_renta) references renta(pk_renta) on delete cascade
