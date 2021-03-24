@@ -14,3 +14,11 @@ afterReveal: el => {
 };
 
 ScrollReveal().reveal('.fixed-location', slideRight);
+
+const modalSaleInfo = new Modal("#saleInfo");
+
+document.querySelectorAll(".card-sale").forEach(element => {
+    element.addEventListener("click", event => {
+        modalSaleInfo.show();
+    });
+});

@@ -30,18 +30,15 @@
     height: 2rem;
     background-color: rgba(240, 240, 240, 0) !important;
     border-radius: 5px;
-    border: 1px solid rgba(255, 255, 255, .5);
+    border: none;
+    outline: none;
+    box-shadow: 0 0 16px 2px rgba(50, 50, 50, .2);
     padding: .5rem 3rem .5rem 1rem;
     color: var(--textColor);
 }
 .input-field > input::placeholder {
     color: var(--textColor);
     font-family: 'IBM Plex Sans', sans-serif;
-}
-.input-field > input:focus {
-    outline: none !important;
-    box-shadow: none !important;
-    border-color: var(--textColor) !important;
 }
 .input-field > input + i {
     align-self: center;

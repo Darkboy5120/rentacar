@@ -100,6 +100,24 @@
     font-weight: bold;
     font-size: 1.2rem;
 }
+.modal-body h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: var(--textColorAlt);
+}
+.modal-body a {
+    font-weight: bold;
+}
+.modal-row {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+a {
+    color: var(--primaryColor);
+}
+a:visited {
+    color: var(--primaryColor);
+}
 @media(min-width: 768px) {
     .modal > .modal-card-small {
         min-height: min-content;

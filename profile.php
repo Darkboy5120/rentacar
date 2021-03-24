@@ -28,16 +28,33 @@
                 <section class="profile-layout">
                     <div class="profile-section">
                         <h3>Datos personales</h3>
-                        <input type="text" value="Nombre">
-                        <input type="text" value="Apellido">
-                        <input type="text" value="Correo">
+                        <label for="firstname">Nombre</label>
+                        <input id="firstname" type="text" value="Juanito">
+                        <label for="lastname">Apellido</label>
+                        <input id="lastname" type="text" value="Morales">
+                        <label for="email">Correo</label>
+                        <input id="email" type="email" value="hmaldonado0@ucol.mx">
                     </div>
                     <div class="profile-section">
                         <h3>Datos de la empresa</h3>
-                        <input type="text" value="Nombre">
-                        <input type="text" value="Telefono">
+                        <label for="bussinessname">Nombre</label>
+                        <input id="bussinessname" type="text" value="Rentacar">
+                        <label for="phone">Nombre</label>
+                        <input id="phone" type="text" value="Telefono">
                     </div>
                     <button class="button button-primary">Actualizar perfil</button>
+                    <div class="profile-divisor"></div>
+                    <div class="profile-section">
+                        <h3>Preferencias</h3>
+                        <label for="coin">Divisa</label>
+                        <select id="coin">
+                            <option value="mxn">MXN</option>
+                            <option value="usd">USD</option>
+                        </select>
+                        <label for="language">Idioma</label>
+                        <input id="language" type="text" value="Español">
+                    </div>
+                    <button class="button button-primary">Actualizar preferencias</button>
                     <div class="profile-divisor"></div>
                     <div class="profile-section">
                         <h3>Contraseña</h3>

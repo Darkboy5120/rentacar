@@ -19,7 +19,6 @@
             <?php include "view/components/navbar.html";?>
             <nav class="main-actions">
                 <ul>
-                    <li><i class="fas fa-search"></i><span>Buscar</span></li>
                 </ul>
             </nav>
             <div class="fixed-location">
@@ -84,17 +83,20 @@
                     </div>
                 </section>
                 <section class="pagination">
-                    <button><i class="fas fa-arrow-left"></i></button>
-                    <button>1</button>
-                    <button>2</button>
-                    <button>3</button>
-                    <button>4</button>
-                    <button>5</button>
-                    <button><i class="fas fa-arrow-right"></i></button>
+                    <button class="button"><i class="fas fa-arrow-left"></i></button>
+                    <button class="button">1</button>
+                    <button class="button">2</button>
+                    <button class="button">3</button>
+                    <button class="button">4</button>
+                    <button class="button">5</button>
+                    <button class="button"><i class="fas fa-arrow-right"></i></button>
                 </section>
                 <?php include "view/components/footer.html";?>
             </div>
         </main>
+
+        <?php include "view/pages/modals/sales.html";?>
     </body>
+    <script src="controller/components/modal.js"></script>
     <script src="controller/pages/sales.js"></script>
 </html>

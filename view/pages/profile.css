@@ -57,7 +57,14 @@ main > .container {
     flex-direction: column;
     padding-bottom: 1rem;
 }
-.profile-section input {
+.profile-section label {
+    color: var(--textColor);
+    font-size: .9rem;
+    font-weight: bold;
+    margin-left: 1rem;
+}
+.profile-section input,
+.profile-section select {
     margin-left: 1rem;
     margin-bottom: .5rem;
     border-radius: 5px;
