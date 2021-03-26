@@ -23,14 +23,14 @@
                     <div class="input-layout">
                         <label for="email">Correo electronico</label>
                         <div class="input-field">
-                            <input type="email" id="email" placeholder="Correo electronico">
+                            <input class="input-primary" type="email" id="email" placeholder="Correo electronico">
                             <i class="fas fa-envelope"></i>
                         </div>
                     </div>
                     <div class="input-layout">
                         <label for="pass">Contraseña</label>
                         <div class="input-field">
-                            <input type="password" id="pass" placeholder="Contraseña">
+                            <input class="input-primary" type="password" id="pass" placeholder="Contraseña">
                             <i class="fas fa-lock"></i>
                         </div>
                     </div>
@@ -43,6 +43,7 @@
             </div>
         </main>
 
+        <script src="controller/components/field-control.js"></script>
         <script src="controller/pages/login.js"></script>
     </body>
 </html>

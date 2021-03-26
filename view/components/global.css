@@ -23,6 +23,19 @@
         #6456e2, var(--primaryColor), var(--primaryColorAlt));
     color: var(--textColor);
 }
+.generic-valoration {
+    display: flex;
+    padding-bottom: .5rem;
+}
+.generic-valoration > i {
+    margin: 0 .5rem 0 .5rem;
+    color: gold;
+}
 .hidden {
     display: none !important;
+}
+.make-visible {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }

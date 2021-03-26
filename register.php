@@ -22,7 +22,7 @@
                     <div class="input-layout">
                         <label for="firstname">Nombres</label>
                         <div class="input-field">
-                            <input type="text" id="firstname" placeholder="Nombres">
+                            <input class="input-primary" type="text" id="firstname" placeholder="Nombres">
                             <i class="fas fa-address-card"></i>
                         </div>
                         <span class="input-log hidden"></span>
@@ -30,28 +30,28 @@
                     <div class="input-layout">
                         <label for="lastname">Apellidos</label>
                         <div class="input-field">
-                            <input type="text" id="lastname" placeholder="Apellidos">
+                            <input class="input-primary" type="text" id="lastname" placeholder="Apellidos">
                             <i class="fas fa-address-card"></i>
                         </div>
                     </div>
                     <div class="input-layout">
                         <label for="email">Correo electronico</label>
                         <div class="input-field">
-                            <input type="email" id="email" placeholder="Correo electronico">
+                            <input class="input-primary" type="email" id="email" placeholder="Correo electronico">
                             <i class="fas fa-envelope"></i>
                         </div>
                     </div>
                     <div class="input-layout">
                         <label for="pass">Contraseña</label>
                         <div class="input-field">
-                            <input type="password" id="pass" placeholder="Contraseña">
+                            <input class="input-primary" type="password" id="pass" placeholder="Contraseña">
                             <i class="fas fa-lock"></i>
                         </div>
                     </div>
                     <div class="input-layout">
                         <label for="confirmPass">Contraseña</label>
                         <div class="input-field">
-                            <input type="password" id="confirmPass" placeholder="Contraseña">
+                            <input class="input-primary" type="password" id="confirmPass" placeholder="Contraseña">
                             <i class="fas fa-lock"></i>
                         </div>
                     </div>

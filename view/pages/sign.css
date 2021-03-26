@@ -47,6 +47,9 @@ form button {
     min-width: 50%;
     min-height: 2.4rem;
 }
+form input {
+    width: 100%;
+}
 footer {
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: bold;

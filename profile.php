@@ -27,46 +27,113 @@
             <div class="container">
                 <section class="profile-layout">
                     <div class="profile-section">
-                        <h3>Datos personales</h3>
-                        <label for="firstname">Nombre</label>
-                        <input id="firstname" type="text" value="Juanito">
-                        <label for="lastname">Apellido</label>
-                        <input id="lastname" type="text" value="Morales">
-                        <label for="email">Correo</label>
-                        <input id="email" type="email" value="hmaldonado0@ucol.mx">
+                        <div class="profile-item">
+                            <h3>Datos personales</h3>
+                            <div class="input-layout">
+                                <label for="input-firstname">Nombre</label>
+                                <div class="input-field">
+                                    <input class="input-secondary" id="input-firstname" type="text"
+                                        value="Juanito" placeholder="Nombre">
+                                </div>
+                                <span class="input-log hidden"></span>
+                            </div>
+                            <div class="input-layout">
+                                <label for="input-lastname">Apellido</label>
+                                <div class="input-field">
+                                    <input class="input-secondary" id="input-lastname" type="text"
+                                        value="Morales" placeholder="Apellido">
+                                </div>
+                                <span class="input-log hidden"></span>
+                                </div>
+                            <div class="input-layout">
+                                <label for="input-email">Correo</label>
+                                <div class="input-field">
+                                    <input class="input-secondary" id="input-email" type="email"
+                                        value="hmaldonado0@ucol.mx" placeholder="Correo">
+                                </div>
+                                <span class="input-log hidden"></span>
+                            </div>
+                        </div>
+                        <button class="button button-primary"><i class="fas fa-edit"></i> Actualizar</button>
                     </div>
                     <div class="profile-section">
-                        <h3>Datos de la empresa</h3>
-                        <label for="bussinessname">Nombre</label>
-                        <input id="bussinessname" type="text" value="Rentacar">
-                        <label for="phone">Nombre</label>
-                        <input id="phone" type="text" value="Telefono">
+                        <div class="profile-item">
+                            <h3>Datos de la empresa</h3>
+                            <div class="input-layout">
+                                <label for="input-bussinessname">Nombre</label>
+                                <div class="input-field">
+                                    <input class="input-secondary" id="input-bussinessname" type="text"
+                                        value="Rentacar" placeholder="Nombre">
+                                </div>
+                                <span class="input-log hidden"></span>
+                            </div>
+                            <div class="input-layout">
+                                <label for="input-phone">Telefono</label>
+                                <div class="input-field">
+                                    <input class="input-secondary" id="input-phone" type="text"
+                                        value="3141637234" placeholder="Telefono">
+                                </div>
+                                <span class="input-log hidden"></span>
+                            </div>
+                        </div>
+                        <button class="button button-primary"><i class="fas fa-edit"></i> Actualizar</button>
                     </div>
-                    <button class="button button-primary">Actualizar perfil</button>
-                    <div class="profile-divisor"></div>
                     <div class="profile-section">
-                        <h3>Preferencias</h3>
-                        <label for="coin">Divisa</label>
-                        <select id="coin">
-                            <option value="mxn">MXN</option>
-                            <option value="usd">USD</option>
-                        </select>
-                        <label for="language">Idioma</label>
-                        <input id="language" type="text" value="Español">
+                        <div class="profile-item">
+                            <h3>Preferencias</h3>
+                            <div class="input-layout">
+                                <label for="input-coin">Divisa</label>
+                                <select class="input-secondary" id="input-coin">
+                                    <option value="mxn">MXN</option>
+                                    <option value="usd">USD</option>
+                                </select>
+                            </div>
+                            <div class="input-layout">
+                                <label for="input-language">Idioma</label>
+                                <select class="input-secondary" id="input-language">
+                                    <option value="spanish">Español</option>
+                                    <option value="english">Ingles</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="button button-primary"><i class="fas fa-edit"></i> Actualizar</button>
                     </div>
-                    <button class="button button-primary">Actualizar preferencias</button>
-                    <div class="profile-divisor"></div>
                     <div class="profile-section">
-                        <h3>Contraseña</h3>
-                        <input type="text" placeholder="Anterior contraseña">
-                        <input type="text" placeholder="Contraseña">
-                        <input type="text" placeholder="Confirmar contraseña">
+                        <div class="profile-item">
+                            <h3>Contraseña</h3>
+                            <div class="input-layout">
+                                <label for="input-passold">Anterior contraseña</label>
+                                <div class="input-field">
+                                    <input class="input-secondary" id="input-passold" type="text"
+                                        placeholder="Anterior contraseña">
+                                </div>
+                                <span class="input-log hidden"></span>
+                            </div>
+                            <div class="input-layout">
+                                <label for="input-pass">Contraseña</label>
+                                <div class="input-field">
+                                    <input class="input-secondary" id="input-pass" type="text"
+                                        placeholder="Contraseña">
+                                </div>
+                                <span class="input-log hidden"></span>
+                            </div>
+                            <div class="input-layout">
+                                <label for="input-passconfirm">Confirmar contraseña</label>
+                                <div class="input-field">
+                                    <input class="input-secondary" id="input-passconfirm" type="text"
+                                        placeholder="Confirmar contraseña">
+                                </div>
+                                <span class="input-log hidden"></span>
+                            </div>
+                        </div>
+                        <button class="button button-primary"><i class="fas fa-edit"></i> Restablecer contraseña</button>
                     </div>
-                    <button class="button button-primary">Restablecer contraseña</button>
                 </section>
                 <?php include "view/components/footer.html";?>
             </div>
         </main>
     </body>
+
+    <script src="controller/components/field-control.js"></script>
     <script src="controller/pages/profile.js"></script>
 </html>

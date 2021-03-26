@@ -1,18 +1,5 @@
-.input-layout {
-    min-width: 80%;
-    align-self: center;
-    justify-content: center;
-    flex-direction: column;
-    display: flex;
-    position: relative;
-    margin-bottom: .5rem;
-}
-.input-layout > label {
-    font-family: 'IBM Plex Sans', sans-serif;
-    color: var(--textColor);
-    opacity: 0;
-    transition: all .3s ease;
-    font-size: .8rem;
+.bounce-animation {
+    animation: bounce .4s ease;
 }
 .fade-transition {
     opacity: 1 !important;
@@ -22,13 +9,31 @@
     transition: all .3s ease;
     font-size: 1rem;
 }
+
+.input-layout {
+    min-width: 80%;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    position: relative;
+    margin-bottom: 1rem;
+}
+.input-layout > label {
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: var(--textColor);
+    opacity: 0;
+    font-weight: bold;
+    transition: all .3s ease;
+    font-size: .9rem;
+}
 .input-field {
     display: flex;
+    margin-bottom: 0 !important;
 }
-.input-field > input {
-    width: 100%;
+.input-primary {
     height: 2rem;
-    background-color: rgba(240, 240, 240, 0) !important;
+    background-color: rgba(240, 240, 240, 0);
     border-radius: 5px;
     border: none;
     outline: none;
@@ -36,7 +41,15 @@
     padding: .5rem 3rem .5rem 1rem;
     color: var(--textColor);
 }
-.input-field > input::placeholder {
+.input-secondary {
+    border-radius: 5px;
+    outline: none;
+    padding: .5rem .7rem .5rem .7rem;
+    background-color: rgba(0, 0, 0, .3);
+    border: 1px solid rgba(255, 255, 255, .5);
+    color: var(--textColor);
+}
+input::placeholder {
     color: var(--textColor);
     font-family: 'IBM Plex Sans', sans-serif;
 }
@@ -68,8 +81,4 @@ input:focus {
     left: 2%;
     font-size: .9rem;
     font-weight: normal;
-}
-
-.bounce-animation {
-    animation: bounce .4s ease;
 }

@@ -68,14 +68,6 @@
     margin-right: 10%;
     margin-bottom: 1rem;
 }
-.driver-info-layout > .driver-valoration {
-    display: flex;
-    padding-bottom: .5rem;
-}
-.driver-info-layout > .driver-valoration > i {
-    margin: 0 .5rem 0 .5rem;
-    color: gold;
-}
 .driver-info {
     display: flex;
     flex-direction: column;
