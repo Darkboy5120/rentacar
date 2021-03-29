@@ -1,0 +1,50 @@
+.alert {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: -80%;
+    top: 20%;
+    width: 80%;
+    z-index: 5;
+}
+.alert-item {
+    width: 100%;
+    height: min-content;
+    background-color: rgba(255, 255, 255, .5);
+    border-radius: 5px 0 0 5px;
+    padding: .5rem;
+    border-right: 2rem solid var(--textColorAlt);
+    margin-bottom: .5rem;
+    transition: transform .5s ease;
+    box-shadow: 2px 2px 16px 2px rgba(50, 50, 50, .5);
+}
+.alert-item > .alert-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+}
+.alert-item > .alert-header > span {
+    color: var(--textColorAlt);
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-bottom: 2px solid var(--textColorAlt);
+}
+.alert-item > .alert-header > i {
+    cursor: pointer;
+}
+.alert-item > .alert-header > i:hover {
+    color: var(--dangerColor);
+}
+.alert-item > span {
+    color: var(--textColor);
+    font-weight: normal;
+}
+.alert-active {
+    transform: translateX(-100%) !important;
+}
+@media(min-width: 768px) {
+    .alert {
+        width: 30%;
+        right: -30%;
+    }
+}

@@ -1,6 +1,7 @@
 @import url("../themes/default.css");
 @import url("../components/global.css");
 @import url("../components/form.css");
+@import url("../components/alert-me.css");
 html, body {
     width: 100vw;
     height: 100vh;
@@ -23,7 +24,7 @@ main {
     position: relative;
     display: grid;
     grid-template-columns: repeat(1, auto);
-    grid-auto-rows: auto;
+    grid-auto-rows: 10% 30% auto 15%;;
     justify-items: center;
     background-color: none;
     background-image: linear-gradient(135deg, rgba(255, 255, 255, .2), rgba(255, 255, 255, .3), rgba(255, 255, 255, .2), rgba(255, 255, 255, .3), rgba(255, 255, 255, .2));

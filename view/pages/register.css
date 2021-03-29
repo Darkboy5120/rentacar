@@ -23,7 +23,7 @@ main {
     position: relative;
     display: grid;
     grid-template-columns: repeat(1, auto);
-    grid-auto-rows: auto;
+    grid-auto-rows: 10% 10% auto 10%;
     justify-items: center;
     background-color: none;
     background-image: linear-gradient(135deg, rgba(255, 255, 255, .2), rgba(255, 255, 255, .3), rgba(255, 255, 255, .2), rgba(255, 255, 255, .3), rgba(255, 255, 255, .2));
@@ -34,6 +34,9 @@ main {
 .container > img {
     max-width: 150px;
     margin: 2rem 0 2rem 0;
+}
+.container > .form-index {
+    width: 80%;
 }
 form {
     position: relative;

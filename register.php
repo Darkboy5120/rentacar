@@ -1,3 +1,7 @@
+<?php
+require "model/libraries/cookie_interface.php";
+$ci0->setCookie("securitykey", $ci0->getSecurityKey());
+?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -10,7 +14,7 @@
         <!-- Font Awesome -->
         <script src="https://kit.fontawesome.com/0d40d8f017.js" crossorigin="anonymous"></script>
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="view/pages/sign.css">
+        <link rel="stylesheet" href="view/pages/register.css">
 
         <title>Rentacar | Registro</title>
     </head>
@@ -18,44 +22,79 @@
         <main>
             <div class="container">
                 <h1>Registro</h1>
-                <form action="">
+                <div class="form-index">
+                    <div class="index-item index-active" id="personal-info-index">
+                        <span class="item-number">1</span>
+                        <span class="item-name">Datos personales</span>
+                    </div>
+                    <div class="index-item" id="bussiness-info-index">
+                        <span class="item-number">2</span>
+                        <span class="item-name">Datos de la empresa</span>
+                    </div>
+                </div>
+                <form id="form-personal-info">
                     <div class="input-layout">
-                        <label for="firstname">Nombres</label>
+                        <label for="input-firstname">Nombres</label>
                         <div class="input-field">
-                            <input class="input-primary" type="text" id="firstname" placeholder="Nombres">
+                            <input class="input-primary" type="text" id="input-firstname"
+                                placeholder="Nombres" autofocus>
                             <i class="fas fa-address-card"></i>
                         </div>
                         <span class="input-log hidden"></span>
                     </div>
                     <div class="input-layout">
-                        <label for="lastname">Apellidos</label>
+                        <label for="input-lastname">Apellidos</label>
                         <div class="input-field">
-                            <input class="input-primary" type="text" id="lastname" placeholder="Apellidos">
+                            <input class="input-primary" type="text" id="input-lastname" placeholder="Apellidos">
                             <i class="fas fa-address-card"></i>
                         </div>
+                        <span class="input-log hidden"></span>
                     </div>
                     <div class="input-layout">
-                        <label for="email">Correo electronico</label>
+                        <label for="input-pass">Contraseña</label>
                         <div class="input-field">
-                            <input class="input-primary" type="email" id="email" placeholder="Correo electronico">
+                            <input class="input-primary" type="password" id="input-pass" placeholder="Contraseña">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <span class="input-log hidden"></span>
+                    </div>
+                    <div class="input-layout">
+                        <label for="input-confirm-pass">Confirmar contraseña</label>
+                        <div class="input-field">
+                            <input class="input-primary" type="password" id="input-confirm-pass" placeholder="Contraseña">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <span class="input-log hidden"></span>
+                    </div>
+                    <button id="signup-step1" type="button" class="button button-primary">Continuar</button>
+                </form>
+                <form class="hidden" id="form-bussiness-info">
+                    <div class="input-layout">
+                        <label for="input-bussiness-name">Nombre</label>
+                        <div class="input-field">
+                            <input class="input-primary" type="text" id="input-bussiness-name" placeholder="Nombre">
+                            <i class="fas fa-address-card"></i>
+                        </div>
+                        <span class="input-log hidden"></span>
+                    </div>
+                    <div class="input-layout">
+                        <label for="input-bussiness-phone">Telefono</label>
+                        <div class="input-field">
+                            <input class="input-primary" type="text" id="input-bussiness-phone" placeholder="Telefono">
+                            <i class="fas fa-address-card"></i>
+                        </div>
+                        <span class="input-log hidden"></span>
+                    </div>
+                    <div class="input-layout">
+                        <label for="input-bussiness-email">Correo electronico</label>
+                        <div class="input-field">
+                            <input class="input-primary" type="email" id="input-bussiness-email" placeholder="Correo electronico">
                             <i class="fas fa-envelope"></i>
                         </div>
+                        <span class="input-log hidden"></span>
                     </div>
-                    <div class="input-layout">
-                        <label for="pass">Contraseña</label>
-                        <div class="input-field">
-                            <input class="input-primary" type="password" id="pass" placeholder="Contraseña">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                    </div>
-                    <div class="input-layout">
-                        <label for="confirmPass">Contraseña</label>
-                        <div class="input-field">
-                            <input class="input-primary" type="password" id="confirmPass" placeholder="Contraseña">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                    </div>
-                        <button id="signUp" type="button" class="button button-primary">Guardar</button>
+                    <button id="to-personal-info" type="button" class="button button-primary">Volver</button>
+                    <button id="signup-step2" type="button" class="button button-primary">Guardar</button>
                 </form>
                 <footer>
                     <p>¿Ya tienes una cuenta? <a href="login.php">Inicia sesión</a></p>
@@ -64,6 +103,8 @@
         </main>
 
         <script src="controller/components/field-control.js"></script>
+        <script src="controller/components/request-me.js"></script>
+        <script src="controller/components/alert-me.js"></script>
         <script src="controller/pages/register.js"></script>
     </body>
 </html>

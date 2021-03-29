@@ -1,3 +1,12 @@
+<?php
+require "model/libraries/cookie_interface.php";
+if (!$ci0->existCookie("user_data")) {
+    header('Location: login.php');
+    exit;
+}
+$ci0->setCookie("securitykey", $ci0->getSecurityKey());
+$user_name = $ci0->getCookie("user_data")["nombre"];
+?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -95,7 +104,11 @@
 
         <?php include "view/pages/modals/home.html";?>
 
+        <script>
+            const userName = "<?php echo $user_name;?>";
+        </script>
         <script src="controller/components/modal.js"></script>
+        <script src="controller/components/request-me.js"></script>
         <script src="controller/pages/home.js"></script>
     </body>
 </html>
