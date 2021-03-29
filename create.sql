@@ -57,7 +57,7 @@ create table `usuario` (
   `apellido` varchar(50) not null,
   `telefono` varchar(10) not null,
   `correo` varchar(50) not null,
-  `contraseña` varchar(100) not null,
+  `contraseña` varchar(255) not null,
   primary key(pk_usuario),
   unique key(correo)
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
