@@ -15,9 +15,10 @@ drop table if exists `conductor_codigo`;
 drop table if exists `conductor`;
 drop table if exists `administrador`;
 drop table if exists `arrendatario`;
+drop table if exists `usuario_peticion`;
 drop table if exists `usuario`;
 drop table if exists `penalizacion`;
-drop table if exists `auto_modelo`;
+drop table if exists `auto_marca`;
 drop table if exists `municipio`;
 drop table if exists `estado`;
 
@@ -36,10 +37,10 @@ create table `municipio` (
   foreign key(fk_estado) references estado(pk_estado) on delete cascade
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
 
-create table `auto_modelo` (
-    `pk_auto_modelo` tinyint unsigned not null auto_increment,
+create table `auto_marca` (
+    `pk_auto_marca` tinyint unsigned not null auto_increment,
     `nombre` varchar(50) not null,
-    primary key(pk_auto_modelo),
+    primary key(pk_auto_marca),
     unique key(nombre)
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
 
@@ -53,13 +54,22 @@ create table `penalizacion` (
 
 create table `usuario` (
   `pk_usuario` smallint unsigned not null auto_increment,
+  `token` varchar(255) not null,
   `nombre` varchar(50) not null,
   `apellido` varchar(50) not null,
   `telefono` varchar(10) not null,
   `correo` varchar(50) not null,
   `contraseña` varchar(255) not null,
   primary key(pk_usuario),
+  unique key(token),
   unique key(correo)
+) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
+
+create table `usuario_peticion` (
+  `fk_usuario` smallint unsigned not null,
+  `fecha_hora` timestamp default current_timestamp not null,
+  unique key(fk_usuario),
+  foreign key(fk_usuario) references usuario(pk_usuario) on delete cascade
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
 
 create table `arrendatario` (
@@ -105,8 +115,15 @@ create table `usuario_foto` (
 create table `auto` (
     `pk_auto` mediumint unsigned not null auto_increment,
     `fk_administrador` smallint unsigned not null,
-    `fk_modelo` tinyint unsigned not null,
+    `fk_marca` tinyint unsigned not null,
+    `modelo` varchar(50) not null,
     `precio` smallint unsigned not null,
+    /* 0 - Camioneta
+     * 1 - Compacto
+     * 2 - Sedan
+     * 3 - Suburban
+     * 4 - Pickup
+     */
     `tipo` enum("0", "1", "2", "3", "4") not null,
     /* 0 - Gasolina
      * 1 - Diesel
@@ -118,18 +135,30 @@ create table `auto` (
     `tipo_motor` enum("0", "1", "2", "3", "4", "5") not null,
     `asientos` tinyint not null,
     `puertas` tinyint unsigned not null,
+    /* 0 - No tiene
+     * 1 - Pequeña
+     * 2 - Mediana
+     * 3 - Grande
+     */
     `capacidad_cajuela` enum("0", "1", "2", "3") not null,
+    /* 0 - Cobertura amplia
+     * 1 - Cobertura limitada
+     * 2 - Responsabilidad civil
+     */
+    `seguro` enum("0", "1", "2") not null,
     `unidad_consumo` tinyint not null,
     `caballos_fuerza` tinyint not null,
     `capacidad_combustible` tinyint not null,
     `transmicion` enum("0", "1") not null,
+    `respuesto` enum("0", "1") not null,
+    `caja_herramientas` enum("0", "1") not null,
     `color_pintura` varchar(20) not null,
     `aire_acondicionado` enum("0", "1") not null,
     `gps` enum("0", "1") not null,
     `vidrios_polarizados` enum("0", "1") not null,
     primary key(pk_auto),
     foreign key(fk_administrador) references usuario(pk_usuario) on delete cascade,
-    foreign key(fk_modelo) references auto_modelo(pk_auto_modelo) on delete cascade
+    foreign key(fk_marca) references auto_marca(pk_auto_marca) on delete cascade
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
 
 create table `auto_imagen` (
