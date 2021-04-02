@@ -26,7 +26,7 @@
                 })
             },
             button: {
-                signup_step1: {
+                create_car: {
                     submit : true,
                     index: document.querySelector("#bussiness-info-index"),
                     element: document.querySelector("#signup-step1"),
@@ -43,7 +43,10 @@
             validation: () => {
                 let input = form.personal_info.input;
                 for (const name in input) {
-                    if (!input[name].isDone()) return false;
+                    if (!input[name].isDone()) {
+                        input[name].focus();
+                        return false;
+                    }
                 }
                 if (input.pass.element.value != input.confirm_pass.element.value) {
                     input.pass.printLog("Las contraseñas no coinciden", false);
@@ -92,7 +95,10 @@
                         }).then(response => {
                             switch (response.code) {
                                 case 0:
-                                    location = "home.php";
+                                    new AlertMe("Genial", "Tu cuenta se creo correctamente, iniciando sesión...");
+                                    window.setTimeout(() => {
+                                        location = "?p=home";
+                                    }, 4000);
                                     break;
                                 case -3:
                                     input_s2.bussiness_email.printLog("Ese correo ya esta en uso", false);
@@ -121,7 +127,10 @@
                 if (!form.personal_info.validation()) return false;
                 let input = form.bussiness_info.input;
                 for (const name in input) {
-                    if (!input[name].isDone()) return false;
+                    if (!input[name].isDone()) {
+                        input[name].focus();
+                        return false;
+                    }
                 }
                 return true;
             }

@@ -20,7 +20,7 @@
                         }).then(response => {
                             switch (response.code) {
                                 case 0:
-                                    location = "home.php";
+                                    location = "?p=home";
                                     break;
                                 case -3:
                                     new AlertMe("Error", "Correo y/o contraseña incorrecto");
@@ -38,7 +38,10 @@
             validation: () => {
                 let input = form.login_info.input;
                 for (const name in input) {
-                    if (input[name].isEmpty()) return false;
+                    if (input[name].isEmpty()) {
+                        input[name].focus();
+                        return false;
+                    }
                 }
                 return true;
             }

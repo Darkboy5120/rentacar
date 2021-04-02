@@ -14,7 +14,7 @@ $ci0->setCookie("securitykey", $ci0->getSecurityKey());
         <!-- Font Awesome -->
         <script src="https://kit.fontawesome.com/0d40d8f017.js" crossorigin="anonymous"></script>
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="view/pages/register.css">
+        <link rel="stylesheet" href="view/pages/styles/register.css">
 
         <title>Rentacar | Registro</title>
     </head>
@@ -97,7 +97,7 @@ $ci0->setCookie("securitykey", $ci0->getSecurityKey());
                     <button id="signup-step2" type="button" class="button button-primary">Guardar</button>
                 </form>
                 <footer>
-                    <p>¿Ya tienes una cuenta? <a href="login.php">Inicia sesión</a></p>
+                    <p>¿Ya tienes una cuenta? <a href="?p=login">Inicia sesión</a></p>
                 </footer>
             </div>
         </main>

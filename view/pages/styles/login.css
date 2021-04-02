@@ -1,6 +1,7 @@
-@import url("../themes/default.css");
-@import url("../components/global.css");
-@import url("../components/form.css");
+@import url("../../themes/default.css");
+@import url("../../components/global.css");
+@import url("../../components/form.css");
+@import url("../../components/alert-me.css");
 html, body {
     width: 100vw;
     height: 100vh;
@@ -23,7 +24,7 @@ main {
     position: relative;
     display: grid;
     grid-template-columns: repeat(1, auto);
-    grid-auto-rows: 10% 10% auto 10%;
+    grid-auto-rows: 10% 30% auto 15%;;
     justify-items: center;
     background-color: none;
     background-image: linear-gradient(135deg, rgba(255, 255, 255, .2), rgba(255, 255, 255, .3), rgba(255, 255, 255, .2), rgba(255, 255, 255, .3), rgba(255, 255, 255, .2));
@@ -34,9 +35,6 @@ main {
 .container > img {
     max-width: 150px;
     margin: 2rem 0 2rem 0;
-}
-.container > .form-index {
-    width: 80%;
 }
 form {
     position: relative;
@@ -56,20 +54,18 @@ form input {
     width: 100%;
 }
 footer {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: bold;
-    font-size: .8rem;
     color: var(--textColor) !important;
     text-align: center;
+    font-weight: bold;
+}
+footer > p {
+    margin: .5rem;
 }
 a,
 a:visited {
-    font-size: .9rem;
     color: var(--textColor);
 }
 h1 {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 1.4rem;
     color: var(--textColor);
     text-align: center;
 }

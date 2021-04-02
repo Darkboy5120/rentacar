@@ -19,13 +19,12 @@
     position: relative;
     margin-bottom: 1rem;
 }
-.input-layout > label {
-    font-family: 'IBM Plex Sans', sans-serif;
+.input-layout > label,
+.switch-layout > label {
     color: var(--textColor);
-    opacity: 0;
     font-weight: bold;
     transition: all .3s ease;
-    font-size: .9rem;
+    scroll-margin-top: 16vh;
 }
 .input-field {
     display: flex;
@@ -51,9 +50,22 @@
 }
 input::placeholder {
     color: var(--textColor);
-    font-family: 'IBM Plex Sans', sans-serif;
 }
 .input-field > input + i {
+    align-self: center;
+    position: absolute;
+    right: 1rem;
+    font-size: 1rem;
+    color: var(--iconColor);
+}
+.input-field > select > option {
+    background-color: rgba(50, 50, 50);
+    font-size: .8rem !important;
+}
+.input-field > select > option:hover {
+    background-color: var(--primaryColor);
+}
+.input-field > .input-domain {
     align-self: center;
     position: absolute;
     right: 1rem;
@@ -79,7 +91,7 @@ input:focus {
     position: absolute;
     top: 100%;
     right: 2%;
-    font-size: .9rem;
+    font-size: .8rem;
     font-weight: normal;
 }
 .form-index {
@@ -92,6 +104,7 @@ input:focus {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    font-size: .8rem;
 }
 .index-item.index-active {
     border-bottom: 2px solid white;
@@ -110,5 +123,129 @@ input:focus {
      #6456e2, var(--primaryColor), var(--primaryColorAlt));
 }
 .item-name {
-    font-size: .8rem;
+}
+
+.switch-layout {
+    min-width: 80%;
+    align-self: center;
+    align-items: center;
+    display: flex;
+    position: relative;
+    margin-bottom: 1rem;
+}
+.switch-layout > label {
+    cursor: pointer;
+    user-select: none;
+}
+.switch-field {
+    display: flex;
+    margin-bottom: 0 !important;
+}
+.switch-field > .switch-off,
+.switch-field > .switch-on {
+    font-size: 2rem;
+    cursor: pointer;
+    padding-right: .5rem;
+}
+.switch-field > .switch-off {
+    color: rgba(255, 255, 255, .5);
+}
+.switch-field > .switch-on {
+    background: -webkit-linear-gradient(45deg, var(--secondaryColorAlt), var(--secondaryColor),
+    #6456e2, var(--primaryColor), var(--primaryColorAlt));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.input-field > .file-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    border-radius: 5px;
+}
+.input-field > .file-container.input-secondary {
+    background-color: rgba(0, 0, 0, .4);
+    border: 1px solid rgba(255, 255, 255, .5);
+}
+.file-container > .file-images {
+    height: 10rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: auto;
+    column-gap: .5rem;
+    row-gap: 0;
+    overflow-y: auto;
+    /*scroll-snap-type: y mandatory;*/
+}
+.file-dragover {
+    background-color: rgba(255, 255, 255, .3);
+    border-radius: 5px 5px 0 0;
+}
+.file-container > .file-images > .file-image {
+    width: 100%;
+    position: relative;
+    display: flex;
+    scroll-snap-align: start;
+}
+.file-container > .file-images > .file-image > .file-remove {
+    opacity: 0;
+    display: block;
+    position: absolute;
+    font-size: 3rem;
+    width: 100%;
+    height: 100%;
+    display: none;
+    opacity: .8;
+    align-items: center;
+    justify-content: center;
+    color: var(--textColor);
+    cursor: pointer;
+}
+.file-container > .file-images > .file-image > .file-remove:hover {
+    color: var(--dangerColor);
+}
+.file-container > .file-images.editing > .file-image > img {
+    height: 100%;
+    filter: blur(3px);
+}
+.file-container > .file-images.editing > .file-image > .file-remove {
+    display: flex;
+}
+.file-container > .file-images > .file-image > img {
+    width: 100%;
+}
+.file-container > .file-empty {
+    height: 10rem;
+    color: rgba(255, 255, 255, .5);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.file-container > .file-actions {
+    color: var(--textColor);
+    font-size: .9rem;
+    height: 2rem;
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    border-top: 3px solid white;
+}
+.file-container > .file-actions > * {
+    cursor: pointer;
+    padding: 0 .5rem 0 .5rem;
+    display: flex;
+    align-items: center;
+}
+.file-container > .file-actions > *:hover {
+    background-color: rgba(255, 255, 255, .2);
+}
+.file-container > .file-actions i {
+    padding-right: .3rem;
+}
+.file-container > .file-button:hover {
+}
+@media(min-width: 768px) {
 }

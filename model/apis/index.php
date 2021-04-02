@@ -3,9 +3,6 @@ require "../libraries/cookie_interface.php";
 
 $API = NULL;
 
-if ($ci0->getCookie("securitykey") !== $ci0->getSecurityKey()) {
-    echo "You are not allowed to use me";exit;
-}
 if (isset($_POST["api"])) {
     $API = $_POST["api"];
     switch ($API) {
@@ -13,11 +10,26 @@ if (isset($_POST["api"])) {
             require "web/register_step2.php";
             break;
         case "login_admin":
-            require "web/login.php";
+            require "global/login.php";
             break;
         case "signout":
             require "web/signout.php";
             break;
-        default: echo "That's not a valid api";
+        case "create_car":
+            require "web/create_car.php";
+            break;
+        case "get_car_brands_models":
+            require "global/get_car_brands_models.php";
+            break;
+        case "get_car_colors":
+            require "global/get_car_colors.php";
+            break;
+        case "get_admin_cars":
+            require "web/get_admin_cars.php";
+            break;
+        case "delete_car":
+            require "web/delete_car.php";
+            break;
+        default: echo json_encode("That's not a valid api");
     }
 }

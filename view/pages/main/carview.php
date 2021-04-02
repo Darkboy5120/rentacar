@@ -10,7 +10,7 @@
         <!-- Font Awesome -->
         <script src="https://kit.fontawesome.com/0d40d8f017.js" crossorigin="anonymous"></script>
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="view/pages/newcar.css">
+        <link rel="stylesheet" href="view/pages/styles/carview.css">
 
         <title></title>
     </head>
@@ -26,6 +26,17 @@
             </div>
             <div class="container">
                 <section class="car-info">
+                    <div class="car-info-header">
+                        <div class="generic-valoration">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>Se agregó hace 2 años</h3>
+                        <h3>Se editó hace 2 meses</h3>
+                    </div>
                     <div class="car-info-body">
                         <div class="car-info-section">
                             <h3>General</h3>
@@ -112,7 +123,8 @@
                         </div>
                     </div>
                     <div class="car-info-actions">
-                        <button class="button button-primary"><i class="fas fa-plus"></i> Guardar</button>
+                        <button class="button button-primary"><i class="fas fa-edit"></i> Actualizar</button>
+                        <button class="button button-danger"><i class="fas fa-trash"></i> Eliminar</button>
                     </div>
                 </section>
                 <?php include "view/components/footer.html";?>
@@ -124,5 +136,5 @@
     </body>
     <script src="controller/components/modal.js"></script>
     <script src="controller/components/field-control.js"></script>
-    <script src="controller/pages/newcar.js"></script>
+    <script src="controller/pages/carview.js"></script>
 </html>

@@ -76,6 +76,7 @@
 .driver-info > span {
     text-align: left;
     font-weight: bold;
+    color: var(--textColorAlt);
     font-size: .9rem;
 }
 .split-buttons {
@@ -93,7 +94,6 @@
     font-size: 1.2rem;
 }
 .modal-body h3 {
-    font-family: 'IBM Plex Sans', sans-serif;
     color: var(--textColorAlt);
 }
 .modal-body a {

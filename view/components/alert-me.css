@@ -10,7 +10,7 @@
 .alert-item {
     width: 100%;
     height: min-content;
-    background-color: rgba(255, 255, 255, .5);
+    background-color: rgba(255, 255, 255, .8);
     border-radius: 5px 0 0 5px;
     padding: .5rem;
     border-right: 2rem solid var(--textColorAlt);
@@ -36,7 +36,7 @@
     color: var(--dangerColor);
 }
 .alert-item > span {
-    color: var(--textColor);
+    color: var(--textColorAlt);
     font-weight: normal;
 }
 .alert-active {

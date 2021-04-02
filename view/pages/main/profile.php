@@ -10,7 +10,7 @@
         <!-- Font Awesome -->
         <script src="https://kit.fontawesome.com/0d40d8f017.js" crossorigin="anonymous"></script>
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="view/pages/profile.css">
+        <link rel="stylesheet" href="view/pages/styles/profile.css">
 
         <title></title>
     </head>

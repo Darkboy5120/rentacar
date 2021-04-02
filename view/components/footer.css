@@ -24,12 +24,7 @@ footer > ul:nth-child(2) {
 footer > ul:nth-child(3) {
     grid-column: 4;
 }
-footer p {
-    font-size: .9rem;
-    font-weight: bold;
-}
 footer a {
-    font-size: .9rem;
     text-decoration: none;
     color: var(--textColor);
 }

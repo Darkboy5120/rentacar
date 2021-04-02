@@ -21,6 +21,7 @@ const Modal = function (select) {
     });
     return {
         show : show,
-        hide : hide
+        hide : hide,
+        element: element
     };
 }

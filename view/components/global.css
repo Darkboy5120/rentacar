@@ -34,8 +34,37 @@
 .hidden {
     display: none !important;
 }
+.opaque {
+    opacity: 0;
+}
 .make-visible {
     display: block !important;
     opacity: 1 !important;
     visibility: visible !important;
+}
+
+h1, h2, h3, label, a {
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+p, span {
+    font-family: 'Merriweather Sans', sans-serif;
+}
+input::placeholder {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1rem;
+}
+h1 {
+    
+}
+h3 {
+    font-size: 1.1rem;
+}
+label {
+    font-size: .9rem;
+}
+p {
+    font-size: .9rem;
+}
+a {
+    font-size: .9rem;
 }

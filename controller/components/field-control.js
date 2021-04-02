@@ -2,12 +2,18 @@ const FieldControl = function (inputSelector, options) {
     if (!options.hasOwnProperty("not")) {
         options.not = false;
     }
+    const plural = " caracteres";
+    const singular = " caracter";
     const logMessage = {
+        empty : "Completa este campo",
         invalidFormat : "El formato es incorrecto",
-        minLength : "No debe ser menor que ",
-        maxLength : "No debe ser mayor que ",
+        minLength : "No debe tener menos de " + options.min + ((options.min > 1)
+            ? plural : singular),
+        maxLength : "No debe ser más de " + options.max + ((options.max > 1)
+        ? plural : singular),
         success : "El valor es correcto"
     }
+
     let input = document.querySelector(inputSelector);
     let label = input.parentNode.parentNode.querySelector("label");
     let log = input.parentNode.parentNode.querySelector(".input-log");
@@ -36,27 +42,45 @@ const FieldControl = function (inputSelector, options) {
     const validate = function () {
         let valueLength = input.value.length;
         if (valueLength == 0) {
-            hideLog();
-            done = false;
-            label.classList.remove("make-visible");
+            //hideLog();
+            //done = false;
+            printLog(logMessage.empty, false);
+            //label.classList.remove("make-visible");
         } else if (valueLength < options.min) {
-            printLog(logMessage.minLength + options.min, false);
+            printLog(logMessage.minLength, false);
         } else if (valueLength > options.max) {
-            printLog(logMessage.maxLength + options.max, false);
+            printLog(logMessage.maxLength, false);
         } else if (testRegex()) {
             printLog(logMessage.invalidFormat, false);
         } else {
             if (options.hasOwnProperty("regex")) {
                 printLog(logMessage.success, true);
+            } else if (log != null) {
+                hideLog();
             }
         }
-        if (valueLength > 0) {
-            label.classList.add("make-visible");
+        if (valueLength > 0 && input.tagName != "SELECT") {
+            label.classList.remove("opaque");
         }
     }
+    const focus = () => {
+        input.focus();
+    }
 
-    window.addEventListener("keyup", e => {
+    input.addEventListener("keyup", e => {
         if (e.which != 13) validate();
+    });
+
+    if (input.tagName != "SELECT") {
+        label.classList.add("opaque");
+    }
+    input.addEventListener("focus", e => {
+        label.classList.remove("opaque");
+        input.classList.add("hide-placeholder");
+    });
+    input.addEventListener("blur", e => {
+        label.classList.add("opaque");
+        input.classList.remove("hide-placeholder");
     });
 
     validate();
@@ -67,24 +91,7 @@ const FieldControl = function (inputSelector, options) {
         },
         printLog : printLog,
         element : input,
-        isEmpty : isEmpty
+        isEmpty : isEmpty,
+        focus: focus
     };
 }
-document.querySelectorAll(".input-layout input").forEach(element => {
-    element.onclick = function (event) {
-        let input = event.target;
-        let label = input.parentNode.classList.contains("input-field")
-            ? input.parentNode.parentNode.querySelector("label")
-            : input.parentNode.querySelector("label");
-        label.classList.add("fade-transition");
-        input.classList.add("hide-placeholder");
-    }
-    element.onblur = function (event) {
-        let input = event.target;
-        let label = input.parentNode.classList.contains("input-field")
-            ? input.parentNode.parentNode.querySelector("label")
-            : input.parentNode.querySelector("label");
-        label.classList.remove("fade-transition");
-        input.classList.remove("hide-placeholder");
-    }
-});

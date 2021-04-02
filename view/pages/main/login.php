@@ -1,7 +1,3 @@
-<?php
-require "model/libraries/cookie_interface.php";
-$ci0->setCookie("securitykey", $ci0->getSecurityKey());
-?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -14,7 +10,7 @@ $ci0->setCookie("securitykey", $ci0->getSecurityKey());
         <!-- Font Awesome -->
         <script src="https://kit.fontawesome.com/0d40d8f017.js" crossorigin="anonymous"></script>
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="view/pages/login.css">
+        <link rel="stylesheet" href="view/pages/styles/login.css">
 
         <title>Rentacar | Login</title>
     </head>
@@ -44,7 +40,7 @@ $ci0->setCookie("securitykey", $ci0->getSecurityKey());
                     <button id="signin" type="button" class="button button-primary">Entrar</button>
                 </form>
                 <footer>
-                    <p>¿Aun no tienes una cuenta? <a href="register.php">Registrate</a></p>
+                    <p>¿Aun no tienes una cuenta? <a href="?p=register">Registrate</a></p>
                     <p>Recuperar <a href="#">contraseña</a></p>
                 </footer>
             </div>

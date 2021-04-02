@@ -5,7 +5,6 @@ class MysqlInterface {
     public $result;
     public $log;
     public $charset;
-    private $securitykey;
     public $response;
     public $error_code = array(
         1062 => "DUPLICATE_KEY"
@@ -21,7 +20,6 @@ class MysqlInterface {
     private function conect ($sname, $uname, $pass, $dbname) {
         $this->query_char = "?";
         $this->charset = "utf8";
-        $this->securitykey = "YFD}.L*6Qfev";
         $this->response = array('code' => NULL, 'data' => NULL, 'log' => NULL);
         $this->link = new mysqli(
             $sname, $uname, $pass, $dbname
@@ -108,10 +106,48 @@ class MysqlInterface {
         if ($e === TRUE) {
             exit;
         }
-    } 
+    }
+
+    public function getRandString ($length=10) {
+        $characters = "abcdefghijklmnopqrstuvwxyz0123456789";
+        $result = "";
+        while ($length > 0) {
+            $rand_int = rand(0, (strlen($characters)-1));
+            $result .= substr($characters, $rand_int, 1);
+            $length -= 1;
+        }
+        return $result;
+    }
+
+    public function getRandHash ($length=10) {
+        return password_hash($this->getRandString($length), PASSWORD_DEFAULT);
+    }
     
-    public function getSecuritykey() {
-        return $this->securitykey;
+    public function hashString ($string) {
+        return password_hash($string, PASSWORD_DEFAULT);
+    }
+
+    public function checkHash ($string, $hash) {
+        return password_verify($string, $hash);
+    }
+
+    public function analyze ($value, $options) {
+        if (!isset($value)) {
+            return FALSE;
+        }
+        $regex_match = (preg_match($options["regex"], $value) > 0)
+            ? FALSE : TRUE;
+        if (isset($options["not"])) {
+            $regex_match = !$regex_match;
+        }
+        if ($regex_match) {
+            return FALSE;
+        }
+        $value_length = strlen($value);
+        if ($value_length < $options["min"] || $value_length > $options["max"]) {
+            return FALSE;
+        }
+        return TRUE;
     }
 }
 
@@ -126,13 +162,6 @@ $mi0 = new MysqlInterface(
 	);
 
 $user_id = '1';
-
-if (!isset($_GET['securitykey'])
-    ) {
-    $mi0->abort(-1, NULL);
-} else if ($_GET['securitykey'] !== $mi0->getSecuritykey()) {
-    $mi0->abort(-2, NULL);
-}
 
 $mi0->begin();
 

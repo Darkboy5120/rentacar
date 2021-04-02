@@ -31,7 +31,6 @@
      background-color: rgba(50, 50, 50, .8);
 }
 .card-sale-header > span {
-    font-weight: bold;
     cursor: default;
 }
 .card-sale-header > span,

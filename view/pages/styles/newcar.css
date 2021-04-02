@@ -1,12 +1,13 @@
-@import url("../themes/default.css");
-@import url("../components/global.css");
-@import url("../components/navbar.css");
-@import url("../components/dropdown.css");
-@import url("../components/footer.css");
-@import url("../components/sales-cards.css");
-@import url("../components/pagination.css");
-@import url("../components/modal.css");
-@import url("../components/form.css");
+@import url("../../themes/default.css");
+@import url("../../components/global.css");
+@import url("../../components/navbar.css");
+@import url("../../components/dropdown.css");
+@import url("../../components/footer.css");
+@import url("../../components/sales-cards.css");
+@import url("../../components/pagination.css");
+@import url("../../components/modal.css");
+@import url("../../components/form.css");
+@import url("../../components/alert-me.css");
 html, body {
     margin: 0;
 }
@@ -17,13 +18,12 @@ body {
 }
 main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     position: relative;
     align-items: center;
-    padding-top: 3rem;
 }
 main > .container {
-    margin-top: 10vh;
     width: 100%;
     position: relative;
     display: flex;
@@ -77,18 +77,18 @@ main > .container {
     text-align: center;
     border-bottom: 1px solid rgba(255, 255, 255, .5);
 }
-.car-info-section > .input-layout {
-    margin-left: 1rem;
+.car-info-section > .input-layout,
+.car-info-section > .switch-layout {
     margin-bottom: 1.5rem;
 }
 .car-info-section label {
-    font-size: .9rem;
     font-weight: bold;
 }
 .car-info-section .input-field {
     margin-bottom: .5rem;
 }
-.input-field > input {
+.input-field > input,
+.input-field > select {
     padding-right: 3rem;
     width: 100%;
 }
@@ -107,9 +107,6 @@ main > .container {
     width: 80%;
     margin-bottom: 1rem;
 }
-h1, h2, h3, p, label, span, a {
-    font-family: 'IBM Plex Sans', sans-serif;
-}
 h1, h3 {
     color: var(--textColor);
 }
@@ -125,7 +122,7 @@ h1, h3 {
         text-align: left;
     }
     .car-info-body {
-        grid-template-columns: 33% 33% 33%;
+        grid-template-columns: 1fr 1fr 1fr;
     }
     .car-info-actions {
         flex-direction: row;
@@ -134,6 +131,10 @@ h1, h3 {
     .car-info-actions > button {
         margin-bottom: 0;
         width: 20%;
+    }
+    .car-info-section > .input-layout,
+    .car-info-section > .switch-layout {
+        margin-left: 1rem;
     }
     
 }

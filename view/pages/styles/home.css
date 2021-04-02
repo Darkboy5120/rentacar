@@ -1,11 +1,11 @@
-@import url("../themes/default.css");
-@import url("../components/global.css");
-@import url("../components/navbar.css");
-@import url("../components/dropdown.css");
-@import url("../components/footer.css");
-@import url("../components/cars-cards.css");
-@import url("../components/pagination.css");
-@import url("../components/modal.css");
+@import url("../../themes/default.css");
+@import url("../../components/global.css");
+@import url("../../components/navbar.css");
+@import url("../../components/dropdown.css");
+@import url("../../components/footer.css");
+@import url("../../components/cars-cards.css");
+@import url("../../components/modal.css");
+@import url("../../components/alert-me.css");
 html, body {
     margin: 0;
 }
@@ -16,13 +16,12 @@ body {
 }
 main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     position: relative;
     align-items: center;
-    padding-top: 3rem;
 }
 main > .container {
-    margin-top: 10vh;
     width: 100%;
     position: relative;
     display: flex;
@@ -35,11 +34,21 @@ main > .container {
 .container > section {
     background-color: rgba(0, 0, 0, 0);
 }
-h1, h2, p, label, span, a {
-    font-family: 'IBM Plex Sans', sans-serif;
-}
 h1 {
     color: var(--textColor);
+}
+.cards-cars {
+    min-height: 20rem;
+}
+.load-more {
+    height: 8rem;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.load-more > button {
+    padding: 2% 5% 2% 5%;
 }
 @media(min-width: 768px) {
     main > .container {
