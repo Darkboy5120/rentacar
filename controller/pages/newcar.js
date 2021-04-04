@@ -8,23 +8,6 @@
         e.textContent = userName;
     });
 
-    var slideRight = {
-    delay: 500,
-    distance: '100%',
-    origin: 'left',
-    opacity: null,
-    afterReveal: el => {
-        document.querySelector(".fixed-location").classList.add("slide-left-fl");
-    }
-    };
-
-    ScrollReveal().reveal('.fixed-location', slideRight);
-
-    /*const modalNewDriverConfirm = new Modal("#newDriverConfirm");
-    document.querySelector("#newDriver").addEventListener("click", e => {
-        modalNewDriverConfirm.show();
-    });*/
-
     let form = {
         global: {
             button: {
@@ -132,11 +115,11 @@
                             auto_imagen_2: input.others_images.val()[2],
                             auto_imagen_3: input.others_images.val()[3],
                             auto_imagen_4: input.others_images.val()[4],
-                            aire_acondicionado: switch_.aircond.value,
-                            gps: switch_.gps.value,
-                            vidrios_polarizados: switch_.darkglass.value,
-                            repuesto: switch_.replacement.value,
-                            caja_herramientas: switch_.toolbox.value,
+                            aire_acondicionado: (switch_.aircond.val()) ? "1" : "0",
+                            gps: (switch_.gps.val()) ? "1" : "0",
+                            vidrios_polarizados: (switch_.darkglass.val()) ? "1" : "0",
+                            repuesto: (switch_.replacement.val()) ? "1" : "0",
+                            caja_herramientas: (switch_.toolbox.val()) ? "1" : "0",
                             modelo: select.model.element.value,
                             tipo: select.type.element.value,
                             color_pintura: select.color.element.value,
@@ -145,6 +128,7 @@
                             seguro: select.insurance.element.value,
                             tipo_motor: select.engine.element.value
                         }).then(response => {
+                            console.log(response);
                             switch (response.code) {
                                 case 0:
                                     new AlertMe("Genial", "El auto se guardo correctamente");
@@ -192,62 +176,83 @@
 
     }
 
-    new RequestMe().post("model/apis/", {
-        api: "get_car_brands_models"
-    }).then(response => {
-        switch (response.code) {
-            case 0:
-                const updateModels = () => {
-                    let input_brand = form.car_info.select.brand.element;
-                    let car_brand = response.data.filter(brand => brand.pk_auto_marca == input_brand.value)[0];
-                    let brand_models_html = "";
-                    for (let brand_models of car_brand.models) {
-                        const b_model_id = brand_models.pk_auto_modelo;
-                        const b_model_name = brand_models.nombre;
-                        brand_models_html += `
-                            <option value="${b_model_id}">${b_model_name}</option>
-                        `;
-                        let input_model = form.car_info.select.model.element;
-                        input_model.innerHTML = brand_models_html;
-                    }
+    let request = {
+        get_car_brands_models: new Promise((resolve, reject) => {
+            new RequestMe().post("model/apis/", {
+                api: "get_car_brands_models"
+            }).then(response => {
+                switch (response.code) {
+                    case 0:
+                        const updateModels = () => {
+                            let input_brand = form.car_info.select.brand.element;
+                            let car_brand = response.data.filter(brand => brand.pk_auto_marca == input_brand.value)[0];
+                            let brand_models_html = "";
+                            for (let brand_models of car_brand.models) {
+                                const b_model_id = brand_models.pk_auto_modelo;
+                                const b_model_name = brand_models.nombre;
+                                brand_models_html += `
+                                    <option value="${b_model_id}">${b_model_name}</option>
+                                `;
+                                let input_model = form.car_info.select.model.element;
+                                input_model.innerHTML = brand_models_html;
+                            }
+                        }
+                        let car_brands_html = "";
+                        let input_brand = form.car_info.select.brand.element;
+                        for (let car_brand of response.data) {
+                            const c_brand_id = car_brand.pk_auto_marca;
+                            const c_brand_name = car_brand.nombre;
+                            car_brands_html += `
+                                <option value="${c_brand_id}">${c_brand_name}</option>
+                            `;
+                            input_brand.addEventListener("change", e => {
+                                updateModels(car_brand);
+                            });
+                        }
+                        input_brand.innerHTML = car_brands_html;
+                        updateModels();
+                        resolve(response.code);
+                        break;
+                    default:
+                        new AlertMe("Error", "Algo ha salido mal, recarga la pagina por favor");
+                        reject();
                 }
-                let car_brands_html = "";
-                let input_brand = form.car_info.select.brand.element;
-                for (let car_brand of response.data) {
-                    const c_brand_id = car_brand.pk_auto_marca;
-                    const c_brand_name = car_brand.nombre;
-                    car_brands_html += `
-                        <option value="${c_brand_id}">${c_brand_name}</option>
-                    `;
-                    input_brand.addEventListener("change", e => {
-                        updateModels(car_brand);
-                    });
+            }).catch(err => {
+                reject();
+            });
+        }),
+        get_car_colors: new Promise((resolve, reject) => {
+            new RequestMe().post("model/apis/", {
+                api: "get_car_colors"
+            }).then(response => {
+                switch (response.code) {
+                    case 0:
+                        let car_colors_html = "";
+                        let input_color = form.car_info.select.color.element;
+                        for (let car_color of response.data) {
+                            const c_color_id = car_color.pk_auto_color_pintura;
+                            const c_color_name = car_color.nombre;
+                            car_colors_html += `
+                                <option value="${c_color_id}">${c_color_name}</option>
+                            `;
+                        }
+                        input_color.innerHTML = car_colors_html;
+                        resolve(response.code);
+                        break;
+                    default:
+                        new AlertMe("Error", "Algo ha salido mal, recarga la pagina por favor");
+                        reject();
                 }
-                input_brand.innerHTML = car_brands_html;
-                updateModels();
-                break;
-            default:
-                new AlertMe("Error", "Algo ha salido mal, recarga la pagina por favor");
-        }
-    });
-    new RequestMe().post("model/apis/", {
-        api: "get_car_colors"
-    }).then(response => {
-        switch (response.code) {
-            case 0:
-                let car_colors_html = "";
-                let input_color = form.car_info.select.color.element;
-                for (let car_color of response.data) {
-                    const c_color_id = car_color.pk_auto_color_pintura;
-                    const c_color_name = car_color.nombre;
-                    car_colors_html += `
-                        <option value="${c_color_id}">${c_color_name}</option>
-                    `;
-                }
-                input_color.innerHTML = car_colors_html;
-                break;
-            default:
-                new AlertMe("Error", "Algo ha salido mal, recarga la pagina por favor");
-        }
+            }).catch(err => {
+                reject();
+            });
+        })
+    }
+
+    Promise.all([request.get_car_brands_models, request.get_car_colors]
+    ).then(values => {
+        window.setTimeout(() => {
+            hideLoadingScreen();
+        }, 1000);
     });
 })();

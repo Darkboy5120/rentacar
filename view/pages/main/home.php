@@ -46,7 +46,8 @@ $user_name = $ci0->getCookie("user_data")["nombre"];
             </div>
         </main>
 
-        <?php include "view/pages/modals/home.html";?>
+        <?php include "view/pages/modals/home.html";
+            include "view/components/loading-screen.html";?>
 
         <script>
             const userName = "<?php echo $user_name;?>";
@@ -54,6 +55,7 @@ $user_name = $ci0->getCookie("user_data")["nombre"];
         <script src="controller/components/modal.js"></script>
         <script src="controller/components/request-me.js"></script>
         <script src="controller/components/alert-me.js"></script>
+        <script src="controller/components/loading-screen.js"></script>
         <script src="controller/pages/home.js"></script>
     </body>
 </html>

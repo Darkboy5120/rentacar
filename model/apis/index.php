@@ -24,11 +24,17 @@ if (isset($_POST["api"])) {
         case "get_car_colors":
             require "global/get_car_colors.php";
             break;
-        case "get_admin_cars":
-            require "web/get_admin_cars.php";
+        case "get_cars":
+            require "global/get_admin_cars.php";
             break;
         case "delete_car":
             require "web/delete_car.php";
+            break;
+        case "get_car_by_id":
+            require "global/get_car_by_id.php";
+            break;
+        case "edit_car":
+            require "web/edit_car.php";
             break;
         default: echo json_encode("That's not a valid api");
     }

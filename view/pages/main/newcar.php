@@ -259,7 +259,7 @@ $user_name = $ci0->getCookie("user_data")["nombre"];
             </div>
         </main>
 
-        <?php include "view/pages/modals/drivers.html";?>
+        <?php include "view/components/loading-screen.html";?>
 
         <script>
             const userName = "<?php echo $user_name;?>";
@@ -270,6 +270,7 @@ $user_name = $ci0->getCookie("user_data")["nombre"];
         <script src="controller/components/request-me.js"></script>
         <script src="controller/components/alert-me.js"></script>
         <script src="controller/components/file-control.js"></script>
+        <script src="controller/components/loading-screen.js"></script>
         <script src="controller/pages/newcar.js"></script>
     </body>
 </html>

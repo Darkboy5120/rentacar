@@ -14,16 +14,6 @@
         reset: true,
         scale: 0.85
     });
-    var slideRight = {
-        delay: 500,
-        distance: '100%',
-        origin: 'left',
-        opacity: null,
-        afterReveal: el => {
-            document.querySelector(".fixed-location").classList.add("slide-left-fl");
-        }
-    };
-    ScrollReveal().reveal('.fixed-location', slideRight);
 
     let modal = {
         car_options: {
@@ -136,10 +126,12 @@
         modal.car_delete_confirm.button.no.onclick();
     }
 
-    const load_more_cars = (loadmore_level) => {
+    const load_more_cars = (offset) => {
+        let limit = 15;
         new RequestMe().post("model/apis/", {
-            api: "get_admin_cars",
-            loadmore_level: loadmore_level
+            api: "get_cars",
+            offset: offset,
+            limit: limit
         }).then(response => {
             switch (response.code) {
                 case 0:
@@ -186,11 +178,16 @@
                     }
                     let load_more_layout = document.querySelector("#load-more-layout");
                     let load_more_button = load_more_layout.querySelector("button");
+
+                    if (offset == 0) {
+                        hideLoadingScreen();
+                    }
+
                     if (!response.data.are_they_all) {
                         load_more_layout.classList.remove("hidden");
                         load_more_button.onclick = () => {
-                            loadmore_level += 1;
-                            load_more_cars(loadmore_level);
+                            offset += limit;
+                            load_more_cars(offset);
                         }
                     } else {
                         load_more_button.classList.add("hidden");

@@ -138,11 +138,6 @@ h1, h3 {
     }
     
 }
-@media(min-width: 425px) and (max-width: 767px) {
-    .car-info-body {
-        grid-template-columns: 50% 50%;
-    }
-}
 @media(min-width: 425px) {
     .navbar ul > li:not(.navbar-title) > span {
         display: block;

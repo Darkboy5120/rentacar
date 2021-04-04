@@ -3,6 +3,13 @@ const FileControl = function (inputSelector, options) {
     let input = {
         element: document.querySelector(inputSelector)
     };
+    let edited_status = false;
+    const reset_is_edited = () => {
+        edited_status = false;
+    }
+    const is_edited = () => {
+        return edited_status;
+    }
     const itsAllRight = () => {
         if (files.length == 0) {
             log.print(log.message.empty);
@@ -72,6 +79,7 @@ const FileControl = function (inputSelector, options) {
                 }
 
                 files.push(file);
+                edited_status = true;
             
                 let div = document.createElement("div");
                 let remove_icon = document.createElement("i");
@@ -79,6 +87,7 @@ const FileControl = function (inputSelector, options) {
                 remove_icon.addEventListener("click", e => {
                     for (let i = 0; i < files.length; i++) {
                         if (files[i].name == file.name) {
+                            edited_status = true;
                             delete files[i];
                             files.splice(i, 1);
                             div.remove();
@@ -167,7 +176,6 @@ const FileControl = function (inputSelector, options) {
         }
     };
     const focus = () => {
-        console.log(label.element);
         label.element.scrollIntoView();
     }
     images.hide();
@@ -212,6 +220,9 @@ const FileControl = function (inputSelector, options) {
         },
         files: files,
         isEmpty : files.length == 0,
-        focus: focus
+        focus: focus,
+        handleFiles: images.handleFiles,
+        reset_is_edited: reset_is_edited,
+        is_edited: is_edited
     };
 }

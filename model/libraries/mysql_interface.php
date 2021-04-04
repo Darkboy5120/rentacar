@@ -14,7 +14,7 @@ class MysqlInterface {
         if (isset($this->error_code[$this->link->errno])) {
             return $this->error_code[$this->link->errno];
         } else {
-            return "Unknow error: $this->link->errno";
+            return "Unknow error: " . $this->link->errno;
         }
     }
     private function conect ($sname, $uname, $pass, $dbname) {

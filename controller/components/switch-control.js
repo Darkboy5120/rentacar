@@ -13,14 +13,22 @@ const SwitchControl = function (switchSelector) {
             toggleOnElement.classList.add("hidden");
         }
     }
-    let toogleStatus = () => {
-        status = !status;
+    const toogleStatus = (value) => {
+        if (value == undefined || typeof value != "boolean") {
+            status = !status;
+        } else {
+            status = value;
+        }
         update();
+    }
+    const val = () => {
+        return status;
     }
     update();
     element.addEventListener("click", toogleStatus);
     label.addEventListener("click", toogleStatus);
     return {
-        value: status
+        val: val,
+        toogleStatus: toogleStatus
     };
 }

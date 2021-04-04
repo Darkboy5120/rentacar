@@ -92,6 +92,7 @@ const FieldControl = function (inputSelector, options) {
         printLog : printLog,
         element : input,
         isEmpty : isEmpty,
-        focus: focus
+        focus: focus,
+        validate: validate
     };
 }
