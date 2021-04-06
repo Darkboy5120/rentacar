@@ -4,9 +4,7 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 drop table if exists `reporte_devolucion_imagen`;
-drop table if exists `reporte_entrega_imagen`;
 drop table if exists `reporte_devolucion`;
-drop table if exists `reporte_entrega`;
 drop table if exists `renta`;
 drop table if exists `auto_imagen`;
 drop table if exists `auto`;
@@ -203,15 +201,6 @@ create table `renta` (
     foreign key(fk_conductor) references usuario(pk_usuario) on delete cascade
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
 
-create table `reporte_entrega` (
-    `pk_reporte_entrega` int unsigned not null auto_increment,
-    `fk_renta` int unsigned not null,
-    `todo_bien` enum("0", "1") not null,
-    `descripcion` varchar(255) not null,
-    primary key(pk_reporte_entrega),
-    foreign key(fk_renta) references renta(pk_renta) on delete cascade
-) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
-
 create table `reporte_devolucion` (
     `pk_reporte_devolucion` int unsigned not null auto_increment,
     `fk_renta` int unsigned not null,
@@ -219,15 +208,6 @@ create table `reporte_devolucion` (
     `descripcion` varchar(255) not null,
     primary key(pk_reporte_devolucion),
     foreign key(fk_renta) references renta(pk_renta) on delete cascade
-) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
-
-create table `reporte_entrega_imagen` (
-    `fk_reporte_entrega` int unsigned not null,
-    `fk_penalizacion` tinyint unsigned not null,
-    `imagen_ruta` varchar(100) not null,
-    unique key(imagen_ruta),
-    foreign key(fk_reporte_entrega) references reporte_entrega(pk_reporte_entrega) on delete cascade,
-    foreign key(fk_penalizacion) references penalizacion(pk_penalizacion) on delete cascade
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
 
 create table `reporte_devolucion_imagen` (
