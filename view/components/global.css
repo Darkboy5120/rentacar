@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100&family=Merriweather+Sans:wght@500&display=swap');
+.container, html, body {
+    scroll-behavior: smooth;
+}
 .button {
     letter-spacing: 2px;
     transition: transform .2s ease;
@@ -125,7 +128,7 @@ a {
         height: 15rem;
     }
     .loading-screen > p {
-        width: 15rem;
+        width: 20rem;
         font-size: 1.4rem;
     }
 }

@@ -49,7 +49,7 @@
                     }
                 }
                 if (input.pass.element.value != input.confirm_pass.element.value) {
-                    input.pass.printLog("Las contraseñas no coinciden", false);
+                    input.pass.printLog(l_arr.global.log_9, false);
                     return false;
                 }
                 return true;
@@ -95,19 +95,19 @@
                         }).then(response => {
                             switch (response.code) {
                                 case 0:
-                                    new AlertMe("Genial", "Tu cuenta se creo correctamente, iniciando sesión...");
+                                    new AlertMe(l_arr.global.mdal_suc_t_0, l_arr.register.mdal_suc_b_0);
                                     window.setTimeout(() => {
                                         location = "?p=home";
                                     }, 4000);
                                     break;
                                 case -3:
-                                    input_s2.bussiness_email.printLog("Ese correo ya esta en uso", false);
+                                    input_s2.bussiness_email.printLog(l_arr.global.log_10, false);
                                     break;
                                 case -6:
-                                    input_s2.bussiness_email.printLog("Ese nombre de empresa ya esta en uso", false);
+                                    input_s2.bussiness_email.printLog(l_arr.global.log_11, false);
                                     break;
                                 default:
-                                    new AlertMe("Error", "Algo ha salido mal, intentalo de nuevo");
+                                    new AlertMe(l_arr.global.mdal_err_t0, l_arr.global.mdal_err.b_1);
                             }
                         });
                     }

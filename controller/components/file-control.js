@@ -24,17 +24,17 @@ const FileControl = function (inputSelector, options) {
         log.print(log.message.success);
         return true;
     }
-    const plural = " imagenes";
-    const singular = " imagen";
+    const plural = l_arr.global.log_5;
+    const singular = l_arr.global.log_6;
     let log = {
         element: input.element.parentNode.parentNode.querySelector(".input-log"),
         message: {
-            minLength: "No debe tener menos de " + options.min + ((options.min > 1)
+            minLength: l_arr.global.log_7 + options.min + ((options.min > 1)
                 ? plural : singular),
-            maxLength: "No debe tener más de " + options.max + ((options.max > 1)
+            maxLength: l_arr.global.log_8 + options.max + ((options.max > 1)
             ? plural : singular),
-            empty: "Completa este campo",
-            success : "El valor es correcto"
+            empty: l_arr.global.log_0,
+            success : l_arr.global.log_4
         },
         print: (message) => {
             log.element.textContent = message;

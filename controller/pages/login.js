@@ -23,13 +23,13 @@
                                     location = "?p=home";
                                     break;
                                 case -3:
-                                    new AlertMe("Error", "Correo y/o contraseña incorrecto");
+                                    new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_0);
                                     break;
                                 case -4:
-                                    new AlertMe("Error", "Correo y/o contraseña incorrecto");
+                                    new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_0);
                                     break;
                                 default:
-                                    new AlertMe("Error", "Algo ha salido mal, intentalo de nuevo");
+                                    new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_1);
                             }
                         });
                     }

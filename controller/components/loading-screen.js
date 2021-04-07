@@ -1,6 +1,6 @@
-let lsMsg = ["Ya casi llegamos...", "Cambiando neumatico...", "Enserando auto...",
-        "Limpiando ventanas...", "Arrancando el motor...", "Buscando las llaves...",
-        "Abrochando cinturón de seguridad"];
+let lsMsg = [l_arr.global.lsm_0, l_arr.global.lsm_1, l_arr.global.lsm_2,
+        l_arr.global.lsm_3, l_arr.global.lsm_4, l_arr.global.lsm_5,
+        l_arr.global.lsm_6];
 const getLoadingScreenMsg = () => {
     return lsMsg[Math.floor(Math.random() * (lsMsg.length-1))];
 }

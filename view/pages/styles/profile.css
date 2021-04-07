@@ -4,6 +4,7 @@
 @import url("../../components/dropdown.css");
 @import url("../../components/footer.css");
 @import url("../../components/form.css");
+@import url("../../components/alert-me.css");
 html, body {
     margin: 0;
 }

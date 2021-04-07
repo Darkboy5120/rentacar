@@ -1,6 +1,7 @@
 (function () {
-    const pageName = "Nuevo auto";
-    document.querySelector("title").textContent = "Rentacar | " + pageName;
+    const pageName = l_arr.newcar.page_name;
+    document.querySelector("title").textContent = l_arr.global.app_name
+        + l_arr.global.title_separator + pageName;
     document.querySelectorAll("[data-location]").forEach(element => {
         element.textContent = pageName;
     });
@@ -11,40 +12,6 @@
     let form = {
         global: {
             button: {
-                n_dd_drivers_tab: {
-                    element: document.querySelector("#n_dd_drivers_tab"),
-                    onclick: () => {
-                        location = "?p=drivers";
-                    }
-                },
-                n_dd_sales_tab: {
-                    element: document.querySelector("#n_dd_sales_tab"),
-                    onclick: () => {
-                        location = "?p=sales";
-                    }
-                },
-                n_dd_profile_tab: {
-                    element: document.querySelector("#n_dd_profile_tab"),
-                    onclick: () => {
-                        location = "?p=profile";
-                    }
-                },
-                n_dd_exit_tab: {
-                    element: document.querySelector("#n_dd_exit_tab"),
-                    onclick: () => {
-                        new RequestMe().post("model/apis/", {
-                            api: "signout"
-                        }).then(response => {
-                            switch (response.code) {
-                                case 0:
-                                    location = "?p=login";
-                                    break;
-                                default:
-                                    new AlertMe("Error", "Algo ha salido mal, intentalo de nuevo");
-                            }
-                        });
-                    }
-                }
             }
         },
         car_info: {
@@ -131,13 +98,13 @@
                             console.log(response);
                             switch (response.code) {
                                 case 0:
-                                    new AlertMe("Genial", "El auto se guardo correctamente");
+                                    new AlertMe(l_arr.global.mdal_suc_t_0, l_arr.global.mdal_suc_b_2);
                                     window.setTimeout(() => {
                                         location = "?p=home";
                                     }, 4000);
                                     break;
                                 default:
-                                    new AlertMe("Error", "Algo ha salido mal, intentalo de nuevo");
+                                    new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_1);
                             }
                         });
                     }
@@ -180,6 +147,8 @@
         get_car_brands_models: new Promise((resolve, reject) => {
             new RequestMe().post("model/apis/", {
                 api: "get_car_brands_models"
+            }).catch(err => {
+                reject();
             }).then(response => {
                 switch (response.code) {
                     case 0:
@@ -214,16 +183,16 @@
                         resolve(response.code);
                         break;
                     default:
-                        new AlertMe("Error", "Algo ha salido mal, recarga la pagina por favor");
+                        new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_2);
                         reject();
                 }
-            }).catch(err => {
-                reject();
             });
         }),
         get_car_colors: new Promise((resolve, reject) => {
             new RequestMe().post("model/apis/", {
                 api: "get_car_colors"
+            }).catch(err => {
+                reject();
             }).then(response => {
                 switch (response.code) {
                     case 0:
@@ -240,11 +209,9 @@
                         resolve(response.code);
                         break;
                     default:
-                        new AlertMe("Error", "Algo ha salido mal, recarga la pagina por favor");
+                        new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_2);
                         reject();
                 }
-            }).catch(err => {
-                reject();
             });
         })
     }

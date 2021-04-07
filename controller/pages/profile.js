@@ -1,41 +1,255 @@
-const pageName = "Perfil";
-document.querySelector("title").textContent = "Rentacar | " + pageName;
-document.querySelectorAll("[data-location]").forEach(element => {
-    element.textContent = pageName;
-});
-var slideRight = {
-delay: 500,
-distance: '100%',
-origin: 'left',
-opacity: null,
-afterReveal: el => {
-    document.querySelector(".fixed-location").classList.add("slide-left-fl");
-}
-};
+(function () {
+    const pageName = l_arr.profile.page_name;
+    document.querySelector("title").textContent = l_arr.global.app_name
+        + l_arr.global.title_separator + pageName;
+    document.querySelectorAll("[data-location]").forEach(element => {
+        element.textContent = pageName;
+    });
+    document.querySelectorAll("[data-username]").forEach(e => {
+        e.textContent = userName;
+    });
+    document.querySelector("#n_dd_profile_tab").classList.add("dropdown-active");
+    
+    hideLoadingScreen();
 
-ScrollReveal().reveal('.fixed-location', slideRight);
+    const form = {
+        personal_info: {
+            element: document.querySelector("#personal-info"),
+            input: {
+                firstname: new FieldControl("#input-firstname", {
+                    regex : "[^A-Za-z]+", min : 1, max : 25
+                }),
+                lastname: new FieldControl("#input-lastname", {
+                    regex : "[^A-Za-z]+", min : 1, max : 25
+                })
+            },
+            button: {
+                save_personal_info: {
+                    element: document.querySelector("#save-personal-info"),
+                    submit: true,
+                    onclick: () => {
+                        if (!form.personal_info.validation()) return;
+                        let input = form.personal_info.input;
+                        new RequestMe().post("model/apis/", {
+                            api: "edit_admin_personal_info",
+                            firstname: input.firstname.element.value,
+                            lastname: input.lastname.element.value
+                        }).catch(err => {
+                            new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_1);
+                        }).then(response => {
+                            switch (response.code) {
+                                case 0:
+                                    new AlertMe(l_arr.global.mdal_suc_t_0, l_arr.global.mdal_suc_b_3);
+                                    break;
+                                default:
+                                    new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_1);
+                            }
+                        });
+                    }
+                }
+            },
+            validation: () => {
+                let input = form.personal_info.input;
+                for (const name in input) {
+                    if (!input[name].isDone()) {
+                        input[name].focus();
+                        return false;
+                    }
+                }
+                return true;
+            }
+        },
+        bussiness_info: {
+            element: document.querySelector("#bussiness-info"),
+            input: {
+                name: new FieldControl("#input-bussinessname", {
+                    regex : "[^A-Za-z]+", min : 1, max : 25
+                }),
+                phone: new FieldControl("#input-phone", {
+                    regex : "[^0-9]+", min : 10, max : 10
+                })
+            },
+            button: {
+                save_bussiness_info: {
+                    element: document.querySelector("#save-bussiness-info"),
+                    submit: true,
+                    onclick: () => {
+                        if (!form.bussiness_info.validation()) return;
+                        let input = form.bussiness_info.input;
+                        new RequestMe().post("model/apis/", {
+                            api: "edit_admin_bussiness_info",
+                            name: input.name.element.value,
+                            phone: input.phone.element.value
+                        }).catch(err => {
+                            new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_1);
+                        }).then(response => {
+                            switch (response.code) {
+                                case 0:
+                                    new AlertMe(l_arr.global.mdal_suc_t_0, l_arr.global.mdal_suc_b_4);
+                                    break;
+                                default:
+                                    new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_1);
+                            }
+                        });
+                    }
+                }
+            },
+            validation: () => {
+                let input = form.bussiness_info.input;
+                for (const name in input) {
+                    if (!input[name].isDone()) {
+                        input[name].focus();
+                        return false;
+                    }
+                }
+                return true;
+            }
+        },
+        preferences_info: {
+            element: document.querySelector("#preferences_info"),
+            input: {
+            },
+            select: {
+                coin: new FieldControl("#input-coin", {}),
+                language: new FieldControl("#input-language", {})
+            },
+            button: {
+                save_preferences_info: {
+                    element: document.querySelector("#save-preferences-info"),
+                    submit: true,
+                    onclick: () => {
+                        if (!form.preferences_info.validation()) return;
 
-const input_firstname = new FieldControl("#input-firstname", {
-    regex : "[^A-Za-z]+", min : 1, max : 25
-});
-const input_lastname = new FieldControl("#input-lastname", {
-    regex : "[^A-Za-z]+", min : 1, max : 25
-});
-const input_email = new FieldControl("#input-email", {
-    regex : "[^A-Za-z]+", min : 1, max : 25
-});
-const input_bussinessname = new FieldControl("#input-bussinessname", {
-    regex : "[^A-Za-z]+", min : 1, max : 25
-});
-const input_phone = new FieldControl("#input-phone", {
-    regex : "[^A-Za-z]+", min : 1, max : 25
-});
-const input_passold = new FieldControl("#input-passold", {
-    regex : "[^A-Za-z]+", min : 1, max : 25
-});
-const input_pass = new FieldControl("#input-pass", {
-    regex : "[^A-Za-z]+", min : 1, max : 25
-});
-const input_passconfirm = new FieldControl("#input-passconfirm", {
-    regex : "[^A-Za-z]+", min : 1, max : 25
-});
+                        let select = form.preferences_info.select;
+                        document.cookie = "l=" + select.language.element.value;
+                        new AlertMe(l_arr.global.mdal_suc_t_0, l_arr.global.mdal_suc_b_6);
+                        window.setTimeout(() => {
+                            location = location;
+                        }, 4000);
+                    }
+                }
+            },
+            validation: () => {
+                return true;
+            }
+        },
+        password_info: {
+            element: document.querySelector("#password-info"),
+            input: {
+                passold: new FieldControl("#input-passold", {
+                    regex : "[^A-Za-z0-9]+", min : 1, max : 25
+                }),
+                pass: new FieldControl("#input-pass", {
+                    regex : "[^A-Za-z0-9]+", min : 1, max : 25
+                }),
+                passconfirm: new FieldControl("#input-passconfirm", {
+                    regex : "[^A-Za-z0-9]+", min : 1, max : 25
+                })
+            },
+            button: {
+                save_password_info: {
+                    element: document.querySelector("#save-password-info"),
+                    submit: true,
+                    onclick: () => {
+                        if (!form.password_info.validation()) return;
+                        let input = form.password_info.input;
+                        new RequestMe().post("model/apis/", {
+                            api: "edit_user_password",
+                            passold: input.passold.element.value,
+                            passnew: input.pass.element.value
+                        }).catch(err => {
+                            new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_1);
+                        }).then(response => {
+                            switch (response.code) {
+                                case 0:
+                                    new AlertMe(l_arr.global.mdal_suc_t_0, l_arr.global.mdal_suc_b_5);
+                                    break;
+                                case -3:
+                                    input.passold.printLog(l_arr.global.log_12, false);
+                                    break;
+                                default:
+                                    new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_1);
+                            }
+                        });
+                    }
+                }
+            },
+            validation: () => {
+                let input = form.password_info.input;
+                for (const name in input) {
+                    if (!input[name].isDone()) {
+                        input[name].focus();
+                        return false;
+                    }
+                }
+                if (input.pass.element.value != input.passconfirm.element.value) {
+                    input.pass.printLog(l_arr.global.log_13, false);
+                    return false;
+                } else if (input.passold.element.value == input.pass.element.value) {
+                    input.pass.printLog(l_arr.global.log_14, false);
+                    return false;
+                }
+                return true;
+            }
+        }
+    }
+
+    for (const fname in form) {
+        let button = form[fname].button;
+        for (const bname in button) {
+            button[bname].element.addEventListener("click", button[bname].onclick);
+            if (button[bname].submit) {
+                let input = form[fname].input;
+                for (const iname in input) {
+                    if (input[iname].element) {
+                        input[iname].element.addEventListener("keyup", e => {
+                            if (e.which == 13) {
+                                button[bname].onclick();
+                            }
+                        });
+                    }
+                }
+            }
+        }
+
+    }
+
+    for (let opt of form.preferences_info.select.language.element.options) {
+        if (opt.text == userLanguage) {
+            form.preferences_info.select.language.element.selectedIndex = opt.index;
+        }
+    }
+
+    let request = {
+        get_admin_info: new Promise((resolve, reject) => {
+            new RequestMe().post("model/apis/", {
+                api: "get_admin_info"
+            }).catch(err => {
+                reject();
+            }).then(response => {
+                switch (response.code) {
+                    case 0:
+                        let admin_info = response.data;
+                        form.personal_info.input.firstname.element.value = admin_info.nombre;
+                        form.personal_info.input.lastname.element.value = admin_info.apellido;
+                        document.querySelector("#input-email").value = admin_info.correo;
+                        form.bussiness_info.input.name.element.value = admin_info.nombre_empresa;
+                        form.bussiness_info.input.phone.element.value = admin_info.telefono;
+
+                        for (let fname in form) {
+                            if (fname == "global") continue;
+                            for (let iname in form[fname].input) {
+                                form[fname].input[iname].validate();
+                            }
+                        }
+
+                        resolve(response.code);
+                        break;
+                    default:
+                        new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_2);
+                        reject();
+                }
+            });
+        })
+    }
+})();

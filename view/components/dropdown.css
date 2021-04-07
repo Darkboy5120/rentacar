@@ -3,7 +3,6 @@
     top: 10%;
     right: 2.5%;
     min-width: 90vw;
-    display: flex;
     flex-direction: column;
     background-color: rgba(50, 50, 50, .8);
     padding: .5rem;
@@ -23,6 +22,9 @@
 .dropdown-content li {
     border-radius: 5px;
 }
+.dropdown-active {
+    border: 2px solid gold;
+}
 .dropdown-content li:hover {
     background-image: linear-gradient(90deg, var(--secondaryColorAlt), var(--secondaryColor),
      #6456e2, var(--primaryColor), var(--primaryColorAlt));
@@ -37,7 +39,7 @@
 }
 .dropdown:hover > .dropdown-content,
 .dropdown-content:hover {
-    display: block !important;
+    display: flex !important;
     cursor: default !important;
 }
 @media(min-width: 425px) {

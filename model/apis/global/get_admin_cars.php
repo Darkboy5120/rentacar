@@ -2,14 +2,13 @@
 require "../users/root.php";
 require "../utils/token_validation.php";
 
-$user_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
-$is_mobile = is_numeric(strpos($user_agent, "mobile"));
+$from_web = !isset($_POST["securitykey"]);
 
-if (!$is_mobile && !isset($_POST["securitykey"])
+if ($from_web
     && $ci0->getCookie("securitykey") !== $ci0->getSecuritykey()
     ) {
     $mi0->abort(-1, NULL);
-} else if (($is_mobile && !isset($_POST["admin"]))
+} else if ((!$from_web && !isset($_POST["admin"]))
     || !isset($_POST["offset"])
     || !isset($_POST["limit"])) {
     $mi0->abort(-2, NULL);
@@ -17,7 +16,7 @@ if (!$is_mobile && !isset($_POST["securitykey"])
 
 $mi0->begin();
 
-$user_data = $ci0->getCookie("user_data");
+$admin_id = ($from_web) ? $ci0->getCookie("user_data")["pk_usuario"] : $_POST["admin"];
 $offset = $_POST["offset"];
 if ($offset < 0) {
     $offset = 0;
@@ -64,7 +63,7 @@ $mi0->query("
             AND auto_modelo.pk_auto_modelo = auto.fk_auto_modelo)
     WHERE auto.fk_administrador = ?
     LIMIT $offset, $limit",
-    $user_data["pk_usuario"]
+    $admin_id
 );
 if ($mi0->result->num_rows === 0) {
     $mi0->end("rollback", -3, NULL);
@@ -107,7 +106,7 @@ $mi0->query("
             AND auto_modelo.pk_auto_modelo = auto.fk_auto_modelo)
     WHERE auto.fk_administrador = ?
     LIMIT $next_offset, $limit",
-    $user_data["pk_usuario"]
+    $admin_id
 );
 $data["are_they_all"] = ($mi0->result->num_rows > 0)
     ? FALSE : TRUE;

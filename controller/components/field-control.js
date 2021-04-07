@@ -5,13 +5,13 @@ const FieldControl = function (inputSelector, options) {
     const plural = " caracteres";
     const singular = " caracter";
     const logMessage = {
-        empty : "Completa este campo",
-        invalidFormat : "El formato es incorrecto",
-        minLength : "No debe tener menos de " + options.min + ((options.min > 1)
+        empty : l_arr.global.log_0,
+        invalidFormat : l_arr.global.log_1,
+        minLength : l_arr.global.log_2 + options.min + ((options.min > 1)
             ? plural : singular),
-        maxLength : "No debe ser más de " + options.max + ((options.max > 1)
+        maxLength : l_arr.global.log_3 + options.max + ((options.max > 1)
         ? plural : singular),
-        success : "El valor es correcto"
+        success : l_arr.global.log_4
     }
 
     let input = document.querySelector(inputSelector);
@@ -73,15 +73,17 @@ const FieldControl = function (inputSelector, options) {
 
     if (input.tagName != "SELECT") {
         label.classList.add("opaque");
+        input.addEventListener("focus", e => {
+            label.classList.remove("opaque");
+            input.classList.add("hide-placeholder");
+        });
+        input.addEventListener("blur", e => {
+            if (isEmpty()) {
+                label.classList.add("opaque");
+            }
+            input.classList.remove("hide-placeholder");
+        });
     }
-    input.addEventListener("focus", e => {
-        label.classList.remove("opaque");
-        input.classList.add("hide-placeholder");
-    });
-    input.addEventListener("blur", e => {
-        label.classList.add("opaque");
-        input.classList.remove("hide-placeholder");
-    });
 
     validate();
     

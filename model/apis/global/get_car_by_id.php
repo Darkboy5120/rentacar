@@ -2,14 +2,13 @@
 require "../users/root.php";
 require "../utils/token_validation.php";
 
-$user_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
-$is_mobile = is_numeric(strpos($user_agent, "mobile"));
+$from_web = !isset($_POST["securitykey"]);
 
-if (!$is_mobile && !isset($_POST["securitykey"])
+if ($from_web
     && $ci0->getCookie("securitykey") !== $ci0->getSecuritykey()
     ) {
     $mi0->abort(-1, NULL);
-} else if (($is_mobile && !isset($_POST["car"]))
+} else if (!isset($_POST["car"])
     ) {
     $mi0->abort(-2, NULL);
 }

@@ -1,12 +1,14 @@
 (function () {
-    const pageName = "Home";
-    document.querySelector("title").textContent = "Rentacar | " + pageName;
+    const pageName = l_arr.home.page_name;
+    document.querySelector("title").textContent = l_arr.global.app_name
+        + l_arr.global.title_separator + pageName;
     document.querySelectorAll("[data-location]").forEach(element => {
         element.textContent = pageName;
     });
     document.querySelectorAll("[data-username]").forEach(e => {
         e.textContent = userName;
     });
+    document.querySelector("#n_dd_home_tab").classList.add("dropdown-active");
 
     ScrollReveal().reveal('.card-car', {
         delay: 175,
@@ -52,44 +54,10 @@
     let form = {
         global: {
             button: {
-                a_create_car: {
+                action_create_car: {
                     element: document.querySelector("#action-create-car"),
                     onclick: () => {
                         location = "?p=newcar";
-                    }
-                },
-                n_dd_drivers_tab: {
-                    element: document.querySelector("#n_dd_drivers_tab"),
-                    onclick: () => {
-                        location = "?p=drivers";
-                    }
-                },
-                n_dd_sales_tab: {
-                    element: document.querySelector("#n_dd_sales_tab"),
-                    onclick: () => {
-                        location = "?p=sales";
-                    }
-                },
-                n_dd_profile_tab: {
-                    element: document.querySelector("#n_dd_profile_tab"),
-                    onclick: () => {
-                        location = "?p=profile";
-                    }
-                },
-                n_dd_exit_tab: {
-                    element: document.querySelector("#n_dd_exit_tab"),
-                    onclick: () => {
-                        new RequestMe().post("model/apis/", {
-                            api: "signout"
-                        }).then(response => {
-                            switch (response.code) {
-                                case 0:
-                                    location = "?p=login";
-                                    break;
-                                default:
-                                    new AlertMe("Error", "Algo ha salido mal, intentalo de nuevo");
-                            }
-                        });
                     }
                 }
             }
@@ -164,10 +132,10 @@
                                         case 0:
                                             car_node.remove();
                                             modal.car_delete_confirm.object.hide();
-                                            new AlertMe("Aviso", "El auto se ha eliminado correctamente");
+                                            new AlertMe(l_arr.mdal_suc_t_1, l_arr.mdal_suc_b_0);
                                             break;
                                         default:
-                                            new AlertMe("Error", "Algo ha salido mal, intentalo de nuevo");
+                                            new AlertMe(l_arr.mdal_err_t_0, l_arr.mdal_err_b_1);
                                     }
                                 });
                             }
@@ -197,9 +165,10 @@
                 case -3:
                     let cards_empty = document.querySelector("#cars-layout > .cards-empty");
                     cards_empty.classList.remove("hidden");
+                    hideLoadingScreen();
                     break;
                 default:
-                    new AlertMe("Error", "Algo ha salido mal, recarga la pagina por favor");
+                    new AlertMe(l_arr.mdal_err_t_0, l_arr.mdal_err_b_2);
             }
         });
     }

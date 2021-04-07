@@ -8,6 +8,7 @@ footer {
     color: white;
     padding-bottom: 2rem;
     background-image: linear-gradient(45deg, rgba(50, 50, 50, 1), rgba(50, 50, 50, .9), rgba(50, 50, 50, 1));
+    position: relative;
 }
 footer > ul {
     grid-row: 1;

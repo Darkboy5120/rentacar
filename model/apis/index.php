@@ -12,9 +12,6 @@ if (isset($_POST["api"])) {
         case "login_admin":
             require "global/login.php";
             break;
-        case "signout":
-            require "web/signout.php";
-            break;
         case "create_car":
             require "web/create_car.php";
             break;
@@ -35,6 +32,18 @@ if (isset($_POST["api"])) {
             break;
         case "edit_car":
             require "web/edit_car.php";
+            break;
+        case "get_admin_info":
+            require "global/get_admin_info.php";
+            break;
+        case "edit_admin_personal_info":
+            require "web/edit_admin_personal_info.php";
+            break;
+        case "edit_admin_bussiness_info":
+            require "web/edit_admin_bussiness_info.php";
+            break;
+        case "edit_user_password":
+            require "global/edit_user_password.php";
             break;
         default: echo json_encode("That's not a valid api");
     }

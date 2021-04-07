@@ -16,92 +16,104 @@ $ci0->setCookie("securitykey", $ci0->getSecurityKey());
         <!-- Custom CSS -->
         <link rel="stylesheet" href="view/pages/styles/register.css">
 
-        <title>Rentacar | Registro</title>
+        <title><?=$l_arr["global"]["app_name"].$l_arr["global"]["title_separator"]
+            .$l_arr["register"]["page_name"];?></title>
     </head>
     <body>
         <main>
             <div class="container">
-                <h1>Registro</h1>
+                <h1><?=$l_arr["register"]["page_name"];?></h1>
                 <div class="form-index">
                     <div class="index-item index-active" id="personal-info-index">
                         <span class="item-number">1</span>
-                        <span class="item-name">Datos personales</span>
+                        <span class="item-name"><?=$l_arr["register"]["txt_0"];?></span>
                     </div>
                     <div class="index-item" id="bussiness-info-index">
                         <span class="item-number">2</span>
-                        <span class="item-name">Datos de la empresa</span>
+                        <span class="item-name"><?=$l_arr["register"]["txt_1"];?></span>
                     </div>
                 </div>
                 <form id="form-personal-info">
                     <div class="input-layout">
-                        <label for="input-firstname">Nombres</label>
+                        <label for="input-firstname"><?=$l_arr["register"]["txt_2"];?></label>
                         <div class="input-field">
                             <input class="input-primary" type="text" id="input-firstname"
-                                placeholder="Nombres" autofocus>
+                                placeholder="<?=$l_arr["register"]["txt_2"];?>" autofocus>
                             <i class="fas fa-address-card"></i>
                         </div>
                         <span class="input-log hidden"></span>
                     </div>
                     <div class="input-layout">
-                        <label for="input-lastname">Apellidos</label>
+                        <label for="input-lastname"><?=$l_arr["register"]["txt_3"];?></label>
                         <div class="input-field">
-                            <input class="input-primary" type="text" id="input-lastname" placeholder="Apellidos">
+                            <input class="input-primary" type="text" id="input-lastname"
+                                placeholder="<?=$l_arr["register"]["txt_3"];?>">
                             <i class="fas fa-address-card"></i>
                         </div>
                         <span class="input-log hidden"></span>
                     </div>
                     <div class="input-layout">
-                        <label for="input-pass">Contraseña</label>
+                        <label for="input-pass"><?=$l_arr["register"]["txt_4"];?></label>
                         <div class="input-field">
-                            <input class="input-primary" type="password" id="input-pass" placeholder="Contraseña">
+                            <input class="input-primary" type="password" id="input-pass"
+                                placeholder="<?=$l_arr["register"]["txt_4"];?>">
                             <i class="fas fa-lock"></i>
                         </div>
                         <span class="input-log hidden"></span>
                     </div>
                     <div class="input-layout">
-                        <label for="input-confirm-pass">Confirmar contraseña</label>
+                        <label for="input-confirm-pass"><?=$l_arr["register"]["txt_5"];?></label>
                         <div class="input-field">
-                            <input class="input-primary" type="password" id="input-confirm-pass" placeholder="Contraseña">
+                            <input class="input-primary" type="password" id="input-confirm-pass"
+                                placeholder="<?=$l_arr["register"]["txt_5"];?>">
                             <i class="fas fa-lock"></i>
                         </div>
                         <span class="input-log hidden"></span>
                     </div>
-                    <button id="signup-step1" type="button" class="button button-primary">Continuar</button>
+                    <button id="signup-step1" type="button" class="button button-primary">
+                        <?=$l_arr["register"]["button_step1"];?></button>
                 </form>
                 <form class="hidden" id="form-bussiness-info">
                     <div class="input-layout">
-                        <label for="input-bussiness-name">Nombre</label>
+                        <label for="input-bussiness-name"><?=$l_arr["register"]["txt_6"];?></label>
                         <div class="input-field">
-                            <input class="input-primary" type="text" id="input-bussiness-name" placeholder="Nombre">
+                            <input class="input-primary" type="text" id="input-bussiness-name"
+                                placeholder="<?=$l_arr["register"]["txt_6"];?>">
                             <i class="fas fa-address-card"></i>
                         </div>
                         <span class="input-log hidden"></span>
                     </div>
                     <div class="input-layout">
-                        <label for="input-bussiness-phone">Telefono</label>
+                        <label for="input-bussiness-phone"><?=$l_arr["register"]["txt_7"];?></label>
                         <div class="input-field">
-                            <input class="input-primary" type="text" id="input-bussiness-phone" placeholder="Telefono">
+                            <input class="input-primary" type="text" id="input-bussiness-phone"
+                                placeholder="<?=$l_arr["register"]["txt_7"];?>">
                             <i class="fas fa-address-card"></i>
                         </div>
                         <span class="input-log hidden"></span>
                     </div>
                     <div class="input-layout">
-                        <label for="input-bussiness-email">Correo electronico</label>
+                        <label for="input-bussiness-email"><?=$l_arr["register"]["txt_8"];?></label>
                         <div class="input-field">
-                            <input class="input-primary" type="email" id="input-bussiness-email" placeholder="Correo electronico">
+                            <input class="input-primary" type="email" id="input-bussiness-email"
+                                placeholder="<?=$l_arr["register"]["txt_8"];?>">
                             <i class="fas fa-envelope"></i>
                         </div>
                         <span class="input-log hidden"></span>
                     </div>
-                    <button id="to-personal-info" type="button" class="button button-primary">Volver</button>
-                    <button id="signup-step2" type="button" class="button button-primary">Guardar</button>
+                    <button id="to-personal-info" type="button" class="button button-primary">
+                        <?=$l_arr["register"]["button_tostep1"];?></button>
+                    <button id="signup-step2" type="button" class="button button-primary">
+                        <?=$l_arr["register"]["button_step2"];?></button>
                 </form>
                 <footer>
-                    <p>¿Ya tienes una cuenta? <a href="?p=login">Inicia sesión</a></p>
+                    <p><?=$l_arr["register"]["txt_9"];?> <a href="?p=login">
+                        <?=$l_arr["register"]["txt_10"];?></a></p>
                 </footer>
             </div>
         </main>
 
+        <script>l_arr = <?php echo json_encode($l_arr);?>;</script>
         <script src="controller/components/field-control.js"></script>
         <script src="controller/components/request-me.js"></script>
         <script src="controller/components/alert-me.js"></script>

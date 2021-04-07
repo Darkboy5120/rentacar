@@ -48,6 +48,9 @@
     border: 1px solid rgba(255, 255, 255, .5);
     color: var(--textColor);
 }
+input:disabled {
+    opacity: .5;
+}
 input::placeholder {
     color: var(--textColor);
 }

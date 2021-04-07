@@ -25,32 +25,37 @@ $user_name = $ci0->getCookie("user_data")["nombre"];
     </head>
     <body>
         <main>
-            <?php include "view/components/navbar.html";?>
+            <?php include "view/components/navbar.php";?>
             <nav class="main-actions">
                 <ul>
-                    <li id="action-create-car"><i class="fas fa-plus"></i><span>Agregar auto</span></li>
-                    <li><i class="fas fa-search"></i><span>Buscar</span></li>
+                    <li id="action-create-car"><i class="fas fa-plus"></i><span>
+                        <?=$l_arr["home"]["txt_0"]?></span></li>
+                    <li><i class="fas fa-search"></i><span>
+                        <?=$l_arr["home"]["txt_1"]?></span></li>
                 </ul>
             </nav>
             <div class="fixed-location">
-                <span>Estas en <span data-location=""></span></span>
+                <span><?=$l_arr["global"]["txt_0"]?> <span data-location=""></span></span>
             </div>
             <div class="container">
                 <section class="cards-cars" id="cars-layout">
-                    <span class="cards-empty hidden">Aun no se ha agregado ningun auto</span>
+                    <span class="cards-empty hidden">
+                        <?=$l_arr["home"]["txt_2"]?></span>
                 </section>
                 <section class="load-more hidden" id="load-more-layout">
-                    <button class="button button-primary" id="load-more">Cargar más</button>
+                    <button class="button button-primary" id="load-more">
+                        <?=$l_arr["home"]["button_loadmore"]?></button>
                 </section>
-                <?php include "view/components/footer.html";?>
+                <?php include "view/components/footer.php";?>
             </div>
         </main>
 
         <?php include "view/pages/modals/home.html";
-            include "view/components/loading-screen.html";?>
+            include "view/components/loading-screen.php";?>
 
         <script>
             const userName = "<?php echo $user_name;?>";
+            l_arr = <?php echo json_encode($l_arr);?>;
         </script>
         <script src="controller/components/modal.js"></script>
         <script src="controller/components/request-me.js"></script>
