@@ -21,11 +21,11 @@ $l_arr = array(
         "title_0" => "Presiona Esc para cerrar",
         "lsm_0" => "Ya casi llegamos...",
         "lsm_1" => "Cambiando neumatico...",
-        "lsm_1" => "Enserando auto...",
-        "lsm_1" => "Limpiando ventanas...",
-        "lsm_1" => "Arrancando el motor...",
-        "lsm_1" => "Buscando las llaves...",
-        "lsm_1" => "Abrochando cinturón de seguridad",
+        "lsm_2" => "Enserando auto...",
+        "lsm_3" => "Limpiando ventanas...",
+        "lsm_4" => "Arrancando el motor...",
+        "lsm_5" => "Buscando las llaves...",
+        "lsm_6" => "Abrochando cinturón de seguridad",
         "mdal_err_t_0" => "Error",
         "mdal_suc_t_0" => "Genial",
         "mdal_suc_t_1" => "Aviso",
@@ -58,13 +58,13 @@ $l_arr = array(
     ),
     "login" => array(
         "page_name" => "Login",
-        "input_email" => "Correo electronico",
-        "input_password" => "Contraseña",
+        "txt_0" => "Correo electronico",
+        "txt_1" => "Contraseña",
         "button_signin" => "Entrar",
-        "p_0" => "¿Aun no tienes una cuenta?",
-        "p_1" => "Recuperar",
-        "a_0" => "Registrate",
-        "a_1" => "contraseña"
+        "txt_2" => "¿Aun no tienes una cuenta?",
+        "txt_3" => "Registrate",
+        "txt_4" => "Recuperar",
+        "txt_5" => "contraseña"
     ),
     "register" => array(
         "page_name" => "Registro",
@@ -148,7 +148,7 @@ $l_arr = array(
         "button_createcar" => "Guardar"
     ),
     "editcar" => array(
-        "page_name"
+        "page_name" => "Editar auto"
     ),
     "profile" => array(
         "page_name" => "Perfil",

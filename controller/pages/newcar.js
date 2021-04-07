@@ -98,7 +98,7 @@
                             console.log(response);
                             switch (response.code) {
                                 case 0:
-                                    new AlertMe(l_arr.global.mdal_suc_t_0, l_arr.global.mdal_suc_b_2);
+                                    new AlertMe(l_arr.global.mdal_suc_t_0, l_arr.global.mdal_suc_b_1);
                                     window.setTimeout(() => {
                                         location = "?p=home";
                                     }, 4000);

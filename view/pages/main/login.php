@@ -22,19 +22,19 @@
                 <img src="media/images/main_logo.png" alt="mainlogo">
                 <form id="login_info">
                     <div class="input-layout">
-                        <label for="input-email"><?php echo $l_arr["login"]["input_email"];?></label>
+                        <label for="input-email"><?php echo $l_arr["login"]["txt_0"];?></label>
                         <div class="input-field">
                             <input class="input-primary" type="email" id="input-email"
-                                placeholder="<?php echo $l_arr["login"]["input_email"];?>" autofocus>
+                                placeholder="<?php echo $l_arr["login"]["txt_0"];?>" autofocus>
                             <i class="fas fa-envelope"></i>
                         </div>
                         <span class="input-log"></span>
                     </div>
                     <div class="input-layout">
-                        <label for="input-pass"><?=$l_arr["login"]["input_password"];?></label>
+                        <label for="input-pass"><?=$l_arr["login"]["txt_1"];?></label>
                         <div class="input-field">
                             <input class="input-primary" type="password" id="input-pass"
-                                placeholder="<?=$l_arr["login"]["input_password"];?>">
+                                placeholder="<?=$l_arr["login"]["txt_1"];?>">
                             <i class="fas fa-lock"></i>
                         </div>
                         <span class="input-log"></span>
@@ -44,9 +44,9 @@
                     </button>
                 </form>
                 <footer>
-                    <p><?=$l_arr["login"]["p_0"];?> <a href="?p=register">
-                        <?=$l_arr["login"]["a_0"];?></a></p>
-                    <p><?=$l_arr["login"]["p_1"];?> <a href="#"><?=$l_arr["login"]["a_1"];?></a></p>
+                    <p><?=$l_arr["login"]["txt_2"];?> <a href="?p=register">
+                        <?=$l_arr["login"]["txt_3"];?></a></p>
+                    <p><?=$l_arr["login"]["txt_4"];?> <a href="#"><?=$l_arr["login"]["txt_5"];?></a></p>
                 </footer>
             </div>
         </main>

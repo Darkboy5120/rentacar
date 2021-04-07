@@ -32,7 +32,7 @@
 }
 .generic-valoration > i {
     margin: 0 .5rem 0 .5rem;
-    color: gold;
+    color: var(--alternativeColor);
 }
 .hidden {
     display: none !important;
@@ -78,7 +78,7 @@ a {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(50, 50, 50, 1);
+    background-color: var(--loadingScreenBgColor);
     z-index: 10;
     display: flex;
     flex-direction: column;
@@ -95,7 +95,7 @@ a {
     height: 10rem;
     border-radius: 50%;
     animation: rotate_x 1.4s infinite;
-    box-shadow: 0 2px 16px 2px rgba(20, 20, 20, .5);
+    box-shadow: 0 2px 16px 2px var(--loadingScreenShadowColor);
 }
 .loading-screen > p {
     width: 15rem;
@@ -103,7 +103,7 @@ a {
     font-size: 1.2rem;
     text-align: center;
     animation: loading .7s infinite;
-    text-shadow: 4px 4px 4px rgba(20, 20, 20, .5);
+    text-shadow: 4px 4px 4px var(--loadingScreenShadowColor);
 }
 @keyframes rotate_x {
     0%, 100% {
@@ -132,7 +132,7 @@ a {
         font-size: 1.4rem;
     }
 }
-@media(min-width: 425px) and (max-width: 767px) {
+@media(min-width: 426px) and (max-width: 767px) {
     .car-info-body {
         grid-template-columns: 50% 50%;
     }

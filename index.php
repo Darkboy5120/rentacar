@@ -4,7 +4,9 @@ $lang_path = array(
     "spanish" => "view/languages/spanish.php",
     "english" => "view/languages/english.php"
 );
-if (isset($_COOKIE["l"]) && array_key_exists($LANGUAGE, $lang_path)) {
+if (!isset($_COOKIE["l"])) {
+    $_COOKIE["l"] = $LANGUAGE;
+} else if (isset($_COOKIE["l"]) && array_key_exists($LANGUAGE, $lang_path)) {
     $LANGUAGE = $_COOKIE["l"];
 }
 require $lang_path[$LANGUAGE];

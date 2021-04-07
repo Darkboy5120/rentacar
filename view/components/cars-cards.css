@@ -5,7 +5,7 @@
     column-gap: 1rem;
     row-gap: 1rem;
     margin: 1rem 0 1rem 0;
-    color: gray;
+    color: var(--carsCardsColor);
     position: relative;
     width: 90%;
 }
@@ -39,7 +39,7 @@
     position: absolute;
     padding: 2%;
     margin: 0;
-    background-color: white;
+    background-color: var(--textColor);
 }
 .card-car > p {
     position: absolute;
@@ -48,7 +48,7 @@
     display: none;
 }
 .cards-empty {
-    color: rgba(255, 255, 255, .8);
+    color: var(--carCardEmptyColor);
     position: absolute;
     justify-self: center;
     align-self: center;

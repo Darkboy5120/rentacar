@@ -7,7 +7,7 @@ footer {
     height: min-content;
     color: white;
     padding-bottom: 2rem;
-    background-image: linear-gradient(45deg, rgba(50, 50, 50, 1), rgba(50, 50, 50, .9), rgba(50, 50, 50, 1));
+    background-image: linear-gradient(45deg, var(--barGradientColor1), var(--barGradientColor2), var(--barGradientColor1));
     position: relative;
 }
 footer > ul {

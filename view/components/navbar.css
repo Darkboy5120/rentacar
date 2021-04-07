@@ -6,8 +6,8 @@
     position: sticky;
     top: 0;
     height: 10vh;
-    background-color: rgba(50, 50, 50, 1);
-    box-shadow: 0 0 10px 5px rgba(50, 50, 50, .8);
+    background-image: linear-gradient(45deg, var(--barGradientColor1), var(--barGradientColor2), var(--barGradientColor1));
+    box-shadow: 0 0 10px 5px var(--navbarShadowColor);
     z-index: 3;
 }
 .navbar-title {
@@ -89,8 +89,8 @@
     white-space: nowrap;
 }
 .main-actions > ul > li:hover {
-    background-color: white;
-    color: black;
+    background-color: var(--textColor);
+    color: var(--textColorAlt);
 }
 .main-actions > ul {
     height: 100%;
@@ -143,7 +143,7 @@
     bottom: 5%;
     left: 0;
     height: 5%;
-    background-color: rgba(50, 50, 50, 1);
+    background-color: var(--fixedLocationBgColor);
     color: var(--textColor);
     z-index: 1;
     border-top-right-radius: 5px;
@@ -166,7 +166,4 @@
     }
 }
 @media(min-width: 426px) and (max-width: 767px) {
-}
-@media(min-width: 425px) {
-    
 }

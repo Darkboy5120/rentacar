@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    background-color: white;
+    background-color: var(--cardsSalesBgColor);
     margin: 1rem;
     color: gray !important;
     width: 100%;
@@ -15,7 +15,7 @@
     max-height: 2rem;
     position: relative;
     margin: 0 .5rem .5rem .5rem;
-    border: 1px solid white;
+    border: 1px solid var(--cardsSalesBorderColor);
     color: var(--textColor);
     border-radius: 5px;
     overflow: hidden;
@@ -39,7 +39,7 @@
 }
 .card-sale-header > span:not(:first-child),
 .card-sale > span:not(:first-child) {
-    border-left: 1px solid white;
+    border-left: 1px solid var(--cardsSalesBorderColor);
 }
 .card-sale-header > span:nth-child(1),
 .card-sale > span:nth-child(1) {
@@ -70,8 +70,7 @@
         width: 60%
     }
 }
-@media(min-width: 425px) {
-    
+@media(min-width: 426px) {
     .cards-sales span {
         font-size: 1rem;
     }
