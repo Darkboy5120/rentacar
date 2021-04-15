@@ -1,6 +1,5 @@
 <?php
-require "model/libraries/cookie_interface.php";
-$ci0->setCookie("securitykey", $ci0->getSecurityKey());
+$ci0->setSession("securitykey", $ci0->getSecurityKey());
 ?>
 <!doctype html>
 <html lang="en">

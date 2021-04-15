@@ -5,7 +5,7 @@ require "../utils/token_validation.php";
 $from_web = !isset($_POST["securitykey"]);
 
 if ($from_web
-    && $ci0->getCookie("securitykey") !== $ci0->getSecuritykey()
+    && $ci0->getSession("securitykey") !== $ci0->getSecuritykey()
     ) {
     $mi0->abort(-1, NULL);
 } else if (!TRUE) {

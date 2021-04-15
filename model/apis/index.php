@@ -1,5 +1,5 @@
 <?php
-require "../libraries/cookie_interface.php";
+require "../libraries/cs_interface.php";
 
 $API = NULL;
 

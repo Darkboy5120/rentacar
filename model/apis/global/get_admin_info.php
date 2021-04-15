@@ -5,7 +5,7 @@ require "../utils/token_validation.php";
 $from_web = !isset($_POST["securitykey"]);
 
 if ($from_web
-    && $ci0->getCookie("securitykey") !== $ci0->getSecuritykey()
+    && $ci0->getSession("securitykey") !== $ci0->getSecuritykey()
     ) {
     $mi0->abort(-1, NULL);
 } else if (!$from_web && !isset($_POST["admin"])
@@ -13,7 +13,7 @@ if ($from_web
     $mi0->abort(-2, NULL);
 }
 
-$admin_id = ($from_web) ? $ci0->getCookie("user_data")["pk_usuario"] : $_POST["admin"];
+$admin_id = ($from_web) ? $ci0->getSession("user_data")["pk_usuario"] : $_POST["admin"];
 
 $mi0->begin();
 

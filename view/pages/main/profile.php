@@ -1,11 +1,10 @@
 <?php
-require "model/libraries/cookie_interface.php";
-if (!$ci0->existCookie("user_data")) {
+if (!$ci0->existSession("user_data")) {
     header('Location: ?p=login');
     exit;
 }
-$ci0->setCookie("securitykey", $ci0->getSecurityKey());
-$user_name = $ci0->getCookie("user_data")["nombre"];
+$ci0->setSession("securitykey", $ci0->getSecurityKey());
+$user_name = $ci0->getSession("user_data")["nombre"];
 ?>
 <!doctype html>
 <html lang="en">
@@ -152,7 +151,8 @@ $user_name = $ci0->getCookie("user_data")["nombre"];
 
     <script>
         const userName = "<?php echo $user_name;?>";
-        const userLanguage = "<?php echo $_COOKIE["l"];?>";
+        const userLanguage = "<?php echo $ci0->getCookie("l");?>";
+        const userCurrency = "<?php echo $ci0->getCookie("c");?>";
         l_arr = <?php echo json_encode($l_arr);?>;
     </script>
     <script src="controller/components/field-control.js"></script>

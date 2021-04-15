@@ -1,13 +1,27 @@
 <?php
+require "model/libraries/cs_interface.php";
+
 $LANGUAGE = "spanish";
+$language_values = array("spanish", "english");
 $lang_path = array(
     "spanish" => "view/languages/spanish.php",
     "english" => "view/languages/english.php"
 );
-if (!isset($_COOKIE["l"])) {
-    $_COOKIE["l"] = $LANGUAGE;
-} else if (isset($_COOKIE["l"]) && array_key_exists($LANGUAGE, $lang_path)) {
-    $LANGUAGE = $_COOKIE["l"];
+$CURRENCY = "mxn";
+$currency_values = array("mxn", "usd");
+
+if (!$ci0->existCookie("c")) {
+    $ci0->setCookie("c", $CURRENCY);
+} else if (!in_array($ci0->getCookie("c"), $currency_values)) {
+    $ci0->setCookie("c", $CURRENCY);
+}
+
+if (!$ci0->existCookie("l")) {
+    $ci0->setCookie("l", $LANGUAGE);
+} else if (!array_key_exists($ci0->getCookie("l"), $lang_path)) {
+    $ci0->setCookie("l", $LANGUAGE);
+} else {
+    $LANGUAGE = $ci0->getCookie("l");
 }
 require $lang_path[$LANGUAGE];
 
@@ -25,7 +39,6 @@ switch ($_GET["p"]) {
         require "view/pages/main/home.php";
         break;
     case "signout":
-        require "model/libraries/cookie_interface.php";
         $ci0->destroy();
         header("Location: ?p=login");
         break;

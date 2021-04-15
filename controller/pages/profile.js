@@ -122,6 +122,7 @@
 
                         let select = form.preferences_info.select;
                         document.cookie = "l=" + select.language.element.value;
+                        document.cookie = "c=" + select.coin.element.value;
                         new AlertMe(l_arr.global.mdal_suc_t_0, l_arr.global.mdal_suc_b_6);
                         window.setTimeout(() => {
                             location = location;
@@ -215,8 +216,13 @@
     }
 
     for (let opt of form.preferences_info.select.language.element.options) {
-        if (opt.text == userLanguage) {
+        if (opt.value == userLanguage) {
             form.preferences_info.select.language.element.selectedIndex = opt.index;
+        }
+    }
+    for (let opt of form.preferences_info.select.coin.element.options) {
+        if (opt.value == userCurrency) {
+            form.preferences_info.select.coin.element.selectedIndex = opt.index;
         }
     }
 

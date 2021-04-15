@@ -1,7 +1,7 @@
 <?php
 require "../users/root.php";
 
-if ($ci0->getCookie("securitykey") !== $ci0->getSecuritykey()) {
+if ($ci0->getSession("securitykey") !== $ci0->getSecuritykey()) {
     $mi0->abort(-1, NULL);
 } else if (!isset($_POST["nombre"])
     || !isset($_POST["apellido"])
@@ -63,7 +63,7 @@ if ($mi0->result === TRUE) {
     );
     if ($mi0->result->num_rows > 0) {
         $user_data = $mi0->result->fetch_all(MYSQLI_ASSOC)[0];
-        $ci0->setCookie("user_data", array(
+        $ci0->setSession("user_data", array(
             "pk_usuario" => $last_user_id,
             "nombre" => $user_data["nombre"]
         ));

@@ -1,17 +1,26 @@
 <?php
-class CookieInterface {
+class CSInterface {
     private $securitykey = "YFD}.L*6Qfev";
     public function getSecuritykey() {
         return $this->securitykey;
     }
     public function setCookie ($cookieName, $cookieValue) {
-        $_SESSION[$cookieName] = $cookieValue;
+        setcookie($cookieName, $cookieValue, time() + 86400, "/");
     }
     public function existCookie ($cookieName) {
-        return ($_SESSION[$cookieName] === NULL) ? FALSE : TRUE;
+        return ($_COOKIE[$cookieName] === NULL) ? FALSE : TRUE;
     }
     public function getCookie ($cookieName) {
-        return $_SESSION[$cookieName];
+        return $_COOKIE[$cookieName];
+    }
+    public function setSession ($sessionName, $sessionValue) {
+        $_SESSION[$sessionName] = $sessionValue;
+    }
+    public function existSession ($sessionName) {
+        return ($_SESSION[$sessionName] === NULL) ? FALSE : TRUE;
+    }
+    public function getSession ($sessionName) {
+        return $_SESSION[$sessionName];
     }
     public function destroy () {
         if (ini_get('session.use_cookies')) {
@@ -34,4 +43,4 @@ class CookieInterface {
     }
 }
 
-$ci0 = new CookieInterface();
+$ci0 = new CSInterface();

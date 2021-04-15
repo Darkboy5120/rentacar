@@ -26,7 +26,7 @@ $mi0->query("
 if ($mi0->result->num_rows > 0) {
     $user_data = $mi0->result->fetch_all(MYSQLI_ASSOC)[0];
     if ($mi0->checkHash($contraseña, $user_data["contraseña"])) {
-        $ci0->setCookie("user_data", array(
+        $ci0->setSession("user_data", array(
             "pk_usuario" => $user_data["pk_usuario"],
             "nombre" => $user_data["nombre"]
         ));

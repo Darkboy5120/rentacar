@@ -6,7 +6,7 @@ $user_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
 $is_mobile = is_numeric(strpos($user_agent, "mobile"));
 
 if (!$is_mobile && !isset($_POST["securitykey"])
-    && $ci0->getCookie("securitykey") !== $ci0->getSecuritykey()
+    && $ci0->getSession("securitykey") !== $ci0->getSecuritykey()
     ) {
     $mi0->abort(-1, NULL);
 } else if (!isset($_POST["car"])) {
@@ -15,7 +15,7 @@ if (!$is_mobile && !isset($_POST["securitykey"])
 
 $mi0->begin();
 
-$user_data = $ci0->getCookie("user_data");
+$user_data = $ci0->getSession("user_data");
 $car_id = $_POST["car"];
 
 $mi0->query("

@@ -2,7 +2,7 @@
 require "../users/root.php";
 require "../utils/token_validation.php";
 
-if ($ci0->getCookie("securitykey") !== $ci0->getSecuritykey()
+if ($ci0->getSession("securitykey") !== $ci0->getSecuritykey()
     ) {
     $mi0->abort(-1, NULL);
 } else if (!isset($_POST["firstname"])
@@ -11,7 +11,7 @@ if ($ci0->getCookie("securitykey") !== $ci0->getSecuritykey()
     $mi0->abort(-2, NULL);
 }
 
-$admin_id = $ci0->getCookie("user_data")["pk_usuario"];
+$admin_id = $ci0->getSession("user_data")["pk_usuario"];
 $nombre = $_POST["firstname"];
 $apellido = $_POST["lastname"];
 

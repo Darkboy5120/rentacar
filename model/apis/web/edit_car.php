@@ -38,14 +38,14 @@ function dataIsAllRight () {
     return TRUE;
 }
 
-if ($ci0->getCookie("securitykey") !== $ci0->getSecuritykey()
+if ($ci0->getSession("securitykey") !== $ci0->getSecuritykey()
     ) {
     $mi0->abort(-1, NULL);
 } else if (!dataIsAllRight()) {
     $mi0->abort(-2, NULL);
 }
 
-$user_data = $ci0->getCookie("user_data");
+$user_data = $ci0->getSession("user_data");
 $car_id = $_POST["car"];
 $modelo = $_POST["modelo"];
 $precio = $_POST["precio"];
