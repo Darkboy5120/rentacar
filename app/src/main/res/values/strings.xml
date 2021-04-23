@@ -11,6 +11,41 @@
     <string name="invite_to_signUp"><b><u>¿Aun no tienes cuenta?, Registrate</u></b></string>
     <string name="next">Siguiente</string>
 
+    <string-array name="planets_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+    <string name="label_et_inviRegis">Te invitamos a registrarte para que el proceso de renta sea más rápido.</string>
+
+    <string name="label_et_car">Auto</string>
+    <string name="label_et_ent">Entrega</string>
+    <string name="label_et_dev">Devolución</string>
+    <string name="label_et_time">Hora</string>
+    <string name="label_et_type">Tipo de auto</string>
+    <string name="label_et_search">Buscar</string>
+
+    <string name="label_et_name">Nombre</string>
+    <string name="label_et_lastname">Apellido</string>
+    <string name="label_et_flastname">Apellido paterno</string>
+    <string name="label_et_mlastname">Apellido materno</string>
+    <string name="label_et_bank">Banco</string>
+    <string name="label_et_card">Número de tarjeta</string>
+    <string name="label_et_durability">Vigencia</string>
+    <string name="label_et_birthday">Fecha de nacimiento</string>
     <string name="label_et_email">Correo</string>
     <string name="label_et_pass">Contraseña</string>
+    <string name="label_et_pass2">Confirmar contraseña</string>
+    <string name="label_et_phone">Teléfono</string>
+    <string name="label_et_cp">C.P.</string>
+    <string name="label_et_state">Estado</string>
+    <string name="label_et_city">Municipio</string>
+    <string name="label_et_address">Dirección</string>
+    <string name="label_et_front">Parte delantera</string>
+    <string name="label_et_back">Parte trasera</string>
 </resources>
