@@ -21,5 +21,25 @@
         android:name="com.example.rentacar.fragments.Register"
         android:label="@string/fragment_register_label"
         tools:layout="@layout/fragment_register_step2">
+
+        <action
+            android:id="@+id/action_FragmentRegisterStep2_to_FragmentRegisterStep3"
+            app:destination="@id/FragmentRegisterStep3" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/FragmentRegisterStep3"
+        android:name="com.example.rentacar.fragments.Register"
+        android:label="@string/fragment_register_label"
+        tools:layout="@layout/fragment_register_step3">
+        <action
+            android:id="@+id/action_FragmentRegisterStep3_to_FragmentRegisterStep4"
+            app:destination="@id/FragmentRegisterStep4" />
+    </fragment>
+    <fragment
+        android:id="@+id/FragmentRegisterStep4"
+        android:name="com.example.rentacar.fragments.Register"
+        android:label="@string/fragment_register_label"
+        tools:layout="@layout/fragment_register_step4">
     </fragment>
 </navigation>
