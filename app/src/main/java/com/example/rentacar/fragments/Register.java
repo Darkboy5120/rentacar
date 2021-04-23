@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -45,5 +47,9 @@ public class Register extends Fragment implements View.OnClickListener {
     public void signIn() {
         NavHostFragment.findNavController(com.example.rentacar.fragments.Register.this)
                 .navigate(R.id.action_FragmentRegisterStep1_to_FragmentRegisterStep2);
+        NavHostFragment.findNavController(com.example.rentacar.fragments.Register.this)
+                .navigate(R.id.action_FragmentRegisterStep2_to_FragmentRegisterStep3);
+        NavHostFragment.findNavController(com.example.rentacar.fragments.Register.this)
+                .navigate(R.id.action_FragmentRegisterStep3_to_FragmentRegisterStep4);
     }
 }
