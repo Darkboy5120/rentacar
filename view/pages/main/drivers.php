@@ -95,15 +95,6 @@ $user_name = $ci0->getSession("user_data")["nombre"];
                         <span>03/16/2021</span>
                     </div>
                 </section>
-                <section class="pagination">
-                    <button class="button"><i class="fas fa-arrow-left"></i></button>
-                    <button class="button">1</button>
-                    <button class="button">2</button>
-                    <button class="button">3</button>
-                    <button class="button">4</button>
-                    <button class="button">5</button>
-                    <button class="button"><i class="fas fa-arrow-right"></i></button>
-                </section>
                 <?php include "view/components/footer.php";?>
             </div>
         </main>
