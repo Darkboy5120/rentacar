@@ -1,5 +1,5 @@
 (function () {
-    const pageName = l_arr.sales.page_name;
+    const pageName = l_arr.drivers.page_name;
     document.querySelector("title").textContent = l_arr.global.app_name
         + l_arr.global.title_separator + pageName;
     document.querySelectorAll("[data-location]").forEach(element => {
