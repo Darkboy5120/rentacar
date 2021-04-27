@@ -1,3 +1,11 @@
+<?php
+if (!$ci0->existSession("user_data")) {
+    header('Location: ?p=login');
+    exit;
+}
+$ci0->setSession("securitykey", $ci0->getSecurityKey());
+$user_name = $ci0->getSession("user_data")["nombre"];
+?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -16,7 +24,7 @@
     </head>
     <body>
         <main>
-            <?php include "view/components/navbar.html";?>
+            <?php include "view/components/navbar.php";?>
             <nav class="main-actions">
                 <ul>
                     <li id="newDriver"><i class="fas fa-user-plus"></i><span>Agregar conductor</span></li>
@@ -96,13 +104,20 @@
                     <button class="button">5</button>
                     <button class="button"><i class="fas fa-arrow-right"></i></button>
                 </section>
-                <?php include "view/components/footer.html";?>
+                <?php include "view/components/footer.php";?>
             </div>
         </main>
 
+        <?php include "view/components/loading-screen.php";?>
         <?php include "view/pages/modals/drivers.html";?>
 
     </body>
+    <script>
+        const userName = "<?php echo $user_name;?>";
+        const userLanguage = "<?php echo $ci0->getCookie("l");?>";
+        l_arr = <?php echo json_encode($l_arr);?>;
+    </script>
     <script src="controller/components/modal.js"></script>
+    <script src="controller/components/loading-screen.js"></script>
     <script src="controller/pages/drivers.js"></script>
 </html>

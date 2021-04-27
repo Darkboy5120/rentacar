@@ -171,5 +171,11 @@ $l_arr = array(
         "button_savebussinessinfo" => "Guardar",
         "button_savepersonalinfo" => "Guardar"
 
+    ),
+    "drivers" => array(
+        "page_name" => "Conductores"
+    ),
+    "sales" => array(
+        "page_name" => "Ventas"
     )
 );

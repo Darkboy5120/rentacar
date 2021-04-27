@@ -1,24 +1,22 @@
-const pageName = "Ventas";
-document.querySelector("title").textContent = "Rentacar | " + pageName;
-document.querySelectorAll("[data-location]").forEach(element => {
-    element.textContent = pageName;
-});
-var slideRight = {
-delay: 500,
-distance: '100%',
-origin: 'left',
-opacity: null,
-afterReveal: el => {
-    document.querySelector(".fixed-location").classList.add("slide-left-fl");
-}
-};
+(function () {
+    const pageName = l_arr.sales.page_name;
+        document.querySelector("title").textContent = l_arr.global.app_name
+            + l_arr.global.title_separator + pageName;
+        document.querySelectorAll("[data-location]").forEach(element => {
+            element.textContent = pageName;
+        });
+        document.querySelectorAll("[data-username]").forEach(e => {
+            e.textContent = userName;
+        });
+        document.querySelector("#n_dd_profile_tab").classList.add("dropdown-active");
+        
+        hideLoadingScreen();
 
-ScrollReveal().reveal('.fixed-location', slideRight);
+    const modalSaleInfo = new Modal("#saleInfo");
 
-const modalSaleInfo = new Modal("#saleInfo");
-
-document.querySelectorAll(".card-sale").forEach(element => {
-    element.addEventListener("click", event => {
-        modalSaleInfo.show();
+    document.querySelectorAll(".card-sale").forEach(element => {
+        element.addEventListener("click", event => {
+            modalSaleInfo.show();
+        });
     });
-});
+})();
