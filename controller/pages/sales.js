@@ -8,7 +8,7 @@
         document.querySelectorAll("[data-username]").forEach(e => {
             e.textContent = userName;
         });
-        document.querySelector("#n_dd_profile_tab").classList.add("dropdown-active");
+        document.querySelector("#n_dd_sales_tab").classList.add("dropdown-active");
         
         hideLoadingScreen();
 
