@@ -10,6 +10,10 @@ import androidx.fragment.app.FragmentManager;
 import com.google.android.material.snackbar.Snackbar;
 
 public class Global {
+    public static String domain_name = "https://localhost:8080/foo.php";
+    public static String apis_path = domain_name + "apis";
+    public static String generic_error = "That didn't work!";
+
     public static void clearBackStack(FragmentManager fm) {
         fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
     }

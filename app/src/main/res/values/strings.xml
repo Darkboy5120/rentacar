@@ -4,6 +4,7 @@
     <!-- Strings used for fragments for navigation -->
     <string name="fragment_login_label">Inicio de sesión</string>
     <string name="fragment_register_label">Registro</string>
+    <string name="fragment_home_label">Inicio</string>
 
     <string name="signUp">Sign up</string>
     <string name="signIn">Entrar</string>
@@ -24,9 +25,9 @@
     <string name="label_et_inviRegis">Te invitamos a registrarte para que el proceso de renta sea más rápido.</string>
 
     <string name="label_et_car">Auto</string>
-    <string name="label_et_ent">Entrega</string>
-    <string name="label_et_dev">Devolución</string>
-    <string name="label_et_time">Hora</string>
+    <string name="label_dp_startdate">Entrega</string>
+    <string name="label_dp_enddate">Devolución</string>
+    <string name="label_tp_time">Hora</string>
     <string name="label_et_type">Tipo de auto</string>
     <string name="label_et_search">Buscar</string>
 

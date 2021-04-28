@@ -69,7 +69,7 @@ public class Login extends Fragment implements View.OnClickListener {
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(requireContext());
-        String url ="https://chilaquilesenterprise.com/cap/apis";
+        String url = Global.apis_path;
 
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -83,7 +83,7 @@ public class Login extends Fragment implements View.OnClickListener {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Global.printMessage(requireView(), "That didn't work!");
+                        Global.printMessage(requireView(), Global.generic_error);
                         ll_spn_global.setVisibility(View.GONE);
                     }
         });
