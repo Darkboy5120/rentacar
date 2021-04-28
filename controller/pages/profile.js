@@ -39,6 +39,10 @@
                         }).then(response => {
                             switch (response.code) {
                                 case 0:
+                                    userName = input.firstname.element.value;
+                                    document.querySelectorAll("[data-username]").forEach(e => {
+                                        e.textContent = userName;
+                                    });
                                     new AlertMe(l_arr.global.mdal_suc_t_0, l_arr.global.mdal_suc_b_3);
                                     break;
                                 default:

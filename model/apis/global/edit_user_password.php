@@ -44,7 +44,7 @@ $mi0->query("
     SET
         contraseña = ?
     WHERE pk_usuario = ?",
-    $pass_new, $user_id    
+    $mi0->hashString($pass_new), $user_id    
 );
 if ($mi0->result === TRUE) {
     $mi0->end("commit", 0, NULL);

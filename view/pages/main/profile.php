@@ -150,7 +150,7 @@ $user_name = $ci0->getSession("user_data")["nombre"];
     </body>
 
     <script>
-        const userName = "<?php echo $user_name;?>";
+        var userName = "<?php echo $user_name;?>";
         const userLanguage = "<?php echo $ci0->getCookie("l");?>";
         const userCurrency = "<?php echo $ci0->getCookie("c");?>";
         l_arr = <?php echo json_encode($l_arr);?>;

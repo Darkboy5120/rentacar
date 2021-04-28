@@ -26,6 +26,9 @@ $mi0->query("
     $nombre, $apellido, $admin_id    
 );
 if ($mi0->result === TRUE) {
+    $new_user_data = $ci0->getSession("user_data");
+    $new_user_data["nombre"] = $nombre;
+    $ci0->setSession("user_data", $new_user_data);
     $mi0->end("commit", 0, NULL);
 } else {
     $mi0->end("rollback", -3, NULL);

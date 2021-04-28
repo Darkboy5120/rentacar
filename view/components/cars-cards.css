@@ -25,7 +25,8 @@
     position: absolute;
     top: 0;
     right: 0;
-    color: var(--textColorAlt);
+    color: var(--textColor);
+    text-shadow: 2px 2px var(--textColorAlt);
     font-size: 1.2rem;
     cursor: pointer;
     padding: 5%;
@@ -33,7 +34,7 @@
 .card-car > i:hover {
     background-image: linear-gradient(45deg, var(--secondaryColorAlt), var(--secondaryColor),
     #6456e2, var(--primaryColor), var(--primaryColorAlt));
-    color: var(--textColor);
+    text-shadow: none;
 }
 .card-car > h2 {
     position: absolute;

@@ -274,7 +274,7 @@
                         }
                         let color_opt = form.car_info.select.color.element.options;
                         for (let i = 0; i < color_opt.length; i++) {
-                            if (color_opt[i].value == car["pk_auto_color_pintura"]) {
+                            if (color_opt[i].value == car["fk_auto_color_pintura"]) {
                                 form.car_info.select.color.element.selectedIndex = i;
                                 break;
                             }
