@@ -112,13 +112,19 @@
             },
             validation: () => {
                 let input = form.car_info.input;
+                let first_invalid_input = null;
                 for (const name in input) {
                     if (!input[name].isDone()) {
-                        input[name].focus();
-                        return false;
+                        if (!first_invalid_input) {
+                            first_invalid_input = input[name];
+                        }
+                        input[name].validate();
                     }
                 }
-                return true;
+                if (first_invalid_input) {
+                    first_invalid_input.focus();
+                }
+                return (!first_invalid_input) ? true : false;
             }
         }
     };

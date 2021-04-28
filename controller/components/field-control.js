@@ -85,7 +85,7 @@ const FieldControl = function (inputSelector, options) {
         });
     }
 
-    validate();
+    //validate();
     
     return {
         isDone : function () {

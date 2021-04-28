@@ -180,7 +180,7 @@ const FileControl = function (inputSelector, options) {
     }
     images.hide();
     button.edit.hide();
-    let r = itsAllRight();
+    //let r = itsAllRight();
     if (!input.element.classList.contains("hidden")) {
         input.element.classList.add("hidden");
     }
@@ -214,6 +214,7 @@ const FileControl = function (inputSelector, options) {
         isDone : function () {
             return (itsAllRight()) ? true : false;
         },
+        validate : itsAllRight,
         printLog : log.print,
         val: () => {
             return files;

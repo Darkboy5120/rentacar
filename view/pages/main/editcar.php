@@ -176,7 +176,6 @@ if ($mi0->result->num_rows === 0) {
                                 <label for="input-color"><?=$l_arr["newcar"]["txt_35"]?></label>
                                 <div class="input-field">
                                     <select class="input-secondary" id="input-color">
-                                        <option value="0">Rojo</option>
                                     </select>
                                 </div>
                             </div>

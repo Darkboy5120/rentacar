@@ -42,17 +42,23 @@
             },
             validation: () => {
                 let input = form.personal_info.input;
+                let first_invalid_input = null;
                 for (const name in input) {
                     if (!input[name].isDone()) {
-                        input[name].focus();
-                        return false;
+                        if (!first_invalid_input) {
+                            first_invalid_input = input[name];
+                        }
+                        input[name].validate();
                     }
                 }
                 if (input.pass.element.value != input.confirm_pass.element.value) {
                     input.pass.printLog(l_arr.global.log_9, false);
-                    return false;
+                    first_invalid_input = input.pass;
                 }
-                return true;
+                if (first_invalid_input) {
+                    first_invalid_input.focus();
+                }
+                return (!first_invalid_input) ? true : false;
             }
         },
         bussiness_info: {
@@ -126,13 +132,19 @@
             validation: () => {
                 if (!form.personal_info.validation()) return false;
                 let input = form.bussiness_info.input;
+                let first_invalid_input = null;
                 for (const name in input) {
                     if (!input[name].isDone()) {
-                        input[name].focus();
-                        return false;
+                        if (!first_invalid_input) {
+                            first_invalid_input = input[name];
+                        }
+                        input[name].validate();
                     }
                 }
-                return true;
+                if (first_invalid_input) {
+                    first_invalid_input.focus();
+                }
+                return (!first_invalid_input) ? true : false;
             }
         }
     }
