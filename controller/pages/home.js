@@ -112,13 +112,13 @@
                             <article class="card-car">
                                 <h2>${c_model_name}</h2>
                                 <img src="${c_image_path}" loading="lazy" alt="imagen">
-                                <i class="fas fa-ellipsis-v"></i>
+                                <button type="button"><i class="fas fa-ellipsis-v"></i></button>
                             </article>
                         `;
                         let car_node = document.createElement("article");
                         car_node.innerHTML = car_html;
-
-                        car_node.querySelector("i").addEventListener("click", e => {
+                        
+                        car_node.querySelector("button").addEventListener("click", e => {
                             modal.car_options.button.edit.onclick = () => {
                                 location = "?p=editcar&car=" + c_layout_id;
                             }

@@ -20,7 +20,7 @@
     margin-bottom: 1rem;
 }
 .input-layout > label,
-.switch-layout > label {
+.switch-field > label {
     color: var(--textColor);
     font-weight: bold;
     transition: all .3s ease;
@@ -35,14 +35,12 @@
     background-color: var(--inputPrimaryBgColor);
     border-radius: 5px;
     border: none;
-    outline: none;
     box-shadow: 0 0 16px 2px var(--inputPrimaryShadowColor);
     padding: .5rem 3rem .5rem 1rem;
     color: var(--textColor);
 }
 .input-secondary {
     border-radius: 5px;
-    outline: none;
     padding: .5rem .7rem .5rem .7rem;
     background-color: var(--inputSecondaryBgColor);
     border: 1px solid var(--inputSecondaryBorderColor);
@@ -136,13 +134,16 @@ input:focus {
     position: relative;
     margin-bottom: 1rem;
 }
-.switch-layout > label {
+.switch-field > label {
     cursor: pointer;
     user-select: none;
 }
 .switch-field {
     display: flex;
+    align-items: center;
     margin-bottom: 0 !important;
+    background-color: transparent;
+    border: none;
 }
 .switch-field > .switch-off,
 .switch-field > .switch-on {
@@ -241,6 +242,9 @@ input:focus {
     padding: 0 .5rem 0 .5rem;
     display: flex;
     align-items: center;
+    background-color: transparent;
+    border: none;
+    color: var(--textColor);
 }
 .file-container > .file-actions > *:hover {
     background-color: var(--inputFileActionsHover);

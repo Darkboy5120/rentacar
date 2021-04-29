@@ -27,11 +27,11 @@ $user_name = $ci0->getSession("user_data")["nombre"];
             <?php include "view/components/navbar.php";?>
             <nav class="main-actions">
                 <ul>
-                    <li id="newDriver"><i class="fas fa-user-plus"></i><span>Agregar conductor</span></li>
-                    <li id="searchAction" class="main-action-search">
+                    <button type="button" id="newDriver"><i class="fas fa-user-plus"></i><span>Agregar conductor</span></button>
+                    <button type="button" id="searchAction" class="main-action-search">
                         <i class="fas fa-search"></i><span>Buscar</span>
                         <input id="search" type="text" placeholder="Búscar conductor" autocomplete="off">
-                    </li>
+                    </button>
                 </ul>
             </nav>
             <div class="fixed-location">
@@ -44,56 +44,56 @@ $user_name = $ci0->getSession("user_data")["nombre"];
                         <span>Nombre</span>
                         <span>Apellido</span>
                     </div>
-                    <div class="card-sale">
+                    <button class="card-sale">
                         <span>14587</span>
                         <span>$2000</span>
                         <span>03/16/2021</span>
-                    </div>
-                    <div class="card-sale">
+                    </button>
+                    <button class="card-sale">
                         <span>14587</span>
                         <span>$2000</span>
                         <span>03/16/2021</span>
-                    </div>
-                    <div class="card-sale">
+                    </button>
+                    <button class="card-sale">
                         <span>14587</span>
                         <span>$2000</span>
                         <span>03/16/2021</span>
-                    </div>
-                    <div class="card-sale">
+                    </button>
+                    <button class="card-sale">
                         <span>14587</span>
                         <span>$2000</span>
                         <span>03/16/2021</span>
-                    </div>
-                    <div class="card-sale">
+                    </button>
+                    <button class="card-sale">
                         <span>14587</span>
                         <span>$2000</span>
                         <span>03/16/2021</span>
-                    </div>
-                    <div class="card-sale">
+                    </button>
+                    <button class="card-sale">
                         <span>14587</span>
                         <span>$2000</span>
                         <span>03/16/2021</span>
-                    </div>
-                    <div class="card-sale">
+                    </button>
+                    <button class="card-sale">
                         <span>14587</span>
                         <span>$2000</span>
                         <span>03/16/2021</span>
-                    </div>
-                    <div class="card-sale">
+                    </button>
+                    <button class="card-sale">
                         <span>14587</span>
                         <span>$2000</span>
                         <span>03/16/2021</span>
-                    </div>
-                    <div class="card-sale">
+                    </button>
+                    <button class="card-sale">
                         <span>14587</span>
                         <span>$2000</span>
                         <span>03/16/2021</span>
-                    </div>
-                    <div class="card-sale">
+                    </button>
+                    <button class="card-sale">
                         <span>14587</span>
                         <span>$2000</span>
                         <span>03/16/2021</span>
-                    </div>
+                    </button>
                 </section>
                 <?php include "view/components/footer.php";?>
             </div>

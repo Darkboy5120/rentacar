@@ -4,19 +4,21 @@ const Modal = function (select) {
     let state = false;
     let show = function () {
         element.classList.remove("hidden");
+        document.activeElement.blur();
+        element.querySelector(".modal-body > button").focus();
         state = true;
     }
     let hide = function () {
         element.classList.add("hidden");
         state = false;
     }
-    let closeButton = element.querySelector(".modal-header > i");
+    let closeButton = element.querySelector(".modal-header > button");
     closeButton.setAttribute("title", l_arr.global.title_0);
     closeButton.addEventListener("click", e => {
         hide();
     });
     window.addEventListener("keyup", (e) => {
-        if (state) {
+        if (state && e.which == 27) {
             hide();
         }
     });

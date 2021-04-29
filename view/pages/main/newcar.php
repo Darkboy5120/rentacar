@@ -166,25 +166,25 @@ $user_name = $ci0->getSession("user_data")["nombre"];
                                 </div>
                             </div>
                             <div class="switch-layout">
-                                <div class="switch-field" id="switch-aircond">
+                                <button type="button" class="switch-field" id="switch-aircond">
                                     <i class="switch-on fas fa-toggle-on"></i>
                                     <i class="switch-off fas fa-toggle-off"></i>
-                                </div>
-                                <label for="switch-aircond"><?=$l_arr["newcar"]["txt_36"]?></label>
+                                    <label for="switch-aircond"><?=$l_arr["newcar"]["txt_36"]?></label>
+                                </button>
                             </div>
                             <div class="switch-layout">
-                                <div class="switch-field" id="switch-gps">
+                                <button type="button" class="switch-field" id="switch-gps">
                                     <i class="switch-on fas fa-toggle-on"></i>
                                     <i class="switch-off fas fa-toggle-off"></i>
-                                </div>
-                                <label for="switch-gps"><?=$l_arr["newcar"]["txt_37"]?></label>
+                                    <label for="switch-gps"><?=$l_arr["newcar"]["txt_37"]?></label>
+                                </button>
                             </div>
                             <div class="switch-layout">
-                                <div class="switch-field" id="switch-darkglass">
+                                <button type="button" class="switch-field" id="switch-darkglass">
                                     <i class="switch-on fas fa-toggle-on"></i>
                                     <i class="switch-off fas fa-toggle-off"></i>
-                                </div>
-                                <label for="switch-darkglass"><?=$l_arr["newcar"]["txt_38"]?></label>
+                                    <label for="switch-darkglass"><?=$l_arr["newcar"]["txt_38"]?></label>
+                                </button>
                             </div>
                         </div>
                         <div class="car-info-section">
@@ -200,18 +200,18 @@ $user_name = $ci0->getSession("user_data")["nombre"];
                                 </div>
                             </div>
                             <div class="switch-layout">
-                                <div class="switch-field" id="switch-replacement">
+                                <button type="button" class="switch-field" id="switch-replacement">
                                     <i class="switch-on fas fa-toggle-on"></i>
                                     <i class="switch-off fas fa-toggle-off"></i>
-                                </div>
-                                <label for="switch-replacement"><?=$l_arr["newcar"]["txt_44"]?></label>
+                                    <label for="switch-replacement"><?=$l_arr["newcar"]["txt_44"]?></label>
+                                </button>
                             </div>
                             <div class="switch-layout">
-                                <div class="switch-field" id="switch-toolbox">
+                                <button type="button" class="switch-field" id="switch-toolbox">
                                     <i class="switch-on fas fa-toggle-on"></i>
                                     <i class="switch-off fas fa-toggle-off"></i>
-                                </div>
-                                <label for="switch-toolbox"><?=$l_arr["newcar"]["txt_45"]?></label>
+                                    <label for="switch-toolbox"><?=$l_arr["newcar"]["txt_45"]?></label>
+                                </button>
                             </div>
                         </div>
                         <div class="car-info-section">
@@ -225,10 +225,10 @@ $user_name = $ci0->getSession("user_data")["nombre"];
                                         </div>
                                         <span class="file-empty"><?=$l_arr["newcar"]["txt_48"]?></span>
                                         <div class="file-actions">
-                                            <span class="file-add"><i class="fas fa-plus"></i> 
-                                                <?=$l_arr["newcar"]["txt_49"]?></span>
-                                            <span class="file-edit"><i class="fas fa-edit"></i> 
-                                                <?=$l_arr["newcar"]["txt_50"]?></span>
+                                            <button type="button"class="file-add"><i class="fas fa-plus"></i> 
+                                                <?=$l_arr["newcar"]["txt_49"]?></button>
+                                            <button type="button" class="file-edit"><i class="fas fa-edit"></i> 
+                                                <?=$l_arr["newcar"]["txt_50"]?></button>
                                         </div>
                                     </div>
                                 </div>
@@ -243,10 +243,10 @@ $user_name = $ci0->getSession("user_data")["nombre"];
                                         </div>
                                         <span class="file-empty"><?=$l_arr["newcar"]["txt_48"]?></span>
                                         <div class="file-actions">
-                                            <span class="file-add"><i class="fas fa-plus"></i> 
-                                                <?=$l_arr["newcar"]["txt_49"]?></span>
-                                            <span class="file-edit"><i class="fas fa-edit"></i> 
-                                                <?=$l_arr["newcar"]["txt_50"]?></span>
+                                            <button type="button" class="file-add"><i class="fas fa-plus"></i> 
+                                                <?=$l_arr["newcar"]["txt_49"]?></button>
+                                            <button type="button" class="file-edit"><i class="fas fa-edit"></i> 
+                                                <?=$l_arr["newcar"]["txt_50"]?></button>
                                         </div>
                                     </div>
                                 </div>

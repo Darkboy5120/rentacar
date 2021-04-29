@@ -35,13 +35,15 @@
 .navbar-right {
     justify-content: flex-end;
 }
+.navbar-left ul > li {
+    padding: 0 1rem 0 1rem;
+}
 .navbar ul > li {
     cursor: pointer;
     transition: background .3s ease;
     height: 100%;
     display: flex;
     align-items: center;
-    padding: 0 1rem 0 1rem;
     position: relative;
     margin-bottom: .2rem;
 }
@@ -55,18 +57,19 @@
 .main-actions ul > li i + span {
     padding-left: .5rem;
 }
-.navbar > div > ul > li:not(.navbar-location):not(.dropdown):hover {
+.navbar > div > ul > li:not(.navbar-location):hover,
+.navbar > div > ul > li:not(.navbar-location):focus-within {
     background-color: rgba(70, 70, 70, 1) !important;
     border-bottom: 5px solid gold;
 }
-.navbar ul > li > span,
-.navbar ul > li > a {
+.navbar ul span,
+.navbar ul a {
+    display: flex;
     font-size: 1rem;
     color: var(--textColor);
     font-family: 'Merriweather Sans', sans-serif;
-    padding: .5rem 0 .5rem 0;
     text-decoration: none;
-    width: 100%;
+    cursor: pointer;
 }
 .navbar ul > li:not(.navbar-title):not(.navbar-location) > span {
     display: none;
@@ -88,7 +91,7 @@
 .main-actions span {
     white-space: nowrap;
 }
-.main-actions > ul > li:hover {
+.main-actions > ul > button:hover {
     background-color: var(--textColor);
     color: var(--textColorAlt);
 }
@@ -100,7 +103,8 @@
     margin: 0;
     padding: 0 6% 0 6%;
 }
-.main-actions > ul > li {
+.main-actions > ul > button {
+    font-size: 1rem;
     cursor: pointer;
     transition: background .3s ease;
     height: 100%;
@@ -108,10 +112,16 @@
     align-items: center;
     padding: 0 1rem 0 1rem;
     position: relative;
+    background-color: transparent;
+    border: none;
+    color: var(--textColor);
+}
+.main-actions > ul > button > i {
+    margin-right: .5rem;
 }
 
-.main-actions > ul > li:hover input:focus,
-.main-actions > ul > li:hover input::placeholder {
+.main-actions > ul > button:hover input:focus,
+.main-actions > ul > button:hover input::placeholder {
     color: var(--textColorAlt);
 }
 .main-action-search input {

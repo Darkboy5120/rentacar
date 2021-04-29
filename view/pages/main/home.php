@@ -27,10 +27,10 @@ $user_name = $ci0->getSession("user_data")["nombre"];
             <?php include "view/components/navbar.php";?>
             <nav class="main-actions">
                 <ul>
-                    <li id="action-create-car"><i class="fas fa-plus"></i><span>
-                        <?=$l_arr["home"]["txt_0"]?></span></li>
-                    <li><i class="fas fa-search"></i><span>
-                        <?=$l_arr["home"]["txt_1"]?></span></li>
+                    <button type="button" id="action-create-car"><i class="fas fa-plus"></i><span>
+                        <?=$l_arr["home"]["txt_0"]?></span></button>
+                    <button type="button"><i class="fas fa-search"></i><span>
+                        <?=$l_arr["home"]["txt_1"]?></span></button>
                 </ul>
             </nav>
             <div class="fixed-location">

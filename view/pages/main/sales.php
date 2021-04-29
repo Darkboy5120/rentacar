@@ -39,56 +39,56 @@ $user_name = $ci0->getSession("user_data")["nombre"];
                         <span>Ganancia</span>
                         <span>Fecha</span>
                     </div>
-                    <div class="card-sale">
+                    <button class="card-sale">
                         <span>14587</span>
                         <span>$2000</span>
                         <span>03/16/2021</span>
-                    </div>
-                    <div class="card-sale">
+                    </button>
+                    <button class="card-sale">
                         <span>14587</span>
                         <span>$2000</span>
                         <span>03/16/2021</span>
-                    </div>
-                    <div class="card-sale">
+                    </button>
+                    <button class="card-sale">
                         <span>14587</span>
                         <span>$2000</span>
                         <span>03/16/2021</span>
-                    </div>
-                    <div class="card-sale">
+                    </button>
+                    <button class="card-sale">
                         <span>14587</span>
                         <span>$2000</span>
                         <span>03/16/2021</span>
-                    </div>
-                    <div class="card-sale">
+                    </button>
+                    <button class="card-sale">
                         <span>14587</span>
                         <span>$2000</span>
                         <span>03/16/2021</span>
-                    </div>
-                    <div class="card-sale">
+                    </button>
+                    <button class="card-sale">
                         <span>14587</span>
                         <span>$2000</span>
                         <span>03/16/2021</span>
-                    </div>
-                    <div class="card-sale">
+                    </button>
+                    <button class="card-sale">
                         <span>14587</span>
                         <span>$2000</span>
                         <span>03/16/2021</span>
-                    </div>
-                    <div class="card-sale">
+                    </button>
+                    <button class="card-sale">
                         <span>14587</span>
                         <span>$2000</span>
                         <span>03/16/2021</span>
-                    </div>
-                    <div class="card-sale">
+                    </button>
+                    <button class="card-sale">
                         <span>14587</span>
                         <span>$2000</span>
                         <span>03/16/2021</span>
-                    </div>
-                    <div class="card-sale">
+                    </button>
+                    <button class="card-sale">
                         <span>14587</span>
                         <span>$2000</span>
                         <span>03/16/2021</span>
-                    </div>
+                    </button>
                 </section>
                 <?php include "view/components/footer.php";?>
             </div>
