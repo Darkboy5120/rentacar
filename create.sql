@@ -219,10 +219,4 @@ create table `reporte_devolucion_imagen` (
     foreign key(fk_penalizacion) references penalizacion(pk_penalizacion) on delete cascade
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
 
-INSERT INTO auto_color_pintura (nombre) VALUES ("Azúl");
-INSERT INTO auto_color_pintura (nombre) VALUES ("Rojo");
-INSERT INTO auto_color_pintura (nombre) VALUES ("Verde");
-INSERT INTO auto_color_pintura (nombre) VALUES ("Morado");
-INSERT INTO auto_color_pintura (nombre) VALUES ("Amarillo");
-
 COMMIT;

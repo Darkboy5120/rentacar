@@ -8,7 +8,12 @@ INSERT INTO auto_color_pintura (nombre) VALUES
 ("Azúl"),
 ("Rojo"),
 ("Verde"),
-("Amarillo");
+("Morado"),
+("Amarillo"),
+("Naranja"),
+("Rosa"),
+("Blanco"),
+("Negro");
 
 /* MARCAS DE AUTOS */
 INSERT INTO `auto_marca` (`pk_auto_marca`, `nombre`) VALUES
