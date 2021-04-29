@@ -37,6 +37,9 @@ main > .container {
     display: flex;
     flex-direction: row;
 }
+.cards-sales {
+    flex-grow: 1;
+}
 h1 {
     color: var(--textColor);
 }

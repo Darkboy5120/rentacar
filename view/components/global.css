@@ -2,6 +2,9 @@
 .container, html, body {
     scroll-behavior: smooth;
 }
+.container {
+    min-height: 85vh;
+}
 .button {
     letter-spacing: 2px;
     transition: transform .2s ease;

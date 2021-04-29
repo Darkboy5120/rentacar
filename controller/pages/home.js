@@ -94,6 +94,7 @@
         modal.car_delete_confirm.button.no.onclick();
     }
 
+    let cars_count = 0;
     const load_more_cars = (offset) => {
         let limit = 15;
         new RequestMe().post("model/apis/", {
@@ -103,6 +104,7 @@
         }).then(response => {
             switch (response.code) {
                 case 0:
+                    cars_count += response.data.cars.length;
                     let cars_layout = document.querySelector("#cars-layout");
                     for (let car_layout of response.data.cars) {
                         const c_layout_id = car_layout.pk_auto;
@@ -130,12 +132,16 @@
                                 }).then(response => {
                                     switch (response.code) {
                                         case 0:
+                                            cars_count -= 1;
+                                            if (cars_count == 0) {
+                                                document.querySelector(".cards-empty").classList.remove("hidden");
+                                            }
                                             car_node.remove();
                                             modal.car_delete_confirm.object.hide();
-                                            new AlertMe(l_arr.mdal_suc_t_1, l_arr.mdal_suc_b_0);
+                                            new AlertMe(l_arr.global.mdal_suc_t_1, l_arr.global.mdal_suc_b_0);
                                             break;
                                         default:
-                                            new AlertMe(l_arr.mdal_err_t_0, l_arr.mdal_err_b_1);
+                                            new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_1);
                                     }
                                 });
                             }
@@ -168,7 +174,7 @@
                     hideLoadingScreen();
                     break;
                 default:
-                    new AlertMe(l_arr.mdal_err_t_0, l_arr.mdal_err_b_2);
+                    new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_2);
             }
         });
     }

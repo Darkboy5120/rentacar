@@ -38,7 +38,7 @@ h1 {
     color: var(--textColor);
 }
 .cards-cars {
-    min-height: 20rem;
+    flex-grow: 1;
 }
 .load-more {
     height: 8rem;
