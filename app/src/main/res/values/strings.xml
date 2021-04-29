@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">RentaCar</string>
     <string name="action_settings">Settings</string>
+    <string name="nav_header_subtitle">Su servicio de renta de autos</string>
+    <string name="nav_header_desc">Barra de navegación</string>
     <!-- Strings used for fragments for navigation -->
     <string name="fragment_login_label">Inicio de sesión</string>
     <string name="fragment_register_label">Registro</string>

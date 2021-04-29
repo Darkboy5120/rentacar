@@ -21,6 +21,16 @@
         <item name="android:textSize">@dimen/text_size_medium</item>
         <item name="android:textColor">@color/black</item>
     </style>
+    <style name="text_medium_bold_black">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="text_medium_bold_lightblack">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">@color/light_black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
     <style name="text_big_black">
         <item name="android:textSize">@dimen/text_size_big</item>
         <item name="android:textColor">@color/black</item>
@@ -28,7 +38,11 @@
     <style name="text_medium_gray">
         <item name="android:textSize">@dimen/text_size_medium</item>
         <item name="android:textColor">@color/gray</item>
-        <item name="android:textStyle"></item>
+    </style>
+    <style name="text_medium_bold_gray">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textStyle">bold</item>
     </style>
     <style name="text_big_lightGray">
         <item name="android:textSize">@dimen/text_size_big</item>

@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingTop="@dimen/layout_pt"
-            android:paddingHorizontal="@dimen/layout_ph"
+            android:paddingHorizontal="@dimen/layout_ph_small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/label_et_inviRegis"
-                    style="@style/text_medium_black"
+                    style="@style/text_medium_bold_lightblack"
                     android:textAlignment="center"
                     android:layout_margin="@dimen/btn_p_small"/>
                 <Button
@@ -105,7 +105,7 @@
                     <LinearLayout
                         android:id="@+id/layout_dp_startdate"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="3"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:layout_marginEnd="5dp"
@@ -139,7 +139,7 @@
                     <LinearLayout
                         android:id="@+id/layout_tp_starttime"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:layout_marginStart="5dp"
@@ -179,7 +179,7 @@
                     <LinearLayout
                         android:id="@+id/layout_dp_enddate"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="3"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:layout_marginEnd="5dp"
@@ -213,7 +213,7 @@
                     <LinearLayout
                         android:id="@+id/layout_tp_endtime"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:layout_marginStart="5dp"
