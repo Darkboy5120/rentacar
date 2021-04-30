@@ -53,18 +53,22 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
                     </div>
                     <div class="input-layout">
                         <label for="input-pass"><?=$l_arr["register"]["txt_4"];?></label>
-                        <div class="input-field">
+                        <div class="input-field both-icons">
                             <input class="input-primary" type="password" id="input-pass"
                                 placeholder="<?=$l_arr["register"]["txt_4"];?>">
+                            <i class="fas fa-eye invisible" data-toggle-pass="0"></i>
+                            <i class="fas fa-eye-slash invisible hidden" data-toggle-pass="1"></i>
                             <i class="fas fa-lock"></i>
                         </div>
                         <span class="input-log hidden"></span>
                     </div>
                     <div class="input-layout">
                         <label for="input-confirm-pass"><?=$l_arr["register"]["txt_5"];?></label>
-                        <div class="input-field">
+                        <div class="input-field both-icons">
                             <input class="input-primary" type="password" id="input-confirm-pass"
                                 placeholder="<?=$l_arr["register"]["txt_5"];?>">
+                            <i class="fas fa-eye invisible" data-toggle-pass="0"></i>
+                            <i class="fas fa-eye-slash invisible hidden" data-toggle-pass="1"></i>
                             <i class="fas fa-lock"></i>
                         </div>
                         <span class="input-log hidden"></span>

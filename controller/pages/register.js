@@ -5,12 +5,12 @@
             element: document.querySelector("#form-personal-info"),
             input: {
                 firstname : new FieldControl("#input-firstname", {
-                regex: "[^A-Za-z]+",
+                regex: "[^A-Za-z]+( [^A-Za-z])*$",
                 min: 1,
                 max: 50
                 }),
                 lastname: new FieldControl("#input-lastname", {
-                    regex: "[^A-Za-z]+",
+                    regex: "[^A-Za-z]+( [^A-Za-z])*$",
                     min: 1,
                     max: 50
                 }),
@@ -156,7 +156,7 @@
             if (button[bname].submit) {
                 let input = form[fname].input;
                 for (const iname in input) {
-                    input[iname].element.addEventListener("keyup", e => {
+                    input[iname].element.addEventListener("keydown", e => {
                         if (e.which == 13) {
                             button[bname].onclick();
                         }

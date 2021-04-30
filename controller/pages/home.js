@@ -71,7 +71,7 @@
             if (button[bname].submit) {
                 let input = form[fname].input;
                 for (const iname in input) {
-                    input[iname].element.addEventListener("keyup", e => {
+                    input[iname].element.addEventListener("keydown", e => {
                         if (e.which == 13) {
                             button[bname].onclick();
                         }

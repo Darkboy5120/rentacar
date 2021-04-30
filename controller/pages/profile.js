@@ -17,10 +17,10 @@
             element: document.querySelector("#personal-info"),
             input: {
                 firstname: new FieldControl("#input-firstname", {
-                    regex : "[^A-Za-z]+", min : 1, max : 25
+                    regex : "[^A-Za-z]+( [^A-Za-z])*$", min : 1, max : 25
                 }),
                 lastname: new FieldControl("#input-lastname", {
-                    regex : "[^A-Za-z]+", min : 1, max : 25
+                    regex : "[^A-Za-z]+( [^A-Za-z])*$", min : 1, max : 25
                 })
             },
             button: {
@@ -167,6 +167,10 @@
                         }).then(response => {
                             switch (response.code) {
                                 case 0:
+                                    form.password_info.input.passold.element.value = "";
+                                    form.password_info.input.pass.element.value = "";
+                                    form.password_info.input.passconfirm.element.value = "";
+                                    document.activeElement.blur();
                                     new AlertMe(l_arr.global.mdal_suc_t_0, l_arr.global.mdal_suc_b_5);
                                     break;
                                 case -3:

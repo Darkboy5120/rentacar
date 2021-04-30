@@ -52,12 +52,18 @@ input:disabled {
 input::placeholder {
     color: var(--textColor);
 }
-.input-field > input + i {
+.input-field > i {
     align-self: center;
     position: absolute;
     right: 1rem;
     font-size: 1rem;
     color: var(--iconColor);
+}
+.input-field > i[data-toggle-pass] {
+    cursor: pointer;
+}
+.input-field.both-icons > i[data-toggle-pass] {
+    right: 2.5rem;
 }
 .input-field > select > option {
     background-color: var(--selectBgColor);

@@ -18,6 +18,7 @@ const FieldControl = function (inputSelector, options) {
     let label = input.parentNode.parentNode.querySelector("label");
     let log = input.parentNode.parentNode.querySelector(".input-log");
     let done = false;
+    let input_type = input.getAttribute("type") || null;
 
     const printLog = function (message, doneValue) {
         done = doneValue;
@@ -41,6 +42,12 @@ const FieldControl = function (inputSelector, options) {
     }
     const validate = function () {
         let valueLength = input.value.length;
+        if (input_type == "password") {
+            let input_icon_visibility = (valueLength > 0) ? "remove" : "add";
+            input.parentNode.querySelectorAll("[data-toggle-pass]").forEach(e => {
+                e.classList[input_icon_visibility]("invisible");
+            });
+        }
         if (valueLength == 0) {
             //hideLog();
             //done = false;
@@ -82,6 +89,23 @@ const FieldControl = function (inputSelector, options) {
                 label.classList.add("opaque");
             }
             input.classList.remove("hide-placeholder");
+        });
+    }
+
+    if (input_type == "password") {
+        input.parentNode.querySelectorAll("[data-toggle-pass]").forEach(e => {
+            e.addEventListener("click", event => {
+                let data_att = event.target.getAttribute("data-toggle-pass");
+                if (data_att == "0") {
+                    event.target.classList.add("hidden");
+                    event.target.nextElementSibling.classList.remove("hidden");
+                    event.target.parentNode.querySelector("input").setAttribute("type", "text");
+                } else {
+                    event.target.classList.add("hidden");
+                    event.target.previousElementSibling.classList.remove("hidden");
+                    event.target.parentNode.querySelector("input").setAttribute("type", "password");
+                }
+            });
         });
     }
 

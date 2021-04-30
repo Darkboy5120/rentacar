@@ -42,6 +42,9 @@
 .opaque {
     opacity: 0;
 }
+.invisible {
+    visibility: hidden;
+}
 .make-visible {
     display: block !important;
     opacity: 1 !important;
