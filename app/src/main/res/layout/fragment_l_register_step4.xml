@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".fragments.L_Register">
+    tools:context=".fragments.L_Register_Step3">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_container"
         android:layout_width="match_parent"
@@ -17,16 +18,72 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
             android:id="@+id/layout_progressInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/layout_et_mb"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
+                    app:drawableTopCompat="@drawable/ic_baseline_radio_button_unchecked"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:gravity="center_horizontal"
+                    android:text="@string/fragment_l_register_step1_label"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
+                    app:drawableTopCompat="@drawable/ic_baseline_radio_button_unchecked"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:gravity="center_horizontal"
+                    android:text="@string/fragment_l_register_step2_label"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
+                    app:drawableTopCompat="@drawable/ic_baseline_radio_button_checked"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:gravity="center_horizontal"
+                    android:text="@string/fragment_l_register_step3_label"/>
+            </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/layout_signUp_form"
             android:layout_width="match_parent"
@@ -35,61 +92,42 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_progressInfo">
+
             <LinearLayout
                 android:id="@+id/layout_signUp_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toTopOf="@id/layout_signUp_btn"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:id="@+id/layout_et_front"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/layout_signUp_et">
-                    <TextView
+                    android:orientation="vertical">
+                    <EditText
                         android:id="@+id/et_front"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:inputType="textNoSuggestions"
-                        android:text="@string/label_et_front"
-                        android:textSize="25dp"
-                        android:drawableRight="@drawable/ic_upload"
-                        style="@style/et_medium_light"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                        android:hint="@string/label_et_front"
+                        android:drawableEnd="@drawable/ic_upload"
+                        style="@style/et_medium_light"/>
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/layout_et_back"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingTop="@dimen/et_p_big"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/layout_signUp_et">
-                    <TextView
+                    android:paddingTop="@dimen/et_p_big">
+                    <EditText
                         android:id="@+id/et_back"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:inputType="textNoSuggestions"
-                        android:text="@string/label_et_back"
-                        android:textSize="25dp"
-                        android:drawableRight="@drawable/ic_upload"
-                        style="@style/et_medium_light"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                        android:hint="@string/label_et_back"
+                        android:drawableEnd="@drawable/ic_upload"
+                        style="@style/et_medium_light"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

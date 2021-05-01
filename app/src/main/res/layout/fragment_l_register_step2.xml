@@ -4,256 +4,268 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.L_Register">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_container"
+    tools:context=".fragments.L_Register_Step2">
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/layout_pt"
-        android:paddingHorizontal="@dimen/layout_ph"
         android:background="@drawable/bg_activity_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:id="@+id/layout_progressInfo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="@dimen/layout_et_mb"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:layout_gravity="center_horizontal"
-                    app:drawableTopCompat="@drawable/ic_baseline_radio_button_unchecked"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="2"
-                    android:gravity="center_horizontal"
-                    android:text="@string/fragment_l_register_step1_label"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:layout_gravity="center_horizontal"
-                    app:drawableTopCompat="@drawable/ic_baseline_radio_button_checked"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="2"
-                    android:gravity="center_horizontal"
-                    android:text="@string/fragment_l_register_step2_label"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:layout_gravity="center_horizontal"
-                    app:drawableTopCompat="@drawable/ic_baseline_radio_button_unchecked"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="2"
-                    android:gravity="center_horizontal"
-                    android:text="@string/fragment_l_register_step3_label"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layout_signUp_form"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingTop="@dimen/layout_pt"
+            android:paddingHorizontal="@dimen/layout_ph"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_progressInfo">
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
-                android:id="@+id/layout_et_email"
+                android:id="@+id/layout_progressInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="@dimen/layout_et_mb">
-                <TextView
-                    android:id="@+id/label_et_email"
-                    android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/layout_et_mb"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="@string/label_et_email"
-                    android:labelFor="@id/et_email"
-                    style="@style/text_big_black"
-                    android:visibility="gone"/>
-                <EditText
-                    android:id="@+id/et_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:inputType="textEmailAddress"
-                    android:hint="@string/label_et_email"
-                    style="@style/et_medium_light"/>
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_horizontal"
+                        app:drawableTopCompat="@drawable/ic_baseline_radio_button_unchecked"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:gravity="center_horizontal"
+                        android:text="@string/fragment_l_register_step1_label"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_horizontal"
+                        app:drawableTopCompat="@drawable/ic_baseline_radio_button_checked"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:gravity="center_horizontal"
+                        android:text="@string/fragment_l_register_step2_label"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_horizontal"
+                        app:drawableTopCompat="@drawable/ic_baseline_radio_button_unchecked"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:gravity="center_horizontal"
+                        android:text="@string/fragment_l_register_step3_label"/>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/layout_phone_cp"
+                android:id="@+id/layout_signUp_form"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_progressInfo">
+
                 <LinearLayout
-                    android:id="@+id/layout_et_phone"
-                    android:layout_width="0dp"
+                    android:id="@+id/layout_et_email"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginBottom="@dimen/layout_et_mb"
-                    android:layout_weight="2">
+                    android:layout_marginBottom="@dimen/layout_et_mb">
                     <TextView
-                        android:id="@+id/label_et_phone"
+                        android:id="@+id/label_et_email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/label_et_name"
+                        android:text="@string/label_et_email"
                         android:labelFor="@id/et_email"
                         style="@style/text_big_black"
                         android:visibility="gone"/>
                     <EditText
-                        android:id="@+id/et_phone"
+                        android:id="@+id/et_email"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:inputType="phone"
-                        android:hint="@string/label_et_phone"
+                        android:inputType="textEmailAddress"
+                        android:hint="@string/label_et_email"
                         style="@style/et_medium_light"/>
                 </LinearLayout>
+
                 <LinearLayout
-                    android:id="@+id/layout_et_cp"
-                    android:layout_width="0dp"
+                    android:id="@+id/layout_phone_cp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:id="@+id/layout_et_phone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="@dimen/layout_et_mb"
+                        android:layout_weight="2">
+                        <TextView
+                            android:id="@+id/label_et_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_et_phone"
+                            android:labelFor="@id/et_email"
+                            style="@style/text_big_black"
+                            android:visibility="gone"/>
+                        <EditText
+                            android:id="@+id/et_phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:inputType="phone"
+                            android:hint="@string/label_et_phone"
+                            style="@style/et_medium_light"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/layout_et_cp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginBottom="@dimen/layout_et_mb"
+                        android:layout_weight="1">
+                        <TextView
+                            android:id="@+id/label_et_cp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_et_cp"
+                            android:labelFor="@id/et_email"
+                            style="@style/text_big_black"
+                            android:visibility="gone"/>
+                        <EditText
+                            android:id="@+id/et_cp"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:inputType="textNoSuggestions"
+                            android:hint="@string/label_et_cp"
+                            style="@style/et_medium_light"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_et_state"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginBottom="@dimen/layout_et_mb"
-                    android:layout_weight="1">
+                    android:layout_marginBottom="@dimen/layout_et_mb">
                     <TextView
-                        android:id="@+id/label_et_cp"
+                        android:id="@+id/label_et_state"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/label_et_name"
+                        android:text="@string/label_et_state"
                         android:labelFor="@id/et_email"
                         style="@style/text_big_black"
                         android:visibility="gone"/>
                     <EditText
-                        android:id="@+id/et_cp"
+                        android:id="@+id/et_state"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:inputType="textNoSuggestions"
-                        android:hint="@string/label_et_cp"
+                        android:hint="@string/label_et_state"
+                        android:drawableEnd="@drawable/ic_search"
                         style="@style/et_medium_light"/>
                 </LinearLayout>
-            </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/layout_et_state"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="@dimen/layout_et_mb">
-                <TextView
-                    android:id="@+id/label_et_state"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/label_et_name"
-                    android:labelFor="@id/et_email"
-                    style="@style/text_big_black"
-                    android:visibility="gone"/>
-                <EditText
-                    android:id="@+id/et_state"
+                <LinearLayout
+                    android:id="@+id/layout_et_city"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:inputType="textNoSuggestions"
-                    android:hint="@string/label_et_state"
-                    android:drawableEnd="@drawable/ic_search"
-                    style="@style/et_medium_light"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_et_city"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="@dimen/layout_et_mb">
-                <TextView
-                    android:id="@+id/label_et_city"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/label_et_name"
-                    android:labelFor="@id/et_email"
-                    style="@style/text_big_black"
-                    android:visibility="gone"/>
-                <EditText
-                    android:id="@+id/et_city"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="@dimen/layout_et_mb">
+                    <TextView
+                        android:id="@+id/label_et_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_et_city"
+                        android:labelFor="@id/et_email"
+                        style="@style/text_big_black"
+                        android:visibility="gone"/>
+                    <EditText
+                        android:id="@+id/et_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:inputType="textNoSuggestions"
+                        android:hint="@string/label_et_city"
+                        android:drawableEnd="@drawable/ic_search"
+                        style="@style/et_medium_light"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_et_address"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:inputType="textNoSuggestions"
-                    android:hint="@string/label_et_city"
-                    android:drawableEnd="@drawable/ic_search"
-                    style="@style/et_medium_light"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_et_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="@dimen/layout_et_mb">
-                <TextView
-                    android:id="@+id/label_et_address"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/label_et_name"
-                    android:labelFor="@id/et_email"
-                    style="@style/text_big_black"
-                    android:visibility="gone"/>
-                <EditText
-                    android:id="@+id/et_address"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="@dimen/layout_et_mb">
+                    <TextView
+                        android:id="@+id/label_et_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_et_address"
+                        android:labelFor="@id/et_email"
+                        style="@style/text_big_black"
+                        android:visibility="gone"/>
+                    <EditText
+                        android:id="@+id/et_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:inputType="textNoSuggestions"
+                        android:hint="@string/label_et_address"
+                        style="@style/et_medium_light"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_signUp_btn"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:inputType="textNoSuggestions"
-                    android:hint="@string/label_et_address"
-                    style="@style/et_medium_light"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_signUp_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <Button
-                    android:id="@+id/signUp"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/layout_btn_mb"
-                    android:text="@string/next"
-                    android:layout_gravity="center"
-                    style="@style/btn_medium_light"/>
+                    android:orientation="vertical">
+                    <Button
+                        android:id="@+id/signUp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/layout_btn_mb"
+                        android:text="@string/next"
+                        android:layout_gravity="center"
+                        style="@style/btn_medium_light"/>
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

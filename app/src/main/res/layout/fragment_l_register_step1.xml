@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.L_Register">
+    tools:context=".fragments.L_Register_Step1">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -101,127 +101,122 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/layout_progressInfo">
                 <LinearLayout
-                    android:id="@+id/layout_signUp_et"
+                    android:id="@+id/layout_et_firstname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <LinearLayout
-                        android:id="@+id/layout_et_name"
-                        android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="@dimen/layout_et_mb">
+                    <TextView
+                        android:id="@+id/label_et_firstname"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:paddingTop="@dimen/et_p_medium"
-                        android:layout_marginBottom="@dimen/layout_et_mb">
-                        <TextView
-                            android:id="@+id/label_et_name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/label_et_name"
-                            android:labelFor="@id/et_email"
-                            style="@style/text_big_black"
-                            android:visibility="gone"/>
-                        <EditText
-                            android:id="@+id/et_name"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:inputType="textNoSuggestions"
-                            android:hint="@string/label_et_name"
-                            style="@style/et_medium_light"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/layout_et_lastname"
+                        android:text="@string/label_et_firstname"
+                        android:labelFor="@id/et_firstname"
+                        style="@style/text_big_black"
+                        android:visibility="gone"/>
+                    <EditText
+                        android:id="@+id/et_firstname"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginBottom="@dimen/layout_et_mb">
-                        <TextView
-                            android:id="@+id/label_et_lastname"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/label_et_email"
-                            android:labelFor="@id/et_email"
-                            style="@style/text_big_black"
-                            android:visibility="gone"/>
-                        <EditText
-                            android:id="@+id/et_lastname"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:inputType="textNoSuggestions"
-                            android:hint="@string/label_et_lastname"
-                            style="@style/et_medium_light"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/layout_et_birthday"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginBottom="@dimen/layout_et_mb">
-                        <TextView
-                            android:id="@+id/label_et_birthday"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/label_et_email"
-                            android:labelFor="@id/et_email"
-                            style="@style/text_big_black"
-                            android:visibility="gone"/>
-                        <EditText
-                            android:id="@+id/et_birthday"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:inputType="textNoSuggestions"
-                            android:hint="@string/label_et_birthday"
-                            android:drawablePadding="12dp"
-                            android:drawableRight="@drawable/ic_calendar"
-                            style="@style/et_medium_light"/>
-                    </LinearLayout>
+                        android:layout_height="50dp"
+                        android:inputType="textNoSuggestions"
+                        android:hint="@string/label_et_firstname"
+                        style="@style/et_medium_light"/>
+                </LinearLayout>
 
-                    <LinearLayout
-                        android:id="@+id/layout_et_pass"
-                        android:layout_width="match_parent"
+                <LinearLayout
+                    android:id="@+id/layout_et_lastname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="@dimen/layout_et_mb">
+                    <TextView
+                        android:id="@+id/label_et_lastname"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginBottom="@dimen/layout_et_mb"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/layout_et_email">
-                        <TextView
-                            android:id="@+id/label_et_pass"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/label_et_pass"
-                            android:labelFor="@id/et_pass"
-                            style="@style/text_medium_black"
-                            android:visibility="gone"/>
-                        <EditText
-                            android:id="@+id/et_pass"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:inputType="textPassword"
-                            android:hint="@string/label_et_pass"
-                            style="@style/et_medium_light"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/layout_et_pass2"
+                        android:text="@string/label_et_email"
+                        android:labelFor="@id/et_email"
+                        style="@style/text_big_black"
+                        android:visibility="gone"/>
+                    <EditText
+                        android:id="@+id/et_lastname"
                         android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:inputType="textNoSuggestions"
+                        android:hint="@string/label_et_lastname"
+                        style="@style/et_medium_light"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_et_birthday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="@dimen/layout_et_mb">
+                    <TextView
+                        android:id="@+id/label_et_birthday"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginBottom="@dimen/layout_et_mb">
-                        <TextView
-                            android:id="@+id/label_et_pass2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/label_et_pass"
-                            android:labelFor="@id/et_pass"
-                            style="@style/text_medium_black"
-                            android:visibility="gone"/>
-                        <EditText
-                            android:id="@+id/et_pass2"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:inputType="textPassword"
-                            android:hint="@string/label_et_pass2"
-                            style="@style/et_medium_light"/>
-                    </LinearLayout>
+                        android:text="@string/label_et_email"
+                        android:labelFor="@id/et_email"
+                        style="@style/text_big_black"
+                        android:visibility="gone"/>
+                    <EditText
+                        android:id="@+id/et_birthday"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:inputType="textNoSuggestions"
+                        android:hint="@string/label_et_birthday"
+                        android:drawablePadding="12dp"
+                        android:drawableRight="@drawable/ic_calendar"
+                        style="@style/et_medium_light"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_et_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="@dimen/layout_et_mb"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layout_et_email">
+                    <TextView
+                        android:id="@+id/label_et_pass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_et_pass"
+                        android:labelFor="@id/et_pass"
+                        style="@style/text_medium_black"
+                        android:visibility="gone"/>
+                    <EditText
+                        android:id="@+id/et_pass"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:inputType="textPassword"
+                        android:hint="@string/label_et_pass"
+                        style="@style/et_medium_light"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/layout_et_pass2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="@dimen/layout_et_mb">
+                    <TextView
+                        android:id="@+id/label_et_pass2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_et_pass"
+                        android:labelFor="@id/et_pass"
+                        style="@style/text_medium_black"
+                        android:visibility="gone"/>
+                    <EditText
+                        android:id="@+id/et_pass2"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:inputType="textPassword"
+                        android:hint="@string/label_et_pass2"
+                        style="@style/et_medium_light"/>
                 </LinearLayout>
 
                 <LinearLayout
