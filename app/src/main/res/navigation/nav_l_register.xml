@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/FragmentRegisterStep1"
-        android:name="com.example.rentacar.fragments.Register"
+        android:name="com.example.rentacar.fragments.L_Register"
         android:label="@string/fragment_register_label"
-        tools:layout="@layout/fragment_register_step1">
+        tools:layout="@layout/fragment_l_register_step1">
 
         <action
             android:id="@+id/action_FragmentRegisterStep1_to_FragmentRegisterStep2"
@@ -18,9 +18,9 @@
 
     <fragment
         android:id="@+id/FragmentRegisterStep2"
-        android:name="com.example.rentacar.fragments.Register"
+        android:name="com.example.rentacar.fragments.L_Register"
         android:label="@string/fragment_register_label"
-        tools:layout="@layout/fragment_register_step2">
+        tools:layout="@layout/fragment_l_register_step2">
 
         <action
             android:id="@+id/action_FragmentRegisterStep2_to_FragmentRegisterStep3"
@@ -29,17 +29,17 @@
 
     <fragment
         android:id="@+id/FragmentRegisterStep3"
-        android:name="com.example.rentacar.fragments.Register"
+        android:name="com.example.rentacar.fragments.L_Register"
         android:label="@string/fragment_register_label"
-        tools:layout="@layout/fragment_register_step3">
+        tools:layout="@layout/fragment_l_register_step3">
         <action
             android:id="@+id/action_FragmentRegisterStep3_to_FragmentRegisterStep4"
             app:destination="@id/FragmentRegisterStep4" />
     </fragment>
     <fragment
         android:id="@+id/FragmentRegisterStep4"
-        android:name="com.example.rentacar.fragments.Register"
+        android:name="com.example.rentacar.fragments.L_Register"
         android:label="@string/fragment_register_label"
-        tools:layout="@layout/fragment_register_step4">
+        tools:layout="@layout/fragment_l_register_step4">
     </fragment>
 </navigation>

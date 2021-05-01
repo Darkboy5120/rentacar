@@ -7,6 +7,14 @@
     <string name="fragment_login_label">Inicio de sesión</string>
     <string name="fragment_register_label">Registro</string>
     <string name="fragment_home_label">Inicio</string>
+    <string name="fragment_g_home_title">Bienvenido a Rentacar</string>
+    <string name="what_user_are_you">¿Que necesitas?</string>
+    <string name="iam_lessee">Rentar un auto</string>
+    <string name="iam_driver">Llevar autos a su destino</string>
+    <string name="fragment_g_home_header_desc">Primero cuentanos como podemos ayudarte para poder continuar</string>
+    <string name="fragment_g_home_body_label">Yo quiero...</string>
+
+    <string name="menu_action_exit">Salir</string>
 
     <string name="signUp">Sign up</string>
     <string name="signIn">Entrar</string>
@@ -33,6 +41,9 @@
     <string name="label_et_type">Tipo de auto</string>
     <string name="label_et_search">Buscar</string>
 
+    <string name="fragment_l_register_step1_label">Datos personales</string>
+    <string name="fragment_l_register_step2_label">Datos de contacto</string>
+    <string name="fragment_l_register_step3_label">Datos de lincencia</string>
     <string name="label_et_name">Nombre</string>
     <string name="label_et_lastname">Apellido</string>
     <string name="label_et_flastname">Apellido paterno</string>

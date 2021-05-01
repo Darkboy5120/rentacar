@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".activities.Register">
+    tools:context=".activities.L_Register">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activities.Home">
+        tools:context=".activities.L_Home">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -26,7 +26,7 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <include layout="@layout/content_home" />
+        <include layout="@layout/content_l_home" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -36,7 +36,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_home"
-        app:menu="@menu/menu_home_drawer" />
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/menu_l_home_drawer" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

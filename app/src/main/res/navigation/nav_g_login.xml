@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FragmentHome">
+    app:startDestination="@id/FragmentLogin">
 
     <fragment
-        android:id="@+id/FragmentHome"
-        android:name="com.example.rentacar.fragments.Home"
-        android:label="@string/fragment_home_label"
-        tools:layout="@layout/fragment_home">
+        android:id="@+id/FragmentLogin"
+        android:name="com.example.rentacar.fragments.G_Login"
+        android:label="@string/fragment_login_label"
+        tools:layout="@layout/fragment_g_login">
     </fragment>
 </navigation>
