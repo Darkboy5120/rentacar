@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingTop="@dimen/layout_pt"
-            android:paddingHorizontal="@dimen/layout_ph"
+            android:paddingHorizontal="@dimen/layout_ph_small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -113,7 +113,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/label_et_email"
                         android:labelFor="@id/et_email"
-                        style="@style/text_big_black"
+                        style="@style/text_medium_gray"
                         android:visibility="gone"/>
                     <EditText
                         android:id="@+id/et_email"
@@ -122,6 +122,20 @@
                         android:inputType="textEmailAddress"
                         android:hint="@string/label_et_email"
                         style="@style/et_medium_light"/>
+                    <TextView
+                        android:id="@+id/help_et_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/help_et_email"
+                        android:labelFor="@id/et_email"
+                        style="@style/text_big_lightGray"/>
+                    <TextView
+                        android:id="@+id/log_et_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/et_email"
+                        style="@style/text_big_bold_danger"
+                        android:visibility="gone"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -142,7 +156,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/label_et_phone"
                             android:labelFor="@id/et_email"
-                            style="@style/text_big_black"
+                            style="@style/text_medium_gray"
                             android:visibility="gone"/>
                         <EditText
                             android:id="@+id/et_phone"
@@ -151,6 +165,20 @@
                             android:inputType="phone"
                             android:hint="@string/label_et_phone"
                             style="@style/et_medium_light"/>
+                        <TextView
+                            android:id="@+id/help_et_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/help_et_phone"
+                            android:labelFor="@id/et_phone"
+                            style="@style/text_big_lightGray"/>
+                        <TextView
+                            android:id="@+id/log_et_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:labelFor="@id/et_phone"
+                            style="@style/text_big_bold_danger"
+                            android:visibility="gone"/>
                     </LinearLayout>
                     <LinearLayout
                         android:id="@+id/layout_et_cp"
@@ -166,7 +194,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/label_et_cp"
                             android:labelFor="@id/et_email"
-                            style="@style/text_big_black"
+                            style="@style/text_medium_gray"
                             android:visibility="gone"/>
                         <EditText
                             android:id="@+id/et_cp"
@@ -175,6 +203,20 @@
                             android:inputType="textNoSuggestions"
                             android:hint="@string/label_et_cp"
                             style="@style/et_medium_light"/>
+                        <TextView
+                            android:id="@+id/help_et_cp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/help_et_cp"
+                            android:labelFor="@id/et_cp"
+                            style="@style/text_big_lightGray"/>
+                        <TextView
+                            android:id="@+id/log_et_cp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:labelFor="@id/et_cp"
+                            style="@style/text_big_bold_danger"
+                            android:visibility="gone"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -190,7 +232,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/label_et_state"
                         android:labelFor="@id/et_email"
-                        style="@style/text_big_black"
+                        style="@style/text_medium_gray"
                         android:visibility="gone"/>
                     <EditText
                         android:id="@+id/et_state"
@@ -200,6 +242,20 @@
                         android:hint="@string/label_et_state"
                         android:drawableEnd="@drawable/ic_search"
                         style="@style/et_medium_light"/>
+                    <TextView
+                        android:id="@+id/help_et_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/help_et_state"
+                        android:labelFor="@id/et_state"
+                        style="@style/text_big_lightGray"/>
+                    <TextView
+                        android:id="@+id/log_et_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/et_state"
+                        style="@style/text_big_bold_danger"
+                        android:visibility="gone"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -214,7 +270,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/label_et_city"
                         android:labelFor="@id/et_email"
-                        style="@style/text_big_black"
+                        style="@style/text_medium_gray"
                         android:visibility="gone"/>
                     <EditText
                         android:id="@+id/et_city"
@@ -224,6 +280,20 @@
                         android:hint="@string/label_et_city"
                         android:drawableEnd="@drawable/ic_search"
                         style="@style/et_medium_light"/>
+                    <TextView
+                        android:id="@+id/help_et_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/help_et_city"
+                        android:labelFor="@id/et_city"
+                        style="@style/text_big_lightGray"/>
+                    <TextView
+                        android:id="@+id/log_et_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/et_city"
+                        style="@style/text_big_bold_danger"
+                        android:visibility="gone"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -238,7 +308,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/label_et_address"
                         android:labelFor="@id/et_email"
-                        style="@style/text_big_black"
+                        style="@style/text_medium_gray"
                         android:visibility="gone"/>
                     <EditText
                         android:id="@+id/et_address"
@@ -247,6 +317,20 @@
                         android:inputType="textNoSuggestions"
                         android:hint="@string/label_et_address"
                         style="@style/et_medium_light"/>
+                    <TextView
+                        android:id="@+id/help_et_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/help_et_address"
+                        android:labelFor="@id/et_address"
+                        style="@style/text_big_lightGray"/>
+                    <TextView
+                        android:id="@+id/log_et_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/et_address"
+                        style="@style/text_big_bold_danger"
+                        android:visibility="gone"/>
                 </LinearLayout>
 
                 <LinearLayout

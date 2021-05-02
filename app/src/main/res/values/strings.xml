@@ -41,19 +41,42 @@
     <string name="label_et_type">Tipo de auto</string>
     <string name="label_et_search">Buscar</string>
 
+    //error logs
+    <string name="error_et_empty">Completa este campo</string>
+    <string name="error_et_invalid">El formato es invalido</string>
+    <string name="error_et_minlength">Demasiado corto</string>
+    <string name="error_et_maxlength">Demasiado largo</string>
+    <string name="error_et_age_restriction">Debes ser mayor de edad para continuar</string>
+
+    //et hints and labels
+    <string name="label_et_firstname">Nombre</string>
+    <string name="label_et_lastname">Apellido</string>
+    <string name="label_et_password">Contraseña</string>
+
+    //help et
+    <string name="help_et_firstname">Solo tu primer nombre</string>
+    <string name="help_et_lastname">Solo tu primer apellido</string>
+    <string name="help_et_birthdate">Necesitamos saber que eres mayor de edad</string>
+    <string name="help_et_password">Combina mayusculas y minusculas con números para mayor seguridad</string>
+    <string name="help_et_email">Te mandatemos a las notificaciones a este correo</string>
+    <string name="help_et_phone"></string>
+    <string name="help_et_cp"></string>
+    <string name="help_et_state"></string>
+    <string name="help_et_city"></string>
+    <string name="help_et_address"></string>
+
     <string name="fragment_l_register_step1_label">Datos personales</string>
     <string name="fragment_l_register_step2_label">Datos de contacto</string>
     <string name="fragment_l_register_step3_label">Datos de lincencia</string>
-    <string name="label_et_firstname">Nombre</string>
-    <string name="label_et_lastname">Apellido</string>
+
+
     <string name="label_et_flastname">Apellido paterno</string>
     <string name="label_et_mlastname">Apellido materno</string>
     <string name="label_et_bank">Banco</string>
     <string name="label_et_card">Número de tarjeta</string>
     <string name="label_et_durability">Vigencia</string>
-    <string name="label_et_birthday">Fecha de nacimiento</string>
+    <string name="label_et_birthdate">Fecha de nacimiento</string>
     <string name="label_et_email">Correo</string>
-    <string name="label_et_pass">Contraseña</string>
     <string name="label_et_pass2">Confirmar contraseña</string>
     <string name="label_et_phone">Teléfono</string>
     <string name="label_et_cp">C.P.</string>
