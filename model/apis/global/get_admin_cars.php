@@ -2,27 +2,27 @@
 require "../users/root.php";
 require "../utils/token_validation.php";
 
-$from_web = !isset($_POST["securitykey"]);
+$from_web = isset($_REQUEST["securitykey"]);
 
 if ($from_web
     && $ci0->getSession("securitykey") !== $ci0->getSecuritykey()
     ) {
     $mi0->abort(-1, NULL);
-} else if ((!$from_web && !isset($_POST["admin"]))
-    || !isset($_POST["offset"])
-    || !isset($_POST["limit"])) {
+} else if ((!$from_web && !isset($_REQUEST["admin"]))
+    || !isset($_REQUEST["offset"])
+    || !isset($_REQUEST["limit"])) {
     $mi0->abort(-2, NULL);
 }
 
 $mi0->begin();
 
-$admin_id = ($from_web) ? $ci0->getSession("user_data")["pk_usuario"] : $_POST["admin"];
-$offset = $_POST["offset"];
+$admin_id = ($from_web) ? $ci0->getSession("user_data")["pk_usuario"] : $_REQUEST["admin"];
+$offset = $_REQUEST["offset"];
 if ($offset < 0) {
     $offset = 0;
 }
 $max_limit = 15;
-$limit = $_POST["limit"];
+$limit = $_REQUEST["limit"];
 if ($limit > $max_limit) {
     $limit = $max_limit;
 } else if ($limit <= 0) {

@@ -2,20 +2,20 @@
 require "../users/root.php";
 require "../utils/token_validation.php";
 
-$from_web = !isset($_POST["securitykey"]);
+$from_web = isset($_REQUEST["securitykey"]);
 
 if ($from_web
     && $ci0->getSession("securitykey") !== $ci0->getSecuritykey()
     ) {
     $mi0->abort(-1, NULL);
-} else if (!isset($_POST["car"])
+} else if (!isset($_REQUEST["car"])
     ) {
     $mi0->abort(-2, NULL);
 }
 
 $mi0->begin();
 
-$car_id = $_POST["car"];
+$car_id = $_REQUEST["car"];
 
 $mi0->query("
     SELECT

@@ -3,8 +3,8 @@ require "../libraries/cs_interface.php";
 
 $API = NULL;
 
-if (isset($_POST["api"])) {
-    $API = $_POST["api"];
+if (isset($_REQUEST["api"])) {
+    $API = $_RESQUEST["api"];
     switch ($API) {
         case "register_admin_step2":
             require "web/register_step2.php";

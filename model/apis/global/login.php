@@ -4,14 +4,14 @@ require "../users/root.php";
 if (!TRUE
     ) {
     $mi0->abort(-1, NULL);
-} else if (!isset($_POST["correo"])
-    || !isset($_POST["contraseña"])
+} else if (!isset($_REQUEST["correo"])
+    || !isset($_REQUEST["contraseña"])
     ) {
     $mi0->abort(-2, NULL);
 }
 
-$correo = $_POST["correo"];
-$contraseña = $_POST["contraseña"];
+$correo = $_REQUEST["correo"];
+$contraseña = $_REQUEST["contraseña"];
 
 $mi0->begin();
 

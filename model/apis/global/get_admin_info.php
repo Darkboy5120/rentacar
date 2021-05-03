@@ -2,18 +2,18 @@
 require "../users/root.php";
 require "../utils/token_validation.php";
 
-$from_web = !isset($_POST["securitykey"]);
+$from_web = isset($_REQUEST["securitykey"]);
 
 if ($from_web
     && $ci0->getSession("securitykey") !== $ci0->getSecuritykey()
     ) {
     $mi0->abort(-1, NULL);
-} else if (!$from_web && !isset($_POST["admin"])
+} else if (!$from_web && !isset($_REQUEST["admin"])
     ) {
     $mi0->abort(-2, NULL);
 }
 
-$admin_id = ($from_web) ? $ci0->getSession("user_data")["pk_usuario"] : $_POST["admin"];
+$admin_id = ($from_web) ? $ci0->getSession("user_data")["pk_usuario"] : $_REQUEST["admin"];
 
 $mi0->begin();
 

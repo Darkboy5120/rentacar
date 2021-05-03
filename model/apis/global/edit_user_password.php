@@ -2,22 +2,22 @@
 require "../users/root.php";
 require "../utils/token_validation.php";
 
-$from_web = !isset($_POST["securitykey"]);
+$from_web = isset($_REQUEST["securitykey"]);
 
 if ($from_web
     && $ci0->getSession("securitykey") !== $ci0->getSecuritykey()
     ) {
     $mi0->abort(-1, NULL);
-} else if ((!$from_web && !isset($_POST["user"]))
-    || !isset($_POST["passold"])
-    || !isset($_POST["passnew"])
+} else if ((!$from_web && !isset($_REQUEST["user"]))
+    || !isset($_REQUEST["passold"])
+    || !isset($_REQUEST["passnew"])
     ) {
     $mi0->abort(-2, NULL);
 }
 
-$user_id = ($from_web) ? $ci0->getSession("user_data")["pk_usuario"] : $_POST["user"];
-$pass_old = $_POST["passold"];
-$pass_new = $_POST["passnew"];
+$user_id = ($from_web) ? $ci0->getSession("user_data")["pk_usuario"] : $_REQUEST["user"];
+$pass_old = $_REQUEST["passold"];
+$pass_new = $_REQUEST["passnew"];
 
 $mi0->begin();
 
