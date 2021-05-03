@@ -4,7 +4,7 @@ require "../libraries/cs_interface.php";
 $API = NULL;
 
 if (isset($_REQUEST["api"])) {
-    $API = $_RESQUEST["api"];
+    $API = $_REQUEST["api"];
     switch ($API) {
         case "register_admin_step2":
             require "web/register_step2.php";
