@@ -92,6 +92,8 @@ create table `arrendatario` (
   `codigo_postal` varchar(5) not null,
   `fk_municipio` smallint unsigned not null,
   `direccion` varchar(50) not null,
+  `licencia_frontal_imagen_ruta` varchar(100) not null,
+  `licencia_posterior_imagen_ruta` varchar(100) not null,
   unique key(fk_usuario),
   foreign key(fk_usuario) references usuario(pk_usuario) on delete cascade,
   foreign key(fk_municipio) references municipio(pk_municipio) on delete cascade
@@ -122,6 +124,7 @@ create table `conductor_codigo` (
 create table `usuario_foto` (
     `fk_usuario` smallint unsigned not null,
     `imagen_ruta` varchar(100) not null,
+    unique key(fk_usuario),
     unique key(imagen_ruta),
     foreign key(fk_usuario) references usuario(pk_usuario) on delete cascade
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
