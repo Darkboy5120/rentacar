@@ -24,6 +24,7 @@
     <string name="invite_to_signUp"><b><u>¿Aun no tienes cuenta?, Registrate</u></b></string>
     <string name="next">Siguiente</string>
 
+    <!--Strings de ejemplo para el spinner (posiblemente no implementados, pero es un ejemplo de como meter datos directos)-->
     <string-array name="planets_array">
         <item>Mercury</item>
         <item>Venus</item>
@@ -34,6 +35,8 @@
         <item>Uranus</item>
         <item>Neptune</item>
     </string-array>
+
+
     <string name="label_et_inviRegis">Te invitamos a registrarte para que el proceso de renta sea más rápido.</string>
 
     <string name="label_et_car">Auto</string>
@@ -59,11 +62,14 @@
     <string name="label_et_firstname">Nombre</string>
     <string name="label_et_lastname">Apellido</string>
     <string name="label_et_password">Contraseña</string>
-    <string name="label_et_carName"></string>
-    <string name="label_et_price"></string>
-    <string name="label_et_standar"></string>
-    <string name="label_et_gps"></string>
-    <string name="label_et_ac"></string>
+
+    <!--Strings et para el card view-->
+    <string name="label_et_carName">Nissan Tsuru 2006</string>
+    <string name="label_et_price">$500 MXN/Día</string>
+    <string name="label_et_standar">Estandar</string>
+    <string name="label_et_automatic">Automático</string>
+    <string name="label_et_gps">GPS</string>
+    <string name="label_et_ac">AC</string>
 
     //help et
     <string name="help_et_firstname">Solo tu primer nombre</string>
