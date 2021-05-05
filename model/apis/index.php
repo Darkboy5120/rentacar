@@ -36,6 +36,9 @@ if (isset($_REQUEST["api"])) {
         case "get_admin_info":
             require "global/get_admin_info.php";
             break;
+        case "get_states_cities":
+            require "global/get_states_cities.php";
+            break;
         case "edit_admin_personal_info":
             require "web/edit_admin_personal_info.php";
             break;
@@ -44,6 +47,15 @@ if (isset($_REQUEST["api"])) {
             break;
         case "edit_user_password":
             require "global/edit_user_password.php";
+            break;
+        case "validate_l_register_step2":
+            require "mobile/validate_l_register_step2.php";
+            break;
+        case "signup_l_register":
+            require "mobile/signup_l_register_step3.php";
+            break;
+        case "login_lessee":
+            require "mobile/login.php";
             break;
         default: echo json_encode("That's not a valid api");
     }
