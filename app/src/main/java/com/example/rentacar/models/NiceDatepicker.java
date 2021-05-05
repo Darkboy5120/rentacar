@@ -20,17 +20,17 @@ public class NiceDatepicker extends ControlField {
     boolean second_touch = false;
 
     @SuppressLint("ClickableViewAccessibility")
-    public NiceDatepicker(int label_id, int et_id, int help_id, int log_id,
+    public NiceDatepicker(int label_id, int input_id, int help_id, int log_id,
                           boolean is_optional, View view) {
         this.label_id = label_id;
-        this.et_id = et_id;
+        this.input_id = input_id;
         this.help_id = help_id;
         this.log_id = log_id;
         this.is_optional = is_optional;
 
         final Calendar myCalendar = Calendar.getInstance();
 
-        EditText et_view = view.findViewById(this.et_id);
+        EditText et_view = view.findViewById(this.input_id);
 
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -67,8 +67,8 @@ public class NiceDatepicker extends ControlField {
 
     @Override
     public boolean validate(View v) {
-        String value = ((EditText) v.findViewById(this.et_id)).getText().toString();
-        if (value.length() == 0) {
+        String value = ((EditText) v.findViewById(this.input_id)).getText().toString();
+        if (value.length() == 0 && !this.is_optional) {
             this.printLog(v, v.getResources().getString(R.string.error_et_empty));
             return false;
         }

@@ -15,6 +15,8 @@
     <string name="fragment_g_home_body_label">Yo quiero...</string>
 
     <string name="menu_action_exit">Salir</string>
+    <string name="menu_action_logout">Cerrar sesión</string>
+    <string name="menu_action_change_user">Cambiar usuario</string>
 
     <string name="signUp">Registrar</string>
     <string name="signIn">Entrar</string>
@@ -42,34 +44,49 @@
     <string name="label_et_search">Buscar</string>
 
     //error logs
+    <string name="error_generic_request">Ha ocurrido un error, por favor intentalo de nuevo</string>
     <string name="error_et_empty">Completa este campo</string>
     <string name="error_et_invalid">El formato es invalido</string>
     <string name="error_et_minlength">Demasiado corto</string>
     <string name="error_et_maxlength">Demasiado largo</string>
     <string name="error_et_age_restriction">Debes ser mayor de edad para continuar</string>
+    <string name="error_spn_duplicate_email">Este correo ya esta registrado</string>
+    <string name="error_file_empty">Vacío</string>
+    <string name="error_file_fetch">Error al intentar obtener la imagen</string>
+    <string name="error_login_fail">Correo y/o contraseña incorrecto</string>
 
     //et hints and labels
     <string name="label_et_firstname">Nombre</string>
     <string name="label_et_lastname">Apellido</string>
     <string name="label_et_password">Contraseña</string>
+    <string name="label_et_carName"></string>
+    <string name="label_et_price"></string>
+    <string name="label_et_standar"></string>
+    <string name="label_et_gps"></string>
+    <string name="label_et_ac"></string>
 
     //help et
     <string name="help_et_firstname">Solo tu primer nombre</string>
     <string name="help_et_lastname">Solo tu primer apellido</string>
     <string name="help_et_birthdate">Necesitamos saber que eres mayor de edad</string>
     <string name="help_et_password">Combina mayusculas y minusculas con números para mayor seguridad</string>
-    <string name="help_et_email">Te mandatemos a las notificaciones a este correo</string>
-    <string name="help_et_phone"></string>
-    <string name="help_et_cp"></string>
-    <string name="help_et_state"></string>
-    <string name="help_et_city"></string>
-    <string name="help_et_address"></string>
+    <string name="help_et_password_login"></string>
+    <string name="help_et_email">Te mandaremos a las notificaciones a este correo</string>
+    <string name="help_et_email_login"></string>
+    <string name="help_et_phone">Tu número sin lada</string>
+    <string name="help_et_zip"></string>
+    <string name="help_et_state">Estado donde estas viviendo</string>
+    <string name="help_et_city">Municipio donde estas viviendo</string>
+    <string name="help_et_address">Cuentanos por donde hay que girar para llevarte el auto</string>
+    <string name="help_et_front">Asegurate de que se vean bien tus datos</string>>
+    <string name="help_et_back">Asegurate de que se vean bien tus datos</string>>
 
     <string name="fragment_l_register_step1_label">Datos personales</string>
     <string name="fragment_l_register_step2_label">Datos de contacto</string>
     <string name="fragment_l_register_step3_label">Datos de lincencia</string>
 
 
+    <string name="just_login"><u>Ya tengo una cuenta</u></string>
     <string name="label_et_flastname">Apellido paterno</string>
     <string name="label_et_mlastname">Apellido materno</string>
     <string name="label_et_bank">Banco</string>
@@ -79,7 +96,8 @@
     <string name="label_et_email">Correo</string>
     <string name="label_et_pass2">Confirmar contraseña</string>
     <string name="label_et_phone">Teléfono</string>
-    <string name="label_et_cp">C.P.</string>
+    <string name="label_et_zip">C.P.</string>
+    <string name="label_et_zip_extended">Código postal</string>
     <string name="label_et_state">Estado</string>
     <string name="label_et_city">Municipio</string>
     <string name="label_et_address">Dirección</string>

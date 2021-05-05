@@ -33,10 +33,6 @@ public class L_Home extends Fragment implements View.OnClickListener {
         ll_spn_global = view.findViewById(R.id.layout_spn_global);
         view.findViewById(R.id.layout_container).setOnClickListener(this);
         view.findViewById(R.id.signIn).setOnClickListener(this);
-
-        View current = getActivity().getCurrentFocus();
-        if (current != null) current.clearFocus();
-        System.out.println("------------------------foofoofoofoo");
     }
 
     @Override

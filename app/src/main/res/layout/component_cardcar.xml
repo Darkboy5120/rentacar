@@ -16,7 +16,7 @@
             android:id="@+id/car1"
             android:layout_width="match_parent"
             android:layout_height="240dp"
-            android:src="@drawable/carrorojo" />
+            android:src="@drawable/main_logo" />
 
         <RatingBar
             android:id="@+id/rating1"
@@ -80,20 +80,20 @@
                 android:layout_height="wrap_content"
                 android:text="@string/label_et_gps"
                 android:textColor="@color/black"
-                android:drawableRight="@drawable/ic_gps"/>
+                android:drawableEnd="@drawable/ic_gps"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="220dp"
-            android:layout_marginLeft="250dp">
+            android:layout_marginStart="250dp">
             <TextView
                 android:id="@+id/ac"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/label_et_ac"
                 android:textColor="@color/black"
-                android:drawableRight="@drawable/ic_ac"/>
+                android:drawableEnd="@drawable/ic_baseline_radio_button_unchecked"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

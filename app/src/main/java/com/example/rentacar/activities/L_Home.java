@@ -1,5 +1,8 @@
 package com.example.rentacar.activities;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -60,7 +63,17 @@ public class L_Home extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.menu_action_logout) {
+
+            SharedPreferences settings = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putString("last_user_id", "");
+            editor.apply();
+
+            Intent i = new Intent(this, G_Home.class);
+            startActivity(i);
+            finish();
+
             return true;
         }
 

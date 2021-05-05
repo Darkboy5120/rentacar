@@ -1,5 +1,7 @@
 package com.example.rentacar.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,16 +11,29 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.rentacar.R;
 import com.example.rentacar.activities.L_Register;
 import com.example.rentacar.models.Global;
 import com.example.rentacar.models.NiceDatepicker;
 import com.example.rentacar.models.NiceInput;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,6 +42,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
 
 public class L_Register_Step1 extends Fragment implements View.OnClickListener {
     LinearLayout ll_spn_global;
@@ -51,16 +70,16 @@ public class L_Register_Step1 extends Fragment implements View.OnClickListener {
         view.findViewById(R.id.signUp).setOnClickListener(this);
 
         ni_firstname = new NiceInput("text", R.id.label_et_firstname, R.id.et_firstname,
-                R.id.help_et_firstname,  R.id.log_et_firstname, "^[A-Za-z]+", 5,
-                25, false, requireView());
+                R.id.help_et_firstname,  R.id.log_et_firstname, "^[A-Za-z]+", 1,
+                50, false, requireView());
         ni_lastname = new NiceInput("text", R.id.label_et_lastname, R.id.et_lastname,
-                R.id.help_et_lastname,  R.id.log_et_lastname, "^[A-Za-z]+", 5,
-                25, false, requireView());
+                R.id.help_et_lastname,  R.id.log_et_lastname, "^[A-Za-z]+", 1,
+                50, false, requireView());
         ndp_birthdate = new NiceDatepicker(R.id.label_et_birthdate, R.id.et_birthdate,
                 R.id.help_et_birthdate, R.id.log_et_birthdate, false, requireView());
         ni_password = new NiceInput("password", R.id.label_et_password, R.id.et_password,
-                R.id.help_et_password,  R.id.log_et_password, "^[A-Za-z]+", 5,
-                25, false, requireView());
+                R.id.help_et_password,  R.id.log_et_password, "^[A-Za-z0-9]+", 5,
+                50, false, requireView());
     }
 
     @Override
@@ -92,6 +111,7 @@ public class L_Register_Step1 extends Fragment implements View.OnClickListener {
 
             if (b_years < 18) {
                 ndp_birthdate.printLog(requireView(), getResources().getString(R.string.error_et_age_restriction));
+                result = false;
             }
         } catch (Exception e) {
         }
@@ -99,9 +119,28 @@ public class L_Register_Step1 extends Fragment implements View.OnClickListener {
         return result;
     }
 
+    public Bundle get_form_values() {
+        Bundle bundle = new Bundle();
+        bundle.putString("firstname", ni_firstname.getValue(requireView()));
+        bundle.putString("lastname", ni_lastname.getValue(requireView()));
+        bundle.putString("birthdate", ndp_birthdate.getValue(requireView()));
+        bundle.putString("password", ni_password.getValue(requireView()));
+
+        return bundle;
+    }
+
+    public void next_fragment() {
+        L_Register_Step2 fragment = new L_Register_Step2();
+        fragment.setArguments(get_form_values());
+
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(((ViewGroup)getView().getParent()).getId(), fragment)
+                .addToBackStack(null)
+                .commit();
+    }
+
     public void signUp() {
         if (!signUp_validate()) return;
-        NavHostFragment.findNavController(L_Register_Step1.this)
-                .navigate(R.id.action_FragmentRegisterStep1_to_FragmentRegisterStep2);
+        next_fragment();
     }
 }

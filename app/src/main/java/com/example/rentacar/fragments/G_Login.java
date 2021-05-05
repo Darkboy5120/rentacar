@@ -1,6 +1,8 @@
 package com.example.rentacar.fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,11 +19,21 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.rentacar.R;
+import com.example.rentacar.activities.L_Home;
 import com.example.rentacar.activities.L_Register;
 import com.example.rentacar.models.Global;
+import com.example.rentacar.models.NiceFileInput;
+import com.example.rentacar.models.NiceInput;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class G_Login extends Fragment implements View.OnClickListener {
     LinearLayout ll_spn_global;
+    NiceInput ni_email, ni_password;
 
     @Override
     public View onCreateView(
@@ -41,16 +53,41 @@ public class G_Login extends Fragment implements View.OnClickListener {
         //((EditText) view.findViewById(R.id.et_email)).addTextChangedListener(new MaskWatcher("####-####"));;
         view.findViewById(R.id.signIn).setOnClickListener(this);
         view.findViewById(R.id.to_register).setOnClickListener(this);
-        view.findViewById(R.id.layout_container).setOnClickListener(this);
-        view.findViewById(R.id.et_email).setOnClickListener(this);
+
+        ni_email = new NiceInput("text", R.id.label_et_email, R.id.et_email,
+                R.id.help_et_email,  R.id.log_et_email,
+                "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$",
+                5, 50, false, requireView());
+        ni_password = new NiceInput("password", R.id.label_et_password, R.id.et_password,
+                R.id.help_et_password,  R.id.log_et_password, "^[A-Za-z0-9]+", 5,
+                50, false, requireView());
+
+        SharedPreferences settings = requireContext().getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+        String user_type = settings.getString("user_type", "null");
+        String last_user_id = settings.getString("last_user_id", "null");
+
+        if (!user_type.isEmpty()) {
+            Intent i;
+            if (!last_user_id.isEmpty()) {
+                switch (user_type) {
+                    case "l":
+                        i = new Intent(requireActivity(), L_Home.class);
+                        i.putExtra("user_id", last_user_id);
+                        startActivity(i);
+                        getActivity().finish();
+                        break;
+                    case "d":
+                        //
+                        break;
+                }
+            }
+        }
     }
 
     @Override
     public void onClick(View v) {
         int vId = v.getId();
-        if (vId == R.id.layout_container) {
-            Global.hideKeyboardFrom(requireContext(), requireView());
-        } else if (vId == R.id.signIn) {
+        if (vId == R.id.signIn) {
             signIn();
         } else if (vId == R.id.to_register) {
             /*NavHostFragment.findNavController(com.example.rentacar.fragments.G_Login.this)
@@ -60,31 +97,70 @@ public class G_Login extends Fragment implements View.OnClickListener {
         }
     }
 
+    public void next_activity(String user_id) {
+        Intent i = new Intent(requireActivity(), L_Home.class);
+        i.putExtra("user_id", user_id);
+        startActivity(i);
+        getActivity().finish();
+    }
+
+    public boolean signIn_validate() {
+        boolean result = true;
+
+        NiceInput[] ni_arr = {ni_email, ni_password};
+        for (NiceInput nice_input : ni_arr) {
+            if (!nice_input.validate(requireView())) {
+                result = false;
+            }
+        }
+
+        return result;
+    }
+
     public void signIn() {
+        if (!signIn_validate()) return;
+        server_validate();
+    }
+
+    public void server_validate() {
         ll_spn_global.setVisibility(View.VISIBLE);
 
-        // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(requireContext());
-        String url = Global.apis_path;
-
-        // Request a string response from the provided URL.
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Global.apis_path,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
-                        Global.printMessage(requireView(), "Response is: "+ response);
-                        ll_spn_global.setVisibility(View.GONE);
+                        try {
+                            ll_spn_global.setVisibility(View.GONE);
+                            JSONObject json = new JSONObject(response);
+                            String code = json.getString("code");
+                            if (code.equals("0")) {
+                                String user_id = json.getString("data");
+                                next_activity(user_id);
+                            } else {
+                                Global.printMessage(requireView(), getResources().getString(R.string.error_login_fail));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
-                }, new Response.ErrorListener() {
+                },
+                new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Global.printMessage(requireView(), Global.generic_error);
-                        ll_spn_global.setVisibility(View.GONE);
+                        Global.printMessage(requireView(), getResources().getString(R.string.error_generic_request));
                     }
-        });
-
-        // Add the request to the RequestQueue.
+                }) {
+            @Override
+            public Map<String, String> getParams()  {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+                headers.put("api", "login_lessee");
+                headers.put("correo", ni_email.getValue(requireView()));
+                headers.put("contraseña", ni_password.getValue(requireView()));
+                return headers;
+            }
+        };
         queue.add(stringRequest);
     }
 }

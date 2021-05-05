@@ -91,6 +91,15 @@
                 android:layout_gravity="center"
                 style="@style/btn_medium_light" />
 
+            <TextView
+                android:id="@+id/to_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_mt"
+                android:text="@string/just_login"
+                style="@style/text_big_bold_gray"
+                android:gravity="center_horizontal"/>
+
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

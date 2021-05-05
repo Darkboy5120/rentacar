@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".fragments.L_Register_Step3">
+    tools:context=".fragments.L_Register_Step3"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,7 +23,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingTop="@dimen/layout_pt"
-            android:paddingHorizontal="@dimen/layout_ph_medium"
+            android:paddingHorizontal="@dimen/layout_ph_small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,6 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/layout_ph_medium"
                 android:layout_marginBottom="@dimen/layout_et_mb"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -119,16 +122,38 @@
                             android:layout_height="wrap_content"
                             android:text="@string/label_et_front"
                             android:labelFor="@id/et_back"
-                            style="@style/text_big_black"
+                            style="@style/text_medium_gray"
                             android:visibility="gone"/>
-                        <EditText
-                            android:id="@+id/et_front"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:inputType="textNoSuggestions"
-                            android:hint="@string/label_et_front"
-                            android:drawableEnd="@drawable/ic_upload"
-                            style="@style/et_medium_light"/>
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/status_et_front"
+                                android:layout_width="0dp"
+                                android:layout_weight="3"
+                                android:layout_height="match_parent"
+                                style="@style/upload_textview_simple" />
+                            <Button
+                                android:id="@+id/btn_front"
+                                android:layout_width="70dp"
+                                android:layout_height="match_parent"
+                                style="@style/upload_button_simple" />
+                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/help_et_front"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/help_et_front"
+                            android:labelFor="@id/et_front"
+                            style="@style/text_big_lightGray"/>
+                        <TextView
+                            android:id="@+id/log_et_front"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:labelFor="@id/et_front"
+                            style="@style/text_big_bold_danger"
+                            android:visibility="gone"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -143,16 +168,37 @@
                             android:layout_height="wrap_content"
                             android:text="@string/label_et_back"
                             android:labelFor="@id/et_back"
-                            style="@style/text_big_black"
-                            android:visibility="gone"/>
-                        <EditText
-                            android:id="@+id/et_back"
+                            style="@style/text_medium_gray"/>
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:inputType="textNoSuggestions"
-                            android:hint="@string/label_et_back"
-                            android:drawableEnd="@drawable/ic_upload"
-                            style="@style/et_medium_light"/>
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/status_et_back"
+                                android:layout_width="0dp"
+                                android:layout_weight="3"
+                                android:layout_height="match_parent"
+                                style="@style/upload_textview_simple" />
+                            <Button
+                                android:id="@+id/btn_back"
+                                android:layout_width="70dp"
+                                android:layout_height="match_parent"
+                                style="@style/upload_button_simple" />
+                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/help_et_back"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/help_et_back"
+                            android:labelFor="@id/et_back"
+                            style="@style/text_big_lightGray"/>
+                        <TextView
+                            android:id="@+id/log_et_back"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:labelFor="@id/et_back"
+                            style="@style/text_big_bold_danger"
+                            android:visibility="gone"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -175,5 +221,24 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/layout_spn_global"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="@color/spn_global_black"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <ProgressBar
+            android:id="@+id/spn_global"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
