@@ -74,6 +74,11 @@ create table `usuario` (
   `telefono` varchar(10) not null,
   `correo` varchar(50) not null,
   `contraseña` varchar(255) not null,
+  /* 0 - Administrador
+     * 1 - Arrendatario
+     * 2 - Conductor
+     */
+  `tipo` enum("0", "1", "2") not null,
   primary key(pk_usuario),
   unique key(token),
   unique key(correo)
