@@ -8,17 +8,20 @@ function dataIsAllRight () {
         || !isset($_REQUEST["apellido"])
         || !isset($_REQUEST["telefono"])
         || !isset($_REQUEST["correo"])
-        || !isset($_REQUEST["contraseña"])
+        || !isset($_REQUEST["clave"])
         || !isset($_REQUEST["fecha_nacimiento"])
         || !isset($_REQUEST["codigo_postal"])
         || !isset($_REQUEST["municipio"])
         || !isset($_REQUEST["direccion"])
-        || !isset($_REQUEST["licencia_frontal_imagen_contenido"])
-        || !isset($_REQUEST["licencia_frontal_imagen_tipo"])
-        || !isset($_REQUEST["licencia_posterior_imagen_contenido"])
-        || !isset($_REQUEST["licencia_posterior_imagen_tipo"])
     ) {
         return FALSE;
+    }
+    //files dont have empty type att when come from mobile, this needs to be fixed
+    foreach ($_FILES as $name => $file) {
+        $extension = strtolower(pathinfo($file["name"],PATHINFO_EXTENSION));
+        if (preg_match("/jpg*/", $extension) === 0) {
+            return FALSE;
+        }
     }
     return TRUE;
 }
@@ -28,6 +31,7 @@ if (!dataIsAllRight()) {
 }
 
 $images_path = "../../media/images/user_images/";
+$images_type = ".jpg";
 
 $nombre = $_REQUEST["nombre"];
 $apellido = $_REQUEST["apellido"];
@@ -38,10 +42,8 @@ $fecha_nacimiento = $_REQUEST["fecha_nacimiento"];
 $codigo_postal = $_REQUEST["codigo_postal"];
 $fk_municipio = $_REQUEST["municipio"];
 $direccion = $_REQUEST["direccion"];
-$licencia_frontal_imagen_ruta = $images_path . $mi0->getRandString(10) . $_REQUEST["licencia_frontal_imagen_tipo"];
-$licencia_frontal_imagen_contenido = $_REQUEST["licencia_frontal_imagen_contenido"];
-$licencia_posterior_imagen_ruta = $images_path . $mi0->getRandString(10) . $_REQUEST["licencia_posterior_imagen_tipo"];
-$licencia_posterior_imagen_contenido = $_REQUEST["licencia_posterior_imagen_contenido"];
+$licencia_frontal_imagen_ruta = $images_path . $mi0->getRandString(10) . $images_type;
+$licencia_posterior_imagen_ruta = $images_path . $mi0->getRandString(10) . $images_type;
 $tipo = "1";
 
 $mi0->begin();
@@ -52,7 +54,7 @@ while (TRUE) {
         INSERT INTO usuario
             (token, nombre, apellido, telefono, correo, contraseña, tipo)
         VALUES
-            (?, ?, ?, ?, ?, ?)",
+            (?, ?, ?, ?, ?, ?, ?)",
             $new_hash, $nombre, $apellido, $telefono, $correo, $contraseña, $tipo
     );
     if ($mi0->result === FALSE) {
@@ -82,8 +84,8 @@ if ($mi0->result === FALSE) {
     $mi0->end("rollback", -4, NULL);
 }
 
-if (file_put_contents($licencia_frontal_imagen_ruta, base64_decode($licencia_frontal_imagen_contenido))
-    && file_put_contents($licencia_posterior_imagen_ruta, base64_decode($licencia_posterior_imagen_contenido))
+if (move_uploaded_file($_FILES["licencia_frontal"]["tmp_name"], $licencia_frontal_imagen_ruta)
+    && move_uploaded_file($_FILES["licencia_posterior"]["tmp_name"], $licencia_posterior_imagen_ruta)
     ) {
     $mi0->end('commit', 0, $last_user_id);
 } else {
