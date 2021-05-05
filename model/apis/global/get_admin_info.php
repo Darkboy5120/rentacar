@@ -2,7 +2,7 @@
 require "../users/root.php";
 require "../utils/token_validation.php";
 
-$from_web = isset($_REQUEST["securitykey"]);
+$from_web = $ci0->existSession("securitykey");
 
 if ($from_web
     && $ci0->getSession("securitykey") !== $ci0->getSecuritykey()

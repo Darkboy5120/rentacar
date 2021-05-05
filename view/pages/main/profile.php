@@ -132,16 +132,6 @@ $user_name = $ci0->getSession("user_data")["nombre"];
                                 </div>
                                 <span class="input-log hidden"></span>
                             </div>
-                            <div class="input-layout">
-                                <label for="input-passconfirm"><?=$l_arr["profile"]["txt_13"]?></label>
-                                <div class="input-field">
-                                    <input class="input-secondary" id="input-passconfirm" type="password"
-                                        placeholder="<?=$l_arr["profile"]["txt_13"]?>">
-                                    <i class="fas fa-eye" data-toggle-pass="0"></i>
-                                    <i class="fas fa-eye-slash hidden" data-toggle-pass="1"></i>
-                                </div>
-                                <span class="input-log hidden"></span>
-                            </div>
                         </div>
                         <button class="button button-primary" id="save-password-info" type="button">
                             <i class="fas fa-edit"></i> <?=$l_arr["profile"]["button_savepasswordinfo"]?></button>

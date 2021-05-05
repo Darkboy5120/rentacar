@@ -2,9 +2,9 @@
 require "../users/root.php";
 require "../utils/token_validation.php";
 
-$from_web = isset($_REQUEST["securitykey"]);
+$from_web = !isset($_REQUEST["securitykey"]);
 
-if ($from_web
+if (!$from_web
     && $ci0->getSession("securitykey") !== $ci0->getSecuritykey()
     ) {
     $mi0->abort(-1, NULL);

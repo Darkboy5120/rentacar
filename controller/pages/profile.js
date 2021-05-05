@@ -146,9 +146,6 @@
                 }),
                 pass: new FieldControl("#input-pass", {
                     regex : "[^A-Za-z0-9]+", min : 1, max : 25
-                }),
-                passconfirm: new FieldControl("#input-passconfirm", {
-                    regex : "[^A-Za-z0-9]+", min : 1, max : 25
                 })
             },
             button: {
@@ -169,7 +166,6 @@
                                 case 0:
                                     form.password_info.input.passold.element.value = "";
                                     form.password_info.input.pass.element.value = "";
-                                    form.password_info.input.passconfirm.element.value = "";
                                     document.activeElement.blur();
                                     new AlertMe(l_arr.global.mdal_suc_t_0, l_arr.global.mdal_suc_b_5);
                                     break;
@@ -191,10 +187,7 @@
                         return false;
                     }
                 }
-                if (input.pass.element.value != input.passconfirm.element.value) {
-                    input.pass.printLog(l_arr.global.log_13, false);
-                    return false;
-                } else if (input.passold.element.value == input.pass.element.value) {
+                if (input.passold.element.value == input.pass.element.value) {
                     input.pass.printLog(l_arr.global.log_14, false);
                     return false;
                 }

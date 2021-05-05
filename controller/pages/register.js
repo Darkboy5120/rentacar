@@ -18,11 +18,6 @@
                     regex: "[^A-Za-z0-9]+",
                     min: 1,
                     max: 25
-                }),
-                confirm_pass: new FieldControl("#input-confirm-pass", {
-                    regex: "[^A-Za-z0-9]+",
-                    min: 1,
-                    max: 25
                 })
             },
             button: {
@@ -50,10 +45,6 @@
                         }
                         input[name].validate();
                     }
-                }
-                if (input.pass.element.value != input.confirm_pass.element.value) {
-                    input.pass.printLog(l_arr.global.log_9, false);
-                    first_invalid_input = input.pass;
                 }
                 if (first_invalid_input) {
                     first_invalid_input.focus();
@@ -113,7 +104,7 @@
                                     input_s2.bussiness_email.printLog(l_arr.global.log_11, false);
                                     break;
                                 default:
-                                    new AlertMe(l_arr.global.mdal_err_t0, l_arr.global.mdal_err.b_1);
+                                    new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_1);
                             }
                         });
                     }
@@ -125,7 +116,7 @@
                         form.personal_info.index.classList.add("index-active");
                         form.bussiness_info.element.classList.add("hidden");
                         form.bussiness_info.index.classList.remove("index-active");
-                        form.personal_info.input.confirm_pass.element.focus();
+                        form.personal_info.input.pass.element.focus();
                     }
                 }
             },
