@@ -20,7 +20,7 @@ $mi0->query("
         pk_usuario, contraseña, nombre
     FROM
         usuario
-    WHERE correo = ?",
+    WHERE correo = ? AND tipo = 0",
     $correo
 );
 if ($mi0->result->num_rows > 0) {

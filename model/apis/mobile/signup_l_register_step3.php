@@ -42,6 +42,7 @@ $licencia_frontal_imagen_ruta = $images_path . $mi0->getRandString(10) . $_REQUE
 $licencia_frontal_imagen_contenido = $_REQUEST["licencia_frontal_imagen_contenido"];
 $licencia_posterior_imagen_ruta = $images_path . $mi0->getRandString(10) . $_REQUEST["licencia_posterior_imagen_tipo"];
 $licencia_posterior_imagen_contenido = $_REQUEST["licencia_posterior_imagen_contenido"];
+$tipo = "1";
 
 $mi0->begin();
 
@@ -49,10 +50,10 @@ while (TRUE) {
     $new_hash = $mi0->getRandHash(10);
     $mi0->query("
         INSERT INTO usuario
-            (token, nombre, apellido, telefono, correo, contraseña)
+            (token, nombre, apellido, telefono, correo, contraseña, tipo)
         VALUES
             (?, ?, ?, ?, ?, ?)",
-            $new_hash, $nombre, $apellido, $telefono, $correo, $contraseña
+            $new_hash, $nombre, $apellido, $telefono, $correo, $contraseña, $tipo
     );
     if ($mi0->result === FALSE) {
         if ($mi0->getErrorName() === "DUPLICATE_KEY") {

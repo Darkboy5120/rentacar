@@ -19,6 +19,7 @@ $telefono = $_POST["telefono"];
 $correo = $_POST["correo"];
 $contraseña = $mi0->hashString($_POST["contraseña"]);
 $nombre_empresa = $_POST["nombre_empresa"];
+$tipo = "0";
 
 $mi0->begin();
 
@@ -26,10 +27,10 @@ while (TRUE) {
     $new_hash = $mi0->getRandHash(10);
     $mi0->query("
         INSERT INTO usuario
-            (token, nombre, apellido, telefono, correo, contraseña)
+            (token, nombre, apellido, telefono, correo, contraseña, tipo)
         VALUES
-            (?, ?, ?, ?, ?, ?)",
-            $new_hash, $nombre, $apellido, $telefono, $correo, $contraseña
+            (?, ?, ?, ?, ?, ?, ?)",
+            $new_hash, $nombre, $apellido, $telefono, $correo, $contraseña, $tipo
     );
     if ($mi0->result === FALSE) {
         if ($mi0->getErrorName() === "DUPLICATE_KEY") {
