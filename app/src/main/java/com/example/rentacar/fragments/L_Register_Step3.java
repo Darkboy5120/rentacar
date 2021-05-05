@@ -3,17 +3,21 @@ package com.example.rentacar.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -26,6 +30,7 @@ import com.example.rentacar.activities.L_Register;
 import com.example.rentacar.models.Global;
 import com.example.rentacar.models.NiceFileInput;
 import com.example.rentacar.models.NiceInput;
+import com.example.rentacar.models.VolleyMultipartRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -100,15 +105,13 @@ public class L_Register_Step3 extends Fragment implements View.OnClickListener {
     public void upload_info_to_server() {
         ll_spn_global.setVisibility(View.VISIBLE);
 
-        RequestQueue queue = Volley.newRequestQueue(requireContext());
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Global.apis_path,
-                new Response.Listener<String>() {
+        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, Global.apis_path,
+                new Response.Listener<NetworkResponse>() {
                     @Override
-                    public void onResponse(String response) {
+                    public void onResponse(NetworkResponse response) {
                         try {
                             ll_spn_global.setVisibility(View.GONE);
-                            System.out.println("----------------- " + response);
-                            JSONObject json = new JSONObject(response);
+                            JSONObject json = new JSONObject(new String(response.data));
                             String code = json.getString("code");
                             if (code.equals("0")) {
 
@@ -123,7 +126,7 @@ public class L_Register_Step3 extends Fragment implements View.OnClickListener {
                                 Intent i = new Intent(requireActivity(), L_Home.class);
                                 i.putExtra("user_id", user_id);
                                 startActivity(i);
-                                getActivity().finish();
+                                requireActivity().finish();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -136,6 +139,7 @@ public class L_Register_Step3 extends Fragment implements View.OnClickListener {
                         Global.printMessage(requireView(), getResources().getString(R.string.error_generic_request));
                     }
                 }) {
+
             @Override
             public Map<String, String> getParams()  {
                 HashMap<String, String> headers = new HashMap<String, String>();
@@ -144,19 +148,24 @@ public class L_Register_Step3 extends Fragment implements View.OnClickListener {
                 headers.put("nombre", getArguments().getString("firstname"));
                 headers.put("apellido", getArguments().getString("lastname"));
                 headers.put("fecha_nacimiento", getArguments().getString("birthdate"));
-                headers.put("contraseña", getArguments().getString("password"));
+                headers.put("clave", getArguments().getString("password"));
                 headers.put("correo", getArguments().getString("email"));
                 headers.put("telefono", getArguments().getString("phone"));
                 headers.put("codigo_postal", getArguments().getString("zip"));
                 headers.put("direccion", getArguments().getString("address"));
                 headers.put("municipio", getArguments().getString("city"));
-                headers.put("licencia_frontal_imagen_contenido", nfi_front.getEncodedFile());
-                headers.put("licencia_frontal_imagen_tipo", nfi_front.getFileType());
-                headers.put("licencia_posterior_imagen_contenido", nfi_back.getEncodedFile());
-                headers.put("licencia_posterior_imagen_tipo", nfi_back.getFileType());
                 return headers;
             }
+
+            @Override
+            protected Map<String, DataPart> getByteData() {
+                Map<String, VolleyMultipartRequest.DataPart> params = new HashMap<>();
+                long imagename = System.currentTimeMillis();
+                params.put("licencia_frontal", new DataPart("image0" + nfi_front.getFileType(), VolleyMultipartRequest.getFileDataFromDrawable(nfi_front.getFile())));
+                params.put("licencia_posterior", new DataPart("image1" + nfi_front.getFileType(), VolleyMultipartRequest.getFileDataFromDrawable(nfi_front.getFile())));
+                return params;
+            }
         };
-        queue.add(stringRequest);
+        Volley.newRequestQueue(requireContext()).add(volleyMultipartRequest);
     }
 }
