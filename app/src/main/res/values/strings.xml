@@ -57,6 +57,12 @@
     <string name="error_file_empty">Vacío</string>
     <string name="error_file_fetch">Error al intentar obtener la imagen</string>
     <string name="error_login_fail">Correo y/o contraseña incorrecto</string>
+    <string name="error_sdcard_without_images">No se encontraron imagenes en la tarjeta sd</string>
+
+    //dialog msg
+    <string name="dialog_title_get_image">¿De donde quieres tomar la imagen?</string>
+    <string name="dialog_btn_get_image_1">Tomar captura</string>
+    <string name="dialog_btn_get_image_2">Seleccionar una imagen existente</string>
 
     //et hints and labels
     <string name="label_et_firstname">Nombre</string>

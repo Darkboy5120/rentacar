@@ -72,8 +72,8 @@ public class L_Register_Step3 extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        nfi_front.listenResult(requireActivity(), requireView(), requestCode, resultCode);
-        nfi_back.listenResult(requireActivity(), requireView(), requestCode, resultCode);
+        nfi_front.listenResult(requireActivity(), requireView(), requestCode, resultCode, data);
+        nfi_back.listenResult(requireActivity(), requireView(), requestCode, resultCode, data);
     }
 
     @Override

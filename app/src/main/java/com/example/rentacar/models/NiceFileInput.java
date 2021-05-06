@@ -26,21 +26,25 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Date;
 
 public class NiceFileInput extends ControlField {
     private int status = 0;
     private static int ID_COUNTER = 0;
-    private int REQUEST_IMAGE_CAPTURE;
+    private final int REQUEST_IMAGE_CAPTURE;
+    private final int REQUEST_IMAGE_SELECT;
     private String current_photo_path, file_name;
     private Bitmap file;
-    private int status_id;
+    private final int status_id;
 
     public NiceFileInput(int label_id, int status_id, int input_id, int help_id, int log_id,
                          View view, Activity act, Fragment fragment) {
         this.REQUEST_IMAGE_CAPTURE = ID_COUNTER;
-        this.ID_COUNTER++;
+        this.REQUEST_IMAGE_SELECT = ID_COUNTER + 100;
+        NiceFileInput.ID_COUNTER++;
         this.label_id = label_id;
         this.status_id = status_id;
         this.input_id = input_id;
@@ -49,7 +53,7 @@ public class NiceFileInput extends ControlField {
         ((Button) view.findViewById(this.input_id)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dispatchTakePictureIntent(act, view, fragment);
+                showDialogGetImageMethod(act, view, fragment);
             }
         });
         ((TextView) view.findViewById(this.status_id)).setOnClickListener(new View.OnClickListener() {
@@ -63,6 +67,22 @@ public class NiceFileInput extends ControlField {
         this.reset(view);
     }
 
+
+    public void showDialogGetImageMethod(Activity act, View view, Fragment fragment) {
+        AlertDialog.Builder alertadd = new AlertDialog.Builder(view.getContext())
+                .setMessage(view.getResources().getString(R.string.dialog_title_get_image))
+                .setPositiveButton(R.string.dialog_btn_get_image_1, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dispatchTakePictureIntent(act, view, fragment);
+                    }
+                })
+                .setNegativeButton(R.string.dialog_btn_get_image_2, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dispathSelectPictureIntent(fragment);
+                    }
+                });
+        alertadd.show();
+    }
     public void showDialogImage(Bitmap bitmap, View v) {
         AlertDialog.Builder alertadd = new AlertDialog.Builder(v.getContext());
         LayoutInflater factory = LayoutInflater.from(v.getContext());
@@ -77,8 +97,8 @@ public class NiceFileInput extends ControlField {
         alertadd.show();
     }
 
-    public void listenResult(Activity activity, View root, int requestCode, int resultCode) {
-        if (requestCode == this.REQUEST_IMAGE_CAPTURE && resultCode == activity.RESULT_OK) {
+    public void listenResult(Activity activity, View root, int requestCode, int resultCode, Intent data) {
+        if (requestCode == this.REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
             try {
                 BitmapFactory.Options options = new BitmapFactory.Options();
                 options.inPreferredConfig = Bitmap.Config.ARGB_8888;
@@ -91,7 +111,35 @@ public class NiceFileInput extends ControlField {
                 this.reset(root);
                 this.printLog(root, root.getResources().getString(R.string.error_file_fetch));
             }
+        } else if (requestCode == this.REQUEST_IMAGE_SELECT && resultCode == Activity.RESULT_OK) {
+            if (data != null) {
+                Uri imageUri = data.getData();
+                InputStream imageStream = null;
+                try {
+                    imageStream = activity.getContentResolver().openInputStream(imageUri);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                this.file = BitmapFactory.decodeStream(imageStream);
+                this.setStatus(1);
+                this.dismissLog(root);
+                this.setLogText(root, "1 elemento adjunto");
+            } else {
+                Global.printMessage(root, root.getResources().getString(R.string.error_sdcard_without_images));
+            }
         }
+    }
+
+    public long getImagePathId(String s) {
+        for (int i = 0; i < s.length(); i++) {
+            int i_reversed = s.length() - i;
+            if (i == 0) {
+                continue;
+            } else if (s.substring(i_reversed, ++i_reversed).equals("/")) {
+                return Long.parseLong(s.substring(i_reversed));
+            }
+        }
+        return -1;
     }
 
     public void reset(View v) {
@@ -120,6 +168,13 @@ public class NiceFileInput extends ControlField {
     }
 
     public void changeLog() {
+    }
+
+    public void dispathSelectPictureIntent(Fragment fragment) {
+        System.out.println("--------------- 66");
+        Intent cam_ImagesIntent = new Intent(Intent.ACTION_PICK);
+        cam_ImagesIntent.setType("image/*");
+        fragment.startActivityForResult(cam_ImagesIntent, REQUEST_IMAGE_SELECT);
     }
 
     public void dispatchTakePictureIntent(Activity activity, View root, Fragment fragment) {
