@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
@@ -66,20 +67,18 @@ public class G_Login extends Fragment implements View.OnClickListener {
         String user_type = settings.getString("user_type", "null");
         String last_user_id = settings.getString("last_user_id", "null");
 
-        if (!user_type.isEmpty()) {
+        if (!user_type.isEmpty() && !last_user_id.isEmpty()) {
             Intent i;
-            if (!last_user_id.isEmpty()) {
-                switch (user_type) {
-                    case "l":
-                        i = new Intent(requireActivity(), L_Home.class);
-                        i.putExtra("user_id", last_user_id);
-                        startActivity(i);
-                        getActivity().finish();
-                        break;
-                    case "d":
-                        //
-                        break;
-                }
+            switch (user_type) {
+                case "l":
+                    i = new Intent(requireActivity(), L_Home.class);
+                    i.putExtra("user_id", last_user_id);
+                    startActivity(i);
+                    requireActivity().finish();
+                    break;
+                case "d":
+                    //
+                    break;
             }
         }
     }
@@ -92,16 +91,23 @@ public class G_Login extends Fragment implements View.OnClickListener {
         } else if (vId == R.id.to_register) {
             /*NavHostFragment.findNavController(com.example.rentacar.fragments.G_Login.this)
                     .navigate(R.id.action_FragmentLogin_to_FragmentRegister);*/
-            Intent i = new Intent(getActivity(), L_Register.class);
+            Intent i = new Intent(requireActivity(), L_Register.class);
             startActivity(i);
         }
     }
 
-    public void next_activity(String user_id) {
+    public void next_activity(String user_id, String user_type) {
+        SharedPreferences settings = requireContext().getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("user_type", (user_type.equals("1") ? "l" : "d"));
+        editor.putString("last_user_id", user_id);
+        editor.apply();
+
         Intent i = new Intent(requireActivity(), L_Home.class);
+        i.putExtra("user_type", user_type);
         i.putExtra("user_id", user_id);
         startActivity(i);
-        getActivity().finish();
+        requireActivity().finish();
     }
 
     public boolean signIn_validate() {
@@ -135,8 +141,10 @@ public class G_Login extends Fragment implements View.OnClickListener {
                             JSONObject json = new JSONObject(response);
                             String code = json.getString("code");
                             if (code.equals("0")) {
-                                String user_id = json.getString("data");
-                                next_activity(user_id);
+                                JSONObject data = json.getJSONObject("data");
+                                String user_id = data.getString("pk_usuario");
+                                String user_type = data.getString("tipo");
+                                next_activity(user_id, user_type);
                             } else {
                                 Global.printMessage(requireView(), getResources().getString(R.string.error_login_fail));
                             }

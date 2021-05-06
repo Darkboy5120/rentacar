@@ -50,7 +50,7 @@ public class L_Register extends AppCompatActivity {
             NavUtils.navigateUpFromSameTask(this);
             return true;
         } else if (id == R.id.menu_action_exit) {
-            finishAndRemoveTask();
+            finish();
 
             return true;
         }

@@ -67,10 +67,11 @@ public class L_Home extends AppCompatActivity {
 
             SharedPreferences settings = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = settings.edit();
+            editor.putString("user_type", "");
             editor.putString("last_user_id", "");
             editor.apply();
 
-            Intent i = new Intent(this, G_Home.class);
+            Intent i = new Intent(this, G_Login.class);
             startActivity(i);
             finish();
 

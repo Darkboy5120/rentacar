@@ -1,6 +1,7 @@
 package com.example.rentacar.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
@@ -49,12 +50,7 @@ public class G_Login extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.menu_action_change_user) {
-
-            SharedPreferences settings = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putString("user_type", "");
-            editor.apply();
+        if (id == R.id.menu_action_exit) {
             finish();
 
             return true;

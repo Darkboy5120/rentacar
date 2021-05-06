@@ -46,40 +46,6 @@ public class G_Home extends Fragment implements View.OnClickListener {
         view.findViewById(R.id.iamLessee).setOnClickListener(this);
         view.findViewById(R.id.iamDriver).setOnClickListener(this);
         view.findViewById(R.id.to_login).setOnClickListener(this);
-
-        SharedPreferences settings = requireContext().getSharedPreferences("Preferences", Context.MODE_PRIVATE);
-        String user_type = settings.getString("user_type", "null");
-        String last_user_id = settings.getString("last_user_id", "null");
-
-        if (!user_type.isEmpty()) {
-            Intent i;
-            if (!last_user_id.isEmpty()) {
-                switch (user_type) {
-                    case "l":
-                        i = new Intent(requireActivity(), L_Home.class);
-                        i.putExtra("user_id", last_user_id);
-                        startActivity(i);
-                        getActivity().finish();
-                        break;
-                    case "d":
-                        //
-                        break;
-                }
-            } else {
-                i = new Intent(requireActivity(), G_Login.class);
-                startActivity(i);
-            }
-        }
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 1 && resultCode == 1) {
-            getActivity().finish();
-        }
-
     }
 
     @Override
@@ -87,14 +53,10 @@ public class G_Home extends Fragment implements View.OnClickListener {
         int vId = v.getId();
         if (vId == R.id.iamLessee) {
             Intent i = new Intent(getActivity(), L_Register.class);
-            startActivityForResult(i, 1);
-        } else if (vId == R.id.iamDriver) {
-            Intent i = new Intent(getActivity(), L_Register.class);
-            startActivityForResult(i, 1);
-        } else if (vId == R.id.to_login) {
-            Intent i = new Intent(getActivity(), G_Login.class);
             startActivity(i);
-            getActivity().finish();
+        } else if (vId == R.id.iamDriver) {
+            //Intent i = new Intent(getActivity(), L_Register.class);
+            //startActivityForResult(i, 1);
         }
     }
 }

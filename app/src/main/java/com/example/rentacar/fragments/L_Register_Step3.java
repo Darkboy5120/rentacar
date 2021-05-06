@@ -125,6 +125,7 @@ public class L_Register_Step3 extends Fragment implements View.OnClickListener {
 
                                 Intent i = new Intent(requireActivity(), L_Home.class);
                                 i.putExtra("user_id", user_id);
+                                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(i);
                                 requireActivity().finish();
                             }
