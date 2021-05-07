@@ -74,7 +74,7 @@ public class L_Register_Step2 extends Fragment implements View.OnClickListener, 
         ns_city = new NiceSpinner(R.id.label_et_city, R.id.et_city, R.id.help_et_city,
                 R.id.log_et_city, false, requireView(), this);
         ni_address = new NiceInput("text", R.id.label_et_address, R.id.et_address,
-                R.id.help_et_address,  R.id.log_et_address, "^[a-zA-Z\\s#,]*$", 15,
+                R.id.help_et_address,  R.id.log_et_address, "^[a-zA-Z0-9-\\s#,]*$", 15,
                 50, false, requireView());
     }
 
