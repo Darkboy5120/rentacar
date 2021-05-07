@@ -118,14 +118,6 @@ create table `conductor` (
     foreign key(fk_administrador) references usuario(pk_usuario) on delete cascade
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
 
-create table `conductor_codigo` (
-    `fk_administrador` smallint unsigned not null,
-    `codigo` varchar(20) not null,
-    `vencimiento` datetime not null,
-    unique key(fk_administrador, codigo),
-    foreign key(fk_administrador) references usuario(pk_usuario) on delete cascade
-) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
-
 create table `usuario_foto` (
     `fk_usuario` smallint unsigned not null,
     `imagen_ruta` varchar(100) not null,
