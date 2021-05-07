@@ -79,6 +79,9 @@
                     element: document.querySelector("#signup-step2"),
                     onclick: () => {
                         if (!form.bussiness_info.validation()) return;
+                        let button = form.bussiness_info.button;
+                        const default_text_button = button.signup_step2.element.innerHTML;
+                        button.signup_step2.element.innerHTML = "<i class='fas fa-sync-alt fa-spin'></i>" + l_arr.global.log_15;
                         let input_s1 = form.personal_info.input;
                         let input_s2 = form.bussiness_info.input;
                         new RequestMe().post("model/apis/", {
@@ -90,6 +93,7 @@
                             contraseña: input_s1.pass.element.value,
                             nombre_empresa: input_s2.bussiness_name.element.value
                         }).then(response => {
+                            button.signup_step2.element.innerHTML = default_text_button;
                             switch (response.code) {
                                 case 0:
                                     new AlertMe(l_arr.global.mdal_suc_t_0, l_arr.register.mdal_suc_b_0);
@@ -101,7 +105,7 @@
                                     input_s2.bussiness_email.printLog(l_arr.global.log_10, false);
                                     break;
                                 case -6:
-                                    input_s2.bussiness_email.printLog(l_arr.global.log_11, false);
+                                    input_s2.bussiness_name.printLog(l_arr.global.log_11, false);
                                     break;
                                 default:
                                     new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_1);

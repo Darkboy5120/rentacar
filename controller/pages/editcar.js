@@ -65,6 +65,9 @@
                     element: document.querySelector("#create-car"),
                     onclick: () => {
                         if (!form.car_info.validation()) return;
+                        let button = form.car_info.button;
+                        const default_text_button = button.create_car.element.innerHTML;
+                        button.create_car.element.innerHTML = "<i class='fas fa-sync-alt fa-spin'></i>" + l_arr.global.log_15;
                         let input = form.car_info.input;
                         let switch_ = form.car_info.switch;
                         let select = form.car_info.select;
@@ -99,6 +102,7 @@
                             tipo_motor: select.engine.element.value,
                             same_files: same_files
                         }).then(response => {
+                            button.create_car.element.innerHTML = default_text_button;
                             switch (response.code) {
                                 case 0:
                                     new AlertMe(l_arr.global.mdal_suc_t_0, l_arr.global.mdal_suc_b_2);

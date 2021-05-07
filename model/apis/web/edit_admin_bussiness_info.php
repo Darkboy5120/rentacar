@@ -40,5 +40,11 @@ $mi0->query("
 if ($mi0->result === TRUE) {
     $mi0->end("commit", 0, NULL);
 } else {
-    $mi0->end("rollback", -4, NULL);
+    if ($mi0->getErrorName() === "DUPLICATE_KEY") {
+        $duplicate_key = explode("'", $mi0->log)[3];
+        switch ($duplicate_key) {
+            case "nombre_empresa": $mi0->end("rollback", -4, NULL);break;
+        }
+    }
+    $mi0->end("rollback", -5, NULL);
 }

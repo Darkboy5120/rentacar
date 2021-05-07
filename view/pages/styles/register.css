@@ -50,7 +50,10 @@ form button {
     min-width: 50%;
     min-height: 2.4rem;
 }
-form button:not(:last-child) {
+form > div + button {
+    margin-top: 1rem;
+}
+form > button:not(:last-child) {
     margin-bottom: .5rem;
 }
 form input {

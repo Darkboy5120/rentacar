@@ -29,6 +29,9 @@
                     submit: true,
                     onclick: () => {
                         if (!form.personal_info.validation()) return;
+                        let button = form.personal_info.button;
+                        const default_text_button = button.save_personal_info.element.innerHTML;
+                        button.save_personal_info.element.innerHTML = "<i class='fas fa-sync-alt fa-spin'></i>" + l_arr.global.log_15;
                         let input = form.personal_info.input;
                         new RequestMe().post("model/apis/", {
                             api: "edit_admin_personal_info",
@@ -37,6 +40,7 @@
                         }).catch(err => {
                             new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_1);
                         }).then(response => {
+                            button.save_personal_info.element.innerHTML = default_text_button;
                             switch (response.code) {
                                 case 0:
                                     userName = input.firstname.element.value;
@@ -79,6 +83,9 @@
                     submit: true,
                     onclick: () => {
                         if (!form.bussiness_info.validation()) return;
+                        let button = form.bussiness_info.button;
+                        const default_text_button = button.save_bussiness_info.element.innerHTML;
+                        button.save_bussiness_info.element.innerHTML = "<i class='fas fa-sync-alt fa-spin'></i>" + l_arr.global.log_15;
                         let input = form.bussiness_info.input;
                         new RequestMe().post("model/apis/", {
                             api: "edit_admin_bussiness_info",
@@ -87,9 +94,13 @@
                         }).catch(err => {
                             new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_1);
                         }).then(response => {
+                            button.save_bussiness_info.element.innerHTML = default_text_button;
                             switch (response.code) {
                                 case 0:
                                     new AlertMe(l_arr.global.mdal_suc_t_0, l_arr.global.mdal_suc_b_4);
+                                    break;
+                                case -4:
+                                    form.bussiness_info.input.name.printLog(l_arr.global.log_11, false);
                                     break;
                                 default:
                                     new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_1);
@@ -123,10 +134,13 @@
                     submit: true,
                     onclick: () => {
                         if (!form.preferences_info.validation()) return;
-
+                        let button = form.preferences_info.button;
+                        const default_text_button = button.save_preferences_info.element.innerHTML;
+                        button.save_preferences_info.element.innerHTML = "<i class='fas fa-sync-alt fa-spin'></i>" + l_arr.global.log_15;
                         let select = form.preferences_info.select;
                         document.cookie = "l=" + select.language.element.value;
                         document.cookie = "c=" + select.coin.element.value;
+                        button.save_preferences_info.element.innerHTML = default_text_button;
                         new AlertMe(l_arr.global.mdal_suc_t_0, l_arr.global.mdal_suc_b_6);
                         window.setTimeout(() => {
                             location = location;
@@ -154,6 +168,9 @@
                     submit: true,
                     onclick: () => {
                         if (!form.password_info.validation()) return;
+                        let button = form.password_info.button;
+                        const default_text_button = button.save_password_info.element.innerHTML;
+                        button.save_password_info.element.innerHTML = "<i class='fas fa-sync-alt fa-spin'></i>" + l_arr.global.log_15;
                         let input = form.password_info.input;
                         new RequestMe().post("model/apis/", {
                             api: "edit_user_password",
@@ -162,6 +179,7 @@
                         }).catch(err => {
                             new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_1);
                         }).then(response => {
+                            button.save_password_info.element.innerHTML = default_text_button;
                             switch (response.code) {
                                 case 0:
                                     form.password_info.input.passold.element.value = "";
