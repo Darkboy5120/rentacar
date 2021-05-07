@@ -9,7 +9,6 @@ drop table if exists `renta`;
 drop table if exists `auto_imagen`;
 drop table if exists `auto`;
 drop table if exists `usuario_foto`;
-drop table if exists `conductor_codigo`;
 drop table if exists `conductor`;
 drop table if exists `administrador`;
 drop table if exists `arrendatario`;
