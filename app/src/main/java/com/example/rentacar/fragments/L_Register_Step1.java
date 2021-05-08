@@ -70,15 +70,15 @@ public class L_Register_Step1 extends Fragment implements View.OnClickListener {
         view.findViewById(R.id.signUp).setOnClickListener(this);
 
         ni_firstname = new NiceInput("text", R.id.label_et_firstname, R.id.et_firstname,
-                R.id.help_et_firstname,  R.id.log_et_firstname, "^[A-Za-z]+", 1,
+                R.id.help_et_firstname,  R.id.log_et_firstname, "^[A-Za-z-ZÀ-ÿ-\u00f1\u00d1\\s']+", 1,
                 50, false, requireView());
         ni_lastname = new NiceInput("text", R.id.label_et_lastname, R.id.et_lastname,
-                R.id.help_et_lastname,  R.id.log_et_lastname, "^[A-Za-z]+", 1,
+                R.id.help_et_lastname,  R.id.log_et_lastname, "^[A-Za-z-ZÀ-ÿ-\u00f1\u00d1']+", 1,
                 50, false, requireView());
         ndp_birthdate = new NiceDatepicker(R.id.label_et_birthdate, R.id.et_birthdate,
                 R.id.help_et_birthdate, R.id.log_et_birthdate, false, requireView());
         ni_password = new NiceInput("password", R.id.label_et_password, R.id.et_password,
-                R.id.help_et_password,  R.id.log_et_password, "^[A-Za-z0-9]+", 5,
+                R.id.help_et_password,  R.id.log_et_password, "^[A-Za-z0-9À-ÿ-\u00f1\u00d1']+", 5,
                 50, false, requireView());
     }
 
