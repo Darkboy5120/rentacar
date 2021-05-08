@@ -8,7 +8,7 @@
     height: 10vh;
     background-image: linear-gradient(45deg, var(--barGradientColor1), var(--barGradientColor2), var(--barGradientColor1));
     box-shadow: 0 0 10px 5px var(--navbarShadowColor);
-    z-index: 3;
+    z-index: 4;
 }
 .navbar-title {
     display: flex;
@@ -86,7 +86,7 @@
     background-image: linear-gradient(45deg, var(--secondaryColorAlt), var(--secondaryColor),
      #6456e2, var(--primaryColor), var(--primaryColorAlt));
     box-shadow: 0 0 8px 2px rgba(50, 50, 50, .5);
-    z-index: 2;
+    z-index: 3;
 }
 .main-actions span {
     white-space: nowrap;

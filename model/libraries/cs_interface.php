@@ -8,7 +8,7 @@ class CSInterface {
         setcookie($cookieName, $cookieValue, time() + 86400, "/");
     }
     public function existCookie ($cookieName) {
-        return ($_COOKIE[$cookieName] === NULL) ? FALSE : TRUE;
+        return !isset($_COOKIE[$cookieName]) ? FALSE : TRUE;
     }
     public function getCookie ($cookieName) {
         return $_COOKIE[$cookieName];
@@ -17,7 +17,7 @@ class CSInterface {
         $_SESSION[$sessionName] = $sessionValue;
     }
     public function existSession ($sessionName) {
-        return ($_SESSION[$sessionName] === NULL) ? FALSE : TRUE;
+        return !isset($_SESSION[$sessionName]) ? FALSE : TRUE;
     }
     public function getSession ($sessionName) {
         return $_SESSION[$sessionName];

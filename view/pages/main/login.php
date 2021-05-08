@@ -51,10 +51,13 @@
             </div>
         </main>
 
+        <?php include "view/components/loading-screen.php";?>
+
         <script>l_arr = <?php echo json_encode($l_arr);?>;</script>
         <script src="controller/components/field-control.js"></script>
         <script src="controller/components/request-me.js"></script>
         <script src="controller/components/alert-me.js"></script>
+        <script src="controller/components/loading-screen.js"></script>
         <script src="controller/pages/login.js"></script>
     </body>
 </html>

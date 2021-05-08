@@ -2,7 +2,7 @@
     <div class="navbar-left">
         <ul>
             <li class="navbar-title">
-                <a href="?p=home">
+                <a href="?p=welcome">
                     <img src="media/images/main_logo.png" alt="logo">
                 </a>
             </li>

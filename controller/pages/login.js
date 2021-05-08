@@ -12,12 +12,16 @@
                     element: document.querySelector("#signin"),
                     onclick: () => {
                         if (!form.login_info.validation()) return;
+                        let button = form.login_info.button;
+                        const default_text_button = button.signin.element.innerHTML;
+                        button.signin.element.innerHTML = "<i class='fas fa-sync-alt fa-spin'></i>" + l_arr.global.log_15;
                         let input = form.login_info.input;
                         new RequestMe().post("model/apis/", {
                             api: "login_admin",
                             correo: input.email.element.value,
                             contraseña: input.pass.element.value
                         }).then(response => {
+                            button.signin.element.innerHTML = default_text_button;
                             switch (response.code) {
                                 case 0:
                                     location = "?p=home";
@@ -71,4 +75,6 @@
         }
 
     }
+
+    hideLoadingScreen();
 })();

@@ -57,6 +57,9 @@ switch ($_GET["p"]) {
     case "editcar":
         require "view/pages/main/editcar.php";
         break;
+    case "welcome":
+        require "view/pages/main/welcome.php";
+        break;
     default:
         header("Location: ?p=login");
 }

@@ -75,7 +75,8 @@ const FieldControl = function (inputSelector, options) {
     }
 
     input.addEventListener("keyup", e => {
-        if (e.which != 13) validate();
+        //this should detect only simbols characters not space or shortcuts keys
+        if (e.which != 13 && e.which != 9) validate();
     });
 
     if (input.tagName != "SELECT") {

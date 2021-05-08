@@ -178,5 +178,9 @@ $l_arr = array(
     ),
     "sales" => array(
         "page_name" => "Sales"
+    ),
+    "welcome" => array(
+        "page_name" => "Bienvenido",
+        "txt_0" => "Guest"
     )
 );

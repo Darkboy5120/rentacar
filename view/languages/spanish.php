@@ -178,5 +178,11 @@ $l_arr = array(
     ),
     "sales" => array(
         "page_name" => "Ventas"
+    ),
+    "welcome" => array(
+        "page_name" => "Bienvenido",
+        "txt_0" => "Invitado",
+        "txt_1" => "Iniciar sesión",
+        "txt_2" => "Registrarse"
     )
 );
