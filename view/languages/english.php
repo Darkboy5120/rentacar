@@ -80,6 +80,7 @@ $l_arr = array(
         "txt_8" => "Email address",
         "txt_9" => "¿Have you already an account",
         "txt_10" => "Login",
+        "txt_11" => "Location",
         "button_step1" => "Next step",
         "button_tostep1" => "Go back",
         "button_step2" => "Save",

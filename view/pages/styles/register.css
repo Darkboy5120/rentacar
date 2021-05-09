@@ -1,6 +1,7 @@
 @import url("../../themes/default.css");
 @import url("../../components/global.css");
 @import url("../../components/form.css");
+@import url("../../components/modal.css");
 @import url("../../components/alert-me.css");
 html, body {
     width: 100vw;

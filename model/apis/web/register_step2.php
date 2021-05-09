@@ -9,6 +9,8 @@ if ($ci0->getSession("securitykey") !== $ci0->getSecuritykey()) {
     || !isset($_POST["correo"])
     || !isset($_POST["contraseña"])
     || !isset($_POST["nombre_empresa"])
+    || !isset($_POST["longitud_empresa"])
+    || !isset($_POST["latitud_empresa"])
     ) {
     $mi0->abort(-2, NULL);
 }
@@ -19,6 +21,8 @@ $telefono = $_POST["telefono"];
 $correo = $_POST["correo"];
 $contraseña = $mi0->hashString($_POST["contraseña"]);
 $nombre_empresa = $_POST["nombre_empresa"];
+$longitud_empresa = $_POST["longitud_empresa"];
+$latitud_empresa = $_POST["latitud_empresa"];
 $tipo = "0";
 
 $mi0->begin();
@@ -33,13 +37,7 @@ while (TRUE) {
             $new_hash, $nombre, $apellido, $telefono, $correo, $contraseña, $tipo
     );
     if ($mi0->result === FALSE) {
-        if ($mi0->getErrorName() === "DUPLICATE_KEY") {
-            $duplicate_key = explode("'", $mi0->log)[3];
-            switch ($duplicate_key) {
-                case "correo": $mi0->end("rollback", -3, NULL);break;
-            }
-        }
-        $mi0->end("rollback", -4, NULL);
+        $mi0->end("rollback", -3, NULL);
     } else {
         break;
     }
@@ -48,10 +46,10 @@ $last_user_id = $mi0->link->insert_id;
 
 $mi0->query("
     INSERT INTO administrador
-        (fk_usuario, nombre_empresa)
+        (fk_usuario, nombre_empresa, longitud_empresa, latitud_empresa)
     VALUES
-        (?, ?)",
-        $last_user_id, $nombre_empresa
+        (?, ?, ?, ?)",
+        $last_user_id, $nombre_empresa, $longitud_empresa, $latitud_empresa
 );
 if ($mi0->result === TRUE) {
     $mi0->query("
@@ -70,13 +68,13 @@ if ($mi0->result === TRUE) {
         ));
         $mi0->end("commit", 0, NULL);
     }
-    $mi0->end("rollback", -5, NULL);
+    $mi0->end("rollback", -4, NULL);
 } else {
     if ($mi0->getErrorName() === "DUPLICATE_KEY") {
         $duplicate_key = explode("'", $mi0->log)[3];
         switch ($duplicate_key) {
-            case "nombre_empresa": $mi0->end("rollback", -6, NULL);break;
+            case "nombre_empresa": $mi0->end("rollback", -5, NULL);break;
         }
     }
-    $mi0->end("rollback", -7, NULL);
+    $mi0->end("rollback", -6, NULL);
 }

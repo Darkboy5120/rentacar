@@ -52,6 +52,15 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
                         <span class="input-log hidden"></span>
                     </div>
                     <div class="input-layout">
+                        <label for="input-email"><?=$l_arr["register"]["txt_8"];?></label>
+                        <div class="input-field">
+                            <input class="input-primary" type="email" id="input-email"
+                                placeholder="<?=$l_arr["register"]["txt_8"];?>">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <span class="input-log hidden"></span>
+                    </div>
+                    <div class="input-layout">
                         <label for="input-pass"><?=$l_arr["register"]["txt_4"];?></label>
                         <div class="input-field both-icons">
                             <input class="input-primary" type="password" id="input-pass"
@@ -85,11 +94,11 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
                         <span class="input-log hidden"></span>
                     </div>
                     <div class="input-layout">
-                        <label for="input-bussiness-email"><?=$l_arr["register"]["txt_8"];?></label>
+                        <label for="input-bussiness-location"><?=$l_arr["register"]["txt_11"];?></label>
                         <div class="input-field">
-                            <input class="input-primary" type="email" id="input-bussiness-email"
-                                placeholder="<?=$l_arr["register"]["txt_8"];?>">
-                            <i class="fas fa-envelope"></i>
+                            <input class="input-primary" type="text" id="input-bussiness-location"
+                                placeholder="<?=$l_arr["register"]["txt_11"];?>">
+                            <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <span class="input-log hidden"></span>
                     </div>
@@ -105,13 +114,19 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
             </div>
         </main>
 
-        <?php include "view/components/loading-screen.php";?>
+        <?php include "view/pages/modals/register.html";
+            include "view/components/loading-screen.php";?>
 
         <script>l_arr = <?php echo json_encode($l_arr);?>;</script>
+        <script src="controller/components/modal.js"></script>
         <script src="controller/components/field-control.js"></script>
+        <script src="controller/components/location-picker-control.js"></script>
         <script src="controller/components/request-me.js"></script>
         <script src="controller/components/alert-me.js"></script>
         <script src="controller/components/loading-screen.js"></script>
+        <script type="text/javascript"
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBehcXiZ5YmFx3Q7bSTjaOgRGRh5QYlXYs"></script>
+        <script src="https://unpkg.com/location-picker/dist/location-picker.min.js"></script>
         <script src="controller/pages/register.js"></script>
     </body>
 </html>

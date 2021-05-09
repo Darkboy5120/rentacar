@@ -2,8 +2,8 @@ const FieldControl = function (inputSelector, options) {
     if (!options.hasOwnProperty("not")) {
         options.not = false;
     }
-    const plural = " caracteres";
-    const singular = " caracter";
+    const plural = l_arr.global.log_16;
+    const singular = l_arr.global.log_17;
     const logMessage = {
         empty : l_arr.global.log_0,
         invalidFormat : l_arr.global.log_1,

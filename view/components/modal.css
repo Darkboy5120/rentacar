@@ -112,6 +112,11 @@ a {
 a:visited {
     color: var(--primaryColor);
 }
+.modal-map {
+    width: 100%;
+    height: 70vh;
+    margin-bottom: 1rem;
+}
 @media(min-width: 768px) {
     .modal > .modal-card-small {
         min-height: min-content;
@@ -120,6 +125,10 @@ a:visited {
     .modal > .modal-card-medium {
         min-height: min-content;
         width: 40%;
+    }
+    .modal > .modal-card-big {
+        min-height: min-content;
+        width: 60%;
     }
     .driver-info > span {
         font-size: 1rem;
@@ -133,5 +142,9 @@ a:visited {
     .modal > .modal-card-medium {
         min-height: min-content;
         width: 60%;
+    }
+    .modal > .modal-card-big {
+        min-height: min-content;
+        width: 80%;
     }
 }
