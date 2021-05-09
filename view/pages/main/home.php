@@ -49,7 +49,7 @@ $user_name = $ci0->getSession("user_data")["nombre"];
             </div>
         </main>
 
-        <?php include "view/pages/modals/home.html";
+        <?php include "view/pages/modals/home.php";
             include "view/components/loading-screen.php";?>
 
         <script>

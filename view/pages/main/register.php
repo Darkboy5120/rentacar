@@ -114,7 +114,7 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
             </div>
         </main>
 
-        <?php include "view/pages/modals/register.html";
+        <?php include "view/pages/modals/register.php";
             include "view/components/loading-screen.php";?>
 
         <script>l_arr = <?php echo json_encode($l_arr);?>;</script>
