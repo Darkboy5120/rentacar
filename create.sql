@@ -116,6 +116,10 @@ create table `administrador` (
 create table `conductor` (
     `fk_usuario` smallint unsigned not null,
     `fk_administrador` smallint unsigned not null,
+    /* 0 - No esta despedido
+     * 1 - Esta despedido
+     */
+    `despedido` enum("0", "1") default "0" not null,
     foreign key(fk_usuario) references usuario(pk_usuario) on delete cascade,
     foreign key(fk_administrador) references usuario(pk_usuario) on delete cascade
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
