@@ -60,6 +60,9 @@ switch ($_GET["p"]) {
     case "welcome":
         require "view/pages/main/welcome.php";
         break;
+    case "newdriver":
+        require "view/pages/main/newdriver.php";
+        break;
     default:
         header("Location: ?p=login");
 }

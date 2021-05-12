@@ -126,10 +126,14 @@
                             }
                             modal.car_delete_confirm.button.yes.onclick = () => {
 
+                                let button = modal.car_delete_confirm.button;
+                                const default_text_button = button.yes.element.innerHTML;
+                                button.yes.element.innerHTML = "<i class='fas fa-sync-alt fa-spin'></i>" + l_arr.global.log_15;
                                 new RequestMe().post("model/apis/", {
                                     api: "delete_car",
                                     car: c_layout_id
                                 }).then(response => {
+                                    button.yes.element.innerHTML = default_text_button;
                                     switch (response.code) {
                                         case 0:
                                             cars_count -= 1;

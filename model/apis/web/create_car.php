@@ -103,7 +103,7 @@ foreach ($_FILES as $name => $file) {
         break;
     }
     if (!move_uploaded_file($file["tmp_name"], $new_image_path)) {
-        $mi0->end("rollback", -4, NULL);
+        $mi0->end("rollback", -5, NULL);
     }
 }
 $mi0->end("commit", 0, NULL);

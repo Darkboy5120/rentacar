@@ -21,6 +21,7 @@ $l_arr = array(
         "log_15" => " Cargando...",
         "log_16" => " caracteres",
         "log_17" => " caracter",
+        "log_18" => "Ese telefono ya esta en uso",
         "title_0" => "Presiona Esc para cerrar",
         "lsm_0" => "Ya casi llegamos...",
         "lsm_1" => "Cambiando neumatico...",
@@ -35,6 +36,7 @@ $l_arr = array(
         "mdal_btn_1" => " Editar",
         "mdal_btn_2" => " Eliminar",
         "mdal_btn_3" => " Cancelar",
+        "mdal_btn_4" => " Despedir",
         "mdal_err_t_0" => "Error",
         "mdal_suc_t_0" => "Genial",
         "mdal_suc_t_1" => "Aviso",
@@ -48,6 +50,7 @@ $l_arr = array(
         "mdal_suc_b_4" => "La información de la empresa se ha actualizado correctamente",
         "mdal_suc_b_5" => "La contraseña se ha actualizado correctamente",
         "mdal_suc_b_6" => "Las preferencias se han actualizado correctamente, recargando la página...",
+        "mdal_suc_b_7" => "El conductor se ha guardo correctamente, regresando a Conductores...",
         "txt_0" => "Estas en",
         "txt_1" => "Mis autos",
         "txt_2" => "Conductores",
@@ -194,5 +197,17 @@ $l_arr = array(
         "txt_0" => "Invitado",
         "txt_1" => "Iniciar sesión",
         "txt_2" => "Registrarse"
-    )
+    ),
+    "newdriver" => array(
+        "page_name" => "Nuevo conductor",
+        "txt_0" => "Datos personales",
+        "txt_1" => "Nombre",
+        "txt_2" => "Apellido",
+        "txt_3" => "Telefono",
+        "txt_4" => "Correo",
+        "txt_5" => "Contraseña",
+        "txt_6" => "Portada",
+        "txt_7" => "Estas a punto de despedir un conductor...",
+        "txt_8" => " Despedir",
+    ),
 );

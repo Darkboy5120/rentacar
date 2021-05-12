@@ -60,6 +60,15 @@ if (isset($_REQUEST["api"])) {
         case "login_lessee":
             require "mobile/login.php";
             break;
+        case "create_driver":
+            require "web/create_driver.php";
+            break;
+        case "get_drivers":
+            require "web/get_drivers.php";
+            break;
+        case "set_fire_driver":
+            require "web/fire_driver.php";
+            break;
         default: echo json_encode("That's not a valid api");
     }
 }

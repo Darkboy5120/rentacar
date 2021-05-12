@@ -27,7 +27,7 @@ $user_name = $ci0->getSession("user_data")["nombre"];
             <?php include "view/components/navbar.php";?>
             <nav class="main-actions">
                 <ul>
-                    <button type="button" id="newDriver"><i class="fas fa-user-plus"></i><span>Agregar conductor</span></button>
+                    <button type="button" id="action-create-driver"><i class="fas fa-user-plus"></i><span>Agregar conductor</span></button>
                     <button type="button" id="searchAction" class="main-action-search">
                         <i class="fas fa-search"></i><span>Buscar</span>
                         <input id="search" type="text" placeholder="Búscar conductor" autocomplete="off">
@@ -38,69 +38,25 @@ $user_name = $ci0->getSession("user_data")["nombre"];
                 <span>Estas en <span data-location=""></span></span>
             </div>
             <div class="container">
-                <section class="cards-sales">
+                <section class="cards-sales" id="cards-sales">
                     <div class="card-sale-header">
                         <span>Identificador</span>
                         <span>Nombre</span>
                         <span>Apellido</span>
                     </div>
-                    <button class="card-sale">
-                        <span>14587</span>
-                        <span>$2000</span>
-                        <span>03/16/2021</span>
-                    </button>
-                    <button class="card-sale">
-                        <span>14587</span>
-                        <span>$2000</span>
-                        <span>03/16/2021</span>
-                    </button>
-                    <button class="card-sale">
-                        <span>14587</span>
-                        <span>$2000</span>
-                        <span>03/16/2021</span>
-                    </button>
-                    <button class="card-sale">
-                        <span>14587</span>
-                        <span>$2000</span>
-                        <span>03/16/2021</span>
-                    </button>
-                    <button class="card-sale">
-                        <span>14587</span>
-                        <span>$2000</span>
-                        <span>03/16/2021</span>
-                    </button>
-                    <button class="card-sale">
-                        <span>14587</span>
-                        <span>$2000</span>
-                        <span>03/16/2021</span>
-                    </button>
-                    <button class="card-sale">
-                        <span>14587</span>
-                        <span>$2000</span>
-                        <span>03/16/2021</span>
-                    </button>
-                    <button class="card-sale">
-                        <span>14587</span>
-                        <span>$2000</span>
-                        <span>03/16/2021</span>
-                    </button>
-                    <button class="card-sale">
-                        <span>14587</span>
-                        <span>$2000</span>
-                        <span>03/16/2021</span>
-                    </button>
-                    <button class="card-sale">
-                        <span>14587</span>
-                        <span>$2000</span>
-                        <span>03/16/2021</span>
-                    </button>
+                    <span class="cards-empty hidden">
+                        <?=$l_arr["home"]["txt_2"]?></span>
+                </section>
+                <section class="load-more hidden" id="load-more-layout">
+                    <button class="button button-primary" id="load-more">
+                        <?=$l_arr["home"]["button_loadmore"]?></button>
                 </section>
                 <?php include "view/components/footer.php";?>
             </div>
         </main>
 
         <?php include "view/components/loading-screen.php";?>
-        <?php include "view/pages/modals/drivers.html";?>
+        <?php include "view/pages/modals/drivers.php";?>
 
     </body>
     <script>
@@ -109,6 +65,8 @@ $user_name = $ci0->getSession("user_data")["nombre"];
         l_arr = <?php echo json_encode($l_arr);?>;
     </script>
     <script src="controller/components/modal.js"></script>
+    <script src="controller/components/request-me.js"></script>
+    <script src="controller/components/alert-me.js"></script>
     <script src="controller/components/loading-screen.js"></script>
     <script src="controller/pages/drivers.js"></script>
 </html>
