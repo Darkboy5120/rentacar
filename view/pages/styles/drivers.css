@@ -6,6 +6,7 @@
 @import url("../../components/sales-cards.css");
 @import url("../../components/pagination.css");
 @import url("../../components/modal.css");
+@import url("../../components/alert-me.css");
 @import url("../../components/form.css");
 html, body {
     margin: 0;
@@ -53,6 +54,14 @@ h1 {
 }
 .load-more > button {
     padding: 2% 5% 2% 5%;
+}
+.cards-empty {
+    color: var(--carCardEmptyColor);
+    position: absolute;
+    justify-self: center;
+    width: 100%;
+    text-align: center;
+    align-self: center;
 }
 @media(min-width: 768px) {
     main > .container {

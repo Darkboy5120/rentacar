@@ -18,7 +18,7 @@ $new_fired = $_POST["new_fired"];
 
 $mi0->query("
     UPDATE conductor
-    SET fired = ?
+    SET despedido = ?
     WHERE fk_usuario = ? AND fk_administrador = ?",
     $new_fired, $driver_id, $admin_id
 );

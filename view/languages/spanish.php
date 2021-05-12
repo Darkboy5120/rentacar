@@ -51,6 +51,7 @@ $l_arr = array(
         "mdal_suc_b_5" => "La contraseña se ha actualizado correctamente",
         "mdal_suc_b_6" => "Las preferencias se han actualizado correctamente, recargando la página...",
         "mdal_suc_b_7" => "El conductor se ha guardo correctamente, regresando a Conductores...",
+        "mdal_suc_b_8" => "El conductor se ha despedido correctamente",
         "txt_0" => "Estas en",
         "txt_1" => "Mis autos",
         "txt_2" => "Conductores",
@@ -187,7 +188,10 @@ $l_arr = array(
 
     ),
     "drivers" => array(
-        "page_name" => "Conductores"
+        "page_name" => "Conductores",
+        "txt_0" => "Estas a punto de despedir un conductor...",
+        "txt_1" => " Despedir",
+        "txt_2" => "Aun no se ha agregado ningun conductor"
     ),
     "sales" => array(
         "page_name" => "Ventas"
@@ -206,8 +210,6 @@ $l_arr = array(
         "txt_3" => "Telefono",
         "txt_4" => "Correo",
         "txt_5" => "Contraseña",
-        "txt_6" => "Portada",
-        "txt_7" => "Estas a punto de despedir un conductor...",
-        "txt_8" => " Despedir",
+        "txt_6" => "Portada"
     ),
 );

@@ -40,7 +40,7 @@ $mi0->query("
         (usuario_foto, conductor)
     ON
         (usuario.pk_usuario = usuario_foto.fk_usuario AND conductor.fk_usuario = usuario.pk_usuario)
-    WHERE conductor.fk_administrador = ? AND fired = 0
+    WHERE conductor.fk_administrador = ? AND despedido = '0'
     ORDER BY usuario.pk_usuario ASC
     LIMIT $offset, $limit",
     $admin_id
@@ -66,7 +66,7 @@ $mi0->query("
         (usuario_foto, conductor)
     ON
         (usuario.pk_usuario = usuario_foto.fk_usuario AND conductor.fk_usuario = usuario.pk_usuario)
-    WHERE conductor.fk_administrador = ?
+    WHERE conductor.fk_administrador = ? AND despedido = '0'
     LIMIT $next_offset, $limit",
     $admin_id
 );

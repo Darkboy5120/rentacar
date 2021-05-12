@@ -51,6 +51,7 @@ $l_arr = array(
         "mdal_suc_b_5" => "The password has been successfully updated",
         "mdal_suc_b_6" => "The preferences have been saved, reloading page...",
         "mdal_suc_b_7" => "The driver has been successfully saved, going back to Drivers...",
+        "mdal_suc_b_8" => "The driver has been successfully fired",
         "txt_0" => "You are in",
         "txt_1" => "My cars",
         "txt_2" => "Drivers",
@@ -207,5 +208,6 @@ $l_arr = array(
         "txt_6" => "Cover page",
         "txt_7" => "You are about to fire a driver...",
         "txt_8" => " Fire",
+        "txt_9" => "No drivers have been added yet",
     ),
 );

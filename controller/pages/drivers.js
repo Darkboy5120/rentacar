@@ -91,6 +91,7 @@
             offset: offset,
             limit: limit
         }).then(response => {
+            console.log(response);
             switch (response.code) {
                 case 0:
                     drivers_count += response.data.drivers.length;
@@ -129,8 +130,9 @@
                                 const default_text_button = button.yes.element.innerHTML;
                                 button.yes.element.innerHTML = "<i class='fas fa-sync-alt fa-spin'></i>" + l_arr.global.log_15;
                                 new RequestMe().post("model/apis/", {
-                                    api: "fire_driver",
-                                    driver: d_layout_id
+                                    api: "set_fire_driver",
+                                    driver: d_layout_id,
+                                    new_fired: "1"
                                 }).then(response => {
                                     button.yes.element.innerHTML = default_text_button;
                                     switch (response.code) {
@@ -140,8 +142,8 @@
                                                 document.querySelector(".cards-empty").classList.remove("hidden");
                                             }
                                             driver_node.remove();
-                                            modal.driver_options.object.hide();
-                                            new AlertMe(l_arr.global.mdal_suc_t_1, l_arr.global.mdal_suc_b_0);
+                                            modal.driver_fire_confirm.object.hide();
+                                            new AlertMe(l_arr.global.mdal_suc_t_1, l_arr.global.mdal_suc_b_8);
                                             break;
                                         default:
                                             new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_1);
