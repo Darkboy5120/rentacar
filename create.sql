@@ -80,7 +80,8 @@ create table `usuario` (
   `tipo` enum("0", "1", "2") not null,
   primary key(pk_usuario),
   unique key(token),
-  unique key(correo)
+  unique key(correo),
+  unique key(telefono)
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
 
 create table `usuario_peticion` (
