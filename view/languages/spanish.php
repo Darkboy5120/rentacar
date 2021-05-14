@@ -166,7 +166,7 @@ $l_arr = array(
         "txt_48" => "Vacío",
         "txt_49" => "Agregar",
         "txt_50" => "Editar",
-        "txt_51" => "Otras imagenes",
+        "txt_51" => "Otras imágenes",
         "button_createcar" => "Guardar"
     ),
     "editcar" => array(
@@ -219,6 +219,6 @@ $l_arr = array(
         "txt_3" => "Telefono",
         "txt_4" => "Correo",
         "txt_5" => "Contraseña",
-        "txt_6" => "Portada"
+        "txt_6" => "Imagen de perfil"
     ),
 );

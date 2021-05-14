@@ -56,7 +56,7 @@ $l_arr = array(
         "txt_1" => "My cars",
         "txt_2" => "Drivers",
         "txt_3" => "Sales",
-        "txt_4" => "Profile",
+        "txt_4" => "Configuration",
         "txt_5" => "Go out",
         "txt_6" => "Information",
         "txt_7" => "Mission",
@@ -173,7 +173,7 @@ $l_arr = array(
         "page_name" => "Edit car"
     ),
     "profile" => array(
-        "page_name" => "Profile",
+        "page_name" => "Configuration",
         "txt_0" => "Personal data",
         "txt_1" => "Name",
         "txt_2" => "Lastname",
@@ -219,6 +219,6 @@ $l_arr = array(
         "txt_3" => "Phone",
         "txt_4" => "Email address",
         "txt_5" => "Password",
-        "txt_6" => "Cover page"
+        "txt_6" => "Profile image"
     ),
 );
