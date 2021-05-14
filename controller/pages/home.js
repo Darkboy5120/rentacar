@@ -28,13 +28,6 @@
     navbar_right_list.insertBefore(navbar_create_car, navbar_right_relative);
     navbar_right_list.insertBefore(navbar_search, navbar_right_relative);
 
-    ScrollReveal().reveal('.card-car', {
-        delay: 175,
-        duration: 500,
-        reset: true,
-        scale: 0.85
-    });
-
     let modal = {
         car_options: {
             object: new Modal("#car-options"),
@@ -171,6 +164,12 @@
                         });
 
                         cars_layout.appendChild(car_node);
+                        ScrollReveal().reveal(car_node, {
+                            delay: 175,
+                            duration: 500,
+                            reset: true,
+                            scale: 0.85
+                        });
                     }
                     let load_more_layout = document.querySelector("#load-more-layout");
                     let load_more_button = load_more_layout.querySelector("button");

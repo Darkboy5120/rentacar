@@ -97,8 +97,8 @@ if ($mi0->result === FALSE) {
     $mi0->end("rollback", -4, NULL);
 }
 
-if ($same_files) {
-    $mi0->end("commit", 0, NULL);
+if ($same_files === "1") {
+    $mi0->end("commit", 0, $same_files);
 }
 
 $mi0->query("

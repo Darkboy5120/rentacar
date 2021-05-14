@@ -72,7 +72,7 @@
                         let switch_ = form.car_info.switch;
                         let select = form.car_info.select;
                         let same_files = (!input.thumbnail_image.is_edited() && !input.others_images.is_edited())
-                            ? true : false;
+                            ? 1 : 0;
                         new RequestMe().post("model/apis/", {
                             api: "edit_car",
                             car: carId,
