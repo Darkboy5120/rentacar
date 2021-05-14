@@ -19,6 +19,9 @@
     position: relative;
     margin-bottom: 1rem;
 }
+.fields-wrapper {
+    flex-direction: column !important;
+}
 .input-layout > label,
 .switch-field > label {
     color: var(--textColor);
@@ -265,5 +268,11 @@ input:focus {
 }
 .file-container > .file-button:hover {
 }
-@media(min-width: 768px) {
+@media(min-width: 768px) {    
+    .fields-wrapper > .input-layout {
+        min-width: auto;
+    }
+    .fields-wrapper {
+        flex-direction: row !important;
+    }
 }

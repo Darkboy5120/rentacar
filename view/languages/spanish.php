@@ -56,7 +56,7 @@ $l_arr = array(
         "txt_1" => "Mis autos",
         "txt_2" => "Conductores",
         "txt_3" => "Ventas",
-        "txt_4" => "Perfil",
+        "txt_4" => "Configuración",
         "txt_5" => "Salir",
         "txt_6" => "Información",
         "txt_7" => "Misión",
@@ -67,7 +67,12 @@ $l_arr = array(
         "txt_12" => "Otros",
         "txt_13" => "Politicas",
         "txt_14" => "Seguridad",
-        "txt_15" => "Proyectos"
+        "txt_15" => "Proyectos",
+        "txt_16" => "Tema",
+        "txt_17" => "Idioma",
+        "txt_18" => "Notificaciones",
+        "txt_19" => "Configuración",
+        "txt_20" => "Secciones"
     ),
     "login" => array(
         "page_name" => "Login",
@@ -77,7 +82,8 @@ $l_arr = array(
         "txt_2" => "¿Aun no tienes una cuenta?",
         "txt_3" => "Registrate",
         "txt_4" => "Recuperar",
-        "txt_5" => "contraseña"
+        "txt_5" => "contraseña",
+        "txt_6" => "Inicia sesión"
     ),
     "register" => array(
         "page_name" => "Registro",
@@ -93,6 +99,7 @@ $l_arr = array(
         "txt_9" => "¿Ya tienes una cuenta?",
         "txt_10" => "Inicia sesión",
         "txt_11" => "Ubicación",
+        "txt_12" => "Crea una cuenta",
         "button_step1" => "Continuar",
         "button_tostep1" => "Volver",
         "button_step2" => "Guardar",
@@ -166,7 +173,7 @@ $l_arr = array(
         "page_name" => "Editar auto"
     ),
     "profile" => array(
-        "page_name" => "Perfil",
+        "page_name" => "Configuración",
         "txt_0" => "Datos personales",
         "txt_1" => "Nombre",
         "txt_2" => "Apellido",
@@ -185,20 +192,22 @@ $l_arr = array(
         "button_savepreferencesinfo" => "Guardar",
         "button_savebussinessinfo" => "Guardar",
         "button_savepersonalinfo" => "Guardar"
-
     ),
     "drivers" => array(
         "page_name" => "Conductores",
         "txt_0" => "Estas a punto de despedir un conductor...",
         "txt_1" => " Despedir",
-        "txt_2" => "Aun no se ha agregado ningun conductor"
+        "txt_2" => "Aun no se ha agregado ningun conductor",
+        "txt_3" => "Identificador",
+        "txt_4" => "Nombre",
+        "txt_5" => "Apellido"
     ),
     "sales" => array(
         "page_name" => "Ventas"
     ),
     "welcome" => array(
         "page_name" => "Bienvenido",
-        "txt_0" => "Invitado",
+        "txt_0" => "¿Aun no has iniciado sesión?",
         "txt_1" => "Iniciar sesión",
         "txt_2" => "Registrarse"
     ),

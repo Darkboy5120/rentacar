@@ -24,14 +24,6 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
     <body>
         <main>
             <?php include "view/components/navbar.php";?>
-            <nav class="main-actions">
-                <ul>
-                    <button type="button" id="action-tologin"><i class="fas fa-sign-in-alt"></i><span>
-                        <?=$l_arr["welcome"]["txt_1"]?></span></button>
-                    <button type="button" id="action-toregister"><i class="fas fa-user-plus"></i><span>
-                        <?=$l_arr["welcome"]["txt_2"]?></span></button>
-                </ul>
-            </nav>
             <div class="fixed-location">
                 <span><?=$l_arr["global"]["txt_0"]?> <span data-location=""></span></span>
             </div>

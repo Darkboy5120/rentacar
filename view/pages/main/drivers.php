@@ -25,24 +25,15 @@ $user_name = $ci0->getSession("user_data")["nombre"];
     <body>
         <main>
             <?php include "view/components/navbar.php";?>
-            <nav class="main-actions">
-                <ul>
-                    <button type="button" id="action-create-driver"><i class="fas fa-user-plus"></i><span>Agregar conductor</span></button>
-                    <button type="button" id="searchAction" class="main-action-search">
-                        <i class="fas fa-search"></i><span>Buscar</span>
-                        <input id="search" type="text" placeholder="Búscar conductor" autocomplete="off">
-                    </button>
-                </ul>
-            </nav>
             <div class="fixed-location">
-                <span>Estas en <span data-location=""></span></span>
+                <span><?=$l_arr["global"]["txt_0"]?> <span data-location=""></span></span>
             </div>
             <div class="container">
                 <section class="cards-sales" id="cards-sales">
                     <div class="card-sale-header">
-                        <span>Identificador</span>
-                        <span>Nombre</span>
-                        <span>Apellido</span>
+                        <span><?=$l_arr["drivers"]["txt_3"]?></span>
+                        <span><?=$l_arr["drivers"]["txt_4"]?></span>
+                        <span><?=$l_arr["drivers"]["txt_5"]?></span>
                     </div>
                     <span class="cards-empty hidden">
                         <?=$l_arr["drivers"]["txt_2"]?></span>

@@ -9,7 +9,12 @@
     document.querySelectorAll("[data-username]").forEach(e => {
         e.textContent = userName;
     });
-    document.querySelector("#n_dd_exit_tab").classList.add("hidden");
+    document.querySelectorAll("[data-session-variant='1']").forEach(e => {
+        e.classList.add("hidden");
+    });
+    document.querySelectorAll("[data-session-variant='2']").forEach(e => {
+        e.classList.remove("hidden");
+    });
     
     let form = {
         global: {

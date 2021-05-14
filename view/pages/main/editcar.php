@@ -40,10 +40,6 @@ if ($mi0->result->num_rows === 0) {
     <body>
         <main>
             <?php include "view/components/navbar.php";?>
-            <nav class="main-actions">
-                <ul>
-                </ul>
-            </nav>
             <div class="fixed-location">
                 <span><?=$l_arr["global"]["txt_0"]?> <span data-location=""></span></span>
             </div>

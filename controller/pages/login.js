@@ -1,4 +1,18 @@
 (function () {
+    const userName = l_arr.welcome.txt_0;
+    const pageName = l_arr.login.page_name;
+    document.querySelector("title").textContent = l_arr.global.app_name
+        + l_arr.global.title_separator + pageName;
+    document.querySelectorAll("[data-location]").forEach(element => {
+        element.textContent = pageName;
+    });
+    document.querySelectorAll("[data-username]").forEach(e => {
+        e.textContent = userName;
+    });
+    document.querySelectorAll("[data-session-variant='1']").forEach(e => {
+        e.classList.add("hidden");
+    });
+
     let form = {
         login_info: {
             element: document.querySelector("#login-info"),

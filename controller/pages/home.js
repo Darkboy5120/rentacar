@@ -9,6 +9,24 @@
         e.textContent = userName;
     });
     document.querySelector("#n_dd_home_tab").classList.add("dropdown-active");
+    
+    //insert main actions manually
+    let navbar_right_relative = document.querySelector("#relative-n-dd-reference");
+    let navbar_right_list = document.querySelector("#relative-n-dd-reference").parentNode;
+    let navbar_create_car = document.createElement("li");
+    navbar_create_car.innerHTML = `
+        <button id="action-create-car">
+            <i class="fas fa-plus"></i>
+        </button>
+    `;
+    let navbar_search = document.createElement("li");
+    navbar_search.innerHTML = `
+        <button id="action-search">
+            <i class="fas fa-search"></i>
+        </button>
+    `;
+    navbar_right_list.insertBefore(navbar_create_car, navbar_right_relative);
+    navbar_right_list.insertBefore(navbar_search, navbar_right_relative);
 
     ScrollReveal().reveal('.card-car', {
         delay: 175,

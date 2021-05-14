@@ -9,12 +9,24 @@
         e.textContent = userName;
     });
     document.querySelector("#n_dd_drivers_tab").classList.add("dropdown-active");
-    
-    hideLoadingScreen();
 
-    document.querySelector("#searchAction").addEventListener("click", e => {
-        document.querySelector("#searchAction").querySelector("input").focus();
-    });
+    //insert main actions manually
+    let navbar_right_relative = document.querySelector("#relative-n-dd-reference");
+    let navbar_right_list = document.querySelector("#relative-n-dd-reference").parentNode;
+    let navbar_create_driver = document.createElement("li");
+    navbar_create_driver.innerHTML = `
+        <button id="action-create-driver">
+            <i class="fas fa-plus"></i>
+        </button>
+    `;
+    let navbar_search = document.createElement("li");
+    navbar_search.innerHTML = `
+        <button id="action-search">
+            <i class="fas fa-search"></i>
+        </button>
+    `;
+    navbar_right_list.insertBefore(navbar_create_driver, navbar_right_relative);
+    navbar_right_list.insertBefore(navbar_search, navbar_right_relative);
 
     let modal = {
         driver_options: {
@@ -91,7 +103,6 @@
             offset: offset,
             limit: limit
         }).then(response => {
-            console.log(response);
             switch (response.code) {
                 case 0:
                     drivers_count += response.data.drivers.length;
@@ -135,6 +146,7 @@
                                     new_fired: "1"
                                 }).then(response => {
                                     button.yes.element.innerHTML = default_text_button;
+                                    hideLoadingScreen();
                                     switch (response.code) {
                                         case 0:
                                             drivers_count -= 1;

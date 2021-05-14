@@ -13,6 +13,7 @@
 .navbar-title {
     display: flex;
     align-items: center;
+    margin-right: 1rem;
 }
 .navbar-title img {
     height: 2rem;
@@ -35,7 +36,15 @@
 .navbar-right {
     justify-content: flex-end;
 }
-.navbar-left ul > li {
+.navbar-right ul > li:not(.dropdown) > button {
+    padding: 0 1rem;
+    background: none;
+    color: var(--textColor);
+    border: none;
+    cursor: pointer;
+    padding: 1rem;
+}
+.navbar-left ul > li:not(:first-child) {
     padding: 0 1rem 0 1rem;
 }
 .navbar ul > li {
@@ -51,6 +60,10 @@
     cursor: pointer;
 }
 .navbar-location {
+    display: none !important;
+}
+.navbar-location,
+.navbar-location * {
     cursor: default !important;
 }
 .navbar ul > li i + span,
@@ -70,6 +83,9 @@
     font-family: 'Merriweather Sans', sans-serif;
     text-decoration: none;
     cursor: pointer;
+}
+.navbar ul a > i {
+    padding-right: 1rem;
 }
 .navbar ul > li:not(.navbar-title):not(.navbar-location) > span {
     display: none;
@@ -163,7 +179,8 @@
 
 .slide-left-fl {
     transition: all .5s ease 2s !important;
-    left: -50%;
+    /* May need more space inside */
+    left: -65%;
 }
 @media(min-width: 768px) {
     .navbar ul {
@@ -174,6 +191,10 @@
     }
     .fixed-location {
     }
+    .navbar-location {
+        display: flex !important;
+    }
 }
 @media(min-width: 426px) and (max-width: 767px) {
+    
 }

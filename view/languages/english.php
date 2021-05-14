@@ -67,7 +67,12 @@ $l_arr = array(
         "txt_12" => "Others",
         "txt_13" => "Poitics",
         "txt_14" => "Security",
-        "txt_15" => "Projects"
+        "txt_15" => "Projects",
+        "txt_16" => "Theme",
+        "txt_17" => "Language",
+        "txt_18" => "Notifications",
+        "txt_19" => "Configuration",
+        "txt_20" => "Sections"
     ),
     "login" => array(
         "page_name" => "Login",
@@ -77,7 +82,8 @@ $l_arr = array(
         "txt_2" => "¿Do not you have an account yet?",
         "txt_3" => "Sign up",
         "txt_4" => "Get it back",
-        "txt_5" => "password"
+        "txt_5" => "password",
+        "txt_6" => "Sign in"
     ),
     "register" => array(
         "page_name" => "Sign up",
@@ -93,6 +99,7 @@ $l_arr = array(
         "txt_9" => "¿Have you already an account",
         "txt_10" => "Login",
         "txt_11" => "Location",
+        "txt_12" => "Create an account",
         "button_step1" => "Next step",
         "button_tostep1" => "Go back",
         "button_step2" => "Save",
@@ -185,29 +192,33 @@ $l_arr = array(
         "button_savepreferencesinfo" => "Save",
         "button_savebussinessinfo" => "Save",
         "button_savepersonalinfo" => "Save"
-
     ),
     "drivers" => array(
-        "page_name" => "Drivers"
+        "page_name" => "Drivers",
+        "txt_0" => "You are about to fire a driver...",
+        "txt_1" => " Fire",
+        "txt_2" => "Aun no se ha agregado ningun conductor",
+        "txt_3" => "Indentifier",
+        "txt_4" => "Firstname",
+        "txt_5" => "Lastname"
     ),
     "sales" => array(
         "page_name" => "Sales"
     ),
     "welcome" => array(
         "page_name" => "Bienvenido",
-        "txt_0" => "Guest"
+        "txt_0" => "¿Haven't sign in yet?",
+        "txt_1" => "Sign in",
+        "txt_2" => "Sign up"
     ),
     "newdriver" => array(
-        "page_name" => "Nuevo conductor",
+        "page_name" => "New driver",
         "txt_0" => "Personal data",
         "txt_1" => "Firstname",
         "txt_2" => "Lastname",
         "txt_3" => "Phone",
         "txt_4" => "Email address",
         "txt_5" => "Password",
-        "txt_6" => "Cover page",
-        "txt_7" => "You are about to fire a driver...",
-        "txt_8" => " Fire",
-        "txt_9" => "No drivers have been added yet",
+        "txt_6" => "Cover page"
     ),
 );

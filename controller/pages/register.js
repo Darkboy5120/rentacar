@@ -1,4 +1,18 @@
 (function () {
+    const userName = l_arr.welcome.txt_0;
+    const pageName = l_arr.register.page_name;
+    document.querySelector("title").textContent = l_arr.global.app_name
+        + l_arr.global.title_separator + pageName;
+    document.querySelectorAll("[data-location]").forEach(element => {
+        element.textContent = pageName;
+    });
+    document.querySelectorAll("[data-username]").forEach(e => {
+        e.textContent = userName;
+    });
+    document.querySelectorAll("[data-session-variant='1']").forEach(e => {
+        e.classList.add("hidden");
+    });
+
     let form = {
         personal_info: {
             index: document.querySelector("#personal-info-index"),
@@ -125,7 +139,10 @@
                                         location = "?p=home";
                                     }, 4000);
                                     break;
-                                case -5:
+                                case -3:
+                                    input_s2.bussiness_phone.printLog(l_arr.global.log_18, false);
+                                    break;
+                                case -6:
                                     input_s2.bussiness_name.printLog(l_arr.global.log_11, false);
                                     break;
                                 default:

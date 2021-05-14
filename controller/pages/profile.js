@@ -99,7 +99,10 @@
                                 case 0:
                                     new AlertMe(l_arr.global.mdal_suc_t_0, l_arr.global.mdal_suc_b_4);
                                     break;
-                                case -4:
+                                case -3:
+                                    form.bussiness_info.input.phone.printLog(l_arr.global.log_18, false);
+                                    break;
+                                case -5:
                                     form.bussiness_info.input.name.printLog(l_arr.global.log_11, false);
                                     break;
                                 default:

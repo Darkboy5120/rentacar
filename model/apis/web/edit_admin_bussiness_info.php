@@ -26,7 +26,11 @@ $mi0->query("
     $telefono, $admin_id
 );
 if ($mi0->result === FALSE) {
-    $mi0->end("rollback", -3, NULL);
+    $duplicate_key = explode("'", $mi0->log)[3];
+    switch ($duplicate_key) {
+        case "telefono": $mi0->end("rollback", -3, NULL);break;
+    }
+    $mi0->end("rollback", -4, NULL);
 }
 
 $mi0->query("
@@ -43,8 +47,8 @@ if ($mi0->result === TRUE) {
     if ($mi0->getErrorName() === "DUPLICATE_KEY") {
         $duplicate_key = explode("'", $mi0->log)[3];
         switch ($duplicate_key) {
-            case "nombre_empresa": $mi0->end("rollback", -4, NULL);break;
+            case "nombre_empresa": $mi0->end("rollback", -5, NULL);break;
         }
     }
-    $mi0->end("rollback", -5, NULL);
+    $mi0->end("rollback", -6, NULL);
 }
