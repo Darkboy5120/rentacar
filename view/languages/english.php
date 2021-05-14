@@ -81,7 +81,7 @@ $l_arr = array(
         "button_signin" => "Login",
         "txt_2" => "¿Do not you have an account yet?",
         "txt_3" => "Sign up",
-        "txt_4" => "Get it back",
+        "txt_4" => "Recover",
         "txt_5" => "password",
         "txt_6" => "Sign in"
     ),
