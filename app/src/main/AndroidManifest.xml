@@ -49,13 +49,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-            <activity
-                android:name=".activities.L_Register"
-                android:label="@string/app_name"
-                android:parentActivityName=".activities.G_Login"
-                android:windowSoftInputMode="adjustResize"
-                android:theme="@style/Theme.Rentacar.NoActionBar">
-            </activity>
+        <activity
+            android:name=".activities.L_Register"
+            android:label="@string/app_name"
+            android:parentActivityName=".activities.G_Login"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/Theme.Rentacar.NoActionBar">
+        </activity>
+        <activity
+            android:name=".activities.L_Cars"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/Theme.Rentacar.NoActionBar"
+            android:parentActivityName=".activities.L_Home">
+        </activity>
     </application>
 
 </manifest>

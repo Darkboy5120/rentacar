@@ -98,6 +98,7 @@ public class L_Register_Step3 extends Fragment implements View.OnClickListener {
     }
 
     public void signUp() {
+        Global.hideKeyboardFrom(requireContext(), requireView());
         if (!signUp_validate()) return;
         upload_info_to_server();
     }
@@ -128,6 +129,8 @@ public class L_Register_Step3 extends Fragment implements View.OnClickListener {
                                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(i);
                                 requireActivity().finish();
+                            } else {
+                                Global.printMessage(requireView(), getResources().getString(R.string.error_generic_request));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

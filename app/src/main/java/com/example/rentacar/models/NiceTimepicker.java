@@ -2,11 +2,13 @@ package com.example.rentacar.models;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.text.InputType;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
 
 import androidx.core.content.ContextCompat;
 
@@ -16,11 +18,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class NiceDatepicker extends ControlField {
+public class NiceTimepicker extends ControlField {
     boolean second_touch = false;
 
     @SuppressLint("ClickableViewAccessibility")
-    public NiceDatepicker(int label_id, int input_id, int help_id, int log_id,
+    public NiceTimepicker(int label_id, int input_id, int help_id, int log_id,
                           boolean is_optional, View view) {
         this.label_id = label_id;
         this.input_id = input_id;
@@ -28,20 +30,15 @@ public class NiceDatepicker extends ControlField {
         this.log_id = log_id;
         this.is_optional = is_optional;
 
-        view.findViewById(input_id).setFocusable(View.NOT_FOCUSABLE);
-
         final Calendar myCalendar = Calendar.getInstance();
 
         EditText et_view = view.findViewById(this.input_id);
 
-        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+        TimePickerDialog.OnTimeSetListener time_listener = new TimePickerDialog.OnTimeSetListener() {
             @Override
-            public void onDateSet(DatePicker v, int year, int monthOfYear, int dayOfMonth) {
+            public void onTimeSet(TimePicker v, int hourOfDay, int minute) {
                 // TODO Auto-generated method stub
-                myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH, monthOfYear);
-                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                updateValue(et_view, myCalendar);
+                updateValue(et_view, hourOfDay, minute);
                 setLabelVisibility(view, View.VISIBLE);
                 dismissLog(view);
             }
@@ -51,9 +48,9 @@ public class NiceDatepicker extends ControlField {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (second_touch) {
-                    new DatePickerDialog(view.getContext(), date, myCalendar
-                            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                            myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                    new TimePickerDialog(view.getContext(), time_listener,
+                            myCalendar.get(Calendar.HOUR_OF_DAY),
+                            myCalendar.get(Calendar.MINUTE), true).show();
                 }
                 second_touch = !second_touch;
                 return false;
@@ -61,11 +58,9 @@ public class NiceDatepicker extends ControlField {
         });
     }
 
-    public void updateValue(EditText et, Calendar calendar)   {
-        String myFormat = "dd/MM/yyyy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-
-        et.setText(sdf.format(calendar.getTime()));
+    public void updateValue(EditText et, int hourofday, int minute)   {
+        String time = hourofday + ":" + minute;
+        et.setText(time);
     }
 
     @Override

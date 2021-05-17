@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".activities.L_Home">
+    tools:context=".activities.L_Cars">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activities.L_Home">
+        tools:context=".activities.L_Cars">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -26,17 +26,8 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <include layout="@layout/content_l_home" />
+        <include layout="@layout/content_l_cars" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header"
-        app:menu="@menu/menu_l_home_drawer" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

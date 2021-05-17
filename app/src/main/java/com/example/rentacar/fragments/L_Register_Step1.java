@@ -140,6 +140,7 @@ public class L_Register_Step1 extends Fragment implements View.OnClickListener {
     }
 
     public void signUp() {
+        Global.hideKeyboardFrom(requireContext(), requireView());
         if (!signUp_validate()) return;
         next_fragment();
     }

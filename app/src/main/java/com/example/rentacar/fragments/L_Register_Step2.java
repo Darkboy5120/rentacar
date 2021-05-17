@@ -126,6 +126,7 @@ public class L_Register_Step2 extends Fragment implements View.OnClickListener, 
     }
 
     public void signUp() {
+        Global.hideKeyboardFrom(requireContext(), requireView());
         if (!signUp_validate()) return;
         server_validate();
     }
@@ -177,10 +178,13 @@ public class L_Register_Step2 extends Fragment implements View.OnClickListener, 
                             ll_spn_global.setVisibility(View.GONE);
                             JSONObject json = new JSONObject(response);
                             String code = json.getString("code");
+                            System.out.println("---------------- " + code);
                             if (code.equals("0")) {
                                 next_fragment();
-                            } else {
-                                ni_email.printLog(requireView(), getResources().getString(R.string.error_spn_duplicate_email));
+                            } else if (code.equals("-2")) {
+                                ni_email.printLog(requireView(), getResources().getString(R.string.error_et_duplicate_email));
+                            } else if (code.equals("-3")) {
+                                ni_phone.printLog(requireView(), getResources().getString(R.string.error_et_duplicate_phone));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -199,6 +203,7 @@ public class L_Register_Step2 extends Fragment implements View.OnClickListener, 
                 headers.put("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
                 headers.put("api", "validate_l_register_step2");
                 headers.put("correo", ni_email.getValue(requireView()));
+                headers.put("telefono", ni_phone.getValue(requireView()));
                 return headers;
             }
         };

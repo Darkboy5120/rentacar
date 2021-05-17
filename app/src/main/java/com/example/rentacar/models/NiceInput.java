@@ -90,7 +90,9 @@ public class NiceInput extends ControlField {
     @Override
     public boolean validate(View v) {
         String value = ((EditText) v.findViewById(this.input_id)).getText().toString();
-        if (value.length() == 0 && !this.is_optional) {
+        if (value.length() == 0 && this.is_optional) {
+            return true;
+        } if (value.length() == 0) {
             this.printLog(v, v.getResources().getString(R.string.error_et_empty));
             return false;
         } else if (value.length() < this.min_length) {

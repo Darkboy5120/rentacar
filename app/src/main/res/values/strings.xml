@@ -6,8 +6,9 @@
     <!-- Strings used for fragments for navigation -->
     <string name="fragment_login_label">Inicio de sesión</string>
     <string name="fragment_register_label">Registro</string>
-    <string name="fragment_home_label">Inicio</string>
+    <string name="fragment_l_home_title">Inicio</string>
     <string name="fragment_g_home_title">Bienvenido a Rentacar</string>
+    <string name="fragment_l_cars_title">Autos</string>
     <string name="what_user_are_you">¿Que necesitas?</string>
     <string name="iam_lessee">Rentar un auto</string>
     <string name="iam_driver">Llevar autos a su destino</string>
@@ -38,67 +39,32 @@
 
 
     <string name="label_et_inviRegis">Te invitamos a registrarte para que el proceso de renta sea más rápido.</string>
+    <string name="just_login"><u>Ya tengo una cuenta</u></string>
 
-    <string name="label_et_car">Auto</string>
-    <string name="label_dp_startdate">Entrega</string>
-    <string name="label_dp_enddate">Devolución</string>
-    <string name="label_tp_time">Hora</string>
-    <string name="label_et_type">Tipo de auto</string>
-    <string name="label_et_search">Buscar</string>
-
-    //error logs
+    <!--error logs-->
     <string name="error_generic_request">Ha ocurrido un error, por favor intentalo de nuevo</string>
     <string name="error_et_empty">Completa este campo</string>
     <string name="error_et_invalid">El formato es invalido</string>
     <string name="error_et_minlength">Demasiado corto</string>
     <string name="error_et_maxlength">Demasiado largo</string>
     <string name="error_et_age_restriction">Debes ser mayor de edad para continuar</string>
-    <string name="error_spn_duplicate_email">Este correo ya esta registrado</string>
+    <string name="error_et_duplicate_email">Este correo ya esta registrado</string>
+    <string name="error_et_duplicate_phone">Este telefono ya esta registrado</string>
     <string name="error_file_empty">Vacío</string>
     <string name="error_file_fetch">Error al intentar obtener la imagen</string>
     <string name="error_login_fail">Correo y/o contraseña incorrecto</string>
     <string name="error_sdcard_without_images">No se encontraron imagenes en la tarjeta sd</string>
+    <string name="error_no_cars_founded">No se encontraron autos con esos críterios</string>
 
-    //dialog msg
+    <!--dialog msg-->
     <string name="dialog_title_get_image">¿De donde quieres tomar la imagen?</string>
     <string name="dialog_btn_get_image_1">Tomar captura</string>
     <string name="dialog_btn_get_image_2">Seleccionar una imagen existente</string>
 
-    //et hints and labels
+    <!--placeholders and labels for inputs-->
     <string name="label_et_firstname">Nombre</string>
     <string name="label_et_lastname">Apellido</string>
     <string name="label_et_password">Contraseña</string>
-
-    <!--Strings et para el card view-->
-    <string name="label_et_carName">Nissan Tsuru 2006</string>
-    <string name="label_et_price">$500 MXN/Día</string>
-    <string name="label_et_standar">Estandar</string>
-    <string name="label_et_automatic">Automático</string>
-    <string name="label_et_gps">GPS</string>
-    <string name="label_et_ac">AC</string>
-
-    //help et
-    <string name="help_et_firstname">Solo tu primer nombre</string>
-    <string name="help_et_lastname">Solo tu primer apellido</string>
-    <string name="help_et_birthdate">Necesitamos saber que eres mayor de edad</string>
-    <string name="help_et_password">Combina mayusculas y minusculas con números para mayor seguridad</string>
-    <string name="help_et_password_login"></string>
-    <string name="help_et_email">Te mandaremos a las notificaciones a este correo</string>
-    <string name="help_et_email_login"></string>
-    <string name="help_et_phone">Tu número sin lada</string>
-    <string name="help_et_zip"></string>
-    <string name="help_et_state">Estado donde estas viviendo</string>
-    <string name="help_et_city">Municipio donde estas viviendo</string>
-    <string name="help_et_address">Cuentanos por donde hay que girar para llevarte el auto</string>
-    <string name="help_et_front">Asegurate de que se vean bien tus datos</string>>
-    <string name="help_et_back">Asegurate de que se vean bien tus datos</string>>
-
-    <string name="fragment_l_register_step1_label">Datos personales</string>
-    <string name="fragment_l_register_step2_label">Datos de contacto</string>
-    <string name="fragment_l_register_step3_label">Datos de lincencia</string>
-
-
-    <string name="just_login"><u>Ya tengo una cuenta</u></string>
     <string name="label_et_flastname">Apellido paterno</string>
     <string name="label_et_mlastname">Apellido materno</string>
     <string name="label_et_bank">Banco</string>
@@ -115,4 +81,52 @@
     <string name="label_et_address">Dirección</string>
     <string name="label_et_front">Parte delantera</string>
     <string name="label_et_back">Parte trasera</string>
+    <string name="label_et_minprice">Precio mínimo</string>
+    <string name="label_et_maxprice">Precio máximo</string>
+    <string name="label_et_car">Auto</string>
+    <string name="label_dp_startdate">Fecha</string>
+    <string name="label_dp_enddate">Fecha</string>
+    <string name="label_lp_startlocation">Ubicación de entrega</string>
+    <string name="label_lp_endlocation">Ubicación de devolución</string>
+    <string name="label_tp_starttime">Hora</string>
+    <string name="label_tp_endtime">Hora</string>
+    <string name="label_et_type">Tipo de auto</string>
+    <string name="label_et_search">Buscar</string>
+
+    <!--Strings et para el card view-->
+    <string name="label_et_carName">Nissan Tsuru 2006</string>
+    <string name="label_et_price">$500 MXN/Día</string>
+    <string name="label_et_standar">Estandar</string>
+    <string name="label_et_automatic">Automático</string>
+    <string name="label_et_gps">GPS</string>
+    <string name="label_et_ac">AC</string>
+
+    <!--input's log-->
+    <string name="help_et_firstname">Solo tu primer nombre</string>
+    <string name="help_et_lastname">Solo tu primer apellido</string>
+    <string name="help_et_birthdate">Necesitamos saber que eres mayor de edad</string>
+    <string name="help_et_password">Combina mayusculas y minusculas con números para mayor seguridad</string>
+    <string name="help_et_password_login"></string>
+    <string name="help_et_email">Te mandaremos las notificaciones a este correo</string>
+    <string name="help_et_email_login"></string>
+    <string name="help_et_phone">Tu número sin lada</string>
+    <string name="help_et_zip"></string>
+    <string name="help_et_state">Estado donde estas viviendo</string>
+    <string name="help_et_city">Municipio donde estas viviendo</string>
+    <string name="help_et_address">Cuentanos por donde hay que girar para llevarte el auto</string>
+    <string name="help_et_front">Asegurate de que se vean bien tus datos</string>
+    <string name="help_et_back">Asegurate de que se vean bien tus datos</string>
+    <string name="help_et_minprice">Este pago es por día</string>
+    <string name="help_et_maxprice">Este pago es por día</string>
+    <string name="help_dp_startdate">Elige una fecha para recibirlo</string>
+    <string name="help_tp_starttime"></string>
+    <string name="help_dp_enddate">Elige una fecha para desocuparlo</string>
+    <string name="help_tp_endtime"></string>
+    <string name="help_lp_startlocation">Elige donde quieres recibir el auto</string>
+    <string name="help_lp_endlocation">Elige donde quieres entregar el auto</string>
+
+    <!--fragments title-->
+    <string name="fragment_l_register_step1_label">Datos personales</string>
+    <string name="fragment_l_register_step2_label">Datos de contacto</string>
+    <string name="fragment_l_register_step3_label">Datos de lincencia</string>
 </resources>

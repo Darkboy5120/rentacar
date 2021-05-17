@@ -7,6 +7,6 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_access_time"
-            android:title="@string/fragment_home_label" />
+            android:title="@string/fragment_l_home_title" />
     </group>
 </menu>
