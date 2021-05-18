@@ -11,6 +11,7 @@ import android.view.View;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NavUtils;
 
 import com.example.rentacar.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -47,7 +48,10 @@ public class L_Cars extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.menu_action_logout) {
+        if (id == android.R.id.home) {
+            NavUtils.navigateUpFromSameTask(this);
+            return true;
+        } else if (id == R.id.menu_action_logout) {
             finish();
 
             return true;

@@ -84,11 +84,25 @@ public class L_Cars extends Fragment implements View.OnClickListener {
     }
 
     public void get_search_data() {
-        //getArguments().getString("firstname");
-        make_search_in_server();
+        Intent i = requireActivity().getIntent();
+        make_search_in_server(
+                i.getStringExtra("minprice"),
+                i.getStringExtra("maxprice"),
+                i.getStringExtra("startlocation_latitude"),
+                i.getStringExtra("startlocation_longitude"),
+                i.getStringExtra("startdate"),
+                i.getStringExtra("starttime"),
+                i.getStringExtra("endlocation_latitude"),
+                i.getStringExtra("endlocation_longitude"),
+                i.getStringExtra("enddate"),
+                i.getStringExtra("endtime")
+        );
     }
 
-    public void make_search_in_server() {
+    public void make_search_in_server(String minprice, String maxprice, String startlocation_latitude,
+                                      String startlocation_longitude, String startdate, String starttime,
+                                      String endlocation_latitude, String endlocation_longitude,
+                                      String enddate, String endtime) {
         ll_spn_global.setVisibility(View.VISIBLE);
 
         RequestQueue queue = Volley.newRequestQueue(requireContext());
@@ -116,7 +130,6 @@ public class L_Cars extends Fragment implements View.OnClickListener {
 
                                     ll_cars.addView(car_card);
                                 }
-                                System.out.println("--------------- " + data);
                                 //String user_id = data.getString("pk_usuario");
 
                                 ArrayList<View> car_card_childrens = Global.getAllChildren(car_card);
@@ -147,6 +160,16 @@ public class L_Cars extends Fragment implements View.OnClickListener {
                 headers.put("securitykey", Global.security_key);
                 headers.put("offset", "0");
                 headers.put("limit", "15");
+                headers.put("minprice", minprice);
+                headers.put("maxprice", maxprice);
+                headers.put("startlocation_latitude", startlocation_latitude);
+                headers.put("startlocation_longitude", startlocation_longitude);
+                headers.put("startdate", startdate);
+                headers.put("starttime", starttime);
+                headers.put("endlocation_latitude", endlocation_latitude);
+                headers.put("endlocation_longitude", endlocation_longitude);
+                headers.put("enddate", enddate);
+                headers.put("endtime", endtime);
                 return headers;
             }
         };

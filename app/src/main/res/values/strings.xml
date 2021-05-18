@@ -19,11 +19,16 @@
     <string name="menu_action_logout">Cerrar sesión</string>
     <string name="menu_action_change_user">Cambiar usuario</string>
 
+    <!--Buttons label-->
     <string name="signUp">Registrar</string>
     <string name="signIn">Entrar</string>
     <string name="back">Back</string>
     <string name="invite_to_signUp"><b><u>¿Aun no tienes cuenta?, Registrate</u></b></string>
     <string name="next">Siguiente</string>
+    <string name="save_location">Guardar</string>
+
+    <!--Others-->
+    <string name="map_marker_label">Justo aquí</string>
 
     <!--Strings de ejemplo para el spinner (posiblemente no implementados, pero es un ejemplo de como meter datos directos)-->
     <string-array name="planets_array">
@@ -129,4 +134,5 @@
     <string name="fragment_l_register_step1_label">Datos personales</string>
     <string name="fragment_l_register_step2_label">Datos de contacto</string>
     <string name="fragment_l_register_step3_label">Datos de lincencia</string>
+    <string name="fragment_get_location_label">Seleccionar ubicación</string>
 </resources>
