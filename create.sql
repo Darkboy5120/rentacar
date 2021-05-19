@@ -93,7 +93,6 @@ create table `dispositivo` (
 create table `dispositivo_peticion` (
   `fk_dispositivo` varchar(255) not null,
   `fecha_hora` timestamp default current_timestamp not null,
-  unique key(fk_dispositivo),
   foreign key(fk_dispositivo) references dispositivo(pk_dispositivo) on delete cascade
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
 
