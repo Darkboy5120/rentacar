@@ -1,6 +1,6 @@
 <?php
 require "../users/root.php";
-require "../utils/token_validation.php";
+require "../utils/user_validation.php";
 
 $user_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
 $is_mobile = is_numeric(strpos($user_agent, "mobile"));

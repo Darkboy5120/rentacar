@@ -1,6 +1,6 @@
 <?php
 require "../users/root.php";
-require "../utils/token_validation.php";
+require "../utils/user_validation.php";
 
 $from_web = !isset($_REQUEST["securitykey"]);
 

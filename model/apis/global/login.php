@@ -1,5 +1,6 @@
 <?php
 require "../users/root.php";
+require "../utils/user_validation.php";
 
 if (!TRUE
     ) {

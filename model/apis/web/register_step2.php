@@ -1,5 +1,6 @@
 <?php
 require "../users/root.php";
+require "../utils/user_validation.php";
 
 if ($ci0->getSession("securitykey") !== $ci0->getSecuritykey()) {
     $mi0->abort(-1, NULL);

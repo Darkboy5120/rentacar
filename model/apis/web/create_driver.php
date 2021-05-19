@@ -1,6 +1,6 @@
 <?php
 require "../users/root.php";
-require "../utils/token_validation.php";
+require "../utils/user_validation.php";
 
 function dataIsAllRight () {
     global $mi0;
