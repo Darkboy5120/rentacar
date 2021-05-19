@@ -12,7 +12,8 @@ drop table if exists `usuario_foto`;
 drop table if exists `conductor`;
 drop table if exists `administrador`;
 drop table if exists `arrendatario`;
-drop table if exists `usuario_peticion`;
+drop table if exists `dispositivo_peticion`;
+drop table if exists `dispositivo`;
 drop table if exists `usuario`;
 drop table if exists `penalizacion`;
 drop table if exists `auto_color_pintura`;
@@ -84,11 +85,16 @@ create table `usuario` (
   unique key(telefono)
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
 
-create table `usuario_peticion` (
-  `fk_usuario` smallint unsigned not null,
+create table `dispositivo` (
+  `pk_dispositivo` varchar(255) not null,
+  primary key(pk_dispositivo)
+) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
+
+create table `dispositivo_peticion` (
+  `fk_dispositivo` varchar(255) not null,
   `fecha_hora` timestamp default current_timestamp not null,
-  unique key(fk_usuario),
-  foreign key(fk_usuario) references usuario(pk_usuario) on delete cascade
+  unique key(fk_dispositivo),
+  foreign key(fk_dispositivo) references dispositivo(pk_dispositivo) on delete cascade
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
 
 create table `arrendatario` (
