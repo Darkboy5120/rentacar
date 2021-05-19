@@ -26,5 +26,7 @@ if (!$ci0->existSession("user_device_id")) {
         } else {
             $ci0->setSession("user_device_id", $device_id);
         }
+    } else {
+        $ci0->setSession("user_device_id", $device_id);
     }
 }

@@ -33,3 +33,13 @@ $mi0->query("
 if ($mi0->result !== TRUE) {
     $mi0->end('rollback', -104, NULL);
 }
+
+$from_web = $ci0->existSession("securitykey");
+
+if ($from_web
+    && $ci0->getSession("securitykey") !== $ci0->getSecuritykey()
+    ) {
+    $mi0->abort(-105, NULL);
+} else {
+
+}
