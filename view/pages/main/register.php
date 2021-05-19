@@ -133,7 +133,7 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
         <script src="controller/components/alert-me.js"></script>
         <script src="controller/components/loading-screen.js"></script>
         <script type="text/javascript"
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBehcXiZ5YmFx3Q7bSTjaOgRGRh5QYlXYs"></script>
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBZZ6DHqFZwU9VfyTHoHGG7nYK_mdbBv8"></script>
         <script src="https://unpkg.com/location-picker/dist/location-picker.min.js"></script>
         <script src="controller/pages/register.js"></script>
     </body>
