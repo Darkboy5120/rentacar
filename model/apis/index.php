@@ -69,6 +69,9 @@ if (isset($_REQUEST["api"])) {
         case "set_fire_driver":
             require "web/fire_driver.php";
             break;
+        case "get_filtered_cars":
+            require "mobile/get_filtered_cars.php";
+            break;
         default: echo json_encode("That's not a valid api");
     }
 }

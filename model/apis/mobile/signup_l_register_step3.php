@@ -37,7 +37,7 @@ $nombre = $_REQUEST["nombre"];
 $apellido = $_REQUEST["apellido"];
 $telefono = $_REQUEST["telefono"];
 $correo = $_REQUEST["correo"];
-$contraseña = $mi0->hashString($_REQUEST["contraseña"]);
+$contraseña = $mi0->hashString($_REQUEST["clave"]);
 $fecha_nacimiento = $_REQUEST["fecha_nacimiento"];
 $codigo_postal = $_REQUEST["codigo_postal"];
 $fk_municipio = $_REQUEST["municipio"];
@@ -60,11 +60,12 @@ while (TRUE) {
     if ($mi0->result === FALSE) {
         if ($mi0->getErrorName() === "DUPLICATE_KEY") {
             $duplicate_key = explode("'", $mi0->log)[3];
-            if ($duplicate_key === "correo") {
-                $mi0->end("rollback", -2, NULL);
+            switch ($duplicate_key) {
+                case "correo": $mi0->end("rollback", -2, NULL);break;
+                case "telefono": $mi0->end("rollback", -3, NULL);break;
             }
         }
-        $mi0->end("rollback", -3, NULL);
+        $mi0->end("rollback", -4, NULL);
     } else {
         break;
     }
@@ -81,7 +82,7 @@ $mi0->query("
             $licencia_frontal_imagen_ruta, $licencia_posterior_imagen_ruta
 );
 if ($mi0->result === FALSE) {
-    $mi0->end("rollback", -4, NULL);
+    $mi0->end("rollback", -5, NULL);
 }
 
 if (move_uploaded_file($_FILES["licencia_frontal"]["tmp_name"], $licencia_frontal_imagen_ruta)
@@ -89,5 +90,5 @@ if (move_uploaded_file($_FILES["licencia_frontal"]["tmp_name"], $licencia_fronta
     ) {
     $mi0->end('commit', 0, $last_user_id);
 } else {
-    $mi0->end('rollback', -5, NULL);
+    $mi0->end('rollback', -6, NULL);
 }
