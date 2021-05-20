@@ -41,10 +41,10 @@ $minprice_sql = (strlen($_POST["minprice"]) > 0) ? "auto.precio >= $minprice" : 
 $maxprice = $_POST["maxprice"];
 $maxprice_sql = (strlen($_POST["maxprice"]) > 0) ? "auto.precio <= $maxprice" : "TRUE";
 
-$slocation_la = $_POST["slocation_la"];
+$slocation_la = $_POST["startlocation_latitude"];
 $slocation_la_sql = "TRUE";
 
-$slocation_lo = $_POST["slocation_lo"];
+$slocation_lo = $_POST["startlocation_longitude"];
 $slocation_lo_sql = "TRUE";
 
 $startdate = $_POST["startdate"];
@@ -53,10 +53,10 @@ $startdate_sql = "TRUE";
 $starttime = $_POST["starttime"];
 $starttime_sql = "TRUE";
 
-$elocation_la = $_POST["elocation_la"];
+$elocation_la = $_POST["endlocation_latitude"];
 $elocation_la_sql = "TRUE";
 
-$elocation_lo = $_POST["elocation_lo"];
+$elocation_lo = $_POST["endlocation_longitude"];
 $elocation_lo_sql = "TRUE";
 
 $enddate = $_POST["enddate"];
