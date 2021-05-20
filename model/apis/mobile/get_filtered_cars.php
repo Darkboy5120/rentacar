@@ -90,14 +90,17 @@ $mi0->query("
         auto.gps,
         auto.vidrios_polarizados,
         auto_imagen.imagen_ruta,
-        auto_modelo.nombre as modelo_nombre
+        auto_modelo.nombre as modelo_nombre,
+        auto_modelo.nombre as modelo_nombre,
+        auto_marca.nombre as marca_nombre
     FROM
         auto
     LEFT JOIN
-        (auto_imagen, auto_modelo)
+        (auto_imagen, auto_modelo, auto_marca)
     ON
         (auto_imagen.fk_auto = auto.pk_auto AND auto_imagen.portada = '1'
-            AND auto_modelo.pk_auto_modelo = auto.fk_auto_modelo)
+            AND auto_modelo.pk_auto_modelo = auto.fk_auto_modelo
+            AND auto_modelo.fk_auto_marca = auto_marca.pk_auto_marca)
     WHERE TRUE && $minprice_sql AND $maxprice_sql AND $slocation_la_sql && $slocation_lo_sql AND
         $startdate_sql AND $starttime_sql AND $elocation_la_sql AND $elocation_lo_sql AND 
         $enddate_sql && $endtime_sql
