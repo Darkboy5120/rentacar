@@ -22,7 +22,7 @@ $mi0->query("
     $correo, $telefono
 );
 if ($mi0->result->num_rows > 0) {
-    $user_data = $mi0->result->fetch_all(MYSQLI_ASSOC);
+    $user_data = $mi0->result->fetch_all(MYSQLI_ASSOC)[0];
     if ($user_data["correo"] == $correo) {
         $mi0->end("rollback", -2, NULL);
     }
