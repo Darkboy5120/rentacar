@@ -105,6 +105,10 @@
     <string name="label_et_automatic">Automático</string>
     <string name="label_et_gps">GPS</string>
     <string name="label_et_ac">AC</string>
+    <string name="label_tv_transmission_auto">Automatica</string>
+    <string name="label_tv_transmission_manual">Manual</string>
+    <string name="label_tv_price_simbol">$</string>
+    <string name="label_tv_price_extra"> MXN/Día</string>
 
     <!--input's log-->
     <string name="help_et_firstname">Solo tu primer nombre</string>

@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,6 +25,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.rentacar.R;
 import com.example.rentacar.activities.G_Login;
 import com.example.rentacar.models.Global;
+import com.example.rentacar.models.StorageManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -99,6 +102,11 @@ public class L_Cars extends Fragment implements View.OnClickListener {
         );
     }
 
+    public String usePriceTemplate(String price) {
+        return getResources().getString(R.string.label_tv_price_simbol) + price
+                + getResources().getString(R.string.label_tv_price_extra);
+    }
+
     public void make_search_in_server(String minprice, String maxprice, String startlocation_latitude,
                                       String startlocation_longitude, String startdate, String starttime,
                                       String endlocation_latitude, String endlocation_longitude,
@@ -112,6 +120,7 @@ public class L_Cars extends Fragment implements View.OnClickListener {
                     public void onResponse(String response) {
                         try {
                             ll_spn_global.setVisibility(View.GONE);
+                            Log.d("foo", response);
                             JSONObject json = new JSONObject(response);
                             String code = json.getString("code");
                             if (code.equals("0")) {
@@ -124,9 +133,19 @@ public class L_Cars extends Fragment implements View.OnClickListener {
                                     String image_path = Global.domain_name + row.getString("imagen_ruta").substring(5);
                                     car_card = LayoutInflater.from(requireContext()).inflate(
                                             R.layout.component_cardcar, ll_cars, false);
-                                    ImageView car_image = car_card.findViewById(R.id.car_image);
-                                    set_image(image_path, car_image);
-                                    car_image.setId(i);
+                                    set_image(image_path, car_card.findViewById(R.id.car_image));
+                                    ((TextView) car_card.findViewById(R.id.car_price))
+                                            .setText(usePriceTemplate(row.getString("precio")));
+                                    String car_transmission = (row.getString("transmicion").equals("0"))
+                                            ? getResources().getString(R.string.label_tv_transmission_auto)
+                                            : getResources().getString(R.string.label_tv_transmission_manual);
+                                    ((TextView) car_card.findViewById(R.id.car_transmission))
+                                            .setText(car_transmission);
+                                    String car_name = row.getString("marca_nombre") + " "
+                                            + row.getString("modelo_nombre");
+                                    ((TextView) car_card.findViewById(R.id.car_name))
+                                            .setText(car_name);
+
 
                                     ll_cars.addView(car_card);
                                 }

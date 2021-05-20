@@ -30,6 +30,7 @@ import com.example.rentacar.activities.L_Register;
 import com.example.rentacar.models.Global;
 import com.example.rentacar.models.NiceFileInput;
 import com.example.rentacar.models.NiceInput;
+import com.example.rentacar.models.StorageManager;
 import com.example.rentacar.models.VolleyMultipartRequest;
 
 import org.json.JSONException;
@@ -118,14 +119,11 @@ public class L_Register_Step3 extends Fragment implements View.OnClickListener {
 
                                 String user_id = json.getString("data");
 
-                                SharedPreferences settings = requireContext().getSharedPreferences("Preferences", Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = settings.edit();
-                                editor.putString("user_type", "l");
-                                editor.putString("last_user_id", user_id);
-                                editor.apply();
+                                StorageManager sm = new StorageManager(requireContext());
+                                sm.setString("user_type", "l");
+                                sm.setString("user_id", user_id);
 
                                 Intent i = new Intent(requireActivity(), L_Home.class);
-                                i.putExtra("user_id", user_id);
                                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(i);
                                 requireActivity().finish();

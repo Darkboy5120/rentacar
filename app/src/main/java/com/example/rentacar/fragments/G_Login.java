@@ -25,6 +25,8 @@ import com.example.rentacar.activities.L_Register;
 import com.example.rentacar.models.Global;
 import com.example.rentacar.models.NiceFileInput;
 import com.example.rentacar.models.NiceInput;
+import com.example.rentacar.models.StorageManager;
+import com.google.android.gms.auth.api.signin.internal.Storage;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -63,16 +65,16 @@ public class G_Login extends Fragment implements View.OnClickListener {
                 R.id.help_et_password,  R.id.log_et_password, "^[A-Za-z0-9]+", 5,
                 50, false, requireView());
 
-        SharedPreferences settings = requireContext().getSharedPreferences("Preferences", Context.MODE_PRIVATE);
-        String user_type = settings.getString("user_type", "null");
-        String last_user_id = settings.getString("last_user_id", "null");
+        StorageManager sm = new StorageManager(requireContext());
+        String user_type = sm.getString("user_type");
+        String user_id = sm.getString("user_id");
 
-        if (!user_type.isEmpty() && !last_user_id.isEmpty()) {
+        if (!user_type.isEmpty() && !user_id.isEmpty()) {
             Intent i;
             switch (user_type) {
                 case "l":
                     i = new Intent(requireActivity(), L_Home.class);
-                    i.putExtra("user_id", last_user_id);
+                    i.putExtra("user_id", user_id);
                     startActivity(i);
                     requireActivity().finish();
                     break;
@@ -97,15 +99,11 @@ public class G_Login extends Fragment implements View.OnClickListener {
     }
 
     public void next_activity(String user_id, String user_type) {
-        SharedPreferences settings = requireContext().getSharedPreferences("Preferences", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString("user_type", (user_type.equals("1") ? "l" : "d"));
-        editor.putString("last_user_id", user_id);
-        editor.apply();
+        StorageManager sm = new StorageManager(requireContext());
+        sm.setString("user_type", (user_type.equals("1") ? "l" : "d"));
+        sm.setString("user_id", user_id);
 
         Intent i = new Intent(requireActivity(), L_Home.class);
-        i.putExtra("user_type", user_type);
-        i.putExtra("user_id", user_id);
         startActivity(i);
         requireActivity().finish();
     }

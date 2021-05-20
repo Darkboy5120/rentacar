@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -16,6 +17,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.rentacar.R;
+import com.example.rentacar.models.StorageManager;
 import com.google.android.material.navigation.NavigationView;
 
 public class L_Home extends AppCompatActivity {
@@ -40,12 +42,6 @@ public class L_Home extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
-        /*final ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back);
-        }*/
     }
 
     @Override
@@ -65,11 +61,9 @@ public class L_Home extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.menu_action_logout) {
 
-            SharedPreferences settings = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putString("user_type", "");
-            editor.putString("last_user_id", "");
-            editor.apply();
+            StorageManager sm = new StorageManager(this);
+            sm.clearString("user_type");
+            sm.clearString("user_id");
 
             Intent i = new Intent(this, G_Login.class);
             startActivity(i);
