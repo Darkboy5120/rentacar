@@ -6,6 +6,16 @@
 
     }
 }
+@keyframes popDown {
+    from {
+    }
+    to {
+        transform: scale(0);
+    }
+}
+.modal-popDown {
+    animation: popDown .3s ease !important;
+}
 .modal {
     position: fixed;
     top: 0;

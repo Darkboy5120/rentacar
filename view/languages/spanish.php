@@ -72,7 +72,11 @@ $l_arr = array(
         "txt_17" => "Idioma",
         "txt_18" => "Notificaciones",
         "txt_19" => "Configuración",
-        "txt_20" => "Secciones"
+        "txt_20" => "Secciones",
+        "txt_21" => "Brillante",
+        "txt_22" => "Oscuro",
+        "txt_23" => "Español",
+        "txt_24" => "English"
     ),
     "login" => array(
         "page_name" => "Login",
@@ -111,6 +115,9 @@ $l_arr = array(
         "txt_1" => "Buscar",
         "txt_2" => "Aun no se ha agregado ningun auto",
         "txt_3" => "Estas a punto de eliminar un auto...",
+        "txt_4" => "Busca un auto",
+        "txt_5" => " Buscar",
+        "txt_6" => "No se encontraron autos en la búsquedad",
         "button_loadmore" => "Cargar más"
     ),
     "newcar" => array(

@@ -1,7 +1,8 @@
 <?php
 require "guest_validation.php";
 
-$THROTTLE_LIMIT = 2;
+//original value is 2, but 20 its fine for debuggind, this should change at presentation day
+$THROTTLE_LIMIT = 200;
 $THROTTLE_SECONDS = 5;
 
 if (!$ci0->existSession("user_device_id")) {
@@ -16,11 +17,11 @@ $mi0->query("
         fk_dispositivo
     FROM
         dispositivo_peticion
-    WHERE fk_dispositivo = ? AND fecha_hora > (CURRENT_TIMESTAMP() - $THROTTLE_SECONDS)",
+    WHERE fk_dispositivo = ? AND (fecha_hora + 0) > (CURRENT_TIMESTAMP() - $THROTTLE_SECONDS)",
     $device_id
 );
 if ($mi0->result->num_rows > $THROTTLE_LIMIT) {
-    $mi0->end('rollback', -103, NULL);
+    $mi0->end('rollback', -103, $mi0->result->num_rows);
 }
 
 $mi0->query("

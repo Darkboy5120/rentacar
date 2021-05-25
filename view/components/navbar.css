@@ -83,8 +83,15 @@
     font-family: 'Merriweather Sans', sans-serif;
     text-decoration: none;
     cursor: pointer;
+    flex-wrap: wrap;
+    user-select: none;
 }
-.navbar ul a > i {
+.navbar ul span > .collapse {
+    width: 100%;
+    margin: 1rem 0 1rem 0;
+}
+.navbar ul a > i,
+.navbar ul span > i {
     padding-right: 1rem;
 }
 .navbar ul > li:not(.navbar-title):not(.navbar-location) > span {

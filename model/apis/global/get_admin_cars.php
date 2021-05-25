@@ -2,33 +2,37 @@
 require "../users/root.php";
 require "../utils/user_validation.php";
 
-$from_web = $ci0->existSession("securitykey");
-
-if ($from_web
-    && $ci0->getSession("securitykey") !== $ci0->getSecuritykey()
+if ((!$from_web && !isset($_POST["admin"]))
+    || !isset($_POST["offset"])
+    || !isset($_POST["limit"])
+    || !isset($_POST["modelo"])
+    || !isset($_POST["color_pintura"])
     ) {
-    $mi0->abort(-1, NULL);
-} else if ((!$from_web && !isset($_REQUEST["admin"]))
-    || !isset($_REQUEST["offset"])
-    || !isset($_REQUEST["limit"])) {
     $mi0->abort(-2, NULL);
 }
 
-$mi0->begin();
-
-$admin_id = ($from_web) ? $ci0->getSession("user_data")["pk_usuario"] : $_REQUEST["admin"];
-$offset = $_REQUEST["offset"];
+$admin_id = ($from_web) ? $ci0->getSession("user_data")["pk_usuario"] : $_POST["admin"];
+$offset = $_POST["offset"];
 if ($offset < 0) {
     $offset = 0;
 }
 $max_limit = 15;
-$limit = $_REQUEST["limit"];
+$limit = $_POST["limit"];
 if ($limit > $max_limit) {
     $limit = $max_limit;
 } else if ($limit <= 0) {
     $limit = 1;
 }
 $next_offset = $offset+$limit;
+
+$modelo = $_POST["modelo"];
+$modelo_sql = (strlen($modelo) > 0)
+    ? "auto.fk_auto_modelo = $modelo" : "TRUE";
+$color_pintura = $_POST["color_pintura"];
+$color_pintura_sql = (strlen($color_pintura) > 0)
+    ? "auto.fk_auto_color_pintura = $color_pintura" : "TRUE";
+
+$mi0->begin();
 
 $mi0->query("
     SELECT
@@ -61,7 +65,7 @@ $mi0->query("
     ON
         (auto_imagen.fk_auto = auto.pk_auto AND auto_imagen.portada = '1'
             AND auto_modelo.pk_auto_modelo = auto.fk_auto_modelo)
-    WHERE auto.fk_administrador = ?
+    WHERE auto.fk_administrador = ? AND $modelo_sql AND $color_pintura_sql
     LIMIT $offset, $limit",
     $admin_id
 );
@@ -104,7 +108,7 @@ $mi0->query("
     ON
         (auto_imagen.fk_auto = auto.pk_auto AND auto_imagen.portada = '1'
             AND auto_modelo.pk_auto_modelo = auto.fk_auto_modelo)
-    WHERE auto.fk_administrador = ?
+    WHERE auto.fk_administrador = ? AND $modelo_sql AND $color_pintura_sql
     LIMIT $next_offset, $limit",
     $admin_id
 );

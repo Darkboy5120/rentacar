@@ -52,8 +52,6 @@
         }
     }
 
-    hideLoadingScreen();
-
     window.addEventListener("scroll", e => {
         document.querySelector("#w-header > .bg-text").style.top = (window.scrollY * .5) + "px";
         document.querySelector("#w-header > .bg-text").style.opacity = (1 / (window.scrollY * .01));

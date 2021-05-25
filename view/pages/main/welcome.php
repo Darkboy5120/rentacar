@@ -105,7 +105,11 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
 
                 animate();
 
-            }, undefined, function ( e ) {
+            }, function ( e ) {
+                if (e.loaded === e.total) {
+                    hideLoadingScreen();
+                }
+            }, function ( e ) {
                 console.error( e );
             } );
 

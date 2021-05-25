@@ -1,6 +1,7 @@
 const Modal = function (select) {
     let selector = select;
     let element = document.querySelector(selector);
+    let card = element.querySelector("div");
     let state = false;
     let show = function () {
         element.classList.remove("hidden");
@@ -9,8 +10,12 @@ const Modal = function (select) {
         state = true;
     }
     let hide = function () {
-        element.classList.add("hidden");
+        card.classList.add("modal-popDown");
         state = false;
+        window.setTimeout(() => {
+            card.classList.remove("modal-popDown");
+            element.classList.add("hidden");
+        }, 250);
     }
     let closeButton = element.querySelector(".modal-header > button");
     closeButton.setAttribute("title", l_arr.global.title_0);

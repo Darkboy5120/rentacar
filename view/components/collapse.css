@@ -1,0 +1,21 @@
+@keyframes deploy {
+    from {
+        height: 0;
+        font-size: 0;
+    } to {
+    }
+}
+
+.collapse {
+    display: none;
+}
+.collapse > button {
+    height: 0;
+}
+.collapse-deploy {
+    display: block;
+}
+.collapse-deploy > button {
+    height: 2rem;
+    animation: .5s deploy ease;
+}
