@@ -1,3 +1,5 @@
+@import url("collapse.css");
+
 .navbar {
     display: flex;
     width: 100%;

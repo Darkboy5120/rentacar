@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100&family=Merriweather+Sans:wght@500&display=swap');
+@import url("../themes/default.css");
+body {
+    transition: color .3s ease;
+    --webkit-transition: background-color .3s ease;
+}
 .container, html, body {
     scroll-behavior: smooth;
 }

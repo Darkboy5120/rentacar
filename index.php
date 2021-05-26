@@ -25,6 +25,11 @@ if (!$ci0->existCookie("l")) {
 }
 require $lang_path[$LANGUAGE];
 
+$THEME = "dark";
+if (!$ci0->existCookie("t")) {
+    $ci0->setCookie("t", $THEME);
+}
+
 switch ($_GET["p"]) {
     case "carview":
         require "view/pages/main/carview.php";

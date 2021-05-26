@@ -41,7 +41,7 @@
                         <span id="n_dd_theme_tab" data-collapse="0" tabindex="1"><i class="fas fa-chevron-up"></i><?=$l_arr["global"]["txt_16"];?>
                             <div class="collapse">    
                                 <button id="theme-set-light"><?=$l_arr["global"]["txt_21"];?></button>
-                                <button id="language-set-dark"><?=$l_arr["global"]["txt_22"];?></button>
+                                <button id="theme-set-dark"><?=$l_arr["global"]["txt_22"];?></button>
                             </div>
                         </span>
                         <div class="separator" data-session-variant="1"></div>
@@ -84,4 +84,31 @@
             }
         });
     });
+    document.querySelector("#language-set-spanish").addEventListener("click", e => {
+        document.cookie = "l=spanish";
+        location = location;
+    });
+    document.querySelector("#language-set-english").addEventListener("click", e => {
+        document.cookie = "l=english";
+        location = location;
+    });
+    document.querySelector("#theme-set-light").addEventListener("click", e => {
+        document.querySelector("body").classList.add("theme-light");
+        document.querySelector("body").classList.remove("theme-dark");
+        document.cookie = "t=light";
+    });
+    document.querySelector("#theme-set-dark").addEventListener("click", e => {
+        document.querySelector("body").classList.add("theme-dark");
+        document.querySelector("body").classList.remove("theme-light");
+        document.cookie = "t=dark";
+    });
+    theme = "<?=$_COOKIE["t"];?>";
+    switch (theme) {
+        case "dark":
+            document.querySelector("body").classList.add("theme-dark");
+            break;
+        case "light":
+            document.querySelector("body").classList.add("theme-light");
+            break;
+    }
 </script>

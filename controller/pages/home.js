@@ -85,20 +85,6 @@
                     onclick: () => {
                         modal.car_search.object.show();
                     }
-                },
-                language_set_spanish: {
-                    element: document.querySelector("#language-set-spanish"),
-                    onclick: () => {
-                        document.cookie = "l=spanish";
-                        location = location;
-                    }
-                },
-                language_set_english: {
-                    element: document.querySelector("#language-set-english"),
-                    onclick: () => {
-                        document.cookie = "l=english";
-                        location = location;
-                    }
                 }
             }
         },
