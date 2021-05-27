@@ -39,4 +39,6 @@ body.theme-dark {
     --cardsSalesBgColor: white;
     --cardsSalesBorderColor: white;
     --inputIconButtonHoverColor: rgb(70, 70, 90);
+    --dropdownBgColor: rgba(50, 50, 50, .8);
+    --dropdownBorderColor: #6456e2;
 }

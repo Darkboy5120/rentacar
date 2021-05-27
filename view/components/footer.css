@@ -5,7 +5,7 @@
     grid-auto-rows: auto auto;
     width: 100%;
     height: min-content;
-    color: white;
+    color: var(--textColor);
     padding-bottom: 2rem;
     background-image: linear-gradient(45deg, var(--barGradientColor1), var(--barGradientColor2), var(--barGradientColor1));
     position: relative;
