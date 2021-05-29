@@ -2,16 +2,22 @@ package com.example.rentacar.models;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class Global {
@@ -44,40 +50,20 @@ public class Global {
         return url;
     }
 
-    public static ArrayList<View> getAllChildren(View v) {
-
-        if (!(v instanceof ViewGroup)) {
-            ArrayList<View> viewArrayList = new ArrayList<View>();
-            viewArrayList.add(v);
-            return viewArrayList;
+    public static Bitmap getBitmapFromUrl(String imageUrl) {
+        try {
+            return BitmapFactory.decodeStream((InputStream) new URL(imageUrl).getContent());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        ArrayList<View> result = new ArrayList<View>();
-
-        ViewGroup vg = (ViewGroup) v;
-        for (int i = 0; i < vg.getChildCount(); i++) {
-
-            View child = vg.getChildAt(i);
-
-            ArrayList<View> viewArrayList = new ArrayList<View>();
-            viewArrayList.add(v);
-            viewArrayList.addAll(getAllChildren(child));
-
-            result.addAll(viewArrayList);
-        }
-        return result;
+        return null;
     }
 
-    public static TextView searchViewByText(ArrayList<View> allViewsWithinMyTopView, String toSearchFor) {
-        TextView targetView = null;
-        for (View child : allViewsWithinMyTopView) {
-            if (child instanceof TextView) {
-                TextView childTextView = (TextView) child;
-                if (TextUtils.equals(childTextView.getText().toString(), toSearchFor)) {
-                    targetView = childTextView;
-                }
-            }
-        }
-        return targetView;
+    public static void setImage(String url, ImageView view) {
+        new Thread(() -> {
+            final Bitmap bitmap =
+                    getBitmapFromUrl(url);
+            view.post(() -> view.setImageBitmap(bitmap));
+        }).start();
     }
 }

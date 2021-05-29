@@ -41,7 +41,7 @@ public class GetLocation extends AppCompatActivity implements OnMapReadyCallback
             actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back);
         }
 
-        setTitle(R.string.save_location);
+        setTitle(R.string.fragment_getlocation_title);
         findViewById(R.id.save_location).setOnClickListener(this);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -112,6 +112,7 @@ public class GetLocation extends AppCompatActivity implements OnMapReadyCallback
         long vId = v.getId();
         if (vId == R.id.save_location) {
             save_location();
+            finish();
         }
     }
 
@@ -121,6 +122,5 @@ public class GetLocation extends AppCompatActivity implements OnMapReadyCallback
         i.putExtra("latitude", latitude.toString());
         i.putExtra("longitude", longitude.toString());
         setResult(RESULT_OK, i);
-        finish();
     }
 }

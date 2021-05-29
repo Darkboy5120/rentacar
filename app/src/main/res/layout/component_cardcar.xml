@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/bg_card_car"
-    android:padding="5dp">
+    android:padding="5dp"
+    android:layout_marginBottom="10dp">
 
     <ImageView
         android:id="@+id/car_image"
@@ -24,6 +25,8 @@
         android:progressTint="@color/gold"
         android:numStars="5"
         android:rating="4"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:isIndicator="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -178,7 +178,6 @@ public class L_Register_Step2 extends Fragment implements View.OnClickListener, 
                             ll_spn_global.setVisibility(View.GONE);
                             JSONObject json = new JSONObject(response);
                             String code = json.getString("code");
-                            System.out.println("---------------- " + code);
                             if (code.equals("0")) {
                                 next_fragment();
                             } else if (code.equals("-2")) {

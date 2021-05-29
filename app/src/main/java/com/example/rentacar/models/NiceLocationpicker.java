@@ -68,7 +68,7 @@ public class NiceLocationpicker extends ControlField {
     }
 
     public void listenResult(int request_code, int result_code, Intent data, View v) {
-        if (request_code == this.REQUEST_CODE) {
+        if (request_code == this.REQUEST_CODE && data != null) {
             if (result_code == this.REQUEST_OK) {
                 this.latitude = (String) data.getExtras().getString("latitude");
                 this.longitude = (String) data.getExtras().getString("longitude");

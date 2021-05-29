@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.L_Home"
+    tools:context=".fragments.L_Cars"
     android:focusable="true"
     android:focusableInTouchMode="true">
 
@@ -22,7 +22,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingTop="@dimen/layout_pt"
-            android:paddingHorizontal="@dimen/layout_ph_small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

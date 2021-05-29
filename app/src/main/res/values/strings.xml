@@ -9,6 +9,8 @@
     <string name="fragment_l_home_title">Inicio</string>
     <string name="fragment_g_home_title">Bienvenido a Rentacar</string>
     <string name="fragment_l_cars_title">Autos</string>
+    <string name="fragment_l_details_title">Detalles</string>
+    <string name="fragment_getlocation_title">Seleccióna la ubicación</string>
     <string name="what_user_are_you">¿Que necesitas?</string>
     <string name="iam_lessee">Rentar un auto</string>
     <string name="iam_driver">Llevar autos a su destino</string>
@@ -109,6 +111,8 @@
     <string name="label_tv_transmission_manual">Manual</string>
     <string name="label_tv_price_simbol">$</string>
     <string name="label_tv_price_extra"> MXN/Día</string>
+    <string name="label_tv_doors">puertas</string>
+    <string name="label_tv_chairs">asientos</string>
 
     <!--input's log-->
     <string name="help_et_firstname">Solo tu primer nombre</string>
@@ -139,4 +143,9 @@
     <string name="fragment_l_register_step2_label">Datos de contacto</string>
     <string name="fragment_l_register_step3_label">Datos de lincencia</string>
     <string name="fragment_get_location_label">Seleccionar ubicación</string>
+
+    <!--details collase headers-->
+    <string name="collapse_spaces">Espacios</string>
+    <string name="collapse_specs">Especificaciones</string>
+    <string name="collapse_extras">Comodidades</string>
 </resources>
