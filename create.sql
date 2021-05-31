@@ -203,10 +203,8 @@ create table `renta` (
     `punto_entrega_latitud` varchar(50) not null,
     `punto_devolucion_longitud` varchar(50) not null,
     `punto_devolucion_latitud` varchar(50) not null,
-    `fecha_entrega` date not null,
-    `hora_entrega` time not null,
-    `fecha_devolucion` date not null,
-    `hora_devolucion` time not null,
+    `fechahora_entrega` datetime not null,
+    `fechahora_devolucion` datetime not null,
     `costo` smallint not null,
     /* 0 - Por entregar
      * 1 - Entregado
