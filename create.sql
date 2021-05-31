@@ -198,18 +198,23 @@ create table `auto_imagen` (
 create table `renta` (
     `pk_renta` int unsigned not null auto_increment,
     `fk_auto` mediumint unsigned not null,
-    `fk_arrendatario` smallint unsigned not null,
     `fk_conductor` smallint unsigned not null,
-    `punto_entrega` varchar(100) not null,
-    `punto_devolucion` varchar(100) not null,
+    `punto_entrega_longitud` varchar(50) not null,
+    `punto_entrega_latitud` varchar(50) not null,
+    `punto_devolucion_longitud` varchar(50) not null,
+    `punto_devolucion_latitud` varchar(50) not null,
     `fecha_entrega` date not null,
     `hora_entrega` time not null,
     `fecha_devolucion` date not null,
     `hora_devolucion` time not null,
     `costo` smallint not null,
+    /* 0 - Por entregar
+     * 1 - Entregado
+     * 2 - Recibido
+     */
+    `fase` enum("0", "1", "2") default "0" not null,
     primary key(pk_renta),
     foreign key(fk_auto) references auto(pk_auto) on delete cascade,
-    foreign key(fk_arrendatario) references usuario(pk_usuario) on delete cascade,
     foreign key(fk_conductor) references usuario(pk_usuario) on delete cascade
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
 
