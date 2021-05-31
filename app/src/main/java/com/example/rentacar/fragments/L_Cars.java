@@ -78,14 +78,79 @@ public class L_Cars extends Fragment implements View.OnClickListener {
                 + getResources().getString(R.string.label_tv_price_extra);
     }
 
-    public void open_details_fragment(String image_path, String car_price, String car_name,
-                                      String car_doors, String car_chairs) {
+    public String use_storage_size_template(String storage_size) {
+        if (storage_size.equals("0")) {
+            return getResources().getString(R.string.label_tv_storage_size_none);
+        }
+        String storage_size_human = "";
+        switch (storage_size) {
+            case "1":
+                storage_size_human = getResources().getString(R.string.label_tv_storage_size_1);
+                break;
+            case "2":
+                storage_size_human = getResources().getString(R.string.label_tv_storage_size_2);
+                break;
+            case "3":
+                storage_size_human = getResources().getString(R.string.label_tv_storage_size_3);
+                break;
+        }
+        return getResources().getString(R.string.label_tv_storage_size) + " "
+                + storage_size_human;
+    }
+
+    public String use_engine_template(String car_engine) {
+        String r = "";
+        switch (car_engine) {
+            case "0":
+                r = getResources().getString(R.string.label_tv_engine_type_0);
+                break;
+            case "1":
+                r = getResources().getString(R.string.label_tv_engine_type_1);
+                break;
+            case "2":
+                r = getResources().getString(R.string.label_tv_engine_type_2);
+                break;
+            case "3":
+                r = getResources().getString(R.string.label_tv_engine_type_3);
+                break;
+            case "4":
+                r = getResources().getString(R.string.label_tv_engine_type_4);
+                break;
+            case "5":
+                r = getResources().getString(R.string.label_tv_engine_type_5);
+                break;
+        }
+        return r;
+    }
+
+    public void open_details_fragment(String car_id, String image_path, String car_price, String car_name,
+                                      String car_doors, String car_chairs, String car_storage_size,
+                                      String car_transmission, String car_engine,
+                                      String car_fuel_unit, String car_horse_power,
+                                      String car_tank_capacity, String car_color, String car_air,
+                                      String car_gps, String car_polarized_glasses,
+                                      String car_insurance, String car_replacement_wheel,
+                                      String car_toolbox) {
         Bundle bundle = new Bundle();
+        bundle.putString("pk_auto", car_id);
         bundle.putString("imagen_ruta", image_path);
         bundle.putString("precio", car_price);
         bundle.putString("nombre", car_name);
         bundle.putString("puertas", car_doors);
         bundle.putString("asientos", car_chairs);
+        bundle.putString("capacidad_cajuela", car_storage_size);
+        bundle.putString("transmicion", car_transmission);
+        bundle.putString("tipo_motor", car_engine);
+        bundle.putString("unidad_consumo", car_fuel_unit);
+        bundle.putString("caballos_fuerza", car_horse_power);
+        bundle.putString("capacidad_combustible", car_tank_capacity);
+        bundle.putString("fk_auto_color_pintura", car_color);
+        bundle.putString("aire_acondicionado", car_air);
+        bundle.putString("gps", car_gps);
+        bundle.putString("vidrios_polarizados", car_polarized_glasses);
+        bundle.putString("seguro", car_insurance);
+        bundle.putString("repuesto", car_replacement_wheel);
+        bundle.putString("caja_herramientas", car_toolbox);
 
         L_Details fragment = new L_Details();
         fragment.setArguments(bundle);
@@ -121,19 +186,42 @@ public class L_Cars extends Fragment implements View.OnClickListener {
                                         R.layout.component_cardcar, ll_cars, false);
 
                                 //car values
+                                String car_id = row.getString("pk_auto");
                                 String image_path = Global.domain_name + row.getString("imagen_ruta").substring(5);
                                 String car_price = use_price_template(
                                         row.getString("precio")
                                 );
-                                String car_transmission = (row.getString("transmicion").equals("0"))
-                                        ? getResources().getString(R.string.label_tv_transmission_auto)
-                                        : getResources().getString(R.string.label_tv_transmission_manual);
                                 String car_name = row.getString("marca_nombre") + " "
                                         + row.getString("modelo_nombre");
                                 String car_doors = row.getString("puertas") + " "
                                         + getResources().getString(R.string.label_tv_doors);
                                 String car_chairs = row.getString("asientos") + " "
                                         + getResources().getString(R.string.label_tv_chairs);
+                                String car_storage_size = use_storage_size_template(row.getString("capacidad_cajuela"));
+                                String car_engine = use_engine_template(row.getString("tipo_motor"));
+                                String car_transmission = (row.getString("transmicion").equals("0"))
+                                        ? getResources().getString(R.string.label_tv_transmission_auto)
+                                        : getResources().getString(R.string.label_tv_transmission_manual);
+                                String car_fuel_unit = row.getString("unidad_consumo") + " "
+                                        + getResources().getString(R.string.label_tv_fuel_unit);
+                                String car_horse_power = row.getString("caballos_fuerza") + " "
+                                        + getResources().getString(R.string.label_tv_horse_power);
+                                String car_tank_capacity = getResources().getString(R.string.label_tv_tank_capacity_start)
+                                        + " " + row.getString("capacidad_combustible") + " "
+                                        + getResources().getString(R.string.label_tv_tank_capacity_extra);
+                                String car_color = getResources().getString(R.string.label_tv_color)
+                                        + " " + getResources().getStringArray(R.array.arr_car_colors)[
+                                            Integer.parseInt(row.getString("fk_auto_color_pintura"))
+                                        ];
+                                String car_air = row.getString("aire_acondicionado");
+                                String car_gps = row.getString("gps");
+                                String car_polarized_glasses = row.getString("vidrios_polarizados");
+                                String car_insurance = getResources().getString(R.string.label_tv_insurance)
+                                        + " " + getResources().getStringArray(R.array.arr_car_insurance)[
+                                        Integer.parseInt(row.getString("seguro"))
+                                        ];
+                                String car_replacement_wheel = row.getString("repuesto");
+                                String car_toolbox = row.getString("caja_herramientas");
 
                                 //update view values
                                 Global.setImage(image_path, car_card.findViewById(R.id.car_image));
@@ -145,8 +233,11 @@ public class L_Cars extends Fragment implements View.OnClickListener {
                                         .setText(car_name);
 
                                 car_card.setOnClickListener(v -> {
-                                    open_details_fragment(image_path, car_price, car_name, car_doors,
-                                            car_chairs);
+                                    open_details_fragment(car_id, image_path, car_price, car_name, car_doors,
+                                            car_chairs, car_storage_size, car_transmission, car_engine,
+                                            car_fuel_unit, car_horse_power, car_tank_capacity,
+                                            car_color, car_air, car_gps, car_polarized_glasses,
+                                            car_insurance, car_replacement_wheel, car_toolbox);
                                 });
                                 ll_cars.addView(car_card);
                             }

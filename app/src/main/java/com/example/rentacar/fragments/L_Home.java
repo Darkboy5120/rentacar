@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -134,6 +135,20 @@ public class L_Home extends Fragment implements View.OnClickListener {
                 result = false;
             }
         }
+
+        //dates logic
+        if ((Global.get_milli_from_date(ndp_startdate.getValue(requireView()))
+                + Global.get_milli_from_time(ntp_starttime.getValue(requireView())))
+                <= Global.get_milli_from_current_datetime()
+        ) {
+            ndp_enddate.printLog(requireView(), getResources().getString(R.string.error_dates_start));
+            result = false;
+        } else if ((Global.get_milli_from_date(ndp_enddate.getValue(requireView()))
+                - Global.get_milli_from_date(ndp_startdate.getValue(requireView()))) <= 86400000
+            ) {
+            ndp_enddate.printLog(requireView(), getResources().getString(R.string.error_dates_offset));
+            result = false;
+        }//lack strong date validation
 
         return result;
     }

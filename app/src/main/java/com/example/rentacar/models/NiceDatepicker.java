@@ -62,7 +62,7 @@ public class NiceDatepicker extends ControlField {
     }
 
     public void updateValue(EditText et, Calendar calendar)   {
-        String myFormat = "dd/MM/yyyy"; //In which you need put here
+        String myFormat = "dd/MM/yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         et.setText(sdf.format(calendar.getTime()));

@@ -72,7 +72,8 @@ public class NiceLocationpicker extends ControlField {
             if (result_code == this.REQUEST_OK) {
                 this.latitude = (String) data.getExtras().getString("latitude");
                 this.longitude = (String) data.getExtras().getString("longitude");
-                updateValue(v);
+                this.updateValue(v);
+                this.setLabelVisibility(v, View.VISIBLE);
             }
         }
     }

@@ -101,6 +101,10 @@
         <item name="android:textColor">@color/light_gray</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="text_huge_lightGray">
+        <item name="android:textSize">@dimen/text_size_huge</item>
+        <item name="android:textColor">@color/light_gray</item>
+    </style>
     <style name="text_big_bold_purple">
         <item name="android:textSize">@dimen/text_size_big</item>
         <item name="android:textColor">@color/purple</item>

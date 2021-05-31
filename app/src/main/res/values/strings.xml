@@ -28,6 +28,7 @@
     <string name="invite_to_signUp"><b><u>¿Aun no tienes cuenta?, Registrate</u></b></string>
     <string name="next">Siguiente</string>
     <string name="save_location">Guardar</string>
+    <string name="rent_car">Rentar</string>
 
     <!--Others-->
     <string name="map_marker_label">Justo aquí</string>
@@ -62,6 +63,9 @@
     <string name="error_login_fail">Correo y/o contraseña incorrecto</string>
     <string name="error_sdcard_without_images">No se encontraron imagenes en la tarjeta sd</string>
     <string name="error_no_cars_founded">No se encontraron autos con esos críterios</string>
+    <string name="error_dates_offset">Las fechas deben tener al menos un dia de direfencia</string>
+    <string name="error_dates_start">La fecha de entrega ya ha pasado</string>
+    <string name="error_dates_min">Debes darle al conductor al menos 30 minutos</string>
 
     <!--dialog msg-->
     <string name="dialog_title_get_image">¿De donde quieres tomar la imagen?</string>
@@ -107,12 +111,35 @@
     <string name="label_et_automatic">Automático</string>
     <string name="label_et_gps">GPS</string>
     <string name="label_et_ac">AC</string>
-    <string name="label_tv_transmission_auto">Automatica</string>
+    <string name="label_tv_transmission_auto">Automático</string>
     <string name="label_tv_transmission_manual">Manual</string>
     <string name="label_tv_price_simbol">$</string>
     <string name="label_tv_price_extra"> MXN/Día</string>
     <string name="label_tv_doors">puertas</string>
     <string name="label_tv_chairs">asientos</string>
+    <string name="label_tv_loading">Cargando…</string>
+    <string name="label_tv_storage_size_none">No tiene cajuela</string>
+    <string name="label_tv_storage_size">Cajuela</string>
+    <string name="label_tv_storage_size_1">pequeña</string>
+    <string name="label_tv_storage_size_2">mediana</string>
+    <string name="label_tv_storage_size_3">grande</string>
+    <string name="label_tv_engine_type_0">Gasolina</string>
+    <string name="label_tv_engine_type_1">Diesel</string>
+    <string name="label_tv_engine_type_2">Electrico</string>
+    <string name="label_tv_engine_type_3">Gas</string>
+    <string name="label_tv_engine_type_4">Hibrido gasolina-electrico</string>
+    <string name="label_tv_engine_type_5">Hibrido gasolina-gas</string>
+    <string name="label_tv_fuel_unit">Km/L</string>
+    <string name="label_tv_horse_power">HP</string>
+    <string name="label_tv_tank_capacity_extra">L</string>
+    <string name="label_tv_tank_capacity_start">Tanque de</string>
+    <string name="label_tv_air">Aire acondicionado</string>
+    <string name="label_tv_gps">GPS</string>
+    <string name="label_tv_polarized_glasses">Vidrios polarizados</string>
+    <string name="label_tv_insurance">Seguro de </string>
+    <string name="label_tv_replacement_wheel">Llanta de repuesto</string>
+    <string name="label_tv_toolbox">Caja de herramientas</string>
+    <string name="label_tv_color">Color</string>
 
     <!--input's log-->
     <string name="help_et_firstname">Solo tu primer nombre</string>
@@ -147,5 +174,28 @@
     <!--details collase headers-->
     <string name="collapse_spaces">Espacios</string>
     <string name="collapse_specs">Especificaciones</string>
-    <string name="collapse_extras">Comodidades</string>
+    <string name="collapse_details">Detalles</string>
+    <string name="collapse_security">Seguridad</string>
+
+    <!--car colors-->
+    <string-array
+        name="arr_car_colors">
+        <item>azúl</item>
+        <item>rojo</item>
+        <item>verde</item>
+        <item>morado</item>
+        <item>amarillo</item>
+        <item>naranja</item>
+        <item>rosa</item>
+        <item>blanco</item>
+        <item>negro</item>
+    </string-array>
+
+    <!--car insurance-->
+    <string-array
+        name="arr_car_insurance">
+        <item>cobertura amplia</item>
+        <item>cobertura limitada</item>
+        <item>responsabilidad civil</item>
+    </string-array>
 </resources>

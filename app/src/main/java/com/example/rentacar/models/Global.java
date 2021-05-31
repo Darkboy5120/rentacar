@@ -18,7 +18,12 @@ import com.google.android.material.snackbar.Snackbar;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class Global {
     public final static String domain_name = "https://chilaquilesenterprise.com/rentacar/";
@@ -65,5 +70,36 @@ public class Global {
                     getBitmapFromUrl(url);
             view.post(() -> view.setImageBitmap(bitmap));
         }).start();
+    }
+
+    public static long get_milli_from_date(String date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
+        try {
+            Date mDate = sdf.parse(date);
+            long timeInMilliseconds = mDate.getTime();
+            return timeInMilliseconds;
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public static long get_milli_from_time(String time) {
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm", Locale.US);
+        try {
+            Date mDate = sdf.parse(time);
+            long timeInMilliseconds = mDate.getTime();
+            return timeInMilliseconds;
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public static long get_milli_from_current_datetime() {
+        Calendar rightNow = Calendar.getInstance();
+        return rightNow.getTimeInMillis();
     }
 }
