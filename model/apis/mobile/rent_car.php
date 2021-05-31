@@ -22,8 +22,8 @@ $punto_entrega_latitud = $_REQUEST["punto_entrega_latitud"];
 $punto_entrega_longitud = $_REQUEST["punto_entrega_longitud"];
 $punto_devolucion_latitud = $_REQUEST["punto_devolucion_latitud"];
 $punto_devolucion_longitud = $_REQUEST["punto_devolucion_longitud"];
-$fechahora_entrega = str_replace("/", "-", $_REQUEST["fechahora_entrega"]);
-$fechahora_devolucion = str_replace("/", "-", $_REQUEST["fechahora_devolucion"]);
+$fechahora_entrega = $_REQUEST["fechahora_entrega"];
+$fechahora_devolucion = $_REQUEST["fechahora_devolucion"];
 
 $mi0->begin();
 
