@@ -54,89 +54,130 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
             import { OrbitControls } from './controller/libraries/three/examples/jsm/controls/OrbitControls.js';
             import { RoomEnvironment } from './controller/libraries/three/examples/jsm/environments/RoomEnvironment.js';
             import { GLTFLoader } from './controller/libraries/three/examples/jsm/loaders/GLTFLoader.js';
+            import { FBXLoader } from './controller/libraries/three/examples/jsm/loaders/FBXLoader.js';
             import { DRACOLoader } from './controller/libraries/three/examples/jsm/loaders/DRACOLoader.js';
 
-            let mixer;
+			let camera, scene, renderer, stats;
 
-            const clock = new THREE.Clock();
-            const container = document.getElementById( 'w-header' );
+			const clock = new THREE.Clock();
 
-            //const stats = new Stats();
-            //container.appendChild( stats.dom );
+			let mixer;
 
-            const renderer = new THREE.WebGLRenderer( { antialias: true } );
-            renderer.setPixelRatio( window.devicePixelRatio );
-            renderer.setSize( window.innerWidth, window.innerHeight );
-            renderer.outputEncoding = THREE.sRGBEncoding;
-            container.appendChild( renderer.domElement );
+			init();
+			animate();
 
-            const pmremGenerator = new THREE.PMREMGenerator( renderer );
+			function init() {
 
-            const scene = new THREE.Scene();
-            scene.background = new THREE.Color( 0xbfe3dd );
-            scene.environment = pmremGenerator.fromScene( new RoomEnvironment(), 0.04 ).texture;
+				const container = document.querySelector("#w-header");
 
-            const camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 100 );
-            camera.position.set( 5, 2, 8 );
+				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
+				camera.position.set( 100, 200, 500 );
 
-            const controls = new OrbitControls( camera, renderer.domElement );
-            controls.target.set( 0, 0.5, 0 );
-            controls.update();
-            controls.enabled = false;
+				scene = new THREE.Scene();
+				scene.background = new THREE.Color( 0xa0a0a0 );
+				scene.fog = new THREE.Fog( 0xa0a0a0, 200, 1000 );
 
-            const dracoLoader = new DRACOLoader();
-            dracoLoader.setDecoderPath( '/gltf/' );
+				const hemiLight = new THREE.HemisphereLight( 0xffffff, 0x444444 );
+				hemiLight.position.set( 0, 200, 0 );
+				scene.add( hemiLight );
 
-            var model;
+				const dirLight = new THREE.DirectionalLight( 0xffffff );
+				dirLight.position.set( 0, 200, 100 );
+				dirLight.castShadow = true;
+				dirLight.shadow.camera.top = 180;
+				dirLight.shadow.camera.bottom = - 100;
+				dirLight.shadow.camera.left = - 120;
+				dirLight.shadow.camera.right = 120;
+				scene.add( dirLight );
 
-            const loader = new GLTFLoader();
-            loader.setDRACOLoader( dracoLoader );
-            loader.load( './controller/3dmodels/castle.glb', function ( gltf ) {
+				// scene.add( new THREE.CameraHelper( dirLight.shadow.camera ) );
 
-                model = gltf.scene;
-                //model.position.set( 1, 1, 0 );
-                model.position.set( -2, -3, -5 );
-                //model.scale.set( 0.01, 0.01, 0.01 );
-                model.scale.set( 1, 1, 1 );
-                scene.add( model );
+				// ground
+				const mesh = new THREE.Mesh( new THREE.PlaneGeometry( 2000, 2000 ), new THREE.MeshPhongMaterial( { color: 0x999999, depthWrite: false } ) );
+				mesh.rotation.x = - Math.PI / 2;
+				mesh.receiveShadow = true;
+				scene.add( mesh );
 
-                //mixer = new THREE.AnimationMixer( model );
-                //mixer.clipAction( gltf.animations[ 0 ] ).play();
+				const grid = new THREE.GridHelper( 2000, 20, 0x000000, 0x000000 );
+				grid.material.opacity = 0.2;
+				grid.material.transparent = true;
+				scene.add( grid );
 
-                animate();
+				// model
+				const loader = new FBXLoader();
+				loader.load( './controller/3dmodels/car_arrival.fbx', function ( object ) {
 
-            }, function ( e ) {
-                if (e.loaded === e.total) {
-                    hideLoadingScreen();
-                }
-            }, function ( e ) {
-                console.error( e );
-            } );
+					mixer = new THREE.AnimationMixer( object );
 
+					//const action = mixer.clipAction( object.animations[ 0 ] );
+					//action.play();
 
-            window.onresize = function () {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
+					object.traverse( function ( child ) {
 
-                renderer.setSize( window.innerWidth, window.innerHeight );
-            };
+						if ( child.isMesh ) {
 
-            function animate() {
+							child.castShadow = true;
+							child.receiveShadow = true;
 
-                requestAnimationFrame( animate );
+						}
 
-                const delta = clock.getDelta();
-                model.rotation.y += 0.01;
+					} );
 
-                //mixer.update( delta );
+					scene.add( object );
 
-                controls.update();
+                }, function ( e ) {
+                    if (e.loaded === e.total) {
+                        hideLoadingScreen();
+                    }
+                }, function ( e ) {
+                    console.error( e );
+                } );
 
-                //stats.update();
+				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.shadowMap.enabled = true;
+				container.appendChild( renderer.domElement );
 
-                renderer.render( scene, camera );
+				const controls = new OrbitControls( camera, renderer.domElement );
+				controls.target.set( 0, 100, 0 );
+				controls.update();
+                controls.enabled = false;
 
-            }
+				window.addEventListener( 'resize', onWindowResize );
+
+				// stats
+				//stats = new Stats();
+				//container.appendChild( stats.dom );
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+			//
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				const delta = clock.getDelta();
+
+                scene.rotation.y += 0.01;
+
+				//if ( mixer ) mixer.update( delta );
+
+				renderer.render( scene, camera );
+
+				//stats.update();
+
+			}
         </script>
     </body>
 </html>
