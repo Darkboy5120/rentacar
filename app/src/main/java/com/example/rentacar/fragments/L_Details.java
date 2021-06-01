@@ -57,6 +57,7 @@ public class L_Details extends Fragment implements View.OnClickListener {
         requireActivity().setTitle(R.string.fragment_l_details_title);
         ll_spn_global = view.findViewById(R.id.layout_spn_global);
         view.findViewById(R.id.layout_container).setOnClickListener(this);
+        view.findViewById(R.id.rent).setOnClickListener(this);
 
         assert getArguments() != null;
         Global.setImage(getArguments().getString("imagen_ruta"),
@@ -119,9 +120,10 @@ public class L_Details extends Fragment implements View.OnClickListener {
 
     public void rent_car() {
         Intent i = requireActivity().getIntent();
-        long request_days = (Global.get_milli_from_date(i.getStringExtra("enddate"))
-                - Global.get_milli_from_date(i.getStringExtra("startdate"))) / 86400000;
-        long final_price = request_days * Integer.parseInt(getArguments().getString("precio"));
+        Log.d("start", i.getStringExtra("startdatetime"));
+        Log.d("end", i.getStringExtra("enddatetime"));
+        String request_days = i.getStringExtra("request_days");
+        long final_price = Long.parseLong(request_days) * Integer.parseInt(getArguments().getString("precio_raw"));
 
         ll_spn_global.setVisibility(View.VISIBLE);
 
@@ -134,6 +136,8 @@ public class L_Details extends Fragment implements View.OnClickListener {
                         JSONObject json = new JSONObject(response);
                         String code = json.getString("code");
                         if (code.equals("0")) {
+                        } else if (code.equals("-2")) {
+                            Global.printMessage(requireView(), getResources().getString(R.string.error_already_rented));
                         } else if (code.equals("-3")) {
                             requireView().findViewById(R.id.cars_empty).setVisibility(View.VISIBLE);
                         } else {
@@ -157,10 +161,8 @@ public class L_Details extends Fragment implements View.OnClickListener {
                 headers.put("punto_entrega_longitud", i.getStringExtra("startlocation_longitude"));
                 headers.put("punto_devolucion_latitud", i.getStringExtra("endlocation_latitude"));
                 headers.put("punto_devolucion_longitud", i.getStringExtra("endlocation_longitude"));
-                headers.put("fecha_entrega", i.getStringExtra("startdate"));
-                headers.put("hora_entrega", i.getStringExtra("starttime"));
-                headers.put("fecha_devolucion", i.getStringExtra("enddate"));
-                headers.put("hora_devolucion", i.getStringExtra("endtime"));
+                headers.put("fechahora_entrega", i.getStringExtra("startdatetime"));
+                headers.put("fechahora_devolucion", i.getStringExtra("enddatetime"));
                 return headers;
             }
         };

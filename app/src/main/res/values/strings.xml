@@ -6,7 +6,8 @@
     <!-- Strings used for fragments for navigation -->
     <string name="fragment_login_label">Inicio de sesión</string>
     <string name="fragment_register_label">Registro</string>
-    <string name="fragment_l_home_title">Inicio</string>
+    <string name="fragment_l_home_title">Buscar auto</string>
+    <string name="fragment_l_requested_cars_title">Autos en renta</string>
     <string name="fragment_g_home_title">Bienvenido a Rentacar</string>
     <string name="fragment_l_cars_title">Autos</string>
     <string name="fragment_l_details_title">Detalles</string>
@@ -66,6 +67,7 @@
     <string name="error_dates_offset">Las fechas deben tener al menos un dia de direfencia</string>
     <string name="error_dates_start">La fecha de entrega ya ha pasado</string>
     <string name="error_dates_min">Debes darle al conductor al menos 30 minutos</string>
+    <string name="error_already_rented">Alguien mas acaba de rentar este auto durante la fecha que escogiste</string>
 
     <!--dialog msg-->
     <string name="dialog_title_get_image">¿De donde quieres tomar la imagen?</string>

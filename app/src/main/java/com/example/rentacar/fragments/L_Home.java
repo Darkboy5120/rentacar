@@ -137,14 +137,12 @@ public class L_Home extends Fragment implements View.OnClickListener {
         }
 
         //dates logic
-        if ((Global.get_milli_from_date(ndp_startdate.getValue(requireView()))
-                + Global.get_milli_from_time(ntp_starttime.getValue(requireView())))
-                <= Global.get_milli_from_current_datetime()
+        if (ndp_startdate.getMilliseconds() <= Global.get_milli_from_current_datetime()
         ) {
             ndp_enddate.printLog(requireView(), getResources().getString(R.string.error_dates_start));
             result = false;
-        } else if ((Global.get_milli_from_date(ndp_enddate.getValue(requireView()))
-                - Global.get_milli_from_date(ndp_startdate.getValue(requireView()))) <= 86400000
+        } else if ((ndp_enddate.getMilliseconds() - ndp_startdate.getMilliseconds())
+                <= 86400000
             ) {
             ndp_enddate.printLog(requireView(), getResources().getString(R.string.error_dates_offset));
             result = false;
@@ -165,12 +163,14 @@ public class L_Home extends Fragment implements View.OnClickListener {
         i.putExtra("maxprice", ni_maxprice.getValue(requireView()));
         i.putExtra("startlocation_latitude", nlp_startlocation.getLatitude());
         i.putExtra("startlocation_longitude", nlp_startlocation.getLongitude());
-        i.putExtra("startdate", ndp_startdate.getValue(requireView()));
-        i.putExtra("starttime", ntp_starttime.getValue(requireView()));
+        i.putExtra("startdatetime", ndp_startdate.getValue(requireView())
+            + " " + ntp_starttime.getValue(requireView()));
         i.putExtra("endlocation_latitude", nlp_endlocation.getLatitude());
         i.putExtra("endlocation_longitude", nlp_endlocation.getLongitude());
-        i.putExtra("enddate", ndp_enddate.getValue(requireView()));
-        i.putExtra("endtime", ntp_endtime.getValue(requireView()));
+        i.putExtra("enddatetime", ndp_enddate.getValue(requireView())
+            + " " + ntp_endtime.getValue(requireView()));
+        i.putExtra("request_days", Long.toString((ndp_enddate.getMilliseconds()
+                - ndp_startdate.getMilliseconds()) / 86400000));
         startActivity(i);
     }
 }

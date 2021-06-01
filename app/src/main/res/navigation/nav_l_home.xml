@@ -11,4 +11,10 @@
         android:label="@string/fragment_l_home_title"
         tools:layout="@layout/fragment_l_home">
     </fragment>
+    <fragment
+        android:id="@+id/FragmentRequestedCars"
+        android:name="com.example.rentacar.fragments.L_Requested_Cars"
+        android:label="@string/fragment_l_requested_cars_title"
+        tools:layout="@layout/fragment_l_requested_cars">
+    </fragment>
 </navigation>

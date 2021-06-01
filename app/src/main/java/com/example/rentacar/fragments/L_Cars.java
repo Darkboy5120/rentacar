@@ -64,12 +64,10 @@ public class L_Cars extends Fragment implements View.OnClickListener {
                 i.getStringExtra("maxprice"),
                 i.getStringExtra("startlocation_latitude"),
                 i.getStringExtra("startlocation_longitude"),
-                i.getStringExtra("startdate"),
-                i.getStringExtra("starttime"),
+                i.getStringExtra("startdatetime"),
                 i.getStringExtra("endlocation_latitude"),
                 i.getStringExtra("endlocation_longitude"),
-                i.getStringExtra("enddate"),
-                i.getStringExtra("endtime")
+                i.getStringExtra("enddatetime")
         );
     }
 
@@ -130,7 +128,7 @@ public class L_Cars extends Fragment implements View.OnClickListener {
                                       String car_tank_capacity, String car_color, String car_air,
                                       String car_gps, String car_polarized_glasses,
                                       String car_insurance, String car_replacement_wheel,
-                                      String car_toolbox) {
+                                      String car_toolbox, String price_raw) {
         Bundle bundle = new Bundle();
         bundle.putString("pk_auto", car_id);
         bundle.putString("imagen_ruta", image_path);
@@ -151,6 +149,7 @@ public class L_Cars extends Fragment implements View.OnClickListener {
         bundle.putString("seguro", car_insurance);
         bundle.putString("repuesto", car_replacement_wheel);
         bundle.putString("caja_herramientas", car_toolbox);
+        bundle.putString("precio_raw", price_raw);
 
         L_Details fragment = new L_Details();
         fragment.setArguments(bundle);
@@ -162,9 +161,9 @@ public class L_Cars extends Fragment implements View.OnClickListener {
     }
 
     public void make_search_in_server(String minprice, String maxprice, String startlocation_latitude,
-                                      String startlocation_longitude, String startdate, String starttime,
+                                      String startlocation_longitude, String startdatetime,
                                       String endlocation_latitude, String endlocation_longitude,
-                                      String enddate, String endtime) {
+                                      String enddatetime) {
         ll_spn_global.setVisibility(View.VISIBLE);
 
         RequestQueue queue = Volley.newRequestQueue(requireContext());
@@ -172,8 +171,8 @@ public class L_Cars extends Fragment implements View.OnClickListener {
                 response -> {
                     try {
                         ll_spn_global.setVisibility(View.GONE);
-                        Log.d("foo", response);
                         JSONObject json = new JSONObject(response);
+                        Log.d("foo", json.toString());
                         String code = json.getString("code");
                         if (code.equals("0")) {
                             JSONObject data = json.getJSONObject("data");
@@ -191,6 +190,7 @@ public class L_Cars extends Fragment implements View.OnClickListener {
                                 String car_price = use_price_template(
                                         row.getString("precio")
                                 );
+                                String price_raw = row.getString("precio");
                                 String car_name = row.getString("marca_nombre") + " "
                                         + row.getString("modelo_nombre");
                                 String car_doors = row.getString("puertas") + " "
@@ -237,7 +237,8 @@ public class L_Cars extends Fragment implements View.OnClickListener {
                                             car_chairs, car_storage_size, car_transmission, car_engine,
                                             car_fuel_unit, car_horse_power, car_tank_capacity,
                                             car_color, car_air, car_gps, car_polarized_glasses,
-                                            car_insurance, car_replacement_wheel, car_toolbox);
+                                            car_insurance, car_replacement_wheel, car_toolbox,
+                                            price_raw);
                                 });
                                 ll_cars.addView(car_card);
                             }
@@ -263,12 +264,10 @@ public class L_Cars extends Fragment implements View.OnClickListener {
                 headers.put("maxprice", maxprice);
                 headers.put("startlocation_latitude", startlocation_latitude);
                 headers.put("startlocation_longitude", startlocation_longitude);
-                headers.put("startdate", startdate);
-                headers.put("starttime", starttime);
+                headers.put("startdatetime", startdatetime);
                 headers.put("endlocation_latitude", endlocation_latitude);
                 headers.put("endlocation_longitude", endlocation_longitude);
-                headers.put("enddate", enddate);
-                headers.put("endtime", endtime);
+                headers.put("enddatetime", enddatetime);
                 return headers;
             }
         };

@@ -3,6 +3,7 @@ package com.example.rentacar.models;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.text.InputType;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.DatePicker;
@@ -18,6 +19,7 @@ import java.util.Locale;
 
 public class NiceDatepicker extends ControlField {
     boolean second_touch = false;
+    long milliseconds;
 
     @SuppressLint("ClickableViewAccessibility")
     public NiceDatepicker(int label_id, int input_id, int help_id, int log_id,
@@ -31,6 +33,7 @@ public class NiceDatepicker extends ControlField {
         view.findViewById(input_id).setFocusable(View.NOT_FOCUSABLE);
 
         final Calendar myCalendar = Calendar.getInstance();
+        this.milliseconds = myCalendar.getTimeInMillis();
 
         EditText et_view = view.findViewById(this.input_id);
 
@@ -66,6 +69,11 @@ public class NiceDatepicker extends ControlField {
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         et.setText(sdf.format(calendar.getTime()));
+        this.milliseconds = calendar.getTimeInMillis();
+    }
+
+    public long getMilliseconds() {
+        return this.milliseconds;
     }
 
     @Override
@@ -78,5 +86,11 @@ public class NiceDatepicker extends ControlField {
 
         this.dismissLog(v);
         return true;
+    }
+
+    @Override
+    public String getValue(View v) {
+        String raw_value = ((EditText) v.findViewById(this.input_id)).getText().toString();
+        return raw_value.substring(6) + "-" + raw_value.substring(3, 5) + "-" + raw_value.substring(0, 2);
     }
 }

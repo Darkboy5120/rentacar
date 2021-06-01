@@ -73,11 +73,12 @@ public class Global {
     }
 
     public static long get_milli_from_date(String date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
         try {
             Date mDate = sdf.parse(date);
-            long timeInMilliseconds = mDate.getTime();
-            return timeInMilliseconds;
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(mDate);
+            return calendar.getTimeInMillis();
         }
         catch (ParseException e) {
             e.printStackTrace();

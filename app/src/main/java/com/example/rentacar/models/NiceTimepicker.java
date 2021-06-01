@@ -20,6 +20,7 @@ import java.util.Locale;
 
 public class NiceTimepicker extends ControlField {
     boolean second_touch = false;
+    long milliseconds;
 
     @SuppressLint("ClickableViewAccessibility")
     public NiceTimepicker(int label_id, int input_id, int help_id, int log_id,
@@ -31,6 +32,7 @@ public class NiceTimepicker extends ControlField {
         this.is_optional = is_optional;
 
         final Calendar myCalendar = Calendar.getInstance();
+        this.milliseconds = myCalendar.getTimeInMillis();
 
         EditText et_view = view.findViewById(this.input_id);
 
@@ -38,7 +40,7 @@ public class NiceTimepicker extends ControlField {
             @Override
             public void onTimeSet(TimePicker v, int hourOfDay, int minute) {
                 // TODO Auto-generated method stub
-                updateValue(et_view, hourOfDay, minute);
+                updateValue(et_view, hourOfDay, minute, myCalendar);
                 setLabelVisibility(view, View.VISIBLE);
                 dismissLog(view);
             }
@@ -58,9 +60,14 @@ public class NiceTimepicker extends ControlField {
         });
     }
 
-    public void updateValue(EditText et, int hourofday, int minute)   {
+    public void updateValue(EditText et, int hourofday, int minute, Calendar calendar)   {
         String time = hourofday + ":" + minute;
         et.setText(time);
+        this.milliseconds = calendar.getTimeInMillis();
+    }
+
+    public long getMilliseconds() {
+        return this.milliseconds;
     }
 
     @Override
