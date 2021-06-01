@@ -30,7 +30,8 @@ $mi0->query("
             AND auto_modelo.pk_auto_modelo = auto.fk_auto_modelo
             AND auto_modelo.fk_auto_marca = auto_marca.pk_auto_marca
             AND auto.pk_auto = renta.fk_auto)
-    WHERE renta.fase = '0'"
+    WHERE renta.fk_arrendatario = ? AND renta.fase = '0'",
+    $user_id
 );
 if ($mi0->result->num_rows > 0) {
     $data = $mi0->result->fetch_all(MYSQLI_ASSOC);

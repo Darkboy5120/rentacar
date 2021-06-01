@@ -40,19 +40,39 @@ if ($mi0->result->num_rows > 0) {
     $mi0->end("rollback", -2, NULL);
 }
 
+//find available drivers
+$mi0->query("
+    SELECT
+        auto.pk_auto,
+        usuario.pk_usuario,
+        conductor.fk_conductor
+    FROM
+        auto
+    LEFT JOIN
+        (administrador, conductor)
+    ON
+        (auto.pk_auto = administrador.fk_administrador
+        AND conductor.fk_administrador = administrador.fk_administrador)
+    LIMIT 1"
+);
+if ($mi0->result->num_rows == 0) {
+    $mi0->end("rollback", -3, NULL);
+}
+$driver_id = $mi0->result->fetch_all(MYSQLI_ASSOC)[0]["fk_conductor"];
+
 $mi0->query("
     INSERT INTO
         renta
-    (fk_auto, fk_conductor, punto_entrega_latitud, punto_entrega_longitud,
+    (fk_auto, fk_arrendatario, fk_conductor, punto_entrega_latitud, punto_entrega_longitud,
         punto_devolucion_latitud, punto_devolucion_longitud, fechahora_entrega,
         fechahora_devolucion, costo)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-    $car_id, $user_id, $punto_entrega_latitud, $punto_entrega_longitud,
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    $car_id, $user_id, $driver_id, $punto_entrega_latitud, $punto_entrega_longitud,
     $punto_devolucion_latitud, $punto_devolucion_longitud, $fechahora_entrega,
     $fechahora_devolucion, $final_price
 );
 if ($mi0->result === TRUE) {
     $mi0->end("commit", 0, NULL);
 } else {
-    $mi0->end("rollback", -3, NULL);
+    $mi0->end("rollback", -4, NULL);
 }
