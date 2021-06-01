@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -17,24 +20,27 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.rentacar.R;
+import com.example.rentacar.fragments.L_Register_Step3;
 import com.example.rentacar.models.StorageManager;
 import com.google.android.material.navigation.NavigationView;
 
 public class L_Home extends AppCompatActivity {
-
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_l_home);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.FragmentHome, R.id.FragmentRequestedCars)
                 .setDrawerLayout(drawer)
@@ -42,6 +48,34 @@ public class L_Home extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        findViewById(R.id.nav_home).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                com.example.rentacar.fragments.L_Home fragment = new com.example.rentacar.fragments.L_Home();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.nav_host_fragment, fragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+        findViewById(R.id.nav_requested_cars).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                com.example.rentacar.fragments.L_Requested_Cars fragment = new com.example.rentacar.fragments.L_Requested_Cars();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.nav_host_fragment, fragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
     }
 
     @Override
@@ -73,12 +107,5 @@ public class L_Home extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
     }
 }
