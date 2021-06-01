@@ -22,7 +22,6 @@ drop table if exists `auto_marca`;
 drop table if exists `municipio`;
 drop table if exists `estado`;
 
-
 create table `estado` (
   `pk_estado` tinyint unsigned not null auto_increment,
   `nombre` varchar(50) not null,
@@ -182,7 +181,7 @@ create table `auto` (
     `gps` enum("0", "1") not null,
     `vidrios_polarizados` enum("0", "1") not null,
     primary key(pk_auto),
-    foreign key(fk_administrador) references usuario(pk_usuario) on delete cascade,
+    foreign key(fk_administrador) references administrador(fk_usuario) on delete cascade,
     foreign key(fk_auto_modelo) references auto_modelo(pk_auto_modelo) on delete cascade,
     foreign key(fk_auto_color_pintura) references auto_color_pintura(pk_auto_color_pintura) on delete cascade
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
@@ -198,6 +197,7 @@ create table `auto_imagen` (
 create table `renta` (
     `pk_renta` int unsigned not null auto_increment,
     `fk_auto` mediumint unsigned not null,
+    `fk_arrendatario` smallint unsigned not null,
     `fk_conductor` smallint unsigned not null,
     `punto_entrega_longitud` varchar(50) not null,
     `punto_entrega_latitud` varchar(50) not null,
@@ -213,7 +213,8 @@ create table `renta` (
     `fase` enum("0", "1", "2") default "0" not null,
     primary key(pk_renta),
     foreign key(fk_auto) references auto(pk_auto) on delete cascade,
-    foreign key(fk_conductor) references usuario(pk_usuario) on delete cascade
+    foreign key(fk_arrendatario) references arrendatario(fk_usuario) on delete cascade,
+    foreign key(fk_conductor) references conductor(fk_usuario) on delete cascade
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
 
 create table `reporte_devolucion` (
