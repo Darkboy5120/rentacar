@@ -40,7 +40,7 @@ $user_name = $ci0->getSession("user_data")["nombre"];
                 </section>
                 <section class="load-more hidden" id="load-more-layout">
                     <button class="button button-primary" id="load-more">
-                        <?=$l_arr["drivers"]["button_loadmore"]?></button>
+                        <?=$l_arr["home"]["button_loadmore"]?></button>
                 </section>
                 <?php include "view/components/footer.php";?>
             </div>
