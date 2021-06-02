@@ -242,7 +242,7 @@ public class L_Cars extends Fragment implements View.OnClickListener {
                                 });
                                 ll_cars.addView(car_card);
                             }
-                        } else if (code.equals("-3")) {
+                        } else if (code.equals("-3") || code.equals("-4")) {
                             requireView().findViewById(R.id.cars_empty).setVisibility(View.VISIBLE);
                         } else {
                             Global.printMessage(requireView(), getResources().getString(R.string.error_generic_request));
