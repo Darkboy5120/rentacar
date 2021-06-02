@@ -46,7 +46,7 @@ public class NiceSpinner extends ControlField {
         this.log_id = log_id;
         this.is_optional = is_optional;
 
-        Spinner spn_state = (Spinner) view.findViewById(R.id.et_state);
+        Spinner spn_state = (Spinner) view.findViewById(this.input_id);
         spn_state.setOnItemSelectedListener(isl);
     }
 

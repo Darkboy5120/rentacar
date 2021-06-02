@@ -139,7 +139,7 @@ public class L_Details extends Fragment implements View.OnClickListener {
                         } else if (code.equals("-2")) {
                             Global.printMessage(requireView(), getResources().getString(R.string.error_already_rented));
                         } else if (code.equals("-3")) {
-                            requireView().findViewById(R.id.cars_empty).setVisibility(View.VISIBLE);
+                            Global.printMessage(requireView(), getResources().getString(R.string.error_not_drivers_available));
                         } else {
                             Global.printMessage(requireView(), getResources().getString(R.string.error_generic_request));
                         }

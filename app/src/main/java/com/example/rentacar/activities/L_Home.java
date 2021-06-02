@@ -11,9 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -35,7 +38,7 @@ public class L_Home extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        /*DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
         // Passing each menu ID as a set of Ids because each
@@ -47,32 +50,46 @@ public class L_Home extends AppCompatActivity {
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+        NavigationUI.setupWithNavController(navigationView, navController);*/
+
+        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        final NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(item -> {
+            Fragment fragment = null;
+            switch (item.getItemId()) {
+                case R.id.nav_home:
+                    fragment = new com.example.rentacar.fragments.L_Home();
+                    break;
+                case R.id.nav_requested_cars:
+                    fragment = new com.example.rentacar.fragments.L_Requested_Cars();
+                    break;
+            }
+            assert fragment != null;
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.nav_host_fragment, fragment)
+                    .addToBackStack(null)
+                    .commit();
+            drawer.closeDrawers();
+
+            return true;
+        });
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.app_name, R.string.app_name) {
+            @Override
+            public void onDrawerStateChanged(int newState) {
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    //do something on opening the navigation
+                } else {
+                    //optional actions when navigation menu closes
+                }
+            }
+        };
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
     }
 
     @Override
     public boolean onSupportNavigateUp() {
-        findViewById(R.id.nav_home).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                com.example.rentacar.fragments.L_Home fragment = new com.example.rentacar.fragments.L_Home();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.nav_host_fragment, fragment)
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-        findViewById(R.id.nav_requested_cars).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                com.example.rentacar.fragments.L_Requested_Cars fragment = new com.example.rentacar.fragments.L_Requested_Cars();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.nav_host_fragment, fragment)
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();

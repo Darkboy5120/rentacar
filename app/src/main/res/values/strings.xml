@@ -64,10 +64,12 @@
     <string name="error_login_fail">Correo y/o contraseña incorrecto</string>
     <string name="error_sdcard_without_images">No se encontraron imagenes en la tarjeta sd</string>
     <string name="error_no_cars_founded">No se encontraron autos con esos críterios</string>
+    <string name="error_no_cars_rented">No se encontraron autos</string>
     <string name="error_dates_offset">Las fechas deben tener al menos un dia de direfencia</string>
     <string name="error_dates_start">La fecha de entrega ya ha pasado</string>
     <string name="error_dates_min">Debes darle al conductor al menos 30 minutos</string>
-    <string name="error_already_rented">Alguien mas acaba de rentar este auto durante la fecha que escogiste</string>
+    <string name="error_already_rented">Alguien mas acaba de rentar este auto durante la fecha y hora que escogiste</string>
+    <string name="error_not_drivers_available">No ha conductores disponibles para esa fecha y horario</string>
 
     <!--dialog msg-->
     <string name="dialog_title_get_image">¿De donde quieres tomar la imagen?</string>
@@ -105,6 +107,7 @@
     <string name="label_tp_endtime">Hora</string>
     <string name="label_et_type">Tipo de auto</string>
     <string name="label_et_search">Buscar</string>
+    <string name="label_et_phase">Fase de renta</string>
 
     <!--Strings et para el card view-->
     <string name="label_et_carName">Nissan Tsuru 2006</string>
@@ -117,6 +120,7 @@
     <string name="label_tv_transmission_manual">Manual</string>
     <string name="label_tv_price_simbol">$</string>
     <string name="label_tv_price_extra"> MXN/Día</string>
+    <string name="label_tv_price_extra_simple"> MXN/Día</string>
     <string name="label_tv_doors">puertas</string>
     <string name="label_tv_chairs">asientos</string>
     <string name="label_tv_loading">Cargando…</string>
@@ -142,6 +146,9 @@
     <string name="label_tv_replacement_wheel">Llanta de repuesto</string>
     <string name="label_tv_toolbox">Caja de herramientas</string>
     <string name="label_tv_color">Color</string>
+    <string name="label_tv_rented_car_startdate">Desde</string>
+    <string name="label_tv_rented_car_enddate">Hasta</string>
+    <string name="label_tv_rented_car_finalprice">Precio total de </string>
 
     <!--input's log-->
     <string name="help_et_firstname">Solo tu primer nombre</string>
@@ -166,6 +173,7 @@
     <string name="help_tp_endtime"></string>
     <string name="help_lp_startlocation">Elige donde quieres recibir el auto</string>
     <string name="help_lp_endlocation">Elige donde quieres entregar el auto</string>
+    <string name="help_et_phase"></string>
 
     <!--fragments title-->
     <string name="fragment_l_register_step1_label">Datos personales</string>
@@ -199,5 +207,13 @@
         <item>cobertura amplia</item>
         <item>cobertura limitada</item>
         <item>responsabilidad civil</item>
+    </string-array>
+
+    <!--rent phases-->
+    <string-array
+        name="arr_rent_phase">
+        <item>En camino</item>
+        <item>En posesión</item>
+        <item>Devueltos</item>
     </string-array>
 </resources>

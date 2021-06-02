@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,22 +89,25 @@ public class L_Register_Step2 extends Fragment implements View.OnClickListener, 
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        try {
-            JSONObject json = new JSONObject(ns_state.getTrauctorItem(position));
-            JSONArray models = json.getJSONArray("cities");
+        if (parent.getId() == R.id.et_state) {
+            try {
+                JSONObject json = new JSONObject(ns_state.getTrauctorItem(position));
+                JSONArray models = json.getJSONArray("cities");
 
-            ArrayList<String> models_arr = new ArrayList<>();
-            for (int i = 0; i < models.length(); i++) {
-                JSONObject row = new JSONObject(models.getString(i));
-                models_arr.add(row.getString("nombre"));
-                ns_city.traductorPush(row.toString());
+                ArrayList<String> models_arr = new ArrayList<>();
+                for (int i = 0; i < models.length(); i++) {
+                    JSONObject row = new JSONObject(models.getString(i));
+                    models_arr.add(row.getString("nombre"));
+                    ns_city.traductorPush(row.toString());
+                }
+
+                ns_city.setAdapter(requireView(), models_arr.toArray(new String[0]));
+                ns_city.updateIndex(position);
+                ll_spn_global.setVisibility(View.GONE);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-
-            ns_city.setAdapter(requireView(), models_arr.toArray(new String[0]));
-            ns_city.updateIndex(position);
-            ll_spn_global.setVisibility(View.GONE);
-
-        } catch (JSONException e) {
         }
 
     }
