@@ -24,7 +24,7 @@ if ($limit > $max_limit) {
 } else if ($limit <= 0) {
     $limit = 1;
 }
-$next_offset = $offset+$limit;
+$double_limit = $limit * 2;
 
 $mi0->query("
     SELECT
@@ -42,7 +42,7 @@ $mi0->query("
         (usuario.pk_usuario = usuario_foto.fk_usuario AND conductor.fk_usuario = usuario.pk_usuario)
     WHERE conductor.fk_administrador = ? AND despedido = '0'
     ORDER BY usuario.pk_usuario ASC
-    LIMIT $offset, $limit",
+    LIMIT $offset, $double_limit",
     $admin_id
 );
 if ($mi0->result->num_rows === 0) {
@@ -53,24 +53,15 @@ $data = array(
     "drivers" => $mi0->result->fetch_all(MYSQLI_ASSOC)
 );
 
-$mi0->query("
-    SELECT
-        usuario.nombre,
-        usuario.apellido,
-        usuario.telefono,
-        usuario.correo,
-        usuario_foto.imagen_ruta
-    FROM
-        usuario
-    LEFT JOIN
-        (usuario_foto, conductor)
-    ON
-        (usuario.pk_usuario = usuario_foto.fk_usuario AND conductor.fk_usuario = usuario.pk_usuario)
-    WHERE conductor.fk_administrador = ? AND despedido = '0'
-    LIMIT $next_offset, $limit",
-    $admin_id
-);
-$data["are_they_all"] = ($mi0->result->num_rows > 0)
+$data["are_they_all"] = ($mi0->result->num_rows > $limit)
     ? FALSE : TRUE;
+
+$count = 0;
+while ($row = $mi0->result->fetch_assoc()) {
+    if (++$count > $limit) {
+        break;
+    }
+    array_push($data["drivers"], $row);
+}
 
 $mi0->end("commit", 0, $data);
