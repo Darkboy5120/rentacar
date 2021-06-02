@@ -91,6 +91,9 @@
     modal.driver_fire_confirm.button.yes.element.onclick = () => {
         modal.driver_fire_confirm.button.yes.onclick();
     }
+    modal.driver_fire_confirm.button.no.element.onclick = () => {
+        modal.driver_fire_confirm.button.no.onclick();
+    }
     modal.driver_options.button.fire.element.onclick = () => {
         modal.driver_options.button.fire.onclick();
     }

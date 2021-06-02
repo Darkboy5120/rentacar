@@ -43,22 +43,23 @@ if ($mi0->result->num_rows > 0) {
 //find available drivers
 $mi0->query("
     SELECT
-        auto.pk_auto,
-        usuario.pk_usuario,
-        conductor.fk_conductor
+        conductor.fk_usuario
     FROM
         auto
     LEFT JOIN
         (administrador, conductor)
     ON
-        (auto.pk_auto = administrador.fk_administrador
-        AND conductor.fk_administrador = administrador.fk_administrador)
-    LIMIT 1"
+        (auto.fk_administrador = administrador.fk_usuario
+        AND conductor.fk_administrador = administrador.fk_usuario)
+    WHERE auto.pk_auto = ? AND conductor.fk_usuario IS NOT NULL
+    GROUP BY conductor.fk_usuario
+    LIMIT 1",
+    $car_id
 );
 if ($mi0->result->num_rows == 0) {
     $mi0->end("rollback", -3, NULL);
 }
-$driver_id = $mi0->result->fetch_all(MYSQLI_ASSOC)[0]["fk_conductor"];
+$driver_id = $mi0->result->fetch_all(MYSQLI_ASSOC)[0]["fk_usuario"];
 
 $mi0->query("
     INSERT INTO
