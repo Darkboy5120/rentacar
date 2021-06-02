@@ -30,6 +30,7 @@ public class Global {
     public final static String apis_path = domain_name + "model/apis/";
     public final static String generic_error = "That didn't work!";
     public final static String security_key = "$2y$10$09JtLoAwMSUYwDzag87.yu8BuFUVwLG44oVWPmnMnKiFDtNUE9vWi";
+    public final static int SUCCESS_RENT_CODE = 55;
 
     public static void clearBackStack(FragmentManager fm) {
         fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);

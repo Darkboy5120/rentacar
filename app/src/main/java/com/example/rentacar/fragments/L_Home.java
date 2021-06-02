@@ -93,6 +93,13 @@ public class L_Home extends Fragment implements View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data);
         nlp_startlocation.listenResult(requestCode, resultCode, data, requireView());
         nlp_endlocation.listenResult(requestCode, resultCode, data, requireView());
+        if (requestCode == Global.SUCCESS_RENT_CODE) {
+            L_Requested_Cars fragment = new L_Requested_Cars();
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(((ViewGroup)requireView().getParent()).getId(), fragment)
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 
     @Override
@@ -171,6 +178,6 @@ public class L_Home extends Fragment implements View.OnClickListener {
             + " " + ntp_endtime.getValue(requireView()));
         i.putExtra("request_days", Long.toString((ndp_enddate.getMilliseconds()
                 - ndp_startdate.getMilliseconds()) / 86400000));
-        startActivity(i);
+        startActivityForResult(i, Global.SUCCESS_RENT_CODE);
     }
 }

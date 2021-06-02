@@ -136,6 +136,8 @@ public class L_Details extends Fragment implements View.OnClickListener {
                         JSONObject json = new JSONObject(response);
                         String code = json.getString("code");
                         if (code.equals("0")) {
+                            requireActivity().setResult(Global.SUCCESS_RENT_CODE);
+                            requireActivity().finish();
                         } else if (code.equals("-2")) {
                             Global.printMessage(requireView(), getResources().getString(R.string.error_already_rented));
                         } else if (code.equals("-3")) {
