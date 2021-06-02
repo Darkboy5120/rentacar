@@ -69,7 +69,7 @@
     <string name="error_dates_start">La fecha de entrega ya ha pasado</string>
     <string name="error_dates_min">Debes darle al conductor al menos 30 minutos</string>
     <string name="error_already_rented">Alguien mas acaba de rentar este auto durante la fecha y hora que escogiste</string>
-    <string name="error_not_drivers_available">No ha conductores disponibles para esa fecha y horario</string>
+    <string name="error_not_drivers_available">No hay conductores disponibles para esa fecha y horario</string>
 
     <!--dialog msg-->
     <string name="dialog_title_get_image">¿De donde quieres tomar la imagen?</string>
