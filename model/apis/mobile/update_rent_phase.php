@@ -30,7 +30,7 @@ if ($fase == "0" || $fase == "2" || $fase == "4") {
     $mi0->end("rollback", -3, NULL);
 }
 
-$fase = $intval($fase) + 1;
+$fase = intval($fase) + 1;
 
 $mi0->query("
     UPDATE
