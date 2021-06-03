@@ -33,7 +33,7 @@ $mi0->query("
     FROM
         renta
     WHERE fk_auto = ? AND ((fechahora_entrega <= ? AND fechahora_devolucion >= ?)
-        OR (fechahora_entrega >= ? AND fechahora_devolucion <= ?)) AND fase = '0'",
+        OR (fechahora_entrega >= ? AND fechahora_devolucion <= ?))",
     $car_id, $fechahora_entrega, $fechahora_devolucion, $fechahora_entrega, $fechahora_devolucion
 );
 if ($mi0->result->num_rows > 0) {

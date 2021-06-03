@@ -104,7 +104,7 @@ $mi0->query("
             FROM
                 renta
             WHERE fk_auto = auto.pk_auto AND ((fechahora_entrega <= ? AND fechahora_devolucion >= ?)
-                OR (fechahora_entrega >= ? AND fechahora_devolucion <= ?)) AND renta.fase = '0'
+                OR (fechahora_entrega >= ? AND fechahora_devolucion <= ?))
         ) IS NULL
     LIMIT $offset, $double_limit",
     $startdatetime, $enddatetime, $startdatetime, $enddatetime

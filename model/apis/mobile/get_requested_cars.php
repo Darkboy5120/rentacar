@@ -10,6 +10,18 @@ if (!isset($_REQUEST["user_id"])
 
 $user_id = $_REQUEST["user_id"];
 $fase = $_REQUEST["fase"];
+$fase_sql = NULL;
+switch ($fase) {
+    case "0":
+        $fase_sql = "('0', '1')";
+        break;
+    case "1":
+        $fase_sql = "('2', '3')";
+        break;
+    case "2":
+        $fase_sql = "('4')";
+        break;
+}
 
 $mi0->begin();
 
@@ -21,6 +33,7 @@ $mi0->query("
         auto_modelo.nombre as modelo_nombre,
         auto_modelo.nombre as modelo_nombre,
         auto_marca.nombre as marca_nombre,
+        renta.pk_renta,
         renta.costo,
         renta.fase,
         renta.fechahora_entrega,
@@ -34,8 +47,8 @@ $mi0->query("
             AND auto_modelo.pk_auto_modelo = auto.fk_auto_modelo
             AND auto_modelo.fk_auto_marca = auto_marca.pk_auto_marca
             AND auto.pk_auto = renta.fk_auto)
-    WHERE renta.fk_arrendatario = ? AND renta.fase = ?",
-    $user_id, $fase
+    WHERE renta.fk_arrendatario = ? AND renta.fase IN $fase_sql",
+    $user_id
 );
 if ($mi0->result->num_rows > 0) {
     $data = array(

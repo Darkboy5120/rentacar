@@ -78,6 +78,9 @@ if (isset($_REQUEST["api"])) {
         case "get_requested_cars":
             require "mobile/get_requested_cars.php";
             break;
+        case "update_rent_phase":
+            require "mobile/update_rent_phase.php";
+            break;
         default: echo json_encode("That's not a valid api");
     }
 }
