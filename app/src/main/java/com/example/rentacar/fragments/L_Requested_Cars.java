@@ -28,6 +28,7 @@ import com.example.rentacar.models.StorageManager;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -109,6 +110,7 @@ public class L_Requested_Cars extends Fragment implements View.OnClickListener,
                                         R.layout.component_simple_cardcard, ll_cars, false);
 
                                 //car values
+                                String rent_phase = row.getString("fase");
                                 String car_id = row.getString("pk_auto");
                                 String image_path = Global.domain_name + row.getString("imagen_ruta").substring(5);
                                 String car_final_price = use_finalprice_template(
@@ -120,6 +122,35 @@ public class L_Requested_Cars extends Fragment implements View.OnClickListener,
                                         + row.getString("fechahora_entrega");
                                 String car_enddate = getResources().getString(R.string.label_tv_rented_car_enddate) + " "
                                         + row.getString("fechahora_devolucion");
+                                String pk_renta = row.getString("pk_renta");
+
+                                if (rent_phase.equals("1") || rent_phase.equals("3")) {
+                                    //add onclic to update phase
+                                    car_card.setOnClickListener(v -> {
+                                        try_rent_update(pk_renta,
+                                                new StorageManager(requireContext()).getString("user_id"),
+                                                phase);
+                                    });
+
+                                    //also add a message in the card to let the user know that the card
+                                    //can be clicked
+                                    TextView tv_driver_msg = car_card.findViewById(R.id.car_driver_msg);
+                                    switch (rent_phase) {
+                                        case "1":
+                                            tv_driver_msg.setText(R.string.label_tv_driver_start);
+                                            tv_driver_msg.setVisibility(View.VISIBLE);
+                                            break;
+                                        case "3":
+                                            tv_driver_msg.setText(R.string.label_tv_driver_end);
+                                            tv_driver_msg.setVisibility(View.VISIBLE);
+                                            break;
+                                    }
+                                } else {
+                                    //onclick only will display an error message
+                                    car_card.setOnClickListener(v -> {
+                                        Global.printMessage(requireView(), getResources().getString(R.string.error_driver_first));
+                                    });
+                                }
 
                                 //update view values
                                 Global.setImage(image_path, car_card.findViewById(R.id.car_image));
@@ -152,6 +183,42 @@ public class L_Requested_Cars extends Fragment implements View.OnClickListener,
                 headers.put("securitykey", Global.security_key);
                 headers.put("user_id", user_id);
                 headers.put("fase", phase);
+                return headers;
+            }
+        };
+        queue.add(stringRequest);
+    }
+
+    public void try_rent_update(String pk_renta, String user_id, String phase) {
+        ll_spn_global.setVisibility(View.VISIBLE);
+
+        RequestQueue queue = Volley.newRequestQueue(requireContext());
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Global.apis_path,
+                response -> {
+                    try {
+                        ll_spn_global.setVisibility(View.GONE);
+                        JSONObject json = new JSONObject(response);
+                        Log.d("foo", json.toString());
+                        String code = json.getString("code");
+                        if (code.equals("0")) {
+                            make_search_in_server(user_id, phase);
+                            Global.printMessage(requireView(), getResources().getString(R.string.get_car));
+                        } else {
+                            Global.printMessage(requireView(), getResources().getString(R.string.error_driver_first));
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                },
+                error -> Global.printMessage(requireView(), getResources().getString(R.string.error_generic_request))) {
+            @Override
+            public Map<String, String> getParams()  {
+                HashMap<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+                headers.put("api", "update_rent_phase");
+                headers.put("securitykey", Global.security_key);
+                headers.put("fk_arrendatario", user_id);
+                headers.put("pk_renta", pk_renta);
                 return headers;
             }
         };

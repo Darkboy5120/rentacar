@@ -58,7 +58,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/help_et_phase"
                     android:labelFor="@id/et_phase"
-                    style="@style/text_big_lightGray"/>
+                    style="@style/text_big_lightGray"
+                    android:visibility="gone"/>
                 <TextView
                     android:id="@+id/log_et_phase"
                     android:layout_width="wrap_content"

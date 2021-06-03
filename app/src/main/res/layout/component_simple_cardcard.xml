@@ -56,8 +56,8 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
             <TextView
                 android:id="@+id/car_final_price"
                 android:layout_width="match_parent"
@@ -65,6 +65,13 @@
                 android:text="@string/label_tv_loading"
                 android:gravity="center_horizontal"
                 android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/car_driver_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                style="@style/text_medium_bold_green"
+                android:visibility="gone"/>
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

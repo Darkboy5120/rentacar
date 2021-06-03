@@ -78,6 +78,11 @@
         <item name="android:textColor">@color/gray</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="text_medium_bold_green">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">@color/green</item>
+        <item name="android:textStyle">bold</item>
+    </style>
     <style name="text_big_gray">
         <item name="android:textSize">@dimen/text_size_big</item>
         <item name="android:textColor">@color/gray</item>
