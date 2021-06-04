@@ -207,10 +207,12 @@ create table `renta` (
     `fechahora_devolucion` datetime not null,
     `costo` smallint not null,
     /* 0 - Por entregar
-     * 1 - Entregado
-     * 2 - Recibido
+     * 1 - El conductor esta entregando las llaves
+     * 2 - El arrendatario recibe las llaves
+     * 3 - El arrendatario esta devolviendo las llaves
+     * 4 - El conductor recibe las llaves
      */
-    `fase` enum("0", "1", "2") default "0" not null,
+    `fase` enum("0", "1", "2", "3", "4") default "0" not null,
     primary key(pk_renta),
     foreign key(fk_auto) references auto(pk_auto) on delete cascade,
     foreign key(fk_arrendatario) references arrendatario(fk_usuario) on delete cascade,
