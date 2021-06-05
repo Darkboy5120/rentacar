@@ -19,7 +19,7 @@
     <string name="fragment_g_home_body_label">Yo quiero...</string>
 
     <!--String para el fragmento del titulo del conductor-->
-    <string name="fragment_l_driver_delivery_title">Fáses de entrega</string>
+    <string name="fragment_d_driver_delivery_title">Fáses de entrega</string>
 
     <string name="menu_action_exit">Salir</string>
     <string name="menu_action_logout">Cerrar sesión</string>
@@ -232,7 +232,12 @@
         <item>Reportes</item>
     </string-array>
 
-    <!---->
+    <!--Driver sections-->
+    <string name="error_user_first">El arrendatario debe primero intervenir</string>
+    <string name="report_question">¿Se entregó el auto correctamente?</string>
+    <string name="report_yes">Si</string>
+    <string name="report_no">No</string>
+    <string name="get_back_car">El auto se ha devuelto correctamente</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

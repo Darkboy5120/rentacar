@@ -47,7 +47,7 @@ public class D_DriverDelivery extends Fragment implements View.OnClickListener,
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        requireActivity().setTitle(R.string.fragment_l_driver_delivery_title);
+        requireActivity().setTitle(R.string.fragment_d_driver_delivery_title);
         ll_spn_global = view.findViewById(R.id.layout_spn_global);
         ll_carsDriver = view.findViewById(R.id.layout_carsDriver);
         view.findViewById(R.id.layout_container_driver).setOnClickListener(this);
@@ -131,7 +131,7 @@ public class D_DriverDelivery extends Fragment implements View.OnClickListener,
                                 } else {
                                     //onclick only will display an error message
                                     car_card.setOnClickListener(v -> {
-                                        Global.printMessage(requireView(), getResources().getString(R.string.error_driver_first));
+                                        Global.printMessage(requireView(), getResources().getString(R.string.error_user_first));
                                     });
                                     //also add a message in the card to let the user know that the card
                                     //can be clicked
@@ -142,7 +142,7 @@ public class D_DriverDelivery extends Fragment implements View.OnClickListener,
                                             tv_driver_msg.setVisibility(View.VISIBLE);
                                             break;
                                         case "3":
-                                            tv_driver_msg.setText(R.string.label_tv_driver_delivery);
+                                            tv_driver_msg.setText(R.string.label_tv_delivery_end);
                                             tv_driver_msg.setVisibility(View.VISIBLE);
                                             break;
                                     }
@@ -187,15 +187,15 @@ public class D_DriverDelivery extends Fragment implements View.OnClickListener,
     public void ItsAllright(){
         AlertDialog.Builder alertadd = new AlertDialog.Builder(getContext())
                 //¿Se entregó el auto correctamente?
-                .setMessage(getResources().getString(R.string.dialog_title_get_image))
+                .setMessage(getResources().getString(R.string.report_question))
                 //No
-                .setPositiveButton(R.string.dialog_btn_get_image_1, new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.report_no, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
                     }
                 })
                 //Si
-                .setNegativeButton(R.string.dialog_btn_get_image_2, new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.report_yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                     }
                 });
@@ -215,12 +215,12 @@ public class D_DriverDelivery extends Fragment implements View.OnClickListener,
                         String code = json.getString("code");
                         if (code.equals("0")) {
                             make_search_in_server(user_id, phase);
-                            Global.printMessage(requireView(), getResources().getString(R.string.get_car));
+                            Global.printMessage(requireView(), getResources().getString(R.string.get_back_car));
                             if (code.equals(3)){
                                 ItsAllright();
                             }
                         } else {
-                            Global.printMessage(requireView(), getResources().getString(R.string.error_driver_first));
+                            Global.printMessage(requireView(), getResources().getString(R.string.error_user_first));
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
