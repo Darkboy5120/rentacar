@@ -4,8 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -34,23 +36,22 @@
         <activity
             android:name=".activities.G_Home"
             android:label="@string/app_name"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/Theme.Rentacar.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.Rentacar.NoActionBar"
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name=".activities.L_Home"
             android:label="@string/app_name"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/Theme.Rentacar.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.Rentacar.NoActionBar"
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name=".activities.G_Login"
             android:label="@string/app_name"
-            android:windowSoftInputMode="adjustResize"
+            android:parentActivityName=".activities.L_Home"
             android:theme="@style/Theme.Rentacar.NoActionBar"
-            android:parentActivityName=".activities.L_Home">
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -58,22 +59,24 @@
             android:name=".activities.L_Register"
             android:label="@string/app_name"
             android:parentActivityName=".activities.G_Login"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/Theme.Rentacar.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.Rentacar.NoActionBar"
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name=".activities.L_Cars"
             android:label="@string/app_name"
-            android:windowSoftInputMode="adjustResize"
+            android:parentActivityName=".activities.L_Home"
             android:theme="@style/Theme.Rentacar.NoActionBar"
-            android:parentActivityName=".activities.L_Home">
-        </activity>
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name=".activities.GetLocation"
             android:label="@string/app_name"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/Theme.Rentacar.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.Rentacar.NoActionBar"
+            android:windowSoftInputMode="adjustResize"></activity>
+        <activity
+            android:name=".activities.D_DriverDelivery"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Rentacar.NoActionBar"
+            android:windowSoftInputMode="adjustResize"></activity>
     </application>
 
 </manifest>

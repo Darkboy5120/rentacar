@@ -1,8 +1,6 @@
 package com.example.rentacar.fragments;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
@@ -23,10 +20,8 @@ import com.example.rentacar.R;
 import com.example.rentacar.activities.L_Home;
 import com.example.rentacar.activities.L_Register;
 import com.example.rentacar.models.Global;
-import com.example.rentacar.models.NiceFileInput;
 import com.example.rentacar.models.NiceInput;
 import com.example.rentacar.models.StorageManager;
-import com.google.android.gms.auth.api.signin.internal.Storage;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -79,7 +74,10 @@ public class G_Login extends Fragment implements View.OnClickListener {
                     requireActivity().finish();
                     break;
                 case "d":
-                    //
+                    i = new Intent(requireActivity(), com.example.rentacar.activities.D_DriverDelivery.class);
+                    i.putExtra("user_id", user_id);
+                    startActivity(i);
+                    requireActivity().finish();
                     break;
             }
         }
@@ -102,8 +100,14 @@ public class G_Login extends Fragment implements View.OnClickListener {
         StorageManager sm = new StorageManager(requireContext());
         sm.setString("user_type", (user_type.equals("1") ? "l" : "d"));
         sm.setString("user_id", user_id);
-
-        Intent i = new Intent(requireActivity(), L_Home.class);
+        Intent i = null;
+        switch (user_type){
+            case "l":
+                i = new Intent(requireActivity(), L_Home.class);
+                break;
+            case "d":
+                i = new Intent(requireActivity(), D_DriverDelivery.class);
+        }
         startActivity(i);
         requireActivity().finish();
     }

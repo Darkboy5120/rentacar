@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_l_home"
+    app:startDestination="@id/FragmentDelivery">
+
+    <fragment
+        android:id="@+id/FragmentDelivery"
+        android:name="com.example.rentacar.fragments.D_DriverDelivery"
+        android:label="@string/fragment_l_driver_delivery_title"
+        tools:layout="@layout/fragment_d_driver_delivery">
+    </fragment>
+</navigation>

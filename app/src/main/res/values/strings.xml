@@ -18,6 +18,9 @@
     <string name="fragment_g_home_header_desc">Primero cuentanos como podemos ayudarte para poder continuar</string>
     <string name="fragment_g_home_body_label">Yo quiero...</string>
 
+    <!--String para el fragmento del titulo del conductor-->
+    <string name="fragment_l_driver_delivery_title">Fáses de entrega</string>
+
     <string name="menu_action_exit">Salir</string>
     <string name="menu_action_logout">Cerrar sesión</string>
     <string name="menu_action_change_user">Cambiar usuario</string>
@@ -65,6 +68,7 @@
     <string name="error_login_fail">Correo y/o contraseña incorrecto</string>
     <string name="error_sdcard_without_images">No se encontraron imagenes en la tarjeta sd</string>
     <string name="error_no_cars_founded">No se encontraron autos con esos críterios</string>
+    <string name="error_no_cars_to_delivery">Por el momento no hay algún auto que deba entregarse.</string>
     <string name="error_no_cars_rented">No se encontraron autos</string>
     <string name="error_dates_offset">Las fechas deben tener al menos un dia de direfencia</string>
     <string name="error_dates_start">La fecha de entrega ya ha pasado</string>
@@ -110,6 +114,7 @@
     <string name="label_et_type">Tipo de auto</string>
     <string name="label_et_search">Buscar</string>
     <string name="label_et_phase">Fase de renta</string>
+    <string name="label_et_phase_delivery">Fase de entrega</string>
 
     <!--Strings et para el card view-->
     <string name="label_et_carName">Nissan Tsuru 2006</string>
@@ -153,6 +158,8 @@
     <string name="label_tv_rented_car_finalprice">Precio total de </string>
     <string name="label_tv_driver_start">El conductor te esta entregando las llaves</string>
     <string name="label_tv_driver_end">El conductor te esta pidiendo las llaves</string>
+    <string name="label_tv_driver_delivery">Le estás entregando las llaves al arrendatario</string>
+    <string name="label_tv_delivery_end">El auto ya ha sido devuelto</string>
 
     <!--input's log-->
     <string name="help_et_firstname">Solo tu primer nombre</string>
@@ -192,8 +199,7 @@
     <string name="collapse_security">Seguridad</string>
 
     <!--car colors-->
-    <string-array
-        name="arr_car_colors">
+    <string-array name="arr_car_colors">
         <item>azúl</item>
         <item>rojo</item>
         <item>verde</item>
@@ -206,18 +212,28 @@
     </string-array>
 
     <!--car insurance-->
-    <string-array
-        name="arr_car_insurance">
+    <string-array name="arr_car_insurance">
         <item>cobertura amplia</item>
         <item>cobertura limitada</item>
         <item>responsabilidad civil</item>
     </string-array>
 
     <!--rent phases-->
-    <string-array
-        name="arr_rent_phase">
+    <string-array name="arr_rent_phase">
         <item>En camino</item>
         <item>En posesión</item>
         <item>Devueltos</item>
     </string-array>
+
+    <!--delivery phases-->
+    <string-array name="arr_delivery_phase">
+        <item>Autos a entregar</item>
+        <item>Autos que debe devolver el arrendatario</item>
+        <item>Reportes</item>
+    </string-array>
+
+    <!---->
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
