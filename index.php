@@ -30,6 +30,10 @@ if (!$ci0->existCookie("t")) {
     $ci0->setCookie("t", $THEME);
 }
 
+if (!isset($_GET["p"])) {
+    header("Location: ?p=login");
+}
+
 switch ($_GET["p"]) {
     case "carview":
         require "view/pages/main/carview.php";
