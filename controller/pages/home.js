@@ -64,8 +64,7 @@
             object: new Modal("#car-filter"),
             button: {
                 search: {
-                    element: document.querySelector("#car-filter-submit"),
-                    onclick: null
+                    element: document.querySelector("#car-filter-submit")
                 }
             }
         }
@@ -89,6 +88,20 @@
             }
         },
         search_car_info: {
+            switch: {
+                model: {
+                    object: new SwitchControl("#switch-model", {value: true}),
+                    get_disable_obj: () => {return form.search_car_info.select.model}
+                },
+                brand: {
+                    object: new SwitchControl("#switch-brand", {value: true}),
+                    get_disable_obj: () => {return form.search_car_info.select.brand}
+                },
+                color: {
+                    object: new SwitchControl("#switch-color", {value: true}),
+                    get_disable_obj: () => {return form.search_car_info.select.color}
+                }
+            },
             select: {
                 model: new FieldControl("#input-model", {}),
                 brand: new FieldControl("#input-brand", {}),
@@ -121,9 +134,17 @@
     };
 
     for (const fname in form) {
+        let switch_ = form[fname].switch;
+        for (const sname in switch_) {
+            switch_[sname].object.setOnUpdateEvent(() => {
+                switch_[sname].get_disable_obj().toggleDisabled();
+            });
+        }
         let button = form[fname].button;
         for (const bname in button) {
-            button[bname].element.addEventListener("click", button[bname].onclick);
+            button[bname].element.addEventListener("click", e => {
+                button[bname].onclick();
+            });
             if (button[bname].submit) {
                 let input = form[fname].input;
                 for (const iname in input) {
@@ -157,9 +178,11 @@
         load_more_cars: (offset) => {
             new Promise((resolve, reject) => {
                 let select = form.search_car_info.select;
-                let modelo = select.model.element.value;
-                let color_pintura = select.color.element.value;
+                let marca = select.brand.getValue();
+                let modelo = select.model.getValue();
+                let color_pintura = select.color.getValue();
                 if (empty_search) {
+                    marca = ""
                     modelo = "";
                     color_pintura = "";
                     empty_search = false;
@@ -173,6 +196,7 @@
                     api: "get_cars",
                     offset: offset,
                     limit: limit,
+                    marca: marca,
                     modelo: modelo,
                     color_pintura: color_pintura
                 }).then(response => {
@@ -337,7 +361,7 @@
         })
     }
 
-    modal.car_search.button.search.element.onclick = () => {
+    form.search_car_info.button.search.onclick = () => {
         if (!form.search_car_info.validation()) return;
 
         cars_count = 0;

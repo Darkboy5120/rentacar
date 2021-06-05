@@ -29,26 +29,53 @@
             <button><i class="fas fa-times"></i></button>
         </div>
         <div class="modal-body">
-            <div class="input-layout">
-                <label for="input-brand"><?=$l_arr["newcar"]["txt_1"]?></label>
-                <div class="input-field">
-                    <select class="input-secondary" id="input-brand"></select>
+            <div class="modal-row">
+                <div class="switch-layout">
+                    <button type="button" class="switch-field" id="switch-brand">
+                        <i class="switch-on fas fa-toggle-on"></i>
+                        <i class="switch-off fas fa-toggle-off"></i>
+                    </button>
+                    <label for="switch-brand"></label>
                 </div>
-                <span class="input-log hidden"></span>
-            </div>
-            <div class="input-layout">
-                <label for="input-model"><?=$l_arr["newcar"]["txt_2"]?></label>
-                <div class="input-field">
-                <select class="input-secondary" id="input-model"></select>
+                <div class="input-layout">
+                    <label for="input-brand"><?=$l_arr["newcar"]["txt_1"]?></label>
+                    <div class="input-field">
+                        <select class="input-secondary" id="input-brand"></select>
+                    </div>
+                    <span class="input-log hidden"></span>
                 </div>
-                <span class="input-log hidden"></span>
             </div>
-            <div class="input-layout">
-                <label for="input-color"><?=$l_arr["newcar"]["txt_35"]?></label>
-                <div class="input-field">
-                    <select class="input-secondary" id="input-color">
-                        <option value="0">Rojo</option>
-                    </select>
+            <div class="modal-row">
+                <div class="switch-layout">
+                    <button type="button" class="switch-field" id="switch-model">
+                        <i class="switch-on fas fa-toggle-on"></i>
+                        <i class="switch-off fas fa-toggle-off"></i>
+                    </button>
+                    <label for="switch-model"></label>
+                </div>
+                <div class="input-layout">
+                    <label for="input-model"><?=$l_arr["newcar"]["txt_2"]?></label>
+                    <div class="input-field">
+                    <select class="input-secondary" id="input-model"></select>
+                    </div>
+                    <span class="input-log hidden"></span>
+                </div>
+            </div>
+            <div class="modal-row">
+                <div class="switch-layout">
+                    <button type="button" class="switch-field" id="switch-color">
+                        <i class="switch-on fas fa-toggle-on"></i>
+                        <i class="switch-off fas fa-toggle-off"></i>
+                    </button>
+                    <label for="switch-color"></label>
+                </div>
+                <div class="input-layout">
+                    <label for="input-color"><?=$l_arr["newcar"]["txt_35"]?></label>
+                    <div class="input-field">
+                        <select class="input-secondary" id="input-color">
+                            <option value="0">Rojo</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <button class="button button-primary" id="car-filter-submit"><i class="fas fa-search"></i><?=$l_arr["home"]["txt_5"];?></button>

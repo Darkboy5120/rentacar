@@ -247,19 +247,19 @@
                         form.car_info.input.consunit.element.value = car["unidad_consumo"];
                         form.car_info.input.horsepower.element.value = car["caballos_fuerza"];
                         form.car_info.input.tankcap.element.value = car["capacidad_combustible"];
-                        form.car_info.switch.aircond.toogleStatus(
+                        form.car_info.switch.aircond.toggleStatus(
                             (car["aire_acondicionado"] == "0") ? false : true
                         );
-                        form.car_info.switch.gps.toogleStatus(
+                        form.car_info.switch.gps.toggleStatus(
                             (car["gps"] == "0") ? false : true
                         );
-                        form.car_info.switch.darkglass.toogleStatus(
+                        form.car_info.switch.darkglass.toggleStatus(
                             (car["vidrios_polarizados"] == "0") ? false : true
                         );
-                        form.car_info.switch.replacement.toogleStatus(
+                        form.car_info.switch.replacement.toggleStatus(
                             (car["repuesto"] == "0") ? false : true
                         );
-                        form.car_info.switch.toolbox.toogleStatus(
+                        form.car_info.switch.toolbox.toggleStatus(
                             (car["caja_herramientas"] == "0") ? false : true
                         );
                         for (let name in form.car_info.input) {

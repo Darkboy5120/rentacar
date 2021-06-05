@@ -207,7 +207,8 @@ $l_arr = array(
         "txt_2" => "Aun no se ha agregado ningun conductor",
         "txt_3" => "Identificador",
         "txt_4" => "Nombre",
-        "txt_5" => "Apellido"
+        "txt_5" => "Apellido",
+        "txt_6" => "No se encontraron conductores en la búsquedad",
     ),
     "sales" => array(
         "page_name" => "Ventas"

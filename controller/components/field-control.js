@@ -2,6 +2,12 @@ const FieldControl = function (inputSelector, options) {
     if (!options.hasOwnProperty("not")) {
         options.not = false;
     }
+    if (!options.hasOwnProperty("disabled")) {
+        options.disabled = false;
+    }
+    if (!options.hasOwnProperty("optional")) {
+        options.disabled = false;
+    }
     const plural = l_arr.global.log_16;
     const singular = l_arr.global.log_17;
     const logMessage = {
@@ -48,7 +54,7 @@ const FieldControl = function (inputSelector, options) {
                 e.classList[input_icon_visibility]("invisible");
             });
         }
-        if (valueLength == 0) {
+        if (valueLength == 0 && !options.optional) {
             //hideLog();
             //done = false;
             printLog(logMessage.empty, false);
@@ -73,11 +79,26 @@ const FieldControl = function (inputSelector, options) {
     const focus = () => {
         input.focus();
     }
+    const toggleDisabled = () => {
+        if (options.disabled) {
+            input.removeAttribute("disabled");
+        } else {
+            input.setAttribute("disabled", "foo");
+        }
+        options.disabled = !options.disabled;
+    }
+    const getValue = () => {
+        return (options.disabled) ? "" : input.value
+    }
 
     input.addEventListener("keyup", e => {
         //this should detect only simbols characters not space or shortcuts keys
         if (e.which != 13 && e.which != 9) validate();
     });
+
+    if (options.disabled) {
+        input.setAttribute("disabled", "foo");
+    }
 
     if (input.tagName != "SELECT") {
         label.classList.add("opaque");
@@ -114,12 +135,17 @@ const FieldControl = function (inputSelector, options) {
     
     return {
         isDone : function () {
+            if (isEmpty() && options.optional) {
+                return true;
+            };
             return done;
         },
         printLog : printLog,
         element : input,
         isEmpty : isEmpty,
-        focus: focus,
-        validate: validate
+        focus : focus,
+        validate : validate,
+        toggleDisabled : toggleDisabled,
+        getValue : getValue
     };
 }

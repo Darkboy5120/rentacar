@@ -207,7 +207,8 @@ $l_arr = array(
         "txt_2" => "Aun no se ha agregado ningun conductor",
         "txt_3" => "Indentifier",
         "txt_4" => "Firstname",
-        "txt_5" => "Lastname"
+        "txt_5" => "Lastname",
+        "txt_6" => "No drivers were found in the search",
     ),
     "sales" => array(
         "page_name" => "Sales"

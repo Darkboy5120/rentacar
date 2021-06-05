@@ -22,6 +22,10 @@
 .fields-wrapper {
     flex-direction: column !important;
 }
+
+.modal-body .input-layout > label {
+    color: var(--textColorAlt) !important;
+}
 .input-layout > label,
 .switch-field > label {
     color: var(--textColor);
@@ -140,6 +144,13 @@ input:focus {
 .item-name {
 }
 
+.modal-body .switch-layout {
+    min-width: min-content !important;
+}
+.modal-body .switch-field > .switch-off {
+    color: var(--textColorAlt) !important;
+}
+
 .switch-layout {
     min-width: 80%;
     align-self: center;
@@ -159,11 +170,13 @@ input:focus {
     background-color: transparent;
     border: none;
 }
+.swutch-field > label {
+    padding-left: .5rem;
+}
 .switch-field > .switch-off,
 .switch-field > .switch-on {
     font-size: 2rem;
     cursor: pointer;
-    padding-right: .5rem;
 }
 .switch-field > .switch-off {
     color: var(--switchOffColor);

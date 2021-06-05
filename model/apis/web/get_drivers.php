@@ -2,29 +2,36 @@
 require "../users/root.php";
 require "../utils/user_validation.php";
 
-if ($ci0->getSession("securitykey") !== $ci0->getSecuritykey()
+if (!isset($_POST["offset"])
+    || !isset($_POST["limit"])
+    || !isset($_POST["nombre"])
+    || !isset($_POST["apellido"])
     ) {
     $mi0->abort(-1, NULL);
-} else if (!isset($_REQUEST["offset"])
-    || !isset($_REQUEST["limit"])) {
-    $mi0->abort(-2, NULL);
 }
 
 $mi0->begin();
 
 $admin_id = $ci0->getSession("user_data")["pk_usuario"];
-$offset = $_REQUEST["offset"];
+$offset = $_POST["offset"];
 if ($offset < 0) {
     $offset = 0;
 }
 $max_limit = 15;
-$limit = $_REQUEST["limit"];
+$limit = $_POST["limit"];
 if ($limit > $max_limit) {
     $limit = $max_limit;
 } else if ($limit <= 0) {
     $limit = 1;
 }
 $double_limit = $limit * 2;
+
+$nombre = $_POST["nombre"];
+$nombre_sql = (strlen($nombre) > 0)
+    ? "usuario.nombre = '$nombre'" : "TRUE";
+$apellido = $_POST["apellido"];
+$apellido_sql = (strlen($apellido) > 0)
+    ? "usuario.apellido = '$apellido'" : "TRUE";
 
 $mi0->query("
     SELECT
@@ -40,13 +47,14 @@ $mi0->query("
         (usuario_foto, conductor)
     ON
         (usuario.pk_usuario = usuario_foto.fk_usuario AND conductor.fk_usuario = usuario.pk_usuario)
-    WHERE conductor.fk_administrador = ? AND despedido = '0'
+    WHERE conductor.fk_administrador = ? AND conductor.despedido = '0' AND $nombre_sql
+        AND $apellido_sql
     ORDER BY usuario.pk_usuario ASC
     LIMIT $offset, $double_limit",
     $admin_id
 );
 if ($mi0->result->num_rows === 0) {
-    $mi0->end("rollback", -3, NULL);
+    $mi0->end("rollback", -2, NULL);
 }
 
 $data = array(

@@ -5,6 +5,7 @@ require "../utils/user_validation.php";
 if ((!$from_web && !isset($_POST["admin"]))
     || !isset($_POST["offset"])
     || !isset($_POST["limit"])
+    || !isset($_POST["marca"])
     || !isset($_POST["modelo"])
     || !isset($_POST["color_pintura"])
     ) {
@@ -25,6 +26,9 @@ if ($limit > $max_limit) {
 }
 $double_limit = $limit * 2;
 
+$marca = $_POST["marca"];
+$marca_sql = (strlen($marca) > 0)
+    ? "auto_modelo.fk_auto_marca = $marca" : "TRUE";
 $modelo = $_POST["modelo"];
 $modelo_sql = (strlen($modelo) > 0)
     ? "auto.fk_auto_modelo = $modelo" : "TRUE";
@@ -57,7 +61,8 @@ $mi0->query("
         auto.gps,
         auto.vidrios_polarizados,
         auto_imagen.imagen_ruta,
-        auto_modelo.nombre as modelo_nombre
+        auto_modelo.nombre as modelo_nombre,
+        auto_modelo.fk_auto_marca
     FROM
         auto
     LEFT JOIN
@@ -65,7 +70,7 @@ $mi0->query("
     ON
         (auto_imagen.fk_auto = auto.pk_auto AND auto_imagen.portada = '1'
             AND auto_modelo.pk_auto_modelo = auto.fk_auto_modelo)
-    WHERE auto.fk_administrador = ? AND $modelo_sql AND $color_pintura_sql
+    WHERE auto.fk_administrador = ? AND $marca_sql AND $modelo_sql AND $color_pintura_sql
     LIMIT $offset, $double_limit",
     $admin_id
 );

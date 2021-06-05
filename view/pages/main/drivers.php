@@ -56,6 +56,8 @@ $user_name = $ci0->getSession("user_data")["nombre"];
         l_arr = <?php echo json_encode($l_arr);?>;
     </script>
     <script src="controller/components/modal.js"></script>
+    <script src="controller/components/field-control.js"></script>
+    <script src="controller/components/switch-control.js"></script>
     <script src="controller/components/request-me.js"></script>
     <script src="controller/components/alert-me.js"></script>
     <script src="controller/components/loading-screen.js"></script>
