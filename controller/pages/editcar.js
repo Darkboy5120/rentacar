@@ -43,11 +43,11 @@
                 })
             },
             switch: {
-                aircond: new SwitchControl("#switch-aircond"),
-                gps: new SwitchControl("#switch-gps"),
-                darkglass: new SwitchControl("#switch-darkglass"),
-                replacement: new SwitchControl("#switch-replacement"),
-                toolbox: new SwitchControl("#switch-toolbox")
+                aircond: new SwitchControl("#switch-aircond", {}),
+                gps: new SwitchControl("#switch-gps", {}),
+                darkglass: new SwitchControl("#switch-darkglass", {}),
+                replacement: new SwitchControl("#switch-replacement", {}),
+                toolbox: new SwitchControl("#switch-toolbox", {})
             },
             select: {
                 model: new FieldControl("#input-model", {}),

@@ -131,6 +131,7 @@
                             longitud_empresa: input_s2.bussiness_location.getLongitude(),
                             latitud_empresa: input_s2.bussiness_location.getLatitude()
                         }).then(response => {
+                            console.log(response);
                             button.signup_step2.element.innerHTML = default_text_button;
                             switch (response.code) {
                                 case 0:
