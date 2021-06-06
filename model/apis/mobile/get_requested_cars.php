@@ -9,6 +9,7 @@ if (!isset($_REQUEST["user_id"])
 }
 
 $user_id = $_REQUEST["user_id"];
+$user_id_sql = null;
 $fase = $_REQUEST["fase"];
 $fase_sql = NULL;
 switch ($fase) {
@@ -27,6 +28,22 @@ $mi0->begin();
 
 $mi0->query("
     SELECT
+        tipo
+    FROM
+        usuario
+    WHERE pk_usuario = ?",
+    $user_id
+);
+if ($mi0->result->num_rows != 1) {
+    $mi0->end("rollback", -2, NULL);
+}
+
+$user_type = $mi0->result->fetch_all(MYSQLI_ASSOC)[0]["tipo"];
+$user_id_sql = ($user_type == "1") ? "renta.fk_arrendatario"
+    : "renta.fk_conductor";
+
+$mi0->query("
+    SELECT
         auto.pk_auto,
         auto.fk_administrador,
         auto_imagen.imagen_ruta,
@@ -37,7 +54,14 @@ $mi0->query("
         renta.costo,
         renta.fase,
         renta.fechahora_entrega,
-        renta.fechahora_devolucion
+        renta.fechahora_devolucion,
+        (
+            SELECT
+                pk_reporte_devolucion
+            FROM
+                reporte_devolucion
+            WHERE fk_renta = renta.pk_renta
+        ) as tiene_reporte
     FROM
         auto
     LEFT JOIN
@@ -47,7 +71,7 @@ $mi0->query("
             AND auto_modelo.pk_auto_modelo = auto.fk_auto_modelo
             AND auto_modelo.fk_auto_marca = auto_marca.pk_auto_marca
             AND auto.pk_auto = renta.fk_auto)
-    WHERE renta.fk_arrendatario = ? AND renta.fase IN $fase_sql",
+    WHERE $user_id_sql = ? AND renta.fase IN $fase_sql",
     $user_id
 );
 if ($mi0->result->num_rows > 0) {
@@ -56,5 +80,5 @@ if ($mi0->result->num_rows > 0) {
     );
     $mi0->end("commit", 0, $data);
 } else {
-    $mi0->end("rollback", -2, NULL);
+    $mi0->end("rollback", -3, NULL);
 }
