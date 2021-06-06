@@ -12,11 +12,13 @@
     <string name="fragment_l_cars_title">Autos</string>
     <string name="fragment_l_details_title">Detalles</string>
     <string name="fragment_getlocation_title">Seleccióna la ubicación</string>
+    <string name="fragment_d_rent_report_title">Reporte de renta</string>
     <string name="what_user_are_you">¿Que necesitas?</string>
     <string name="iam_lessee">Rentar un auto</string>
     <string name="iam_driver">Llevar autos a su destino</string>
     <string name="fragment_g_home_header_desc">Primero cuentanos como podemos ayudarte para poder continuar</string>
     <string name="fragment_g_home_body_label">Yo quiero...</string>
+    <string name="fragment_l_driver_delivery_title">Pedidos</string>
 
     <!--String para el fragmento del titulo del conductor-->
     <string name="fragment_d_driver_delivery_title">Fáses de entrega</string>
@@ -68,7 +70,7 @@
     <string name="error_login_fail">Correo y/o contraseña incorrecto</string>
     <string name="error_sdcard_without_images">No se encontraron imagenes en la tarjeta sd</string>
     <string name="error_no_cars_founded">No se encontraron autos con esos críterios</string>
-    <string name="error_no_cars_to_delivery">Por el momento no hay algún auto que deba entregarse.</string>
+    <string name="error_no_cars_to_delivery">No se encontraron autos.</string>
     <string name="error_no_cars_rented">No se encontraron autos</string>
     <string name="error_dates_offset">Las fechas deben tener al menos un dia de direfencia</string>
     <string name="error_dates_start">La fecha de entrega ya ha pasado</string>
@@ -156,10 +158,11 @@
     <string name="label_tv_rented_car_startdate">Desde</string>
     <string name="label_tv_rented_car_enddate">Hasta</string>
     <string name="label_tv_rented_car_finalprice">Precio total de </string>
-    <string name="label_tv_driver_start">El conductor te esta entregando las llaves</string>
-    <string name="label_tv_driver_end">El conductor te esta pidiendo las llaves</string>
-    <string name="label_tv_driver_delivery">Le estás entregando las llaves al arrendatario</string>
-    <string name="label_tv_delivery_end">El auto ya ha sido devuelto</string>
+    <string name="label_tv_driver_start">En espera de que confirmes que recibiste las llaves</string>
+    <string name="label_tv_driver_end">En espera de que confirmes que entregaste las llaves</string>
+    <string name="label_tv_driver_delivery">En espera de que el usuario confirme que recibo las llaves</string>
+    <string name="label_tv_delivery_end">En espera de que confirmes que recibiste las llaves</string>
+    <string name="label_tv_no_report">Aun no se entrega el reporte</string>
 
     <!--input's log-->
     <string name="help_et_firstname">Solo tu primer nombre</string>
@@ -227,17 +230,25 @@
 
     <!--delivery phases-->
     <string-array name="arr_delivery_phase">
-        <item>Autos a entregar</item>
+        <!--<item>Autos a entregar</item>
         <item>Autos que debe devolver el arrendatario</item>
-        <item>Reportes</item>
+        <item>Reportes</item>-->
+        <item>Por entregar</item>
+        <item>Entregados</item>
+        <item>Devueltos</item>
     </string-array>
 
     <!--Driver sections-->
-    <string name="error_user_first">El arrendatario debe primero intervenir</string>
+    <string name="error_user_first">El arrendatario debe intervenir primero</string>
     <string name="report_question">¿Se entregó el auto correctamente?</string>
     <string name="report_yes">Si</string>
     <string name="report_no">No</string>
+    <string name="dialog_driver_deliver_keys">¿Quieres entregar las llaves al usuario?</string>
+    <string name="dialog_driver_ask_keys">¿Quieres pedir las llaves al usuario?</string>
+    <string name="dialog_lesse_get_keys">¿Quieres recibir las llaves del conductor?</string>
+    <string name="dialog_lesse_deliver_keys">¿Quieres entregar las llaves al conductor?</string>
     <string name="get_back_car">El auto se ha devuelto correctamente</string>
+    <string name="deliver_car">El auto se ha entregado correctamente</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

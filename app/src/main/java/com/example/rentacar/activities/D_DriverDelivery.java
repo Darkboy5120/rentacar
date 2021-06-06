@@ -1,16 +1,11 @@
 package com.example.rentacar.activities;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -23,12 +18,13 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.rentacar.R;
-import com.example.rentacar.fragments.L_Register_Step3;
+import com.example.rentacar.fragments.D_Driver_Delivery;
 import com.example.rentacar.models.StorageManager;
 import com.google.android.material.navigation.NavigationView;
 
 public class D_DriverDelivery extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
+    private Handler mHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +54,7 @@ public class D_DriverDelivery extends AppCompatActivity {
             Fragment fragment = null;
             switch (item.getItemId()) {
                 case R.id.nav_delivery:
-                    fragment = new com.example.rentacar.fragments.D_DriverDelivery();
+                    fragment = new D_Driver_Delivery();
                     break;
             }
             assert fragment != null;

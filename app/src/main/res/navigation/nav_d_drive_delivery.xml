@@ -7,8 +7,15 @@
 
     <fragment
         android:id="@+id/FragmentDelivery"
-        android:name="com.example.rentacar.fragments.D_DriverDelivery"
+        android:name="com.example.rentacar.fragments.D_Driver_Delivery"
         android:label="@string/fragment_l_driver_delivery_title"
         tools:layout="@layout/fragment_d_driver_delivery">
+    </fragment>
+
+    <fragment
+        android:id="@+id/FragmentRentReport"
+        android:name="com.example.rentacar.fragments.D_Rent_Report"
+        android:label="@string/fragment_d_rent_report_title"
+        tools:layout="@layout/fragment_d_rent_report">
     </fragment>
 </navigation>

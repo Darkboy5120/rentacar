@@ -2,6 +2,7 @@ package com.example.rentacar.models;
 
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public abstract class ControlField {
@@ -31,5 +32,8 @@ public abstract class ControlField {
     }
     public String getValue(View v) {
         return ((EditText) v.findViewById(this.input_id)).getText().toString();
+    }
+    public View getInput(View v) {
+        return v.findViewById(this.input_id);
     }
 }

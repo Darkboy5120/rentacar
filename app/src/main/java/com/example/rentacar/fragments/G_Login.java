@@ -2,6 +2,7 @@ package com.example.rentacar.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.rentacar.R;
+import com.example.rentacar.activities.D_DriverDelivery;
 import com.example.rentacar.activities.L_Home;
 import com.example.rentacar.activities.L_Register;
 import com.example.rentacar.models.Global;
@@ -67,14 +69,14 @@ public class G_Login extends Fragment implements View.OnClickListener {
         if (!user_type.isEmpty() && !user_id.isEmpty()) {
             Intent i;
             switch (user_type) {
-                case "l":
+                case "1":
                     i = new Intent(requireActivity(), L_Home.class);
                     i.putExtra("user_id", user_id);
                     startActivity(i);
                     requireActivity().finish();
                     break;
-                case "d":
-                    i = new Intent(requireActivity(), com.example.rentacar.activities.D_DriverDelivery.class);
+                case "2":
+                    i = new Intent(requireActivity(), D_DriverDelivery.class);
                     i.putExtra("user_id", user_id);
                     startActivity(i);
                     requireActivity().finish();
@@ -98,14 +100,14 @@ public class G_Login extends Fragment implements View.OnClickListener {
 
     public void next_activity(String user_id, String user_type) {
         StorageManager sm = new StorageManager(requireContext());
-        sm.setString("user_type", (user_type.equals("1") ? "l" : "d"));
+        sm.setString("user_type", user_type);
         sm.setString("user_id", user_id);
         Intent i = null;
         switch (user_type){
-            case "l":
+            case "1":
                 i = new Intent(requireActivity(), L_Home.class);
                 break;
-            case "d":
+            case "2":
                 i = new Intent(requireActivity(), D_DriverDelivery.class);
         }
         startActivity(i);

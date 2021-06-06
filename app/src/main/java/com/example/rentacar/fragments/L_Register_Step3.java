@@ -120,7 +120,7 @@ public class L_Register_Step3 extends Fragment implements View.OnClickListener {
                                 String user_id = json.getString("data");
 
                                 StorageManager sm = new StorageManager(requireContext());
-                                sm.setString("user_type", "l");
+                                sm.setString("user_type", "0");
                                 sm.setString("user_id", user_id);
 
                                 Intent i = new Intent(requireActivity(), L_Home.class);

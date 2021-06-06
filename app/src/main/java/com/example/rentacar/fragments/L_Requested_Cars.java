@@ -1,5 +1,7 @@
 package com.example.rentacar.fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -70,6 +73,7 @@ public class L_Requested_Cars extends Fragment implements View.OnClickListener,
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         if (parent.getId() == R.id.et_phase) {
+            ns_phase.updateIndex(position);
             make_search_in_server(new StorageManager(requireContext()).getString("user_id"),
                     Integer.toString(position));
         }
@@ -84,6 +88,46 @@ public class L_Requested_Cars extends Fragment implements View.OnClickListener,
         return getResources().getString(R.string.label_tv_rented_car_finalprice) + " "
                 + getResources().getString(R.string.label_tv_price_simbol) + price
                 + " " + getResources().getString(R.string.label_tv_price_extra_simple);
+    }
+
+    public void dialog_confirm_before_phase2(String pk_renta, String user_id, String phase) {
+        AlertDialog.Builder alertadd = new AlertDialog.Builder(getContext())
+                //¿Se entregó el auto correctamente?
+                .setMessage(getResources().getString(R.string.dialog_lesse_get_keys))
+                //No
+                .setPositiveButton(R.string.report_yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        try_rent_update(pk_renta,
+                                user_id,
+                                phase);
+                    }
+                })
+                //Si
+                .setNegativeButton(R.string.report_no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                });
+        alertadd.show();
+    }
+
+    public void dialog_confirm_before_phase4(String pk_renta, String user_id, String phase) {
+        AlertDialog.Builder alertadd = new AlertDialog.Builder(getContext())
+                //¿Se entregó el auto correctamente?
+                .setMessage(getResources().getString(R.string.dialog_lesse_deliver_keys))
+                //No
+                .setPositiveButton(R.string.report_yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        try_rent_update(pk_renta,
+                                user_id,
+                                phase);
+                    }
+                })
+                //Si
+                .setNegativeButton(R.string.report_no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                });
+        alertadd.show();
     }
 
     public void make_search_in_server(String user_id, String phase) {
@@ -127,9 +171,18 @@ public class L_Requested_Cars extends Fragment implements View.OnClickListener,
                                 if (rent_phase.equals("1") || rent_phase.equals("3")) {
                                     //add onclic to update phase
                                     car_card.setOnClickListener(v -> {
-                                        try_rent_update(pk_renta,
-                                                new StorageManager(requireContext()).getString("user_id"),
-                                                phase);
+                                        switch (rent_phase) {
+                                            case "1":
+                                                dialog_confirm_before_phase2(pk_renta,
+                                                        new StorageManager(requireContext()).getString("user_id"),
+                                                        rent_phase);
+                                                break;
+                                            case "3":
+                                                dialog_confirm_before_phase4(pk_renta,
+                                                        new StorageManager(requireContext()).getString("user_id"),
+                                                        rent_phase);
+                                                break;
+                                        };
                                     });
 
                                     //also add a message in the card to let the user know that the card
@@ -147,9 +200,11 @@ public class L_Requested_Cars extends Fragment implements View.OnClickListener,
                                     }
                                 } else {
                                     //onclick only will display an error message
-                                    car_card.setOnClickListener(v -> {
-                                        Global.printMessage(requireView(), getResources().getString(R.string.error_driver_first));
-                                    });
+                                    if (!rent_phase.equals("4")) {
+                                        car_card.setOnClickListener(v -> {
+                                            Global.printMessage(requireView(), getResources().getString(R.string.error_driver_first));
+                                        });
+                                    }
                                 }
 
                                 //update view values
@@ -165,7 +220,7 @@ public class L_Requested_Cars extends Fragment implements View.OnClickListener,
 
                                 ll_cars.addView(car_card);
                             }
-                        } else if (code.equals("-2")) {
+                        } else if (code.equals("-3")) {
                             requireView().findViewById(R.id.cars_empty).setVisibility(View.VISIBLE);
                         } else {
                             Global.printMessage(requireView(), getResources().getString(R.string.error_generic_request));
@@ -201,8 +256,14 @@ public class L_Requested_Cars extends Fragment implements View.OnClickListener,
                         Log.d("foo", json.toString());
                         String code = json.getString("code");
                         if (code.equals("0")) {
-                            make_search_in_server(user_id, phase);
-                            Global.printMessage(requireView(), getResources().getString(R.string.get_car));
+                            int next_index = ns_phase.getIndex() + 1;
+                            Log.d("foo", next_index + "");
+                            ((Spinner) ns_phase.getInput(requireView())).setSelection(next_index);
+                            if (next_index == 1) {
+                                Global.printMessage(requireView(), getResources().getString(R.string.get_car));
+                            } else if (next_index == 2) {
+                                Global.printMessage(requireView(), getResources().getString(R.string.deliver_car));
+                            }
                         } else {
                             Global.printMessage(requireView(), getResources().getString(R.string.error_driver_first));
                         }
@@ -217,7 +278,7 @@ public class L_Requested_Cars extends Fragment implements View.OnClickListener,
                 headers.put("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
                 headers.put("api", "update_rent_phase");
                 headers.put("securitykey", Global.security_key);
-                headers.put("fk_arrendatario", user_id);
+                headers.put("user_id", user_id);
                 headers.put("pk_renta", pk_renta);
                 return headers;
             }
