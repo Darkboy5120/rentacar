@@ -3,6 +3,14 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+/* PENALIZACIONES */
+INSERT INTO penalizacion (nombre, precio) VALUES
+("Llanta ponchada", 900),
+("Vidrio roto", 700),
+("Averia en motor", 3000),
+("No tiene gasolina", 400),
+("Interior sucio", 1200);
+
 /* COLORES */
 INSERT INTO auto_color_pintura (nombre) VALUES
 ("Azúl"),
