@@ -81,6 +81,12 @@ if (isset($_REQUEST["api"])) {
         case "update_rent_phase":
             require "mobile/update_rent_phase.php";
             break;
+        case "get_penalties":
+            require "mobile/get_penalties.php";
+            break;
+        case "upload_penalties":
+            require "mobile/upload_penalties.php";
+            break;
         default: echo json_encode("That's not a valid api");
     }
 }
