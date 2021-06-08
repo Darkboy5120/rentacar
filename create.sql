@@ -226,6 +226,7 @@ create table `reporte_devolucion` (
     `todo_bien` enum("0", "1") not null,
     `descripcion` varchar(255) not null,
     primary key(pk_reporte_devolucion),
+    unique key(fk_renta),
     foreign key(fk_renta) references renta(pk_renta) on delete cascade
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
 
@@ -241,7 +242,7 @@ create table `reporte_devolucion_imagen` (
 create table `auto_puntuacion` (
     `fk_auto` mediumint unsigned not null,
     `fk_arrendatario` smallint unsigned not null,
-    `puntuacion` decimal(1, 1) not null,
+    `puntuacion` decimal(2, 1) not null,
     `comentarios` varchar(255) null,
     unique key(fk_auto, fk_arrendatario),
     foreign key(fk_auto) references auto(pk_auto) on delete cascade,
