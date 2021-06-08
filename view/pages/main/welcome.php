@@ -103,17 +103,17 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
 				scene.background = new THREE.Color( 0xa0a0a0 );
 				scene.fog = new THREE.Fog( 0xa0a0a0, 200, 1000 );
 
-				const hemiLight = new THREE.HemisphereLight( 0xffffff, 0x444444 );
+				const hemiLight = new THREE.HemisphereLight( 0x222222, .5 );
 				hemiLight.position.set( 0, 200, 0 );
 				scene.add( hemiLight );
 
 				const dirLight = new THREE.DirectionalLight( 0xffffff );
-				dirLight.position.set( 0, 200, 100 );
+				dirLight.position.set( -300, 300, 100 );
 				dirLight.castShadow = true;
-				dirLight.shadow.camera.top = 180;
-				dirLight.shadow.camera.bottom = - 100;
-				dirLight.shadow.camera.left = - 120;
-				dirLight.shadow.camera.right = 120;
+				dirLight.shadow.camera.top = 150;
+				dirLight.shadow.camera.bottom = - 150;
+				dirLight.shadow.camera.left = - 150;
+				dirLight.shadow.camera.right = 150;
 				scene.add( dirLight );
 
 				// scene.add( new THREE.CameraHelper( dirLight.shadow.camera ) );
