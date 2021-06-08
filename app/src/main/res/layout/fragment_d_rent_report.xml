@@ -27,11 +27,83 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/layout_et_report_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="@dimen/layout_et_mb"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <TextView
+                    android:id="@+id/label_et_report_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_et_report_description"
+                    android:labelFor="@id/et_report_description"
+                    style="@style/text_medium_gray"
+                    android:visibility="invisible"/>
+                <EditText
+                    android:id="@+id/et_report_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="textNoSuggestions"
+                    android:hint="@string/label_et_report_description"
+                    style="@style/et_medium_light"/>
+                <TextView
+                    android:id="@+id/help_et_report_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/help_et_report_description"
+                    android:labelFor="@id/et_report_description"
+                    style="@style/text_big_lightGray"/>
+                <TextView
+                    android:id="@+id/log_et_report_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@id/et_report_description"
+                    style="@style/text_big_bold_danger"
+                    android:visibility="gone"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_report_items"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginVertical="@dimen/layout_ph_medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_et_report_description">
+
+                <TextView
+                    android:id="@+id/report_items_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/error_empty_report_items"
+                    style="@style/text_big_bold_gray" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/layout_btn_mb"
+                android:text="@string/save_report"
+                android:layout_gravity="center"
+                style="@style/btn_medium_light"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_report_items"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/add_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

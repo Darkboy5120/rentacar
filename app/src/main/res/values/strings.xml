@@ -35,26 +35,14 @@
     <string name="next">Siguiente</string>
     <string name="save_location">Guardar</string>
     <string name="rent_car">Rentar</string>
-    <string name="get_car">¡Genial! Ahora puedes disfrutar del auto</string>
+    <string name="get_car">¡Genial! Ahora puedes disfrutar del auto</string>>
+    <string name="save_report">Guardar</string>>
 
     <!--Others-->
     <string name="map_marker_label">Justo aquí</string>
-
-    <!--Strings de ejemplo para el spinner (posiblemente no implementados, pero es un ejemplo de como meter datos directos)-->
-    <string-array name="planets_array">
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
-    </string-array>
-
-
     <string name="label_et_inviRegis">Te invitamos a registrarte para que el proceso de renta sea más rápido.</string>
     <string name="just_login"><u>Ya tengo una cuenta</u></string>
+    <string name="report_upload_success">Reporte subido correctamente</string>
 
     <!--error logs-->
     <string name="error_generic_request">Ha ocurrido un error, por favor intentalo de nuevo</string>
@@ -78,11 +66,13 @@
     <string name="error_already_rented">Alguien mas acaba de rentar este auto durante la fecha y hora que escogiste</string>
     <string name="error_not_drivers_available">No hay conductores disponibles para esa fecha y horario</string>
     <string name="error_driver_first">El conductor tiene que intervenir primero</string>
+    <string name="error_empty_report_items">No hay incidencias</string>
 
     <!--dialog msg-->
     <string name="dialog_title_get_image">¿De donde quieres tomar la imagen?</string>
     <string name="dialog_btn_get_image_1">Tomar captura</string>
     <string name="dialog_btn_get_image_2">Seleccionar una imagen existente</string>
+    <string name="dialog_report_items">¿Que problema encontraste?</string>
 
     <!--placeholders and labels for inputs-->
     <string name="label_et_firstname">Nombre</string>
@@ -117,6 +107,9 @@
     <string name="label_et_search">Buscar</string>
     <string name="label_et_phase">Fase de renta</string>
     <string name="label_et_phase_delivery">Fase de entrega</string>
+    <string name="label_et_report_items">Incidencias</string>
+    <string name="label_et_report_description">Resumen</string>
+    <string name="label_et_item_image">Evidencia</string>
 
     <!--Strings et para el card view-->
     <string name="label_et_carName">Nissan Tsuru 2006</string>
@@ -188,6 +181,9 @@
     <string name="help_lp_startlocation">Elige donde quieres recibir el auto</string>
     <string name="help_lp_endlocation">Elige donde quieres entregar el auto</string>
     <string name="help_et_phase"></string>
+    <string name="help_et_report_items">Las incidencias que detedtaron en el auto</string>
+    <string name="help_et_report_description">Resumen del reporte</string>
+    <string name="help_et_item_image">Una imagen vale mas que mil palabras</string>
 
     <!--fragments title-->
     <string name="fragment_l_register_step1_label">Datos personales</string>
@@ -236,6 +232,14 @@
         <item>Por entregar</item>
         <item>Entregados</item>
         <item>Devueltos</item>
+    </string-array>
+
+    <string-array name="arr_report_items_name">
+        <item>Llanta ponchada</item>
+        <item>Vidrio roto</item>
+        <item>Averia en motor</item>
+        <item>No tiene gasolina</item>
+        <item>Interior sucio</item>
     </string-array>
 
     <!--Driver sections-->
