@@ -16,14 +16,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.rentacar.R;
 import com.example.rentacar.models.Global;
 import com.example.rentacar.models.NiceSpinner;
 import com.example.rentacar.models.StorageManager;
+import com.example.rentacar.models.VolleyMultipartRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -270,6 +274,12 @@ public class D_Driver_Delivery extends Fragment implements View.OnClickListener,
                 //No
                 .setPositiveButton(R.string.report_yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        upload_report(pk_renta);
+                    }
+                })
+                //Si
+                .setNegativeButton(R.string.report_no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
                         D_Rent_Report fragment = new D_Rent_Report();
                         Bundle bundle = new Bundle();
                         bundle.putString("pk_renta", pk_renta);
@@ -280,13 +290,46 @@ public class D_Driver_Delivery extends Fragment implements View.OnClickListener,
                                 .addToBackStack(null)
                                 .commit();
                     }
-                })
-                //Si
-                .setNegativeButton(R.string.report_no, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                    }
                 });
         alertadd.show();
+    }
+
+    public void upload_report(String pk_renta) {
+        ll_spn_global.setVisibility(View.VISIBLE);
+
+        RequestQueue queue = Volley.newRequestQueue(requireContext());
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Global.apis_path,
+                response -> {
+                    try {
+                        ll_spn_global.setVisibility(View.GONE);
+                        JSONObject json = new JSONObject(response);
+                        Log.d("foo", json.toString());
+                        String code = json.getString("code");
+                        if (code.equals("0")) {
+                            make_search_in_server(
+                                    new StorageManager(requireContext()).getString("user_id"),
+                                    ns_phase_driver.getIndex() + "");
+                            Global.printMessage(requireView(), getResources().getString(R.string.report_upload_success));
+                        } else {
+                            Global.printMessage(requireView(), getResources().getString(R.string.error_generic_request));
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                },
+                error -> Global.printMessage(requireView(), getResources().getString(R.string.error_generic_request))) {
+            @Override
+            public Map<String, String> getParams()  {
+                HashMap<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+                headers.put("api", "upload_penalties");
+                headers.put("fk_renta", pk_renta);
+                headers.put("todo_bien", "0");
+                headers.put("descripcion", "");
+                return headers;
+            }
+        };
+        queue.add(stringRequest);
     }
 
     public void try_rent_update(String pk_renta, String user_id, String phase) {
