@@ -111,4 +111,21 @@
             document.querySelector("body").classList.add("theme-light");
             break;
     }
+
+    if (<?=isset($ci0->existSession("user_data"))?>) {
+        new RequestMe().post("model/apis/", {
+            api: "get_notifications"
+        }).catch(err => {
+            reject();
+        }).then(response => {
+            console.log(response);
+            switch (response.code) {
+                case 0:
+                    console.log(0);
+                    break;
+                default:
+                    console.log(1);
+            }
+        });
+    }
 </script>

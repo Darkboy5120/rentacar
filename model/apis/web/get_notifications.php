@@ -13,7 +13,7 @@ $mi0->begin();
 
 $mi0->query("
     SELECT
-        notifiacion.pk_notificacion
+        notificacion_reporte.fk_reporte_devolucion
     FROM
         notificacion_reporte
     LEFT JOIN
