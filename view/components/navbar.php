@@ -112,12 +112,12 @@
             break;
     }
 
-    if (<?=isset($ci0->existSession("user_data"))?>) {
+    let session_is_active = "<?php echo $ci0->existSession("user_data") ? "0" : "1";?>";
+    if (session_is_active == 0) {
         new RequestMe().post("model/apis/", {
             api: "get_notifications"
-        }).catch(err => {
-            reject();
-        }).then(response => {
+        }).catch(err => console.error(err)
+        ).then(response => {
             console.log(response);
             switch (response.code) {
                 case 0:
