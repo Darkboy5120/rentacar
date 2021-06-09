@@ -254,6 +254,7 @@ create table `auto_puntuacion` (
 create table `notificacion` (
     `pk_notificacion` int unsigned not null auto_increment,
     `fk_usuario` smallint unsigned not null,
+    `fecha_hora` timestamp default current_timestamp not null,
     primary key(pk_notificacion),
     foreign key(fk_usuario) references usuario(pk_usuario) on delete cascade
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
