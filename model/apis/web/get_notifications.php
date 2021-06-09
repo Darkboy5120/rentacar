@@ -13,5 +13,19 @@ $mi0->begin();
 
 $mi0->query("
     SELECT
-        "
+        notifiacion.pk_notificacion
+    FROM
+        notificacion_reporte
+    LEFT JOIN
+        (notificacion)
+    ON
+        (notificacion.pk_notificacion = notificacion_reporte.fk_notificacion)
+    WHERE notificacion.fk_usuario = ?",
+    $user_id
 );
+if ($mi0->result->num_rows > 0) {
+    $data = $mi0->result->fetch_all(MYSQLI_ASSOC);
+    $mi0->end("commit", 0, $data);
+} else {
+    $mi0->end("rollback", -2, NULL);
+}
