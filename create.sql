@@ -3,6 +3,8 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+drop table if exists `notificacion_reporte`;
+drop table if exists `notificacion`;
 drop table if exists `auto_puntuacion`;
 drop table if exists `reporte_devolucion_imagen`;
 drop table if exists `reporte_devolucion`;
@@ -247,6 +249,21 @@ create table `auto_puntuacion` (
     unique key(fk_auto, fk_arrendatario),
     foreign key(fk_auto) references auto(pk_auto) on delete cascade,
     foreign key(fk_arrendatario) references arrendatario(fk_usuario) on delete cascade
+) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
+
+create table `notificacion` (
+    `pk_notificacion` int unsigned not null auto_increment,
+    `fk_usuario` smallint unsigned not null,
+    primary key(pk_notificacion),
+    foreign key(fk_usuario) references usuario(pk_usuario) on delete cascade
+) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
+
+create table `notificacion_reporte` (
+    `fk_notificacion` int unsigned not null,
+    `fk_reporte_devolucion` int unsigned not null,
+    unique key(fk_notificacion),
+    unique key(fk_reporte_devolucion),
+    foreign key(fk_reporte_devolucion) references reporte_devolucion(pk_reporte_devolucion) on delete cascade
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
 
 COMMIT;
