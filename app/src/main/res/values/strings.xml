@@ -254,6 +254,18 @@
     <string name="get_back_car">El auto se ha devuelto correctamente</string>
     <string name="deliver_car">El auto se ha entregado correctamente</string>
 
+    <!--Rating section-->
+    <string name="rating_title">Porfavor danos tu opinión sobre tu experiencia con nosotros.</string>
+    <string name="rating">¿Cuántas estrellas le das al auto que rentaste?</string>
+    <string name="user_description">Danos una conclusión de tu experiencia rentando nuestros autos!</string>
+    <string name="send_information">Mandar información</string>
+    <string name="ask_user">¿Qué quieres hacer?</string>
+    <string name="new_rent">Rentar otro auto</string>
+    <string name="finish">Regresar a la pantalla principal</string>
+    <string name="ask_to_rate">¿Desear calificar el auto que rentaste?</string>
+    <string name="rate_yes">Sí</string>
+    <string name="rate_no">No</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

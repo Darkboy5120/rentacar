@@ -54,7 +54,6 @@ public class L_Register extends AppCompatActivity {
 
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

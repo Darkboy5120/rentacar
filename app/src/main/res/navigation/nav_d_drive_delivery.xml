@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/FragmentDelivery"
         android:name="com.example.rentacar.fragments.D_Driver_Delivery"
-        android:label="@string/fragment_l_driver_delivery_title"
+        android:label="@string/fragment_d_driver_delivery_title"
         tools:layout="@layout/fragment_d_driver_delivery">
     </fragment>
 

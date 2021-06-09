@@ -243,6 +243,31 @@ public class L_Requested_Cars extends Fragment implements View.OnClickListener,
         };
         queue.add(stringRequest);
     }
+    public void want_rate(String pk_renta) {
+        AlertDialog.Builder alertadd = new AlertDialog.Builder(getContext())
+                //¿Deseas calificar el auto rentado?
+                .setMessage(getResources().getString(R.string.ask_to_rate))
+                //No
+                .setPositiveButton(R.string.rate_yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        L_RatingCar fragment = new L_RatingCar();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("pk_renta", pk_renta);
+                        fragment.setArguments(bundle);
+
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .replace(((ViewGroup)getView().getParent()).getId(), fragment)
+                                .addToBackStack(null)
+                                .commit();
+                    }
+                })
+                //Si
+                .setNegativeButton(R.string.rate_no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                });
+        alertadd.show();
+    }
 
     public void try_rent_update(String pk_renta, String user_id, String phase) {
         ll_spn_global.setVisibility(View.VISIBLE);
