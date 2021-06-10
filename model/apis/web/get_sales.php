@@ -26,18 +26,17 @@ $double_limit = $limit * 2;
 
 $mi0->query("
     SELECT
-        usuario.pk_usuario,
-        usuario.nombre,
-        usuario.apellido,
-        usuario.telefono,
-        usuario.correo,
-        usuario_foto.imagen_ruta
+        renta.pk_renta,
+        renta.costo,
+        renta.fk_conductor,
+        renta.fk_auto,
+        reporte_devolucion.pk_reporte_devolucion
     FROM
-        usuario
+        renta
     LEFT JOIN
-        (usuario_foto, conductor)
+        (usuario_foto, reporte_devolucion)
     ON
-        (usuario.pk_usuario = usuario_foto.fk_usuario AND conductor.fk_usuario = usuario.pk_usuario)
+        (renta.pk_renta = reporte_devolucion.fk_renta)
     WHERE conductor.fk_administrador = ? AND conductor.despedido = '0' AND $nombre_sql
         AND $apellido_sql
     ORDER BY usuario.pk_usuario ASC
