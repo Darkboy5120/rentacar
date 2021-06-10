@@ -18,7 +18,8 @@
     margin-right: 1rem;
 }
 .navbar-title img {
-    height: 2rem;
+    height: 3rem;
+    width: 3rem;
 }
 .navbar-left,
 .navbar-right {
@@ -39,12 +40,11 @@
     justify-content: flex-end;
 }
 .navbar-right ul > li:not(.dropdown) > button {
-    padding: 0 1rem;
+    padding: 1rem;
     background: none;
     color: var(--textColor);
     border: none;
     cursor: pointer;
-    padding: 1rem;
 }
 .navbar-left ul > li:not(:first-child) {
     padding: 0 1rem 0 1rem;
@@ -167,6 +167,20 @@
 .main-action-search input::placeholder {
     color: rgba(255, 255, 255, .7);
 }
+
+.badge {
+    background-color: var(--alternativeColor);
+    font-size: .8rem !important;
+    padding: .2rem .4rem !important;
+    margin-left: .5rem;
+    color: var(--textColorAlt) !important;
+    position: absolute;
+}
+.badge:hover {
+    background-image: none !important;
+    color: var(--textColorAlt) !important;
+}
+
 
 .fixed-location {
     display: flex;

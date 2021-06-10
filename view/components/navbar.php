@@ -22,6 +22,19 @@
     </div>
     <div class="navbar-right">
         <ul>
+        <li class="dropdown" id="relative-n-dd-reference"><i class="fas fa-bell" tabindex="0"
+                data-accesibility-trigger="notifications-list">
+                <span class="badge hidden" id="n_dd_notifications_tab_badge"></span></i>
+                <div class="dropdown-content">
+                    <p><?=$l_arr["global"]["txt_18"];?></p>
+                    <section id="notifications-list">
+                        <span id="n_dd_profile_tab" data-session-variant="1" tabindex="1"><i class="fas fa-circle"></i>
+                            Texto de notificacion asd as dasda sda sdasdasdsd
+                            <p>Hace 4 minutos</p>
+                        </span>
+                    </section>
+                </div>
+            </li>
             <li class="dropdown" id="relative-n-dd-reference"><i class="fas fa-user-circle" tabindex="0"
                 data-accesibility-trigger="user-list"></i>
                 <div class="dropdown-content">
@@ -30,8 +43,6 @@
                         <a class="hidden" id="action-tologin" data-session-variant="2" href="?p=login" tabindex="1"><i class="fas fa-sign-in-alt"></i><?=$l_arr["welcome"]["txt_1"];?></a>
                         <a class="hidden" id="action-toregister" data-session-variant="2" href="?p=register" tabindex="1"><i class="fas fa-user-plus"></i><?=$l_arr["welcome"]["txt_2"];?></a>
                         <div class="separator hidden" data-session-variant="2"></div>
-                        <a id="n_dd_notifications_tab" data-session-variant="1" href="?p=notificacions" tabindex="1"><i class="fas fa-bell"></i><?=$l_arr["global"]["txt_18"];?></a>
-                        <div class="separator" data-session-variant="1"></div>
                         <span id="n_dd_language_tab" data-collapse="0" tabindex="1"><i class="fas fa-chevron-up"></i><?=$l_arr["global"]["txt_17"];?>
                             <div class="collapse">    
                                 <button id="language-set-spanish"><?=$l_arr["global"]["txt_23"];?></button>
@@ -121,11 +132,20 @@
             console.log(response);
             switch (response.code) {
                 case 0:
-                    console.log(0);
+                    let badge = document.querySelector("#n_dd_notifications_tab_badge");
+                    badge.classList.remove("hidden");
+                    badge.textContent = response.data.length;
+                    break;
+                case -2:
+                    
                     break;
                 default:
-                    console.log(1);
+                    console.log(response.code);
             }
         });
     }
+
+    let badge = document.querySelector("#n_dd_notifications_tab_badge");
+                    badge.classList.remove("hidden");
+                    badge.textContent = 6;
 </script>

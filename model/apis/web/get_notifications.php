@@ -20,7 +20,7 @@ $mi0->query("
         (notificacion)
     ON
         (notificacion.pk_notificacion = notificacion_reporte.fk_notificacion)
-    WHERE notificacion.fk_usuario = ?",
+    WHERE notificacion.fk_usuario = ? AND notificacion.visto = '1'",
     $user_id
 );
 if ($mi0->result->num_rows > 0) {
