@@ -227,6 +227,7 @@ create table `reporte_devolucion` (
     `fk_renta` int unsigned not null,
     `todo_bien` enum("0", "1") not null,
     `descripcion` varchar(255) not null,
+    `fecha_hora` timestamp default current_timestamp not null,
     primary key(pk_reporte_devolucion),
     unique key(fk_renta),
     foreign key(fk_renta) references renta(pk_renta) on delete cascade
