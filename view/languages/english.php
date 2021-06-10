@@ -222,7 +222,15 @@ $l_arr = array(
         "txt_6" => "No drivers were found in the search",
     ),
     "sales" => array(
-        "page_name" => "Sales"
+        "page_name" => "Sales",
+        "txt_0" => "Sale information",
+        "txt_1" => "See car",
+        "txt_2" => "See driver",
+        "txt_3" => "Reports",
+        "txt_4" => "Return",
+        "txt_5" => "Identifier",
+        "txt_6" => "Gain",
+        "txt_7" => "Date"
     ),
     "welcome" => array(
         "page_name" => "Bienvenido",

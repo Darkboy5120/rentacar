@@ -222,7 +222,15 @@ $l_arr = array(
         "txt_6" => "No se encontraron conductores en la búsquedad",
     ),
     "sales" => array(
-        "page_name" => "Ventas"
+        "page_name" => "Ventas",
+        "txt_0" => "Información de venta",
+        "txt_1" => "Ver auto",
+        "txt_2" => "Ver conductor",
+        "txt_3" => "Reportes",
+        "txt_4" => "Devolución",
+        "txt_5" => "Identificador",
+        "txt_6" => "Ganancia",
+        "txt_7" => "Fecha"
     ),
     "welcome" => array(
         "page_name" => "Bienvenido",

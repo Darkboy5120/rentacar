@@ -27,77 +27,34 @@ $user_name = $ci0->getSession("user_data")["nombre"];
     <body>
         <main>
             <?php include "view/components/navbar.php";?>
-            <nav class="main-actions">
-                <ul>
-                </ul>
-            </nav>
             <div class="fixed-location">
-                <span>Estas en <span data-location=""></span></span>
+                <span><?=$l_arr["global"]["txt_0"]?> <span data-location=""></span></span>
             </div>
             <div class="container">
                 <section class="cards-sales">
                     <div class="card-sale-header">
-                        <span>Identificador</span>
-                        <span>Ganancia</span>
-                        <span>Fecha</span>
+                        <span><?=$l_arr["sales"]["txt_5"]?></span>
+                        <span><?=$l_arr["sales"]["txt_6"]?></span>
+                        <span><?=$l_arr["sales"]["txt_7"]?></span>
                     </div>
                     <button class="card-sale">
                         <span>14587</span>
                         <span>$2000</span>
                         <span>03/16/2021</span>
                     </button>
-                    <button class="card-sale">
-                        <span>14587</span>
-                        <span>$2000</span>
-                        <span>03/16/2021</span>
-                    </button>
-                    <button class="card-sale">
-                        <span>14587</span>
-                        <span>$2000</span>
-                        <span>03/16/2021</span>
-                    </button>
-                    <button class="card-sale">
-                        <span>14587</span>
-                        <span>$2000</span>
-                        <span>03/16/2021</span>
-                    </button>
-                    <button class="card-sale">
-                        <span>14587</span>
-                        <span>$2000</span>
-                        <span>03/16/2021</span>
-                    </button>
-                    <button class="card-sale">
-                        <span>14587</span>
-                        <span>$2000</span>
-                        <span>03/16/2021</span>
-                    </button>
-                    <button class="card-sale">
-                        <span>14587</span>
-                        <span>$2000</span>
-                        <span>03/16/2021</span>
-                    </button>
-                    <button class="card-sale">
-                        <span>14587</span>
-                        <span>$2000</span>
-                        <span>03/16/2021</span>
-                    </button>
-                    <button class="card-sale">
-                        <span>14587</span>
-                        <span>$2000</span>
-                        <span>03/16/2021</span>
-                    </button>
-                    <button class="card-sale">
-                        <span>14587</span>
-                        <span>$2000</span>
-                        <span>03/16/2021</span>
-                    </button>
+                    <span class="cards-empty hidden">
+                        <?=$l_arr["drivers"]["txt_2"]?></span>
+                </section>
+                <section class="load-more hidden" id="load-more-layout">
+                    <button class="button button-primary" id="load-more">
+                        <?=$l_arr["home"]["button_loadmore"]?></button>
                 </section>
                 <?php include "view/components/footer.php";?>
             </div>
         </main>
 
         <?php include "view/components/loading-screen.php";?>
-        <?php include "view/pages/modals/sales.html";?>
+        <?php include "view/pages/modals/sales.php";?>
         
     </body>
     <script>
@@ -106,6 +63,7 @@ $user_name = $ci0->getSession("user_data")["nombre"];
         l_arr = <?php echo json_encode($l_arr);?>;
     </script>
     <script src="controller/components/modal.js"></script>
+    <script src="controller/components/alert-me.js"></script>
     <script src="controller/components/loading-screen.js"></script>
     <script src="controller/pages/sales.js"></script>
 </html>
