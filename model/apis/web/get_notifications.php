@@ -23,8 +23,8 @@ $mi0->query("
         (notificacion, reporte_devolucion)
     ON
         (notificacion.pk_notificacion = notificacion_reporte.fk_notificacion
-            AND reporte_devolucion.pk_reporte_devolucion = notification_reporte.fk_reporte_devolucion)
-    WHERE notificacion.fk_usuario = ? AND notificacion.visto = '1'",
+            AND reporte_devolucion.pk_reporte_devolucion = notificacion_reporte.fk_reporte_devolucion)
+    WHERE notificacion.fk_usuario = ? AND notificacion.visto = '0'",
     $user_id
 );
 if ($mi0->result->num_rows > 0) {

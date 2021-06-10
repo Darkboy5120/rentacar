@@ -79,7 +79,15 @@ $l_arr = array(
         "txt_24" => "English",
         "txt_25" => "No tienes notificaciones",
         "txt_26" => "No se reportaron problemas en la renta",
-        "txt_27" => "Hubo un problema en la renta"
+        "txt_27" => "Hubo un problema en la renta",
+        "txt_28" => "segundo",
+        "txt_29" => "segundos",
+        "txt_30" => "minuto",
+        "txt_31" => "minutos",
+        "txt_32" => "hora",
+        "txt_33" => "horas",
+        "txt_34" => "dia",
+        "txt_35" => "dias",
     ),
     "login" => array(
         "page_name" => "Login",

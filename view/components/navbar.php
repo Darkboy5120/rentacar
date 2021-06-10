@@ -28,12 +28,6 @@
                 <div class="dropdown-content">
                     <p><?=$l_arr["global"]["txt_18"];?></p>
                     <section id="notifications-list">
-                        <span id="notifications-empty" tabindex="1"><i class="fas fa-circle"></i>
-                            <?=$l_arr["global"]["txt_25"];?></span>
-                        <span data-session-variant="1" tabindex="1"><i class="fas fa-circle"></i>
-                            Texto de notificacion asd as dasda sda sdasdasdsd
-                            <p>Hace 4 minutos</p>
-                        </span>
                     </section>
                 </div>
             </li>
@@ -139,6 +133,31 @@
         });
     }
 
+    const get_time_before = (fecha_hora) => {
+        const time_milli = (new Date().getTime() - new Date(fecha_hora).getTime());
+        const time_seconds = Math.floor(time_milli / 1000);
+        const time_minutes = Math.floor(time_milli / (1000*60));
+        const time_hours = Math.floor(time_milli / (1000*60*60));
+        const time_days = Math.floor(time_milli / (1000*60*60*24));
+        let time_arr = [time_seconds, time_minutes, time_hours, time_days];
+        let time_strings_arr = [
+            ["<?=$l_arr["global"]["txt_28"];?>", "<?=$l_arr["global"]["txt_29"];?>"], 
+            ["<?=$l_arr["global"]["txt_30"];?>", "<?=$l_arr["global"]["txt_31"];?>"], 
+            ["<?=$l_arr["global"]["txt_32"];?>", "<?=$l_arr["global"]["txt_33"];?>"], 
+            ["<?=$l_arr["global"]["txt_34"];?>", "<?=$l_arr["global"]["txt_35"];?>"]
+        ];
+        let usable_time = 0;
+        for (let i = 0; i < time_arr.length; i++) {
+            if (time_arr[usable_time] > 1) {
+                usable_time = i;
+                continue;
+            }
+            break;
+        }
+        const usable_string = (time_arr[usable_time] == 1) ? 0 : 1;
+        return time_arr[usable_time] + " " + time_strings_arr[usable_time][usable_string];
+    }
+
     let session_is_active = "<?php echo $ci0->existSession("user_data") ? "0" : "1";?>";
     if (session_is_active == 0) {
         new RequestMe().post("model/apis/", {
@@ -148,19 +167,18 @@
             console.log(response);
             switch (response.code) {
                 case 0:
-                    document.querySelector("#notifications-empty").classList.add("hidden");;
-                    let badge = document.querySelector("#n_dd_notifications_tab_badge");
+                    let badge = document.querySelector("#n_dd_notifications_title_badge");
                     badge.classList.remove("hidden");
                     badge.textContent = response.data.length;
 
-                    let notifications_layout = document.querySelector("#notifications-list");;
+                    let notifications_layout = document.querySelector("#notifications-list");
                     for (let notification of response.data) {
                         const n_pk_notificacion = notification.pk_notificacion;
                         const n_fk_reporte_devolucion = notification.fk_reporte_devolucion;
                         const n_message = (notification.todo_bien == "0")
                             ? "<?=$l_arr["global"]["txt_26"];?>"
                             : "<?=$l_arr["global"]["txt_27"];?>";
-                        let time_before = notificacion.fecha_hora;
+                        let time_before = get_time_before(notification.fecha_hora);
                         let n_element = document.createElement("span");
                         n_element.setAttribute("tabindex", "1");
                         n_element.innerHTML = `
@@ -177,15 +195,14 @@
                     }
                     break;
                 case -2:
-                    
+                    let empty_element = document.createElement("span");
+                    empty_element.setAttribute("tabindex", "1");
+                    empty_element.textContent = "<?=$l_arr["global"]["txt_25"];?>";
+                    document.querySelector("#notifications-list").appendChild(empty_element);
                     break;
                 default:
                     console.log(response.code);
             }
         });
     }
-
-    let badge = document.querySelector("#n_dd_notifications_tab_badge");
-                    badge.classList.remove("hidden");
-                    badge.textContent = 6;
 </script>

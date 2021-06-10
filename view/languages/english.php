@@ -79,7 +79,15 @@ $l_arr = array(
         "txt_24" => "English",
         "txt_25" => "You dont have notifications",
         "txt_26" => "No problems reported on the rent",
-        "txt_27" => "A problem was founded on the rent"
+        "txt_27" => "A problem was founded on the rent",
+        "txt_28" => "second",
+        "txt_29" => "seconds",
+        "txt_30" => "minute",
+        "txt_31" => "minutes",
+        "txt_32" => "hour",
+        "txt_33" => "hours",
+        "txt_34" => "day",
+        "txt_35" => "days",
     ),
     "login" => array(
         "page_name" => "Login",
