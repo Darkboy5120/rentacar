@@ -40,6 +40,47 @@ if ($mi0->result !== TRUE) {
 }
 $last_report_id = $mi0->link->insert_id;
 
+$mi0->query("
+    SELECT
+        auto.fk_administrador
+    FROM
+        renta
+    LEFT JOIN
+        (auto)
+    ON
+        (renta.fk_auto = auto.pk_auto)
+    WHERE renta.pk_renta = ?",
+    $fk_renta
+);
+if ($mi0->result->num_rows != 1) {
+    $mi0->end("rollback", -6, NULL);
+}
+
+$fk_administrador = $mi0->result->fetch_all(MYSQLI_ASSOC)[0]["fk_administrador"];
+
+$mi0->query("
+    INSERT INTO notificacion
+        (fk_usuario)
+    VALUES
+        (?)",
+    $fk_administrador
+);
+if ($mi0->result !== TRUE) {
+    $mi0->end("rollback", -7, NULL);
+}
+$last_notification_id = $mi0->link->insert_id;
+
+$mi0->query("
+    INSERT INTO notificacion_reporte
+        (fk_notificacion, fk_reporte_devolucion)
+    VALUES
+        (?, ?)",
+    $last_notification_id, $last_report_id
+);
+if ($mi0->result !== TRUE) {
+    $mi0->end("rollback", -8, NULL);
+}
+
 if ($todo_bien == "0") {
     $mi0->end("commit", 0, NULL);
 }

@@ -15,7 +15,7 @@
     max-height: 85vh;
     overflow-y: auto;
 }
-.dropdown-content > section > span {
+.dropdown-content > section > span:not([data-collapse]) {
     display: inline-block !important;
 }
 .dropdown-content > section > span > p {
