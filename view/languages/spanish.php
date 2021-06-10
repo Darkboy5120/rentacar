@@ -230,7 +230,11 @@ $l_arr = array(
         "txt_4" => "Devolución",
         "txt_5" => "Identificador",
         "txt_6" => "Ganancia",
-        "txt_7" => "Fecha"
+        "txt_7" => "Fecha",
+        "txt_8" => "Ganancia minima",
+        "txt_9" => "Ganamcia maxima",
+        "txt_10" => "No se encontraron ventas en la búsquedad",
+        "txt_11" => "Aun no se ha reportado ninguna venta"
     ),
     "welcome" => array(
         "page_name" => "Bienvenido",

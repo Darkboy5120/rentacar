@@ -5,6 +5,7 @@
 @import url("../../components/sales-cards.css");
 @import url("../../components/pagination.css");
 @import url("../../components/modal.css");
+@import url("../../components/form.css");
 html, body {
     margin: 0;
 }

@@ -31,19 +31,14 @@ $user_name = $ci0->getSession("user_data")["nombre"];
                 <span><?=$l_arr["global"]["txt_0"]?> <span data-location=""></span></span>
             </div>
             <div class="container">
-                <section class="cards-sales">
+                <section class="cards-sales" id="cards-sales">
                     <div class="card-sale-header">
                         <span><?=$l_arr["sales"]["txt_5"]?></span>
                         <span><?=$l_arr["sales"]["txt_6"]?></span>
                         <span><?=$l_arr["sales"]["txt_7"]?></span>
                     </div>
-                    <button class="card-sale">
-                        <span>14587</span>
-                        <span>$2000</span>
-                        <span>03/16/2021</span>
-                    </button>
-                    <span class="cards-empty hidden">
-                        <?=$l_arr["drivers"]["txt_2"]?></span>
+                    <span class="cards-empty hidden" id="cards-empty">
+                        <?=$l_arr["sales"]["txt_11"]?></span>
                 </section>
                 <section class="load-more hidden" id="load-more-layout">
                     <button class="button button-primary" id="load-more">
@@ -63,6 +58,8 @@ $user_name = $ci0->getSession("user_data")["nombre"];
         l_arr = <?php echo json_encode($l_arr);?>;
     </script>
     <script src="controller/components/modal.js"></script>
+    <script src="controller/components/field-control.js"></script>
+    <script src="controller/components/switch-control.js"></script>
     <script src="controller/components/alert-me.js"></script>
     <script src="controller/components/loading-screen.js"></script>
     <script src="controller/pages/sales.js"></script>

@@ -30,16 +30,17 @@ $mi0->query("
         renta.costo,
         renta.fk_conductor,
         renta.fk_auto,
-        reporte_devolucion.pk_reporte_devolucion
+        reporte_devolucion.pk_reporte_devolucion,
+        reporte_devolucion.fecha_hora
     FROM
         renta
     LEFT JOIN
-        (usuario_foto, reporte_devolucion)
+        (reporte_devolucion, conductor)
     ON
-        (renta.pk_renta = reporte_devolucion.fk_renta)
-    WHERE conductor.fk_administrador = ? AND conductor.despedido = '0' AND $nombre_sql
-        AND $apellido_sql
-    ORDER BY usuario.pk_usuario ASC
+        (renta.pk_renta = reporte_devolucion.fk_renta
+            AND conductor.fk_usuario = renta.fk_conductor)
+    WHERE conductor.fk_administrador = ? AND renta.fase = '4'
+    ORDER BY reporte_devolucion.fecha_hora DESC
     LIMIT $offset, $double_limit",
     $admin_id
 );
