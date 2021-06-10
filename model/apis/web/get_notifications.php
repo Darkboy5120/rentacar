@@ -13,13 +13,17 @@ $mi0->begin();
 
 $mi0->query("
     SELECT
-        notificacion_reporte.fk_reporte_devolucion
+        notificacion_reporte.fk_reporte_devolucion,
+        reporte_devolucion.todo_bien,
+        notificacion.pk_notificacion,
+        notificacion.fecha_hora
     FROM
         notificacion_reporte
     LEFT JOIN
-        (notificacion)
+        (notificacion, reporte_devolucion)
     ON
-        (notificacion.pk_notificacion = notificacion_reporte.fk_notificacion)
+        (notificacion.pk_notificacion = notificacion_reporte.fk_notificacion
+            AND reporte_devolucion.pk_reporte_devolucion = notification_reporte.fk_reporte_devolucion)
     WHERE notificacion.fk_usuario = ? AND notificacion.visto = '1'",
     $user_id
 );

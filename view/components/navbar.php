@@ -22,13 +22,15 @@
     </div>
     <div class="navbar-right">
         <ul>
-        <li class="dropdown" id="relative-n-dd-reference"><i class="fas fa-bell" tabindex="0"
+        <li class="dropdown" id="relative-n-dd-notifications"><i class="fas fa-bell" tabindex="0"
                 data-accesibility-trigger="notifications-list">
-                <span class="badge hidden" id="n_dd_notifications_tab_badge"></span></i>
+                <span class="badge hidden" id="n_dd_notifications_title_badge"></span></i>
                 <div class="dropdown-content">
                     <p><?=$l_arr["global"]["txt_18"];?></p>
                     <section id="notifications-list">
-                        <span id="n_dd_profile_tab" data-session-variant="1" tabindex="1"><i class="fas fa-circle"></i>
+                        <span id="notifications-empty" tabindex="1"><i class="fas fa-circle"></i>
+                            <?=$l_arr["global"]["txt_25"];?></span>
+                        <span data-session-variant="1" tabindex="1"><i class="fas fa-circle"></i>
                             Texto de notificacion asd as dasda sda sdasdasdsd
                             <p>Hace 4 minutos</p>
                         </span>
@@ -123,6 +125,20 @@
             break;
     }
 
+    const check_notification = (pk_notificacion, fk_reporte_devolucion) => {
+        new RequestMe().post("model/apis/", {
+            api: "check_notification",
+            pk_notificacion: pk_notificacion
+        }).catch(err => console.error(err)
+        ).then(response => {
+            switch (response.code) {
+                case 0:
+                    location = `?p=sales&report=${fk_reporte_devolucion}`
+                    break;
+            }
+        });
+    }
+
     let session_is_active = "<?php echo $ci0->existSession("user_data") ? "0" : "1";?>";
     if (session_is_active == 0) {
         new RequestMe().post("model/apis/", {
@@ -132,9 +148,33 @@
             console.log(response);
             switch (response.code) {
                 case 0:
+                    document.querySelector("#notifications-empty").classList.add("hidden");;
                     let badge = document.querySelector("#n_dd_notifications_tab_badge");
                     badge.classList.remove("hidden");
                     badge.textContent = response.data.length;
+
+                    let notifications_layout = document.querySelector("#notifications-list");;
+                    for (let notification of response.data) {
+                        const n_pk_notificacion = notification.pk_notificacion;
+                        const n_fk_reporte_devolucion = notification.fk_reporte_devolucion;
+                        const n_message = (notification.todo_bien == "0")
+                            ? "<?=$l_arr["global"]["txt_26"];?>"
+                            : "<?=$l_arr["global"]["txt_27"];?>";
+                        let time_before = notificacion.fecha_hora;
+                        let n_element = document.createElement("span");
+                        n_element.setAttribute("tabindex", "1");
+                        n_element.innerHTML = `
+                            <i class="fas fa-circle"></i>
+                                ${n_message}
+                                <p>Hace ${time_before}</p>
+                        `;
+
+                        n_element.addEventListener("click", () => {
+                            check_notification(n_pk_notificacion, n_fk_reporte_devolucion);
+                        });
+
+                        notifications_layout.appendChild(n_element);
+                    }
                     break;
                 case -2:
                     
