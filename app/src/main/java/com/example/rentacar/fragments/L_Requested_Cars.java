@@ -2,6 +2,7 @@ package com.example.rentacar.fragments;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,12 +15,16 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.rentacar.R;
+import com.example.rentacar.activities.L_Cars;
+import com.example.rentacar.activities.L_RatingCar;
 import com.example.rentacar.models.Global;
 import com.example.rentacar.models.NiceDatepicker;
 import com.example.rentacar.models.NiceInput;
@@ -50,6 +55,7 @@ public class L_Requested_Cars extends Fragment implements View.OnClickListener,
         return inflater.inflate(R.layout.fragment_l_requested_cars, container, false);
     }
 
+    @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -60,6 +66,8 @@ public class L_Requested_Cars extends Fragment implements View.OnClickListener,
 
         ns_phase = new NiceSpinner(R.id.label_et_phase, R.id.et_phase, R.id.help_et_phase,
                 R.id.log_et_phase, false, requireView(), this);
+        want_rate("6");
+
     }
 
     @Override
@@ -99,7 +107,7 @@ public class L_Requested_Cars extends Fragment implements View.OnClickListener,
                     public void onClick(DialogInterface dialog, int id) {
                         try_rent_update(pk_renta,
                                 user_id,
-                                phase);
+                                phase,"car_id");
                     }
                 })
                 //Si
@@ -110,7 +118,7 @@ public class L_Requested_Cars extends Fragment implements View.OnClickListener,
         alertadd.show();
     }
 
-    public void dialog_confirm_before_phase4(String pk_renta, String user_id, String phase) {
+    public void dialog_confirm_before_phase4(String pk_renta, String user_id, String phase, String car_id) {
         AlertDialog.Builder alertadd = new AlertDialog.Builder(getContext())
                 //¿Se entregó el auto correctamente?
                 .setMessage(getResources().getString(R.string.dialog_lesse_deliver_keys))
@@ -119,7 +127,8 @@ public class L_Requested_Cars extends Fragment implements View.OnClickListener,
                     public void onClick(DialogInterface dialog, int id) {
                         try_rent_update(pk_renta,
                                 user_id,
-                                phase);
+                                phase,
+                                car_id);
                     }
                 })
                 //Si
@@ -180,7 +189,7 @@ public class L_Requested_Cars extends Fragment implements View.OnClickListener,
                                             case "3":
                                                 dialog_confirm_before_phase4(pk_renta,
                                                         new StorageManager(requireContext()).getString("user_id"),
-                                                        rent_phase);
+                                                        rent_phase, car_id);
                                                 break;
                                         };
                                     });
@@ -243,22 +252,30 @@ public class L_Requested_Cars extends Fragment implements View.OnClickListener,
         };
         queue.add(stringRequest);
     }
-    public void want_rate(String pk_renta) {
+    public void want_rate(String car_id) {
         AlertDialog.Builder alertadd = new AlertDialog.Builder(getContext())
                 //¿Deseas calificar el auto rentado?
                 .setMessage(getResources().getString(R.string.ask_to_rate))
                 //No
                 .setPositiveButton(R.string.rate_yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        L_RatingCar fragment = new L_RatingCar();
+                        Intent i = new Intent(requireContext(), L_RatingCar.class);
+                        i.putExtra("carId", car_id);
+                        startActivityForResult(i, Global.SUCCESS_RENT_CODE);
+
+                        //Datos a pasar
+                        /*
                         Bundle bundle = new Bundle();
-                        bundle.putString("pk_renta", pk_renta);
+                        bundle.putString("car_id", car_id);
+                        L_RatingCar fragment = new L_RatingCar();
                         fragment.setArguments(bundle);
 
                         getActivity().getSupportFragmentManager().beginTransaction()
                                 .replace(((ViewGroup)getView().getParent()).getId(), fragment)
                                 .addToBackStack(null)
                                 .commit();
+
+                         */
                     }
                 })
                 //Si
@@ -269,7 +286,7 @@ public class L_Requested_Cars extends Fragment implements View.OnClickListener,
         alertadd.show();
     }
 
-    public void try_rent_update(String pk_renta, String user_id, String phase) {
+    public void try_rent_update(String pk_renta, String user_id, String phase, String car_id) {
         ll_spn_global.setVisibility(View.VISIBLE);
 
         RequestQueue queue = Volley.newRequestQueue(requireContext());
@@ -288,6 +305,7 @@ public class L_Requested_Cars extends Fragment implements View.OnClickListener,
                                 Global.printMessage(requireView(), getResources().getString(R.string.get_car));
                             } else if (next_index == 2) {
                                 Global.printMessage(requireView(), getResources().getString(R.string.deliver_car));
+                                want_rate(car_id);
                             }
                         } else {
                             Global.printMessage(requireView(), getResources().getString(R.string.error_driver_first));

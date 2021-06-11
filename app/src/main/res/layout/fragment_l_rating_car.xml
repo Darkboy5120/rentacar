@@ -56,9 +56,6 @@
                 android:progressTint="@color/gold"
                 android:numStars="5"
                 android:layout_gravity="center"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:isIndicator="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
@@ -84,14 +81,50 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <EditText
+            <LinearLayout
+                android:id="@+id/layout_et_report_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/rating_title"/>
+                android:orientation="vertical"
+                android:layout_marginBottom="@dimen/layout_et_mb"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <TextView
+                    android:id="@+id/label_et_rate_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_et_report_description"
+                    android:labelFor="@id/et_report_description"
+                    style="@style/text_medium_gray"
+                    android:visibility="invisible"/>
+
+                <EditText
+                    android:id="@+id/et_rate_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="textNoSuggestions"
+                    style="@style/et_medium_light"
+                    android:hint="@string/rating_title"/>
+                <TextView
+                    android:id="@+id/help_et_rate_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/help_et_report_description"
+                    android:labelFor="@id/et_report_description"
+                    android:visibility="gone"
+                    style="@style/text_big_lightGray"/>
+                <TextView
+                    android:id="@+id/log_et_rate_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@id/et_report_description"
+                    style="@style/text_big_bold_danger"
+                    android:visibility="gone"/>
+            </LinearLayout>
 
             <Button
-                android:id="@+id/send_info"
+                android:id="@+id/save"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/layout_btn_mb"

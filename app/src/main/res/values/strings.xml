@@ -255,6 +255,7 @@
     <string name="deliver_car">El auto se ha entregado correctamente</string>
 
     <!--Rating section-->
+    <string name="rating_name_activity">Caja de comentarios</string>
     <string name="rating_title">Porfavor danos tu opinión sobre tu experiencia con nosotros.</string>
     <string name="rating">¿Cuántas estrellas le das al auto que rentaste?</string>
     <string name="user_description">Danos una conclusión de tu experiencia rentando nuestros autos!</string>
@@ -265,6 +266,7 @@
     <string name="ask_to_rate">¿Desear calificar el auto que rentaste?</string>
     <string name="rate_yes">Sí</string>
     <string name="rate_no">No</string>
+    <string name="rate_success">Gracias por rentar con nosotros!</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

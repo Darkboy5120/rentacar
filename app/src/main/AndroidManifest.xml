@@ -18,7 +18,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Rentacar">
-        <activity android:name=".activities.L_RatingCar"></activity>
+        <activity
+            android:name=".activities.L_RatingCar"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Rentacar.NoActionBar"
+            android:windowSoftInputMode="adjustResize"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
