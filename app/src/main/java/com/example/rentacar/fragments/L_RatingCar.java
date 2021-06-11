@@ -62,8 +62,7 @@ public class L_RatingCar extends Fragment implements View.OnClickListener,
         view.findViewById(R.id.layout_container_rating).setOnClickListener(this);
         ni_comments = new NiceInput("text", R.id.label_et_rate_description, R.id.et_rate_description,
                 R.id.help_et_rate_description,  R.id.log_et_rate_description, "^[A-Za-z-ZÀ-ÿ-\u00f1\u00d1\\s']+", 15,
-                255, false, requireView());
-        get_id_data();
+                255, true, requireView());
     }
 
     public void setArguments(Bundle bundle) {
@@ -76,9 +75,6 @@ public class L_RatingCar extends Fragment implements View.OnClickListener,
             Global.hideKeyboardFrom(requireContext(), requireView());
         } else if (vId == R.id.save) {
             send_info();
-        }else if(vId == R.id.user_rating){
-            float rb_value = rb_user.getRating();
-            System.out.println("--------------------------------"+rb_value);
         }
     }
 
@@ -86,6 +82,7 @@ public class L_RatingCar extends Fragment implements View.OnClickListener,
         Global.hideKeyboardFrom(requireContext(), requireView());
         if (!submit_validate())
             return;
+        upload_rating(requireActivity().getIntent().getStringExtra("carId"));
     }
 
     public void upload_rating(String carId) {
@@ -96,13 +93,11 @@ public class L_RatingCar extends Fragment implements View.OnClickListener,
                     @Override
                     public void onResponse(String response) {
                         try {
-                            Log.d("f",response.toString());
-                            Log.d("shale",carId);
                             JSONObject json = new JSONObject(response);
                             String code = json.getString("code");
                             if (code.equals("0")) {
                                 Global.printMessage(requireView(), getResources().getString(R.string.rate_success));
-                            }else{
+                            } else {
                                 Global.printMessage(requireView(), getResources().getString(R.string.error_generic_request));
                             }
                         } catch (JSONException e) {
@@ -148,12 +143,11 @@ public class L_RatingCar extends Fragment implements View.OnClickListener,
     public boolean submit_validate() {
         boolean result = true;
 
-        return result;
-    }
+        if (!ni_comments.validate(requireView())) {
+            result = false;
+        }
 
-    public void get_id_data() {
-        Intent i = requireActivity().getIntent();
-        upload_rating(i.getStringExtra("carId"));
+        return result;
     }
 
 }
