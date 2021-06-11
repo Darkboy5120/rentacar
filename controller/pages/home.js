@@ -29,9 +29,19 @@
     navbar_right_list.insertBefore(navbar_search, navbar_right_relative);
 
     let modal = {
+        car_ratings: {
+            object: new Modal("#car-ratings"),
+            button: {
+            }
+        },
         car_options: {
             object: new Modal("#car-options"),
             button: {
+                ratings: {
+                    element: document.querySelector("#car-options #car-options-ratings"),
+                    onclick: () => {
+                    }
+                },
                 edit: {
                     element: document.querySelector("#car-options #car-options-edit"),
                     onclick: null
@@ -158,6 +168,9 @@
         }
     }
 
+    modal.car_options.button.ratings.element.onclick = () => {
+        modal.car_options.button.ratings.onclick();
+    }
     modal.car_options.button.edit.element.onclick = () => {
         modal.car_options.button.edit.onclick();
     }
@@ -170,11 +183,79 @@
     modal.car_delete_confirm.button.no.element.onclick = () => {
         modal.car_delete_confirm.button.no.onclick();
     }
-
     
     let cars_count = 0;
     let empty_search = true;
     let request = {
+        set_get_ratings: (pk_auto) => {
+            let button = modal.car_options.button;
+            const default_text_button = button.ratings.element.innerHTML;
+            button.ratings.element.innerHTML = "<i class='fas fa-sync-alt fa-spin'></i>" + l_arr.global.log_15;
+            new RequestMe().post("model/apis/", {
+                api: "get_ratings",
+                pk_auto: pk_auto,
+            }).then(response => {
+                button.ratings.element.innerHTML = default_text_button;
+                let ratings_empty = document.querySelector("#ratings-empty");
+                console.log(response);
+                switch (response.code) {
+                    case 0:
+                        modal.car_options.object.hide();
+                        modal.car_ratings.object.show();
+                        ratings_empty.classList.add("hidden");
+
+                        modal.car_ratings.object.element.querySelectorAll(".modal-body > div.rating-card")
+                            .forEach(e => {
+                                e.remove();
+                            }
+                        );
+
+                        let rating_layout = modal.car_ratings.object.element.querySelector(".modal-body");
+                        for (let rating of response.data) {
+                            const r_puntuacion = (100 * (parseFloat(rating.puntuacion)/5));
+                            console.log(r_puntuacion);
+                            const r_comentarios = rating.comentarios;
+
+                            let rating_node = document.createElement("DIV");
+                            rating_node.classList.add("rating-card");
+                            rating_node.innerHTML = `
+                                <div class="rating">
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="rating-cover" id="rating-cover" style="width:${r_puntuacion}%;"></div>
+                                </div>
+                                <span class="comment">${r_comentarios}</span>
+                            `;
+                            rating_layout.appendChild(rating_node);
+                        }
+
+                        /*ScrollReveal().reveal(car_node, {
+                            delay: 175,
+                            duration: 500,
+                            reset: true,
+                            scale: 0.85
+                        });*/
+                        break;
+                    case -2:
+                        modal.car_options.object.hide();
+                        modal.car_ratings.object.show();
+                        ratings_empty.classList.remove("hidden");
+                        modal.car_ratings.object.element.querySelectorAll(".modal-body > div.rating-card")
+                            .forEach(e => {
+                                e.remove();
+                            }
+                        );
+                        break;
+                    default:
+                        new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_2);
+                }
+            });
+        },
         load_more_cars: (offset) => {
             new Promise((resolve, reject) => {
                 let select = form.search_car_info.select;
@@ -210,16 +291,20 @@
                                 const c_model_name = car_layout.modelo_nombre;
                                 const c_image_path = car_layout.imagen_ruta.slice(4);
                                 let car_html = `
-                                    <article class="card-car">
-                                        <h2>${c_model_name}</h2>
-                                        <img src="${c_image_path}" loading="lazy" alt="imagen">
-                                        <button type="button"><i class="fas fa-ellipsis-v"></i></button>
-                                    </article>
+                                    <h2>${c_model_name}</h2>
+                                    <img src="${c_image_path}" loading="lazy" alt="imagen">
+                                    <button type="button"><i class="fas fa-ellipsis-v"></i></button>
                                 `;
                                 let car_node = document.createElement("article");
+                                car_node.classList.add("card-car");
                                 car_node.innerHTML = car_html;
                                 
                                 car_node.querySelector("button").addEventListener("click", e => {
+
+                                    modal.car_options.button.ratings.onclick = () => {
+                                        request.set_get_ratings(c_layout_id);
+                                    }
+
                                     modal.car_options.button.edit.onclick = () => {
                                         location = "?p=editcar&car=" + c_layout_id;
                                     }

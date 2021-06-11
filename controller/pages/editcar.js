@@ -153,6 +153,12 @@
 
     }
 
+    form.car_info.select.engine.element.addEventListener("change", e => {
+        const engine_value = form.car_info.select.engine.getValue();
+        let domain_el = form.car_info.input.consunit.element.nextElementSibling;
+        domain_el.textContent = (engine_value == "2")
+            ? l_arr["newcar"]["txt_52"] : l_arr["newcar"]["txt_30"];
+    });
 
     let request = {
         get_car_brands_models: new Promise((resolve, reject) => {

@@ -5,6 +5,7 @@
             <button><i class="fas fa-times"></i></button>
         </div>
         <div class="modal-body">
+            <button class="button button-primary" id="car-options-ratings"><i class="fas fa-star-half-alt"></i><?=$l_arr["home"]["txt_7"];?></button>
             <button class="button button-primary" id="car-options-edit"><i class="fas fa-edit"></i><?=$l_arr["global"]["mdal_btn_1"];?></button>
             <button class="button button-danger" id="car-options-delete"><i class="fas fa-trash"></i><?=$l_arr["global"]["mdal_btn_2"];?></button>
         </div>
@@ -79,6 +80,17 @@
                 </div>
             </div>
             <button class="button button-primary" id="car-filter-submit"><i class="fas fa-search"></i><?=$l_arr["home"]["txt_5"];?></button>
+        </div>
+    </div>
+</div>
+<div class="modal hidden" id="car-ratings">
+    <div class="modal-card-small">
+        <div class="modal-header">
+            <h2><?=$l_arr["home"]["txt_8"];?></h2>
+            <button><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <span class="ratings-empty hidden" id="ratings-empty"><?=$l_arr["home"]["txt_9"];?></span>
         </div>
     </div>
 </div>

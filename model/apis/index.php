@@ -99,6 +99,9 @@ if (isset($_REQUEST["api"])) {
         case "get_sales":
             require "web/get_sales.php";
             break;
+        case "get_ratings":
+            require "web/get_ratings.php";
+            break;
         default: echo json_encode("That's not a valid api");
     }
 }

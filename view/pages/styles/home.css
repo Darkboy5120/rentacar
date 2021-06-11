@@ -54,6 +54,44 @@ h1 {
 .modal-body select {
     width: 100% !important;
 }
+.modal-body > .ratings-empty {
+}
+.modal-body > .rating-card {
+    margin: 0 1rem 1rem 1rem;
+    padding: .5rem;
+    border: 1px solid var(--textColorAlt);
+    width: 80%;
+    position: relative;
+}
+.modal-body > .rating-card > .rating {
+    position: relative;
+    width: 100%;
+    height: 2rem;
+}
+.modal-body > .rating-card > .rating > .rating-stars {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-items: center;
+    position: absolute;
+}
+.modal-body > .rating-card > .rating > .rating-stars > i {
+    flex-grow: 1;
+    height: 100%;
+    color: gold;
+    text-align: center;
+    font-size: 1.4rem;
+}
+.modal-body > .rating-card > .rating > .rating-cover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    background-color: white;
+}
+.modal-body > .rating-card > .comment {
+
+}
 @media(min-width: 768px) {
     main > .container {
         width: 100%;

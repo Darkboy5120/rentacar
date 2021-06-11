@@ -6,7 +6,10 @@ const Modal = function (select) {
     let show = function () {
         element.classList.remove("hidden");
         document.activeElement.blur();
-        element.querySelector(".modal-body > button").focus();
+        let first_button = element.querySelector(".modal-body > button");
+        if (first_button != null) {
+            first_button.focus();
+        }
         state = true;
     }
     let hide = function () {
