@@ -197,7 +197,6 @@
             }).then(response => {
                 button.ratings.element.innerHTML = default_text_button;
                 let ratings_empty = document.querySelector("#ratings-empty");
-                console.log(response);
                 switch (response.code) {
                     case 0:
                         modal.car_options.object.hide();
@@ -212,9 +211,10 @@
 
                         let rating_layout = modal.car_ratings.object.element.querySelector(".modal-body");
                         for (let rating of response.data) {
-                            const r_puntuacion = (100 * (parseFloat(rating.puntuacion)/5));
-                            console.log(r_puntuacion);
-                            const r_comentarios = rating.comentarios;
+                            const r_puntuacion = 100 - (100 * (parseFloat(rating.puntuacion)/5));
+                            const r_comentarios = (rating.comentarios.length == 0)
+                                ? l_arr["home"]["txt_10"]
+                                : rating.comentarios;
 
                             let rating_node = document.createElement("DIV");
                             rating_node.classList.add("rating-card");
@@ -227,19 +227,31 @@
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                     </div>
-                                    <div class="rating-cover" id="rating-cover" style="width:${r_puntuacion}%;"></div>
+                                    <div class="rating-cover" id="rating-cover">
+                                        <div class="rating-stars-alt">
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </div>
                                 </div>
                                 <span class="comment">${r_comentarios}</span>
                             `;
-                            rating_layout.appendChild(rating_node);
-                        }
 
-                        /*ScrollReveal().reveal(car_node, {
-                            delay: 175,
-                            duration: 500,
-                            reset: true,
-                            scale: 0.85
-                        });*/
+                            let cover_el = rating_node.querySelector(".rating-cover");
+                            cover_el.style.clipPath = `inset(0 0 0 ${r_puntuacion}%)`;
+
+                            rating_layout.appendChild(rating_node);
+
+                            /*ScrollReveal().reveal(rating_node, {
+                                delay: 175,
+                                duration: 500,
+                                reset: true,
+                                scale: 0.85
+                            });*/
+                        }
                         break;
                     case -2:
                         modal.car_options.object.hide();
