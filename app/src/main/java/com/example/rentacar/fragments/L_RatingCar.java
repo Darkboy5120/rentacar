@@ -92,11 +92,14 @@ public class L_RatingCar extends Fragment implements View.OnClickListener,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        ll_spn_global.setVisibility(View.GONE);
                         try {
+                            Log.d("foo", response.toString());
                             JSONObject json = new JSONObject(response);
                             String code = json.getString("code");
                             if (code.equals("0")) {
-                                Global.printMessage(requireView(), getResources().getString(R.string.rate_success));
+                                requireActivity().setResult(0);
+                                requireActivity().finish();
                             } else {
                                 Global.printMessage(requireView(), getResources().getString(R.string.error_generic_request));
                             }

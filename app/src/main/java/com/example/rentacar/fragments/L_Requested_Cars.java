@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -66,8 +67,16 @@ public class L_Requested_Cars extends Fragment implements View.OnClickListener,
 
         ns_phase = new NiceSpinner(R.id.label_et_phase, R.id.et_phase, R.id.help_et_phase,
                 R.id.log_et_phase, false, requireView(), this);
-        want_rate("6");
+    }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == Global.SUCCESS_RATE_CODE && resultCode == 0) {
+            make_search_in_server(new StorageManager(requireContext()).getString("user_id"),
+                    "2");
+            Global.printMessage(requireView(), getResources().getString(R.string.rate_success));
+        }
     }
 
     @Override
@@ -261,7 +270,7 @@ public class L_Requested_Cars extends Fragment implements View.OnClickListener,
                     public void onClick(DialogInterface dialog, int id) {
                         Intent i = new Intent(requireContext(), L_RatingCar.class);
                         i.putExtra("carId", car_id);
-                        startActivityForResult(i, Global.SUCCESS_RENT_CODE);
+                        startActivityForResult(i, Global.SUCCESS_RATE_CODE);
 
                         //Datos a pasar
                         /*
