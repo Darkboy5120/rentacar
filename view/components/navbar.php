@@ -164,12 +164,12 @@
             }).catch(err => console.error(err)
             ).then(response => {
                 let badge = document.querySelector("#n_dd_notifications_title_badge");
+                let notifications_layout = document.querySelector("#notifications-list");
                 switch (response.code) {
                     case 0:
                         badge.classList.remove("hidden");
                         badge.textContent = response.data.length;
 
-                        let notifications_layout = document.querySelector("#notifications-list");
                         notifications_layout.querySelectorAll("span").forEach(e => {
                             notifications_layout.removeChild(e);
                         });
@@ -199,6 +199,9 @@
                     case -2:
                         badge.classList.add("hidden");
 
+                        notifications_layout.querySelectorAll("span").forEach(e => {
+                            notifications_layout.removeChild(e);
+                        });
                         let empty_element = document.createElement("span");
                         empty_element.setAttribute("tabindex", "1");
                         empty_element.textContent = "<?=$l_arr["global"]["txt_25"];?>";

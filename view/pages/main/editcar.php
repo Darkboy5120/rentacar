@@ -142,10 +142,11 @@ if ($mi0->result->num_rows === 0) {
                             </div>
                             <div class="input-layout">
                                 <label for="input-consunit"><?=$l_arr["newcar"]["txt_29"]?></label>
-                                <div class="input-field">
+                                <div class="input-field both-icons">
                                     <input class="input-secondary" id="input-consunit" type="text"
                                         placeholder="<?=$l_arr["newcar"]["txt_29"]?>">
                                     <span class="input-domain"><?=$l_arr["newcar"]["txt_30"]?></span>
+                                    <i class="fas fa-info-circle" data-support-tooltip-align="left" data-support-tooltip-content="<?=$l_arr["newcar"]["txt_53"];?>"></i>
                                 </div>
                                 <span class="input-log hidden"></span>
                             </div>
@@ -288,6 +289,7 @@ if ($mi0->result->num_rows === 0) {
         <script src="controller/components/alert-me.js"></script>
         <script src="controller/components/file-control.js"></script>
         <script src="controller/components/loading-screen.js"></script>
+        <script src="controller/components/support-tooltip.js"></script>
         <script src="controller/pages/editcar.js"></script>
     </body>
 </html>

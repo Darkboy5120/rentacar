@@ -31,7 +31,6 @@
                             <div class="input-field">
                                 <input class="input-primary" type="email" id="input-email"
                                     placeholder="<?php echo $l_arr["login"]["txt_0"];?>" autofocus>
-                                <i class="fas fa-envelope"></i>
                             </div>
                             <span class="input-log"></span>
                         </div>

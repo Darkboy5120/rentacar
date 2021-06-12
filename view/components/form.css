@@ -66,16 +66,23 @@ input::placeholder {
     font-size: 1rem;
     color: var(--iconColor);
 }
-.input-field > i[data-toggle-pass] {
+.input-field > i[data-toggle-pass],
+.input-field > i[data-support-tooltip-content] {
     cursor: pointer;
 }
-.input-field.both-icons > i[data-toggle-pass]:hover {
+.input-field.both-icons > i[data-toggle-pass]:hover,
+.input-field.both-icons > i[data-support-tooltip-content]:hover {
     background-color: var(--inputIconButtonHoverColor);
     border-radius: 50%;
 }
-.input-field.both-icons > i[data-toggle-pass] {
+.input-field.both-icons > i[data-toggle-pass],
+.input-field.both-icons > i[data-support-tooltip-content] {
     right: 2.5rem;
     padding: .5rem;
+}
+.input-field > .input-secondary + i[data-support-tooltip-content] {
+    right: 4rem !important;
+    font-size: .8rem !important;
 }
 .input-field > select > option {
     background-color: var(--selectBgColor);
@@ -281,6 +288,23 @@ input:focus {
 }
 .file-container > .file-button:hover {
 }
+
+.support-tooltip {
+    position: absolute;
+    display: flex;
+    top: 100%;
+    color: var(--textColor);
+    background-color: rgba(50, 50, 50, .8);
+    border: 1px solid var(--textColor);
+    width: 10rem;
+    padding: .5rem;
+    user-select: none;
+    z-index: 2;
+}
+[data-support-tooltip-align="left"] > .support-tooltip {
+    right: calc(100% - 1.5rem);
+}
+
 @media(min-width: 768px) {    
     .fields-wrapper > .input-layout {
         min-width: auto;

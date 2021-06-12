@@ -44,7 +44,6 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
                                 <div class="input-field">
                                     <input class="input-primary" type="text" id="input-firstname"
                                         placeholder="<?=$l_arr["register"]["txt_2"];?>" autofocus>
-                                    <i class="fas fa-address-card"></i>
                                 </div>
                                 <span class="input-log hidden"></span>
                             </div>
@@ -53,7 +52,6 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
                                 <div class="input-field">
                                     <input class="input-primary" type="text" id="input-lastname"
                                         placeholder="<?=$l_arr["register"]["txt_3"];?>">
-                                    <i class="fas fa-address-card"></i>
                                 </div>
                                 <span class="input-log hidden"></span>
                             </div>
@@ -63,7 +61,6 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
                             <div class="input-field">
                                 <input class="input-primary" type="email" id="input-email"
                                     placeholder="<?=$l_arr["register"]["txt_8"];?>">
-                                <i class="fas fa-envelope"></i>
                             </div>
                             <span class="input-log hidden"></span>
                         </div>
@@ -87,7 +84,6 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
                             <div class="input-field">
                                 <input class="input-primary" type="text" id="input-bussiness-name"
                                     placeholder="<?=$l_arr["register"]["txt_6"];?>">
-                                <i class="fas fa-address-card"></i>
                             </div>
                             <span class="input-log hidden"></span>
                         </div>
@@ -96,15 +92,15 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
                             <div class="input-field">
                                 <input class="input-primary" type="text" id="input-bussiness-phone"
                                     placeholder="<?=$l_arr["register"]["txt_7"];?>">
-                                <i class="fas fa-address-card"></i>
                             </div>
                             <span class="input-log hidden"></span>
                         </div>
                         <div class="input-layout">
                             <label for="input-bussiness-location"><?=$l_arr["register"]["txt_11"];?></label>
-                            <div class="input-field">
+                            <div class="input-field both-icons">
                                 <input class="input-primary" type="text" id="input-bussiness-location"
                                     placeholder="<?=$l_arr["register"]["txt_11"];?>">
+                                <i class="fas fa-info-circle" data-support-tooltip-content="<?=$l_arr["register"]["txt_13"];?>"></i>
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <span class="input-log hidden"></span>
@@ -132,6 +128,7 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
         <script src="controller/components/request-me.js"></script>
         <script src="controller/components/alert-me.js"></script>
         <script src="controller/components/loading-screen.js"></script>
+        <script src="controller/components/support-tooltip.js"></script>
         <script type="text/javascript"
           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBZZ6DHqFZwU9VfyTHoHGG7nYK_mdbBv8"></script>
         <script src="https://unpkg.com/location-picker/dist/location-picker.min.js"></script>

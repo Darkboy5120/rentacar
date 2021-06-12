@@ -115,6 +115,7 @@ $l_arr = array(
         "txt_10" => "Login",
         "txt_11" => "Bussiness location",
         "txt_12" => "Create an account",
+        "txt_13" => "In order to pick faster your bussiness direction, please allowus your location permission",
         "button_step1" => "Next step",
         "button_tostep1" => "Go back",
         "button_step2" => "Save",
@@ -190,6 +191,7 @@ $l_arr = array(
         "txt_50" => "Edit",
         "txt_51" => "Another pictures",
         "txt_52" => "Km/C",
+        "txt_53" => "Its the amount of kilometers the car travel with certain amount of fuel",
         "button_createcar" => "Save"
     ),
     "editcar" => array(
