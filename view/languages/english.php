@@ -247,7 +247,8 @@ $l_arr = array(
         "page_name" => "Bienvenido",
         "txt_0" => "¿Haven't sign in yet?",
         "txt_1" => "Sign in",
-        "txt_2" => "Sign up"
+        "txt_2" => "Sign up",
+        "txt_3" => "Thanks for downloading Rentacar :)"
     ),
     "newdriver" => array(
         "page_name" => "New driver",

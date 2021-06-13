@@ -30,6 +30,13 @@
                     onclick: () => {
                         location = "?p=register";
                     }
+                },
+                download_apk: {
+                    element: document.querySelector("#download-button"),
+                    onclick: () => {
+                        location = "/rentacar/model/apis/index.php?api=download_apk";
+                        new AlertMe(l_arr.global.mdal_err_t_0, l_arr.welcome.txt_3);
+                    }
                 }
             }
         }
@@ -54,7 +61,7 @@
 
     window.addEventListener("scroll", e => {
         document.querySelector("#w-header > .bg-text").style.top = (window.scrollY * .5) + "px";
-        document.querySelector("#w-header > .bg-text").style.opacity = (1 / (window.scrollY * .01));
+        document.querySelector("#w-header > .bg-text").style.opacity = (1 / (window.scrollY * .05));
         document.querySelector("#w-header > .bg-text > h1").style.paddingLeft = ((window.scrollY * .5) + "px");
         document.querySelector("#w-header > .bg-text > p").style.paddingRight = ((window.scrollY * .5) + "px");
     });

@@ -18,7 +18,6 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
         <script src="https://kit.fontawesome.com/0d40d8f017.js" crossorigin="anonymous"></script>
         <!-- Custom CSS -->
         <link rel="stylesheet" href="view/pages/styles/welcome.css">
-		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
         <title></title>
     </head>
@@ -35,30 +34,35 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
                         <p>Tu servicio de renta de autos</p>
                     </div>
                 </section>
-				<h1 id="titulo" data-aos="fade-right">Registro fácil y rápido</h1>
-				<div id="uno" data-aos="fade-right">
-				<h2 id="primero">Dentro de la aplicación, contamos con un sistema de registro
-				rápido y sencillo, para que el usuario pueda acceder a los beneficios que nuestra aplicación
-				ofrece al público.</h2>
-				<img id="registro" src="media\images\registro.gif" alt="Registro">
-				</div>
-				<h1 id="titulo" data-aos="fade-left">Calidad y precio</h1>
-				<div id="dos" data-aos="fade-left">
-				<img id="autos" src="media\images\listadeautos.gif" alt="Autos">
-				<h2 id="segundo">Contamos con una selección variada de automóviles, para los
-				gustos de nuestros usuarios, así como un muy buen precio, accesible y cómodo.</h2>
-				</div>
-				<h1 id="titulo" data-aos="fade-right">Sistema de busqueda</h1>
-				<div id="tres" data-aos="fade-right">
-				<h2 id="tercero">Tenemos una interfaz de búsqueda eficiente y fácil de llenar,
-				para poder ofrecer la mejor experiencia al usuario.</h2>
-				<img id="busqueda" src="media\images\busqueda.gif" alt="Busqueda">
-				</div>
-				<div id="descarga" data-aos="flip-down">
-					<center>
-					<img id="logodescarga" src="media\images\main_logo.png" alt="">
-					<h2>¡Instala la aplicación ahora!</h2></center>
-				</div>
+				<section class="s-info left">
+					<h2>Registro fácil y rápido</h1>
+					<div>
+						<p>Dentro de la aplicación, contamos con un sistema de registro
+						rápido y sencillo, para que el usuario pueda acceder a los beneficios que nuestra aplicación
+						ofrece al público.</p>
+						<img src="media\images\registro.gif" alt="Registro">
+					</div>
+				</section>
+				<section class="s-info right">
+					<h2>Calidad y precio</h2>
+					<div>
+						<img src="media\images\listadeautos.gif" alt="Autos">
+						<p>Contamos con una selección variada de automóviles, para los
+						gustos de nuestros usuarios, así como un muy buen precio, accesible y cómodo.</p>
+					</div>
+				</section>
+				<section class="s-info left">
+					<h2>Sistema de busqueda</h2>
+					<div>
+						<p id="tercero">Tenemos una interfaz de búsqueda eficiente y fácil de llenar,
+						para poder ofrecer la mejor experiencia al usuario.</p>
+						<img src="media\images\busqueda.gif" alt="Busqueda">
+					</div>
+				</section>
+				<button class="download-button" id="download-button" type="button">
+					<img src="media\images\main_logo.png" alt="">
+					¡Instala la aplicación ahora!
+				</button>
 
                 <?php include "view/components/footer.php";?>
             </div>
@@ -68,6 +72,23 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
 
         <script>
             l_arr = <?php echo json_encode($l_arr);?>;
+			
+			const fromLeft = {
+				distance: '150%',
+				origin: 'left',
+				reset: true,
+				duration: 1000,
+				opacity: null
+			};
+			const fromRight = {
+				distance: '150%',
+				origin: 'right',
+				reset: true,
+				duration: 1000,
+				opacity: null
+			};
+			ScrollReveal().reveal('.s-info.left', fromLeft);
+			ScrollReveal().reveal('.s-info.right', fromRight);
         </script>
         <script src="controller/components/modal.js"></script>
         <script src="controller/components/request-me.js"></script>
@@ -205,9 +226,5 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
 
 			}
         </script>
-		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-		<script>
-  			AOS.init();
-		</script>
     </body>
 </html>

@@ -177,7 +177,7 @@ input:focus {
     background-color: transparent;
     border: none;
 }
-.swutch-field > label {
+.switch-field > label {
     padding-left: .5rem;
 }
 .switch-field > .switch-off,
