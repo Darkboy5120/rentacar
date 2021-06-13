@@ -45,6 +45,23 @@
         <div class="modal-body">
             <div class="modal-row">
                 <div class="switch-layout">
+                    <button type="button" class="switch-field" id="switch-id">
+                        <i class="switch-on fas fa-toggle-on"></i>
+                        <i class="switch-off fas fa-toggle-off"></i>
+                    </button>
+                    <label for="switch-id"></label>
+                </div>
+                <div class="input-layout">
+                    <label for="input-id"><?=$l_arr["drivers"]["txt_3"]?></label>
+                    <div class="input-field">
+                        <input class="input-secondary" id="input-id" type="text"
+                            placeholder="<?=$l_arr["drivers"]["txt_3"]?>">
+                    </div>
+                    <span class="input-log hidden"></span>
+                </div>
+            </div>
+            <div class="modal-row">
+                <div class="switch-layout">
                     <button type="button" class="switch-field" id="switch-firstname">
                         <i class="switch-on fas fa-toggle-on"></i>
                         <i class="switch-off fas fa-toggle-off"></i>

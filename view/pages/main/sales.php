@@ -55,6 +55,7 @@ $user_name = $ci0->getSession("user_data")["nombre"];
     <script>
         const userName = "<?php echo $user_name;?>";
         const userLanguage = "<?php echo $ci0->getCookie("l");?>";
+        const saleId = "<?php echo (isset($_GET["sale"])) ? $_GET["sale"] : "";?>";
         l_arr = <?php echo json_encode($l_arr);?>;
     </script>
     <script src="controller/components/modal.js"></script>

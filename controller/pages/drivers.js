@@ -85,6 +85,9 @@
         },
         search_driver_info: {
             input: {
+                id: new FieldControl("#input-id", {
+                    regex: "[^0-9]+", min : 1, max : 10, optional : true
+                }),
                 firstname: new FieldControl("#input-firstname", {
                     regex: "[^A-Za-z]+", min : 1, max : 50, optional : true
                 }),
@@ -93,6 +96,10 @@
                 })
             },
             switch: {
+                id: {
+                    object: new SwitchControl("#switch-id", {value: true}),
+                    get_disable_obj: () => {return form.search_driver_info.input.id}
+                },
                 firstname: {
                     object: new SwitchControl("#switch-firstname", {value: true}),
                     get_disable_obj: () => {return form.search_driver_info.input.firstname}
@@ -162,16 +169,20 @@
     modal.driver_options.button.fire.element.onclick = () => {
         modal.driver_options.button.fire.onclick();
     }
+    form.search_driver_info.input.id.element.value = driverId;
+    form.search_driver_info.input.id.validate();
 
     let drivers_count = 0;
-    let empty_search = true;
+    let empty_search = false;
     let request = {
         load_more_drivers : (offset) => {
             new Promise((resolve, reject) => {
                 let input = form.search_driver_info.input;
+                let pk_driver = input.id.getValue();
                 let nombre = input.firstname.getValue();
                 let apellido = input.lastname.getValue();
                 if (empty_search) {
+                    pk_driver = ""
                     nombre = ""
                     apellido = "";
                     empty_search = false;
@@ -185,6 +196,7 @@
                     api: "get_drivers",
                     offset: offset,
                     limit: limit,
+                    pk_driver: pk_driver,
                     nombre: nombre,
                     apellido, apellido
                 }).then(response => {

@@ -119,7 +119,7 @@
             break;
     }
 
-    const check_notification = (pk_notificacion, fk_reporte_devolucion) => {
+    const check_notification = (pk_notificacion, fk_renta) => {
         new RequestMe().post("model/apis/", {
             api: "check_notification",
             pk_notificacion: pk_notificacion
@@ -127,7 +127,7 @@
         ).then(response => {
             switch (response.code) {
                 case 0:
-                    location = `?p=sales&report=${fk_reporte_devolucion}`
+                    location = `?p=sales&sale=${fk_renta}`
                     break;
             }
         });
@@ -176,7 +176,7 @@
 
                         for (let notification of response.data) {
                             const n_pk_notificacion = notification.pk_notificacion;
-                            const n_fk_reporte_devolucion = notification.fk_reporte_devolucion;
+                            const n_fk_renta = notification.fk_renta;
                             const n_message = (notification.todo_bien == "0")
                                 ? "<?=$l_arr["global"]["txt_26"];?>"
                                 : "<?=$l_arr["global"]["txt_27"];?>";
@@ -190,7 +190,7 @@
                             `;
 
                             n_element.addEventListener("click", () => {
-                                check_notification(n_pk_notificacion, n_fk_reporte_devolucion);
+                                check_notification(n_pk_notificacion, n_fk_renta);
                             });
 
                             notifications_layout.appendChild(n_element);

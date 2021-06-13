@@ -55,6 +55,7 @@ $user_name = $ci0->getSession("user_data")["nombre"];
     <script>
         const userName = "<?php echo $user_name;?>";
         const userLanguage = "<?php echo $ci0->getCookie("l");?>";
+        const driverId = "<?php echo (isset($_GET["driver"])) ? $_GET["driver"] : "";?>";
         l_arr = <?php echo json_encode($l_arr);?>;
     </script>
     <script src="controller/components/modal.js"></script>

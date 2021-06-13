@@ -23,6 +23,23 @@
         <div class="modal-body">
             <div class="modal-row">
                 <div class="switch-layout">
+                    <button type="button" class="switch-field" id="switch-sale">
+                        <i class="switch-on fas fa-toggle-on"></i>
+                        <i class="switch-off fas fa-toggle-off"></i>
+                    </button>
+                    <label for="switch-sale"></label>
+                </div>
+                <div class="input-layout">
+                    <label for="input-sale"><?=$l_arr["sales"]["txt_5"]?></label>
+                    <div class="input-field">
+                        <input class="input-secondary" id="input-sale" type="text"
+                            placeholder="<?=$l_arr["sales"]["txt_5"]?>">
+                    </div>
+                    <span class="input-log hidden"></span>
+                </div>
+            </div>
+            <div class="modal-row">
+                <div class="switch-layout">
                     <button type="button" class="switch-field" id="switch-mingain">
                         <i class="switch-on fas fa-toggle-on"></i>
                         <i class="switch-off fas fa-toggle-off"></i>

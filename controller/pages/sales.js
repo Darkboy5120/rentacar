@@ -61,6 +61,9 @@
         },
         search_sale_info: {
             input: {
+                sale: new FieldControl("#input-sale", {
+                    regex: "[^A-Za-z]+", min : 1, max : 50, optional : true
+                }),
                 mingain: new FieldControl("#input-mingain", {
                     regex: "[^A-Za-z]+", min : 1, max : 50, optional : true
                 }),
@@ -69,6 +72,10 @@
                 })
             },
             switch: {
+                sale: {
+                    object: new SwitchControl("#switch-sale", {value: true}),
+                    get_disable_obj: () => {return form.search_sale_info.input.sale}
+                },
                 mingain: {
                     object: new SwitchControl("#switch-mingain", {value: true}),
                     get_disable_obj: () => {return form.search_sale_info.input.mingain}
@@ -132,17 +139,21 @@
     modal.sale_info.button.sale_info_return.element.onclick = () => {
         modal.sale_info.button.sale_info_return.onclick();
     }
+    form.search_sale_info.input.sale.element = saleId;
+    form.search_sale_info.input.sale.validate();
 
     let sales_count = 0;
-    let empty_search = true;
+    let empty_search = false;
     let request = {
         load_more_sales : (offset) => {
             new Promise((resolve, reject) => {
                 let input = form.search_sale_info.input;
+                let sale = input.sale.getValue();
                 let mingain = input.mingain.getValue();
                 let maxgain = input.maxgain.getValue();
                 if (empty_search) {
-                    mingain = ""
+                    sale = "";
+                    mingain = "";
                     maxgain = "";
                     empty_search = false;
                 }
@@ -155,6 +166,7 @@
                     api: "get_sales",
                     offset: offset,
                     limit: limit,
+                    sale: sale,
                     mingain: mingain,
                     maxgain, maxgain
                 }).then(response => {

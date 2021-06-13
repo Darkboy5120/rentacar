@@ -15,6 +15,7 @@ $mi0->query("
     SELECT
         notificacion_reporte.fk_reporte_devolucion,
         reporte_devolucion.todo_bien,
+        reporte_devolucion.fk_renta,
         notificacion.pk_notificacion,
         notificacion.fecha_hora
     FROM

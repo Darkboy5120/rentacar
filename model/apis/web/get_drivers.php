@@ -4,6 +4,7 @@ require "../utils/user_validation.php";
 
 if (!isset($_POST["offset"])
     || !isset($_POST["limit"])
+    || !isset($_POST["pk_driver"])
     || !isset($_POST["nombre"])
     || !isset($_POST["apellido"])
     ) {
@@ -26,6 +27,9 @@ if ($limit > $max_limit) {
 }
 $double_limit = $limit * 2;
 
+$pk_driver = $_POST["pk_driver"];
+$pk_driver_sql = (strlen($pk_driver) > 0)
+    ? "conductor.fk_usuario = '$pk_driver'" : "TRUE";
 $nombre = $_POST["nombre"];
 $nombre_sql = (strlen($nombre) > 0)
     ? "usuario.nombre = '$nombre'" : "TRUE";
@@ -48,7 +52,7 @@ $mi0->query("
     ON
         (usuario.pk_usuario = usuario_foto.fk_usuario AND conductor.fk_usuario = usuario.pk_usuario)
     WHERE conductor.fk_administrador = ? AND conductor.despedido = '0' AND $nombre_sql
-        AND $apellido_sql
+        AND $apellido_sql AND $pk_driver_sql
     ORDER BY usuario.pk_usuario ASC
     LIMIT $offset, $double_limit",
     $admin_id

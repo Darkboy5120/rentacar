@@ -4,6 +4,9 @@ require "../utils/user_validation.php";
 
 if (!isset($_POST["offset"])
     || !isset($_POST["limit"])
+    || !isset($_POST["sale"])
+    || !isset($_POST["mingain"])
+    || !isset($_POST["maxgain"])
     ) {
     $mi0->abort(-1, NULL);
 }
@@ -24,6 +27,16 @@ if ($limit > $max_limit) {
 }
 $double_limit = $limit * 2;
 
+$sale = $_POST["sale"];
+$sale_sql = (strlen($sale) > 0)
+    ? "renta.pk_renta = '$sale'" : "TRUE";
+$mingain = $_POST["mingain"];
+$mingain_sql = (strlen($mingain) > 0)
+    ? "renta.costo >= '$mingain'" : "TRUE";
+$maxgain = $_POST["maxgain"];
+$maxgain_sql = (strlen($maxgain) > 0)
+    ? "renta.costo <= '$maxgain'" : "TRUE";
+
 $mi0->query("
     SELECT
         renta.pk_renta,
@@ -40,6 +53,7 @@ $mi0->query("
         (renta.pk_renta = reporte_devolucion.fk_renta
             AND conductor.fk_usuario = renta.fk_conductor)
     WHERE conductor.fk_administrador = ? AND renta.fase = '4'
+        AND $sale_sql AND $mingain_sql AND $maxgain_sql
     ORDER BY reporte_devolucion.fecha_hora DESC
     LIMIT $offset, $double_limit",
     $admin_id
