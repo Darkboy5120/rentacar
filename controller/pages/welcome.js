@@ -35,7 +35,7 @@
                     element: document.querySelector("#download-button"),
                     onclick: () => {
                         location = "/rentacar/model/apis/index.php?api=download_apk";
-                        new AlertMe(l_arr.global.mdal_err_t_0, l_arr.welcome.txt_3);
+                        new AlertMe(l_arr.global.mdal_suc_t_0, l_arr.welcome.txt_3);
                     }
                 }
             }

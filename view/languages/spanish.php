@@ -246,7 +246,8 @@ $l_arr = array(
         "txt_9" => "Ganamcia maxima",
         "txt_10" => "No se encontraron ventas en la búsquedad",
         "txt_11" => "Aun no se ha reportado ninguna venta",
-        "txt_12" => "Grafica de ventas"
+        "txt_12" => "Grafica de ventas",
+        "txt_13" => "No hay datos para graficar"
     ),
     "welcome" => array(
         "page_name" => "Bienvenido",

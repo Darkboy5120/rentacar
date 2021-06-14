@@ -36,6 +36,43 @@
         });
     });*/
 
+    const draw_graph = (data) => {
+        let graph_empty = document.querySelector("#sale-chart .modal-body > .graph-empty");
+        if (data == null) {
+            console.log("borrado");
+            graph_empty.classList.remove("hidden");
+            return;
+        }
+        graph_empty.classList.add("hidden");
+
+        let data_for_table = [
+            ["Fecha", "Ventas"]
+        ];
+        for (let sale of data.sales) {
+            const s_ganancia = sale.costo;
+            const s_fecha_hora = sale.fecha_hora.slice(0, 10).replace(/-/g, "/");
+            data_for_table.push([
+                s_fecha_hora, parseInt(s_ganancia)
+            ]);
+        }
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable(data_for_table);
+
+            var options = {
+            title: 'Ventas',
+            hAxis: {title: 'Fecha',  titleTextStyle: {color: '#333'}},
+            vAxis: {minValue: 0}
+            };
+
+            var chart = new google.visualization.AreaChart(document.querySelector("#sale-chart .modal-body > .table"));
+            chart.draw(data, options);
+        }
+    }
+
     let modal = {
         sale_info: {
             object: new Modal("#saleInfo"),
@@ -72,30 +109,6 @@
                 action_chart_sale: {
                     element: document.querySelector("#action-chart-sale"),
                     onclick: () => {
-                        google.charts.load('current', {'packages':['corechart']});
-                        google.charts.setOnLoadCallback(drawChart);
-
-                        function drawChart() {
-                            var data = google.visualization.arrayToDataTable([
-                            ['Year', 'Sales', 'Expenses'],
-                            ['2013',  1000,      400],
-                            ['2014',  1170,      460],
-                            ['2015',  660,       1120],
-                            ['2016',  1030,      540]
-                            ]);
-
-                            var options = {
-                            title: 'Company Performance',
-                            hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
-                            vAxis: {minValue: 0}
-                            };
-
-                            var chart = new google.visualization.AreaChart(document.querySelector("#sale-chart .modal-body"));
-                            chart.draw(data, options);
-                        }
-
-
-                        modal.sale_chart.object.show();
                     }
                 }
             }
@@ -214,6 +227,11 @@
                     button.search.element.innerHTML = default_text_button;
                     switch (response.code) {
                         case 0:
+                            form.global.button.action_chart_sale.onclick = () => {
+                                draw_graph(response.data);
+                                modal.sale_chart.object.show();
+                            }
+
                             sales_count += response.data.sales.length;
                             let sales_layout = document.querySelector("#cards-sales");
                             for (let sale_layout of response.data.sales) {
@@ -291,6 +309,11 @@
                             }
                             break;
                         case -2:
+                            form.global.button.action_chart_sale.onclick = () => {
+                                draw_graph(response.data);
+                                modal.sale_chart.object.show();
+                            }
+
                             let cards_empty = document.querySelector("#cards-sales > .cards-empty");
                             cards_empty.classList.remove("hidden");
                             resolve(response.code);

@@ -83,6 +83,8 @@
             <button><i class="fas fa-times"></i></button>
         </div>
         <div class="modal-body">
+            <span class="graph-empty hidden"><?=$l_arr["sales"]["txt_13"]?></span>
+            <div class="table"></div>
         </div>
     </div>
 </div>
