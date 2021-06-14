@@ -76,3 +76,13 @@
         </div>
     </div>
 </div>
+<div class="modal hidden" id="sale-chart">
+    <div class="modal-card-big">
+        <div class="modal-header">
+            <h2><?=$l_arr["sales"]["txt_12"]?></h2>
+            <button><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+        </div>
+    </div>
+</div>

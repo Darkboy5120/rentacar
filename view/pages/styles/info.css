@@ -2,8 +2,6 @@
 @import url("../../components/navbar.css");
 @import url("../../components/dropdown.css");
 @import url("../../components/footer.css");
-@import url("../../components/sales-cards.css");
-@import url("../../components/pagination.css");
 @import url("../../components/modal.css");
 @import url("../../components/form.css");
 html, body {
@@ -36,26 +34,12 @@ main > .container {
     display: flex;
     flex-direction: row;
 }
-.cards-sales {
-    flex-grow: 1;
-    align-content: flex-start;
+.content {
+    position: relative;
+    flex-direction: column;
 }
 h1 {
     color: var(--textColor);
-}
-.load-more > button {
-    padding: 2% 5% 2% 5%;
-}
-.cards-empty {
-    color: var(--carCardEmptyColor);
-    position: absolute;
-    justify-self: center;
-    width: 100%;
-    text-align: center;
-    align-self: center;
-}
-#sale-chart .modal-body > div {
-    width: 100%;
 }
 @media(min-width: 768px) {
     main > .container {

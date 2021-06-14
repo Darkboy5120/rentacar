@@ -14,12 +14,19 @@
     let navbar_right_relative = document.querySelector("#relative-n-dd-reference");
     let navbar_right_list = document.querySelector("#relative-n-dd-reference").parentNode;
     let navbar_search = document.createElement("li");
+    let navbar_chart = document.createElement("li");
     navbar_search.innerHTML = `
         <button id="action-search-sale">
             <i class="fas fa-search"></i>
         </button>
     `;
+    navbar_chart.innerHTML = `
+        <button id="action-chart-sale">
+            <i class="fas fa-chart-pie"></i>
+        </button>
+    `;
     navbar_right_list.insertBefore(navbar_search, navbar_right_relative);
+    navbar_right_list.insertBefore(navbar_chart, navbar_right_relative);
 
     //const modalSaleInfo = new Modal("#saleInfo");
 
@@ -45,6 +52,11 @@
                     element: document.querySelector("#sale-filter-submit")
                 }
             }
+        },
+        sale_chart: {
+            object: new Modal("#sale-chart"),
+            button: {
+            }
         }
     }
 
@@ -55,6 +67,35 @@
                     element: document.querySelector("#action-search-sale"),
                     onclick: () => {
                         modal.sale_search.object.show();
+                    }
+                },
+                action_chart_sale: {
+                    element: document.querySelector("#action-chart-sale"),
+                    onclick: () => {
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
+
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                            ['Year', 'Sales', 'Expenses'],
+                            ['2013',  1000,      400],
+                            ['2014',  1170,      460],
+                            ['2015',  660,       1120],
+                            ['2016',  1030,      540]
+                            ]);
+
+                            var options = {
+                            title: 'Company Performance',
+                            hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+                            vAxis: {minValue: 0}
+                            };
+
+                            var chart = new google.visualization.AreaChart(document.querySelector("#sale-chart .modal-body"));
+                            chart.draw(data, options);
+                        }
+
+
+                        modal.sale_chart.object.show();
                     }
                 }
             }

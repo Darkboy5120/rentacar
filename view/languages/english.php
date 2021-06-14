@@ -88,6 +88,9 @@ $l_arr = array(
         "txt_33" => "hours",
         "txt_34" => "day",
         "txt_35" => "days",
+        "txt_36" => "While navigating you are acepting the cookies we use to improve your experience.",
+        "txt_37" => "More infomation",
+        "txt_38" => "Understood"
     ),
     "login" => array(
         "page_name" => "Login",
@@ -242,7 +245,8 @@ $l_arr = array(
         "txt_8" => "Minimum gain",
         "txt_9" => "Maximum gain",
         "txt_10" => "No sales were found in the search",
-        "txt_11" => "No sales haven reported yet"
+        "txt_11" => "No sales haven reported yet",
+        "txt_12" => "Sales graph"
     ),
     "welcome" => array(
         "page_name" => "Bienvenido",
@@ -261,4 +265,7 @@ $l_arr = array(
         "txt_5" => "Password",
         "txt_6" => "Profile image"
     ),
+    "info" => array(
+        "page_name" => "Infomation"
+    )
 );

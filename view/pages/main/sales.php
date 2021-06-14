@@ -52,6 +52,7 @@ $user_name = $ci0->getSession("user_data")["nombre"];
         <?php include "view/pages/modals/sales.php";?>
         
     </body>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
         const userName = "<?php echo $user_name;?>";
         const userLanguage = "<?php echo $ci0->getCookie("l");?>";

@@ -60,6 +60,13 @@
         </ul>
     </div>
 </nav>
+<audio id="audio-notification" style="display:none;" controls>
+    <source type="audio/wav" src="media/sounds/notification.wav">
+</audio>
+<div id="privacy-policy">
+    <p><?=$l_arr["global"]["txt_36"];?>
+        <a href="?p=info#privacy-policy"><?=$l_arr["global"]["txt_37"];?></a> <button type="button"><?=$l_arr["global"]["txt_38"];?></button></p>
+</div>
 <script>
     document.querySelectorAll("[data-accesibility-trigger]").forEach(e => {
         e.addEventListener("keyup", event => {
@@ -157,6 +164,8 @@
         return time_arr[usable_time] + " " + time_strings_arr[usable_time][usable_string];
     }
 
+    let last_notification_length = null;
+
     const load_notifications = () => {
         if (session_is_active == 0) {
             new RequestMe().post("model/apis/", {
@@ -167,6 +176,9 @@
                 let notifications_layout = document.querySelector("#notifications-list");
                 switch (response.code) {
                     case 0:
+                        if (last_notification_length == response.data.length) {
+                                return;
+                        }
                         badge.classList.remove("hidden");
                         badge.textContent = response.data.length;
 
@@ -195,6 +207,13 @@
 
                             notifications_layout.appendChild(n_element);
                         }
+
+                        //notification sound
+                        if (last_notification_length < response.data) {
+                            document.querySelector("#audio-notification").play();
+                        }
+
+                        last_notification_length = response.data.length;
                         break;
                     case -2:
                         badge.classList.add("hidden");
@@ -217,7 +236,20 @@
     let session_is_active = "<?php echo $ci0->existSession("user_data") ? "0" : "1";?>";
     if (session_is_active != 0) {
         document.querySelector("#relative-n-dd-notifications").classList.add("hidden");;
+    } else {
+        document.querySelector("#privacy-policy").classList.add("hidden");
     }
+
+    let privacy_policy = "<?php echo $ci0->existCookie("pp")
+        ? $ci0->getCookie("pp") : "0";?>";
+    if (privacy_policy == "1") {
+        document.querySelector("#privacy-policy").classList.add("hidden");
+    }
+
+    document.querySelector("#privacy-policy button").addEventListener("click", () => {
+        document.querySelector("#privacy-policy").classList.add("hidden");
+        document.cookie = "pp=0";
+    });
     
     window.setInterval(() => {
         load_notifications();

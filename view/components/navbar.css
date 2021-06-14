@@ -189,7 +189,7 @@
     align-items: center;
     position: fixed;
     padding: 0 1rem 0 1rem;
-    bottom: 5%;
+    bottom: 15%;
     left: 0;
     height: 5%;
     background-color: var(--fixedLocationBgColor);
@@ -205,6 +205,24 @@
     /* May need more space inside */
     left: -65%;
 }
+
+#privacy-policy {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--textColorAlt);
+    color: var(--textColor);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    z-index: 3;
+    padding: 0 2rem;
+    text-align: center;
+}
+#privacy-policy a:visited {
+    color: var(--textColor) !important;
+}
+
 @media(min-width: 768px) {
     .navbar ul {
         padding: 0 10% 0 6% !important;
@@ -213,11 +231,11 @@
         display: block;
     }
     .fixed-location {
+        bottom: 10%;
     }
     .navbar-location {
         display: flex !important;
     }
 }
 @media(min-width: 426px) and (max-width: 767px) {
-    
 }

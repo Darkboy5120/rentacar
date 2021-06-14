@@ -16,6 +16,11 @@ if (!$ci0->existCookie("c")) {
     $ci0->setCookie("c", $CURRENCY);
 }
 
+$DEFAULT_PP = "0";
+if (!$ci0->existCookie("pp")) {
+    $ci0->setCookie("pp", $DEFAULT_PP);
+}
+
 if (!$ci0->existCookie("l")) {
     $ci0->setCookie("l", $LANGUAGE);
 } else if (!array_key_exists($ci0->getCookie("l"), $lang_path)) {
@@ -35,9 +40,6 @@ if (!isset($_GET["p"])) {
 }
 
 switch ($_GET["p"]) {
-    case "carview":
-        require "view/pages/main/carview.php";
-        break;
     case "login":
         require "view/pages/main/login.php";
         break;
@@ -71,6 +73,9 @@ switch ($_GET["p"]) {
         break;
     case "newdriver":
         require "view/pages/main/newdriver.php";
+        break;
+    case "info":
+        require "view/pages/main/info.php";
         break;
     default:
         header("Location: ?p=login");

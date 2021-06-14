@@ -88,6 +88,9 @@ $l_arr = array(
         "txt_33" => "horas",
         "txt_34" => "dia",
         "txt_35" => "dias",
+        "txt_36" => "Al navegar en este sitio aceptas las cookies que utilizamos para mejorar tu experiencia.",
+        "txt_37" => "Más información",
+        "txt_38" => "Entendido"
     ),
     "login" => array(
         "page_name" => "Login",
@@ -242,7 +245,8 @@ $l_arr = array(
         "txt_8" => "Ganancia minima",
         "txt_9" => "Ganamcia maxima",
         "txt_10" => "No se encontraron ventas en la búsquedad",
-        "txt_11" => "Aun no se ha reportado ninguna venta"
+        "txt_11" => "Aun no se ha reportado ninguna venta",
+        "txt_12" => "Grafica de ventas"
     ),
     "welcome" => array(
         "page_name" => "Bienvenido",
@@ -261,4 +265,7 @@ $l_arr = array(
         "txt_5" => "Contraseña",
         "txt_6" => "Imagen de perfil"
     ),
+    "info" => array(
+        "page_name" => "Información"
+    )
 );
