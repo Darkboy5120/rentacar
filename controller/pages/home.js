@@ -210,8 +210,16 @@
                         );
 
                         let rating_layout = modal.car_ratings.object.element.querySelector(".modal-body");
+                        let global_result_tag = document.createElement("div");
+                        global_result_tag.classList.add("rating-card");
+                        let global_result = 2.5;
+                        let global_result_raw = 0;
+
+                        rating_layout.appendChild(global_result_tag);
+
                         for (let rating of response.data) {
-                            const r_puntuacion = 100 - (100 * (parseFloat(rating.puntuacion)/5));
+                            const r_puntuacion = Math.abs(100 * (parseFloat(rating.puntuacion)/5));
+                            global_result_raw += r_puntuacion;
                             const r_comentarios = (rating.comentarios.length == 0)
                                 ? l_arr["home"]["txt_10"]
                                 : rating.comentarios;
@@ -252,6 +260,15 @@
                                 scale: 0.85
                             });*/
                         }
+
+                        if (global_result_raw > 0) {
+                            global_result = (global_result_raw / response.data.length) / 20;
+                        }
+                        global_result_tag.innerHTML = `
+                            <span>${l_arr["home"]["txt_11"]} - ${global_result}<i class="fas fa-star"></i>
+                            </span>
+                        `;
+                        
                         break;
                     case -2:
                         modal.car_options.object.hide();

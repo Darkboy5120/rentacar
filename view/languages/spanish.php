@@ -134,6 +134,7 @@ $l_arr = array(
         "txt_8" => "Calificaciones",
         "txt_9" => "No se encontraron calificaciones",
         "txt_10" => "Sin comentarios",
+        "txt_11" => "Calificación global",
         "button_loadmore" => "Cargar más"
     ),
     "newcar" => array(

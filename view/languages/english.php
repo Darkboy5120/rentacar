@@ -134,6 +134,7 @@ $l_arr = array(
         "txt_8" => "Ratings",
         "txt_9" => "No ratings were found",
         "txt_10" => "No comment",
+        "txt_11" => "Global calification",
         "button_loadmore" => "Load more"
     ),
     "newcar" => array(

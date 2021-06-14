@@ -63,6 +63,12 @@ h1 {
     width: 80%;
     position: relative;
 }
+.modal-body > .rating-card > span:first-child {
+    text-align: center;
+}
+.modal-body > .rating-card > span:first-child > i {
+    color: gold;
+}
 .modal-body > .rating-card > .rating {
     position: relative;
     width: 100%;
