@@ -34,9 +34,28 @@ main > .container {
     display: flex;
     flex-direction: row;
 }
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+}
+.content-index {
+    width: 30%;
+    display: none;
+    padding: 2rem 0;
+    background-color: rgba(50, 50, 50, .5);
+    border-right: 5px solid var(--textColorAlt);
+    border-bottom: 5px solid var(--textColorAlt);
+}
+.content-index > a:visited,
+.content-index > a {
+    color: var(--textColor) !important;
+}
 .content {
-    position: relative;
-    flex-direction: column;
+    padding: 0 2rem;
+    color: var(--textColor);
+}
+.content > .content-item {
 }
 h1 {
     color: var(--textColor);
@@ -44,6 +63,19 @@ h1 {
 @media(min-width: 768px) {
     main > .container {
         width: 100%;
+    }
+    .content-wrapper {
+        grid-template-columns: 1fr 1fr;
+    }
+    .content-index {
+        display: block;
+    }
+    .content-index > a {
+        display: block;
+        padding: .5rem 1rem;
+    }
+    .content-index > a:hover {
+        background-color: rgba(50, 50, 50);
     }
 }
 @media(min-width: 425px) and (max-width: 767px) {

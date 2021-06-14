@@ -63,7 +63,7 @@
 <audio id="audio-notification" style="display:none;" controls>
     <source type="audio/wav" src="media/sounds/notification.wav">
 </audio>
-<div id="privacy-policy">
+<div id="privacy-policy-tooltip">
     <p><?=$l_arr["global"]["txt_36"];?>
         <a href="?p=info#privacy-policy"><?=$l_arr["global"]["txt_37"];?></a> <button type="button"><?=$l_arr["global"]["txt_38"];?></button></p>
 </div>
@@ -237,17 +237,17 @@
     if (session_is_active != 0) {
         document.querySelector("#relative-n-dd-notifications").classList.add("hidden");;
     } else {
-        document.querySelector("#privacy-policy").classList.add("hidden");
+        document.querySelector("#privacy-policy-tooltip").classList.add("hidden");
     }
 
     let privacy_policy = "<?php echo $ci0->existCookie("pp")
         ? $ci0->getCookie("pp") : "0";?>";
     if (privacy_policy == "1") {
-        document.querySelector("#privacy-policy").classList.add("hidden");
+        document.querySelector("#privacy-policy-tooltip").classList.add("hidden");
     }
 
-    document.querySelector("#privacy-policy button").addEventListener("click", () => {
-        document.querySelector("#privacy-policy").classList.add("hidden");
+    document.querySelector("#privacy-policy-tooltip button").addEventListener("click", () => {
+        document.querySelector("#privacy-policy-tooltip").classList.add("hidden");
         document.cookie = "pp=0";
     });
     

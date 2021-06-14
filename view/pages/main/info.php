@@ -26,11 +26,16 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
                 <span><?=$l_arr["info"]["page_name"]?> <span data-location=""></span></span>
             </div>
             <div class="container">
-                <section class="content">
-                    <section class="content-item" id="privacy-policy">
-                        <h2>Politica de privadidad</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum beatae deserunt ex eos minima natus nisi porro deleniti praesentium animi! Harum fuga aperiam rerum vitae laboriosam nesciunt eligendi unde! Deleniti.</p>
-                    </section>
+                <section class="content-wrapper">
+                    <div class="content-index">
+                        <a href="#privacy-policy">Politica de privacidad</a>
+                    </div>
+                    <div class="content">
+                        <section class="content-item" id="privacy-policy">
+                            <h2>Politica de privacidad</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores itaque enim sunt dignissimos beatae, ratione provident aliquid totam, cum, officia nesciunt debitis voluptatibus quos unde. Quaerat suscipit eius hic in.</p>
+                        </section>
+                    </div>
                 </section>
                 <?php include "view/components/footer.php";?>
             </div>
