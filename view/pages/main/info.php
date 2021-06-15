@@ -1,5 +1,6 @@
 <?php
 $ci0->setSession("securitykey", $ci0->getSecurityKey());
+$active_session = ($ci0->existSession("user_data")) ? "1" : "0";
 ?>
 <!doctype html>
 <html lang="en">
@@ -45,7 +46,11 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
     </body>
     <script>
         const userLanguage = "<?php echo $ci0->getCookie("l");?>";
+        const activeSession = "<?php echo $active_session;?>";
         l_arr = <?php echo json_encode($l_arr);?>;
+        let userName = "<?php echo ($active_session == "1")
+            ? $ci0->getSession("user_data")["nombre"] : "0";?>";
+        if (userName == "0") userName = l_arr["welcome"]["txt_0"];
     </script>
     <script src="controller/components/field-control.js"></script>
     <script src="controller/components/switch-control.js"></script>

@@ -6,11 +6,23 @@
         element.textContent = pageName;
     });
     document.querySelectorAll("[data-username]").forEach(e => {
-        e.classList.add("hidden");
+        e.textContent = userName;
     });
-    document.querySelectorAll("[data-session-variant='1']").forEach(e => {
-        e.classList.add("hidden");
-    });
+    if (activeSession == "1") {
+        document.querySelectorAll("[data-session-variant='1']").forEach(e => {
+            e.classList.remove("hidden");
+        });
+        document.querySelectorAll("[data-session-variant='2']").forEach(e => {
+            e.classList.add("hidden");
+        });
+    } else {
+        document.querySelectorAll("[data-session-variant='1']").forEach(e => {
+            e.classList.add("hidden");
+        });
+        document.querySelectorAll("[data-session-variant='2']").forEach(e => {
+            e.classList.remove("hidden");
+        });
+    }
 
     hideLoadingScreen();
 })();
