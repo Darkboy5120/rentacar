@@ -81,7 +81,7 @@ if ($mi0->result->num_rows === 0) {
                                 <div class="input-field">
                                     <input class="input-secondary" id="input-price" type="text"
                                         placeholder="<?=$l_arr["newcar"]["txt_9"]?>">
-                                    <span class="input-domain">MXN</span>
+                                    <span class="input-domain" id="price-domain">MXN</span>
                                 </div>
                                 <span class="input-log hidden"></span>
                             </div>
@@ -145,8 +145,8 @@ if ($mi0->result->num_rows === 0) {
                                 <div class="input-field both-icons">
                                     <input class="input-secondary" id="input-consunit" type="text"
                                         placeholder="<?=$l_arr["newcar"]["txt_29"]?>">
-                                    <span class="input-domain"><?=$l_arr["newcar"]["txt_30"]?></span>
                                     <i class="fas fa-info-circle" data-support-tooltip-align="left" data-support-tooltip-content="<?=$l_arr["newcar"]["txt_53"];?>"></i>
+                                    <span class="input-domain"><?=$l_arr["newcar"]["txt_30"]?></span>
                                 </div>
                                 <span class="input-log hidden"></span>
                             </div>
@@ -280,6 +280,7 @@ if ($mi0->result->num_rows === 0) {
 
         <script>
             const userName = "<?php echo $user_name;?>";
+            const userCurrency = "<?php echo $ci0->getCookie("c");?>";
             const carId = "<?php echo $car_id;?>";
             l_arr = <?php echo json_encode($l_arr);?>;
         </script>

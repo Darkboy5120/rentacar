@@ -39,7 +39,6 @@
     const draw_graph = (data) => {
         let graph_empty = document.querySelector("#sale-chart .modal-body > .graph-empty");
         if (data == null) {
-            console.log("borrado");
             graph_empty.classList.remove("hidden");
             return;
         }
@@ -49,7 +48,8 @@
             ["Fecha", "Ventas"]
         ];
         for (let sale of data.sales) {
-            const s_ganancia = sale.costo;
+            const s_ganancia = (userCurrency == "mxn")
+                ? sale.costo : (sale.costo / dolar_value).toFixed(2);
             const s_fecha_hora = sale.fecha_hora.slice(0, 10).replace(/-/g, "/");
             data_for_table.push([
                 s_fecha_hora, parseInt(s_ganancia)
@@ -198,7 +198,19 @@
 
     let sales_count = 0;
     let empty_search = false;
+    let dolar_value = null;
     let request = {
+        get_dolar : () => {
+            return new Promise((resolve, reject) => {
+                new RequestMe().get("https://www.banxico.org.mx/SieAPIRest/service/v1/series/SF43718/datos/oportuno/", {
+                    token: "4792c8af9e227ad9f40f3e9244897afa654fda1c26502b7da7fdb59b1fa1db67"
+                }).then(response => {
+                    const dolar_en_peso = response.bmx.series[0].datos[0].dato;
+                    dolar_value = parseFloat(dolar_en_peso);
+                    resolve(0);
+                });
+            });
+        },
         load_more_sales : (offset) => {
             new Promise((resolve, reject) => {
                 let input = form.search_sale_info.input;
@@ -236,13 +248,15 @@
                             let sales_layout = document.querySelector("#cards-sales");
                             for (let sale_layout of response.data.sales) {
                                 const s_layout_id = sale_layout.pk_renta;
-                                const s_ganancia = sale_layout.costo;
+                                const s_ganancia = (userCurrency == "mxn")
+                                    ? sale_layout.costo : (sale_layout.costo / dolar_value);
+                                const s_currency = (userCurrency == "mxn") ? "MXN" : "USD";
                                 const s_fecha_hora = sale_layout.fecha_hora.slice(0, 10).replace(/-/g, "/");
                                 const s_car_id = sale_layout.fk_auto;
                                 const s_driver_id = sale_layout.fk_conductor;
                                 let sale_html = `
                                     <span>${s_layout_id}</span>
-                                    <span>$${s_ganancia}</span>
+                                    <span>$${s_ganancia.toFixed(2)} ${s_currency}</span>
                                     <span>${s_fecha_hora}</span>
                                 `;
                                 let sale_node = document.createElement("button");
@@ -347,11 +361,13 @@
         });
     }
 
-    Promise.all([request.load_more_sales(0)]
-    ).then(values => {
-        window.setTimeout(() => {
-            hideLoadingScreen();
-        }, 1000);
+    request.get_dolar().then(r => {
+        Promise.all([request.load_more_sales(0)]
+        ).then(values => {
+            window.setTimeout(() => {
+                hideLoadingScreen();
+            }, 1000);
+        });
     });
 
 })();

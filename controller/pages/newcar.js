@@ -73,7 +73,8 @@
                         let select = form.car_info.select;
                         new RequestMe().post("model/apis/", {
                             api: "create_car",
-                            precio: input.price.element.value,
+                            precio: (userCurrency == "mxn")
+                                ? input.price.element.value : (input.price.element.value * dolar_value),
                             puertas: input.doors.element.value,
                             asientos: input.chairs.element.value,
                             unidad_consumo: input.consunit.element.value,
@@ -159,7 +160,22 @@
             ? l_arr["newcar"]["txt_52"] : l_arr["newcar"]["txt_30"];
     });
 
+    document.querySelector("#price-domain").textContent = (userCurrency == "mxn")
+        ? "MXN" : "USD";
+
+    let dolar_value = null;
     let request = {
+        get_dolar : () => {
+            return new Promise((resolve, reject) => {
+                new RequestMe().get("https://www.banxico.org.mx/SieAPIRest/service/v1/series/SF43718/datos/oportuno/", {
+                    token: "4792c8af9e227ad9f40f3e9244897afa654fda1c26502b7da7fdb59b1fa1db67"
+                }).then(response => {
+                    const dolar_en_peso = response.bmx.series[0].datos[0].dato;
+                    dolar_value = parseFloat(dolar_en_peso);
+                    resolve(0);
+                });
+            });
+        },
         get_car_brands_models: new Promise((resolve, reject) => {
             new RequestMe().post("model/apis/", {
                 api: "get_car_brands_models"
@@ -232,10 +248,12 @@
         })
     }
 
-    Promise.all([request.get_car_brands_models, request.get_car_colors]
-    ).then(values => {
-        window.setTimeout(() => {
-            hideLoadingScreen();
-        }, 1000);
+    request.get_dolar().then(r => {
+        Promise.all([request.get_car_brands_models, request.get_car_colors]
+        ).then(values => {
+            window.setTimeout(() => {
+                hideLoadingScreen();
+            }, 1000);
+        });
     });
 })();

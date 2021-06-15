@@ -66,7 +66,7 @@ $user_name = $ci0->getSession("user_data")["nombre"];
                                 <div class="input-field">
                                     <input class="input-secondary" id="input-price" type="text"
                                         placeholder="<?=$l_arr["newcar"]["txt_9"]?>">
-                                    <span class="input-domain">MXN</span>
+                                    <span class="input-domain" id="price-domain">MXN</span>
                                 </div>
                                 <span class="input-log hidden"></span>
                             </div>
@@ -266,6 +266,7 @@ $user_name = $ci0->getSession("user_data")["nombre"];
 
         <script>
             const userName = "<?php echo $user_name;?>";
+            const userCurrency = "<?php echo $ci0->getCookie("c");?>";
             l_arr = <?php echo json_encode($l_arr);?>;
         </script>
         <script src="controller/components/modal.js"></script>

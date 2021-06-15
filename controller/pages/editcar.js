@@ -76,7 +76,8 @@
                         new RequestMe().post("model/apis/", {
                             api: "edit_car",
                             car: carId,
-                            precio: input.price.element.value,
+                            precio: (userCurrency == "mxn")
+                                ? input.price.element.value : (input.price.element.value * dolar_value),
                             puertas: input.doors.element.value,
                             asientos: input.chairs.element.value,
                             unidad_consumo: input.consunit.element.value,
@@ -160,7 +161,22 @@
             ? l_arr["newcar"]["txt_52"] : l_arr["newcar"]["txt_30"];
     });
 
+    document.querySelector("#price-domain").textContent = (userCurrency == "mxn")
+        ? "MXN" : "USD";
+
+    let dolar_value = null;
     let request = {
+        get_dolar : () => {
+            return new Promise((resolve, reject) => {
+                new RequestMe().get("https://www.banxico.org.mx/SieAPIRest/service/v1/series/SF43718/datos/oportuno/", {
+                    token: "4792c8af9e227ad9f40f3e9244897afa654fda1c26502b7da7fdb59b1fa1db67"
+                }).then(response => {
+                    const dolar_en_peso = response.bmx.series[0].datos[0].dato;
+                    dolar_value = parseFloat(dolar_en_peso);
+                    resolve(0);
+                });
+            });
+        },
         get_car_brands_models: new Promise((resolve, reject) => {
             new RequestMe().post("model/apis/", {
                 api: "get_car_brands_models"
@@ -233,104 +249,107 @@
         })
     }
 
-    Promise.all([request.get_car_brands_models, request.get_car_colors]
-    ).then(values => {
-        if (values[0] == 0 && values[1] == 0) {
-            new RequestMe().post("model/apis/", {
-                api: "get_car_by_id",
-                car: carId
-            }).then(response => {
-                switch (response.code) {
-                    case 0:
-                        const get_file = (value) => {
-                            return fetch(value.slice(4))
-                            .then(res => res.blob());
-                        }
-                        let car = response.data;
-                        form.car_info.input.price.element.value = car["precio"];
-                        form.car_info.input.doors.element.value = car["puertas"];
-                        form.car_info.input.chairs.element.value = car["asientos"];
-                        form.car_info.input.consunit.element.value = car["unidad_consumo"];
-                        form.car_info.input.horsepower.element.value = car["caballos_fuerza"];
-                        form.car_info.input.tankcap.element.value = car["capacidad_combustible"];
-                        form.car_info.switch.aircond.toggleStatus(
-                            (car["aire_acondicionado"] == "0") ? false : true
-                        );
-                        form.car_info.switch.gps.toggleStatus(
-                            (car["gps"] == "0") ? false : true
-                        );
-                        form.car_info.switch.darkglass.toggleStatus(
-                            (car["vidrios_polarizados"] == "0") ? false : true
-                        );
-                        form.car_info.switch.replacement.toggleStatus(
-                            (car["repuesto"] == "0") ? false : true
-                        );
-                        form.car_info.switch.toolbox.toggleStatus(
-                            (car["caja_herramientas"] == "0") ? false : true
-                        );
-                        for (let name in form.car_info.input) {
-                            if (form.car_info.input[name].validate) {
-                                form.car_info.input[name].validate();
+    request.get_dolar().then(r => {
+        Promise.all([request.get_car_brands_models, request.get_car_colors]
+        ).then(values => {
+            if (values[0] == 0 && values[1] == 0) {
+                new RequestMe().post("model/apis/", {
+                    api: "get_car_by_id",
+                    car: carId
+                }).then(response => {
+                    switch (response.code) {
+                        case 0:
+                            const get_file = (value) => {
+                                return fetch(value.slice(4))
+                                .then(res => res.blob());
                             }
-                        }
-                        let brand_opt = form.car_info.select.brand.element.options;
-                        for (let i = 0; i < brand_opt.length; i++) {
-                            if (brand_opt[i].value == car["pk_auto_marca"]) {
-                                form.car_info.select.brand.element.selectedIndex = i;
-                                form.car_info.select.brand.element.dispatchEvent(new Event("change"));
-                                break;
-                            }
-                        }
-                        let model_opt = form.car_info.select.model.element.options;
-                        for (let i = 0; i < model_opt.length; i++) {
-                            if (model_opt[i].value == car["pk_auto_modelo"]) {
-                                form.car_info.select.model.element.selectedIndex = i;
-                                break;
-                            }
-                        }
-                        let color_opt = form.car_info.select.color.element.options;
-                        for (let i = 0; i < color_opt.length; i++) {
-                            if (color_opt[i].value == car["fk_auto_color_pintura"]) {
-                                form.car_info.select.color.element.selectedIndex = i;
-                                break;
-                            }
-                        }
-                        form.car_info.select.type.element.options.selectedIndex = car["tipo"];
-                        form.car_info.select.trunk.element.options.selectedIndex = car["capacidad_cajuela"];
-                        form.car_info.select.engine.element.options.selectedIndex = car["tipo_motor"];
-                        form.car_info.select.transmission.element.options.selectedIndex = car["transmicion"];
-                        form.car_info.select.insurance.element.options.selectedIndex = car["seguro"];
-
-                        let c_thumbnail_file = get_file(car["imagen_ruta"]).then(blob => {
-                            const file = new File([blob], 'foo.png', blob);
-                            form.car_info.input.thumbnail_image.handleFiles([file]);
-                            form.car_info.input.thumbnail_image.reset_is_edited();
-                        });
-
-                        let others_images_file = [];
-                        let i_forname = 0;
-                        for (let image of car["otras_imagenes"]) {
-                            others_images_file.push(
-                                new Promise((resolve, reject) => {
-                                    get_file(image["imagen_ruta"]).then(blob => {
-                                        const file = new File([blob], ('foo.png' + i_forname++), blob);
-                                        resolve(file);
-                                    }).catch(err => {
-                                        reject();
-                                    });
-                                })
+                            let car = response.data;
+                            form.car_info.input.price.element.value = ((userCurrency == "mxn")
+                                ? car["precio"] : (car["precio"] / dolar_value)).toFixed(2);
+                            form.car_info.input.doors.element.value = car["puertas"];
+                            form.car_info.input.chairs.element.value = car["asientos"];
+                            form.car_info.input.consunit.element.value = car["unidad_consumo"];
+                            form.car_info.input.horsepower.element.value = car["caballos_fuerza"];
+                            form.car_info.input.tankcap.element.value = car["capacidad_combustible"];
+                            form.car_info.switch.aircond.toggleStatus(
+                                (car["aire_acondicionado"] == "0") ? false : true
                             );
-                        }
-                        Promise.all(others_images_file).then(values => {
-                            form.car_info.input.others_images.handleFiles(values);
-                            form.car_info.input.others_images.reset_is_edited();
-                            hideLoadingScreen();
-                        });
-                        break;
-                    default:
-                        new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_2);
-                }
-            })
-        }
+                            form.car_info.switch.gps.toggleStatus(
+                                (car["gps"] == "0") ? false : true
+                            );
+                            form.car_info.switch.darkglass.toggleStatus(
+                                (car["vidrios_polarizados"] == "0") ? false : true
+                            );
+                            form.car_info.switch.replacement.toggleStatus(
+                                (car["repuesto"] == "0") ? false : true
+                            );
+                            form.car_info.switch.toolbox.toggleStatus(
+                                (car["caja_herramientas"] == "0") ? false : true
+                            );
+                            for (let name in form.car_info.input) {
+                                if (form.car_info.input[name].validate) {
+                                    form.car_info.input[name].validate();
+                                }
+                            }
+                            let brand_opt = form.car_info.select.brand.element.options;
+                            for (let i = 0; i < brand_opt.length; i++) {
+                                if (brand_opt[i].value == car["pk_auto_marca"]) {
+                                    form.car_info.select.brand.element.selectedIndex = i;
+                                    form.car_info.select.brand.element.dispatchEvent(new Event("change"));
+                                    break;
+                                }
+                            }
+                            let model_opt = form.car_info.select.model.element.options;
+                            for (let i = 0; i < model_opt.length; i++) {
+                                if (model_opt[i].value == car["pk_auto_modelo"]) {
+                                    form.car_info.select.model.element.selectedIndex = i;
+                                    break;
+                                }
+                            }
+                            let color_opt = form.car_info.select.color.element.options;
+                            for (let i = 0; i < color_opt.length; i++) {
+                                if (color_opt[i].value == car["fk_auto_color_pintura"]) {
+                                    form.car_info.select.color.element.selectedIndex = i;
+                                    break;
+                                }
+                            }
+                            form.car_info.select.type.element.options.selectedIndex = car["tipo"];
+                            form.car_info.select.trunk.element.options.selectedIndex = car["capacidad_cajuela"];
+                            form.car_info.select.engine.element.options.selectedIndex = car["tipo_motor"];
+                            form.car_info.select.transmission.element.options.selectedIndex = car["transmicion"];
+                            form.car_info.select.insurance.element.options.selectedIndex = car["seguro"];
+
+                            let c_thumbnail_file = get_file(car["imagen_ruta"]).then(blob => {
+                                const file = new File([blob], 'foo.png', blob);
+                                form.car_info.input.thumbnail_image.handleFiles([file]);
+                                form.car_info.input.thumbnail_image.reset_is_edited();
+                            });
+
+                            let others_images_file = [];
+                            let i_forname = 0;
+                            for (let image of car["otras_imagenes"]) {
+                                others_images_file.push(
+                                    new Promise((resolve, reject) => {
+                                        get_file(image["imagen_ruta"]).then(blob => {
+                                            const file = new File([blob], ('foo.png' + i_forname++), blob);
+                                            resolve(file);
+                                        }).catch(err => {
+                                            reject();
+                                        });
+                                    })
+                                );
+                            }
+                            Promise.all(others_images_file).then(values => {
+                                form.car_info.input.others_images.handleFiles(values);
+                                form.car_info.input.others_images.reset_is_edited();
+                                hideLoadingScreen();
+                            });
+                            break;
+                        default:
+                            new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_2);
+                    }
+                })
+            }
+        });
     });
 })();
