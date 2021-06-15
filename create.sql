@@ -117,6 +117,8 @@ create table `administrador` (
     /* not too sure if we going to need to change data type later, for now varchar is fine */
     `longitud_empresa` varchar(50) not null,
     `latitud_empresa` varchar(50) not null,
+    `preferencia_tema` enum("0", "1") default "0" not null,
+    `preferencia_divisa` enum("0", "1") default "0" not null,
     unique key(nombre_empresa),
     foreign key(fk_usuario) references usuario(pk_usuario) on delete cascade
 ) engine=InnoDB default charset=utf8 collate=utf8_unicode_ci;
