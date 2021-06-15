@@ -15,7 +15,18 @@ const RequestMe = function () {
         .then(response => response.json())
         .catch(error => console.error(error));
     }
+    const get = (url, data) => {
+        let add_simbol = "?";
+        for (let name in data) {
+            url += add_simbol + name + "=" + data[name];
+            if (add_simbol == "?") add_simbol = "&";
+        }
+        return fetch(url)
+        .then(response => response.json())
+        .catch(error => console.error(error));
+    }
     return {
-        post : post
+        post : post,
+        get : get
     };
 }
