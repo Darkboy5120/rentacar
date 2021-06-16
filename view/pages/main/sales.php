@@ -59,6 +59,8 @@ $user_name = $ci0->getSession("user_data")["nombre"];
         const saleId = "<?php echo (isset($_GET["sale"])) ? $_GET["sale"] : "";?>";
         l_arr = <?php echo json_encode($l_arr);?>;
     </script>
+    <!-- jsPDF -->
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
     <script src="controller/components/modal.js"></script>
     <script src="controller/components/field-control.js"></script>
     <script src="controller/components/switch-control.js"></script>

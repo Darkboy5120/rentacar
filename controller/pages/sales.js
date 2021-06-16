@@ -254,6 +254,23 @@
                                 const s_fecha_hora = sale_layout.fecha_hora.slice(0, 10).replace(/-/g, "/");
                                 const s_car_id = sale_layout.fk_auto;
                                 const s_driver_id = sale_layout.fk_conductor;
+                                const s_car_name =  sale_layout.marca_nombre + " " + sale_layout.modelo_nombre;
+                                const s_start_date = sale_layout.fechahora_entrega;
+                                const s_end_date = sale_layout.fechahora_devolucion;
+                                const s_price_per_day = (userCurrency == "mxn")
+                                    ? sale_layout.precio : (sale_layout.precio / dolar_value);
+                                const s_total_price = (userCurrency == "mxn")
+                                    ? sale_layout.costo : (sale_layout.costo / dolar_value);
+                                const s_description = sale_layout.descripcion;
+                                const currency_unit = (userCurrency == "mxn") ? "MXN" : "USD";
+                                let problems_data = (sale_layout.incidencias)
+                                    ? sale_layout.incidencias : null;
+
+                                for (let foo of problems_data) {
+                                    foo.cost = (userCurrency == "mxn")
+                                        ? foo.cost : (foo.cost / dolar_value)
+                                }
+
                                 let sale_html = `
                                     <span>${s_layout_id}</span>
                                     <span>$${s_ganancia.toFixed(2)} ${s_currency}</span>
@@ -273,31 +290,8 @@
 
                                     modal.sale_info.button.sale_info_return.onclick = () => {
 
-                                        console.log("descargar el reporte de devolucion");
-                                        /*let button = modal.driver_fire_confirm.button;
-                                        const default_text_button = button.yes.element.innerHTML;
-                                        button.yes.element.innerHTML = "<i class='fas fa-sync-alt fa-spin'></i>" + l_arr.global.log_15;
-                                        new RequestMe().post("model/apis/", {
-                                            api: "set_fire_driver",
-                                            driver: d_layout_id,
-                                            new_fired: "1"
-                                        }).then(response => {
-                                            button.yes.element.innerHTML = default_text_button;
-                                            hideLoadingScreen();
-                                            switch (response.code) {
-                                                case 0:
-                                                    sales_count -= 1;
-                                                    if (sales_count == 0) {
-                                                        document.querySelector(".cards-empty").classList.remove("hidden");
-                                                    }
-                                                    sale_node.remove();
-                                                    modal.driver_fire_confirm.object.hide();
-                                                    new AlertMe(l_arr.global.mdal_suc_t_1, l_arr.global.mdal_suc_b_8);
-                                                    break;
-                                                default:
-                                                    new AlertMe(l_arr.global.mdal_err_t_0, l_arr.global.mdal_err_b_1);
-                                            }
-                                        });*/
+                                        download_report(s_car_name, s_start_date, s_end_date, s_price_per_day,
+                                            s_total_price, currency_unit, s_description, problems_data);
                                     }
                                     modal.sale_info.object.show();
                                 });
@@ -370,4 +364,94 @@
         });
     });
 
+    const download_report = (car_name, start_date, end_date,
+        price_per_day, total_price, currency_unit, description, problems_data) => {
+    var jsPDF = window.jspdf.jsPDF;
+    // Default export is a4 paper, portrait, using millimeters for units
+    const doc = new jsPDF();
+
+    const total_days = total_price / price_per_day;
+
+    const body = `
+${l_arr["sales"]["txt_14"]} ${car_name} ${l_arr["sales"]["txt_15"]}
+${l_arr["sales"]["txt_16"]} ${start_date} ${l_arr["sales"]["txt_17"]} ${end_date}${l_arr["sales"]["txt_18"]}
+${l_arr["sales"]["txt_19"]} ${total_days} ${l_arr["sales"]["txt_20"]} $${price_per_day} ${currency_unit} ${l_arr["sales"]["txt_21"]}
+${l_arr["sales"]["txt_22"]} $${total_price} ${currency_unit} ${l_arr["sales"]["txt_23"]}
+    `;
+
+    const success = `
+${l_arr["sales"]["txt_24"]}
+${l_arr["sales"]["txt_25"]}
+    `;
+
+    const err = `
+${l_arr["sales"]["txt_26"]}
+    `;
+
+    let date = new Date();
+    const month = (date.getMonth() < 10) ? ("0" + (date.getMonth()+1)) : date.getMonth()
+    const day = date.getDate();
+    const year = date.getFullYear();
+    let full_date = `${month}/${day}/${year}`;
+
+    const variable_content = (problems_data == null)
+            ? success : err;
+
+    doc.text(full_date, 10, 10);
+    doc.text(l_arr["sales"]["txt_27"], 80, 20);
+    doc.text(body, 10, 30);
+    doc.text(variable_content, 10, 70);
+
+    let title_y = 80;
+    let cost_y = 90;
+    let image_y = 105;
+    let problem_y_increment = 130;
+    let problems_total = 0;
+
+    if (problems_data != null) {
+        for (let i = 0; i < problems_data.length; i++) {
+            problems_total += problems_data[i].cost;
+            const err_t = `
+        ${i+1} - ${problems_data[i].title}
+            `;
+            const err_desc = `
+        ${description}
+            `;
+            const err_c = `
+    ${l_arr["sales"]["txt_28"]} $${problems_data[i].cost} ${currency_unit}
+            `;
+            doc.text(err_t, 10, (title_y + (i*problem_y_increment)));
+            doc.text(err_c, 10, (cost_y + (i*problem_y_increment)));
+            doc.text(err_desc, 120, (cost_y + (i*problem_y_increment)));
+            /*for (let j = 0; j < err_desc.length; j+=10) {
+                let start_index = j * 50;
+                let desc_content = "";
+                if (err_desc.slice(j).length == 0) {
+                    break;
+                } else if (err_desc.slice(j).length < 50) {
+                    desc_content = err_desc.slice(j);
+                } else {
+                    desc_content = err_desc.slice(j, (j+10));
+                }
+                doc.text(desc_content, 120, (cost_y + ((i)*problem_y_increment) + j) );
+            }*/
+            var img = new Image();
+            img.src = problems_data[i].image.slice(4);
+            const image_type = problems_data[i].image.slice(problems_data[i].image.indexOf(".")+1);
+            doc.addImage(img, image_type, 25, (image_y + (i*problem_y_increment)), 100, 100);
+
+            if (i == (problems_total.length-1)) {
+                const err_fc = `
+    ${l_arr["sales"]["txt_29"]} $${problems_total} ${currency_unit}
+            `;
+            }
+        }
+    }
+
+    doc.save(`${l_arr["sales"]["txt_30"]}.pdf`);
+    }
+    /*download_report("Tsuru", "06/01/2021", "06/10/2021", "14", "70", "MXN",
+        [{image : "./image.png", title : "Llanta ponchada", cost : "100"},
+        {image : "./image.png", title : "Llanta ponchada", cost : "200"}]
+    );*/
 })();

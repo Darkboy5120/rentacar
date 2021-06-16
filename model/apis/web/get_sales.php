@@ -43,15 +43,25 @@ $mi0->query("
         renta.costo,
         renta.fk_conductor,
         renta.fk_auto,
+        renta.fechahora_entrega,
+        renta.fechahora_devolucion,
         reporte_devolucion.pk_reporte_devolucion,
-        reporte_devolucion.fecha_hora
+        reporte_devolucion.fecha_hora,
+        reporte_devolucion.descripcion,
+        reporte_devolucion.todo_bien,
+        auto.precio,
+        auto_modelo.nombre as modelo_nombre,
+        auto_marca.nombre as marca_nombre
     FROM
         renta
     LEFT JOIN
-        (reporte_devolucion, conductor)
+        (reporte_devolucion, conductor, auto, auto_modelo, auto_marca)
     ON
         (renta.pk_renta = reporte_devolucion.fk_renta
-            AND conductor.fk_usuario = renta.fk_conductor)
+            AND conductor.fk_usuario = renta.fk_conductor
+            AND auto.pk_auto = renta.fk_auto
+            AND auto.fk_auto_modelo = auto_modelo.pk_auto_modelo
+            AND auto_modelo.fk_auto_marca = auto_marca.pk_auto_marca)
     WHERE conductor.fk_administrador = ? AND renta.fase = '4'
         AND $sale_sql AND $mingain_sql AND $maxgain_sql
     ORDER BY reporte_devolucion.fecha_hora DESC
@@ -74,7 +84,30 @@ while ($row = $mi0->result->fetch_assoc()) {
     if (++$count > $limit) {
         break;
     }
+
     array_push($data["sales"], $row);
+}
+
+for ($i = 0; $i < count($data["sales"]); $i++) {
+    $mi0->query("
+        SELECT
+            reporte_devolucion_imagen.imagen_ruta as image,
+            penalizacion.nombre as title,
+            penalizacion.precio as cost
+        FROM
+            reporte_devolucion_imagen
+        LEFT JOIN
+            (penalizacion)
+        ON
+            (penalizacion.pk_penalizacion = reporte_devolucion_imagen.fk_penalizacion)
+        WHERE reporte_devolucion_imagen.fk_reporte_devolucion = ?",
+        $data["sales"][$i]["pk_reporte_devolucion"]
+    );
+    if ($mi0->result->num_rows > 0) {
+        $data["sales"][$i]["incidencias"] = $mi0->result->fetch_all(MYSQLI_ASSOC);
+    } else {
+        $data["sales"][$i]["incidencias"] = null;
+    }
 }
 
 $mi0->end("commit", 0, $data);

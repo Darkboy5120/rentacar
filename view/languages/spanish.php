@@ -247,7 +247,25 @@ $l_arr = array(
         "txt_10" => "No se encontraron ventas en la búsquedad",
         "txt_11" => "Aun no se ha reportado ninguna venta",
         "txt_12" => "Grafica de ventas",
-        "txt_13" => "No hay datos para graficar"
+        "txt_13" => "No hay datos para graficar",
+        "txt_14" => "En el presente reporte se rento el auto",
+        "txt_15" => "para que este se",
+        "txt_16" => "entregara el dia",
+        "txt_17" => "hasta",
+        "txt_18" => ", durante",
+        "txt_19" => "estos",
+        "txt_20" => "dias se cobro",
+        "txt_21" => "por dia, sumando",
+        "txt_22" => "un total de",
+        "txt_23" => "en total.",
+        "txt_24" => "El reporte se presento sin problema alguno, dando lugar al pago en los",
+        "txt_25" => "siguientes 7 días habiles.",
+        "txt_26" => "El reporte se presento con incidencias las cuales son las siguientes:",
+        "txt_27" => "Reporte de devolución",
+        "txt_28" => "El costo es de",
+        "txt_29" => "El costo final es de",
+        "txt_30" => "Reporte_devolucion"
+
     ),
     "welcome" => array(
         "page_name" => "Bienvenido",
