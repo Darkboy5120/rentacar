@@ -40,7 +40,6 @@ main > .container {
     grid-template-rows: auto;
 }
 .content-index {
-    width: 30%;
     display: none;
     padding: 2rem 0;
     background-color: rgba(50, 50, 50, .5);
@@ -52,10 +51,12 @@ main > .container {
     color: var(--textColor) !important;
 }
 .content {
+    width: 100%;
     padding: 0 2rem;
     color: var(--textColor);
 }
-.content > .content-item {
+.content > .content-item > p {
+    font-size: 1rem;
 }
 h1 {
     color: var(--textColor);
@@ -69,6 +70,7 @@ h1 {
     }
     .content-index {
         display: block;
+        width: 30%;
     }
     .content-index > a {
         display: block;
@@ -76,6 +78,9 @@ h1 {
     }
     .content-index > a:hover {
         background-color: rgba(50, 50, 50);
+    }    
+    .content > .content-item {
+        scroll-margin-top: 5rem !important;
     }
 }
 @media(min-width: 425px) and (max-width: 767px) {
