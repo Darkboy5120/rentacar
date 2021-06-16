@@ -273,7 +273,7 @@
 
                                 let sale_html = `
                                     <span>${s_layout_id}</span>
-                                    <span>$${s_ganancia.toFixed(2)} ${s_currency}</span>
+                                    <span>$${parseFloat(s_ganancia).toFixed(2)} ${s_currency}</span>
                                     <span>${s_fecha_hora}</span>
                                 `;
                                 let sale_node = document.createElement("button");

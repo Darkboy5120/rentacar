@@ -13,6 +13,24 @@
         e.classList.add("hidden");
     });
 
+    const validate_checkbox_pol = () => {
+        let checkbox_pol = document.querySelector("#input-acept-policy");
+        let checked_pol_log = checkbox_pol.parentNode.parentNode.querySelector(".input-log");
+        let result = true;
+        if (checkbox_pol.checked) {
+            checked_pol_log.classList.add("hidden");
+        } else {
+            checked_pol_log.classList.remove("hidden");
+            result = false;
+        }
+        return result;
+    }
+    document.querySelector("#input-acept-policy").addEventListener("keyup", e => {
+        if (e.which == 13) {
+            e.target.click();
+        }
+    });
+
     let form = {
         personal_info: {
             index: document.querySelector("#personal-info-index"),
@@ -78,6 +96,7 @@
             validation: () => {
                 let input = form.personal_info.input;
                 let first_invalid_input = null;
+                let checkbox_pol = document.querySelector("#input-acept-policy");
                 for (const name in input) {
                     if (!input[name].isDone()) {
                         if (!first_invalid_input) {
@@ -85,6 +104,9 @@
                         }
                         input[name].validate();
                     }
+                }
+                if (!validate_checkbox_pol()) {
+                    first_invalid_input = checkbox_pol;
                 }
                 if (first_invalid_input) {
                     first_invalid_input.focus();

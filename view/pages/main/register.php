@@ -75,6 +75,15 @@ $ci0->setSession("securitykey", $ci0->getSecurityKey());
                             </div>
                             <span class="input-log hidden"></span>
                         </div>
+                        <div class="input-layout">
+                            <div class="input-check">
+                                <input class="input-checkbox" type="checkbox" id="input-acept-policy"
+                                    placeholder="<?=$l_arr["register"]["txt_14"];?>">
+                                <label for="input-acept-policy">
+                                    <?=$l_arr["register"]["txt_14"];?> <a href="?p=info#terms-of-use" target="_blank"><?=$l_arr["register"]["txt_16"];?></a></label>
+                            </div>
+                            <span class="input-log hidden"><?=$l_arr["register"]["txt_15"];?></span>
+                        </div>
                         <button id="signup-step1" type="button" class="button button-primary">
                             <?=$l_arr["register"]["button_step1"];?></button>
                     </form>
