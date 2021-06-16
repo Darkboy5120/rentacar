@@ -344,7 +344,7 @@ public class D_Driver_Delivery extends Fragment implements View.OnClickListener,
                         Log.d("foo", json.toString());
                         String code = json.getString("code");
                         if (code.equals("0")) {
-                            make_search_in_server(user_id, phase);
+                            make_search_in_server(user_id, ns_phase_driver.getIndex() + "");
                             if (phase.equals("0")) {
                                 Global.printMessage(requireView(), getResources().getString(R.string.deliver_car));
                             } else if (phase.equals("3")) {

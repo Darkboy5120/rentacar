@@ -153,8 +153,8 @@
     <string name="label_tv_rented_car_finalprice">Precio total de </string>
     <string name="label_tv_driver_start">En espera de que confirmes que recibiste las llaves</string>
     <string name="label_tv_driver_end">En espera de que confirmes que entregaste las llaves</string>
-    <string name="label_tv_driver_delivery">En espera de que el usuario confirme que recibo las llaves</string>
-    <string name="label_tv_delivery_end">En espera de que confirmes que recibiste las llaves</string>
+    <string name="label_tv_driver_delivery">En espera de que el usuario confirme que recibio las llaves</string>
+    <string name="label_tv_delivery_end">En espera de que el usuario confirme que te entrego las llaves</string>
     <string name="label_tv_no_report">Aun no se entrega el reporte</string>
 
     <!--input's log-->
@@ -263,7 +263,7 @@
     <string name="ask_user">¿Qué quieres hacer?</string>
     <string name="new_rent">Rentar otro auto</string>
     <string name="finish">Regresar a la pantalla principal</string>
-    <string name="ask_to_rate">¿Desear calificar el auto que rentaste?</string>
+    <string name="ask_to_rate">¿Deseas calificar el auto que rentaste?</string>
     <string name="rate_yes">Sí</string>
     <string name="rate_no">No</string>
     <string name="rate_success">Gracias por rentar con nosotros!</string>

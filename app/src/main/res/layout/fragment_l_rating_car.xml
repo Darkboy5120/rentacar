@@ -4,164 +4,147 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.L_RatingCar">
+    tools:context=".fragments.L_RatingCar"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_container_rating"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/layout_pt"
-        android:paddingHorizontal="@dimen/layout_ph_medium"
         android:background="@drawable/bg_activity_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:id="@+id/header"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@id/body"
+            android:paddingTop="@dimen/layout_pt"
+            android:paddingHorizontal="@dimen/layout_ph_medium"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/rating_title"
-                style="@style/text_huge_black"
-                android:gravity="center_horizontal"
-                android:layout_marginBottom="@dimen/layout_et_mb"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/rating"
-                style="@style/text_big_gray"
-                android:gravity="center_horizontal"
-                android:layout_marginBottom="@dimen/layout_et_mb"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-            <RatingBar
-                android:id="@+id/user_rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:progressTint="@color/gold"
-                android:numStars="5"
-                android:layout_gravity="center"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/body"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/header">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/user_description"
-                style="@style/text_big_bold_gray"
-                android:gravity="center_horizontal"
-                android:layout_marginBottom="@dimen/layout_et_mb"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
             <LinearLayout
-                android:id="@+id/layout_et_report_description"
+                android:id="@+id/header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginBottom="@dimen/layout_et_mb"
+                app:layout_constraintBottom_toTopOf="@id/body"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
-                <TextView
-                    android:id="@+id/label_et_rate_description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/label_et_report_description"
-                    android:labelFor="@id/et_report_description"
-                    style="@style/text_medium_gray"
-                    android:visibility="invisible"/>
 
-                <EditText
-                    android:id="@+id/et_rate_description"
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:inputType="textNoSuggestions"
-                    style="@style/et_medium_light"
-                    android:hint="@string/rating_title"/>
+                    android:layout_height="wrap_content"
+                    android:text="@string/rating_title"
+                    style="@style/text_huge_black"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/layout_et_mb"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
                 <TextView
-                    android:id="@+id/help_et_rate_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rating"
+                    style="@style/text_big_gray"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/layout_et_mb"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <RatingBar
+                    android:id="@+id/user_rating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/help_et_report_description"
-                    android:labelFor="@id/et_report_description"
-                    android:visibility="gone"
-                    style="@style/text_big_lightGray"/>
-                <TextView
-                    android:id="@+id/log_et_rate_description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:labelFor="@id/et_report_description"
-                    style="@style/text_big_bold_danger"
-                    android:visibility="gone"/>
+                    android:progressTint="@color/gold"
+                    android:numStars="5"
+                    android:layout_gravity="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
             </LinearLayout>
 
-            <Button
-                android:id="@+id/save"
+            <LinearLayout
+                android:id="@+id/body"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/layout_btn_mb"
-                android:text="@string/send_information"
-                android:layout_gravity="center"
-                style="@style/btn_medium_light" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/ask_user"
-                style="@style/text_big_bold_gray"
-                android:gravity="center_horizontal"
-                android:layout_marginBottom="@dimen/layout_et_mb"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/header">
 
-            <Button
-                android:id="@+id/go_new_rent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/layout_btn_mb"
-                android:text="@string/new_rent"
-                android:layout_gravity="center"
-                style="@style/btn_medium_light" />
-            <Button
-                android:id="@+id/finish"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/layout_btn_mb"
-                android:text="@string/finish"
-                android:layout_gravity="center"
-                style="@style/btn_medium_light" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/user_description"
+                    style="@style/text_big_bold_gray"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/layout_et_mb"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <LinearLayout
+                    android:id="@+id/layout_et_report_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="@dimen/layout_et_mb"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <TextView
+                        android:id="@+id/label_et_rate_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_et_report_description"
+                        android:labelFor="@id/et_report_description"
+                        style="@style/text_medium_gray"
+                        android:visibility="invisible"/>
 
-        </LinearLayout>
+                    <EditText
+                        android:id="@+id/et_rate_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:inputType="textNoSuggestions"
+                        style="@style/et_medium_light"
+                        android:hint="@string/rating_title"/>
+                    <TextView
+                        android:id="@+id/help_et_rate_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/help_et_report_description"
+                        android:labelFor="@id/et_report_description"
+                        android:visibility="gone"
+                        style="@style/text_big_lightGray"/>
+                    <TextView
+                        android:id="@+id/log_et_rate_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/et_report_description"
+                        style="@style/text_big_bold_danger"
+                        android:visibility="gone"/>
+                </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <Button
+                    android:id="@+id/save"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/layout_btn_mb"
+                    android:text="@string/save_report"
+                    android:layout_gravity="center"
+                    style="@style/btn_medium_light" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <LinearLayout
         android:id="@+id/layout_spn_global"

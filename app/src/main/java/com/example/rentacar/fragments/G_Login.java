@@ -142,6 +142,7 @@ public class G_Login extends Fragment implements View.OnClickListener {
                     public void onResponse(String response) {
                         try {
                             ll_spn_global.setVisibility(View.GONE);
+                            Log.d("login", response.toString());
                             JSONObject json = new JSONObject(response);
                             String code = json.getString("code");
                             if (code.equals("0")) {

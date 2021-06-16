@@ -59,7 +59,7 @@ public class L_RatingCar extends Fragment implements View.OnClickListener,
         rb_user = view.findViewById(R.id.user_rating);
         rb_user.setOnClickListener(this);
         view.findViewById(R.id.save).setOnClickListener(this);
-        view.findViewById(R.id.layout_container_rating).setOnClickListener(this);
+        view.findViewById(R.id.layout_container).setOnClickListener(this);
         ni_comments = new NiceInput("text", R.id.label_et_rate_description, R.id.et_rate_description,
                 R.id.help_et_rate_description,  R.id.log_et_rate_description, "^[A-Za-z-ZÀ-ÿ-\u00f1\u00d1\\s']+", 15,
                 255, true, requireView());
